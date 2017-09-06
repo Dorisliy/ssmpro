@@ -196,6 +196,7 @@
     <build>
         <finalName>ssmpro</finalName>
         <plugins>
+            <!--jetty热部署-->
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
