@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.AmazonImportConfigureMapper" >
+  <resultMap id="BaseResultMap" type="pojo.AmazonImportConfigure" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="CREATED_AT" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="CREATED_ID" property="createdId" jdbcType="INTEGER" />
+    <result column="UPDATED_AT" property="updatedAt" jdbcType="TIMESTAMP" />
+    <result column="UPDATED_ID" property="updatedId" jdbcType="INTEGER" />
+    <result column="ISACTIVE" property="isactive" jdbcType="CHAR" />
+    <result column="STATE" property="state" jdbcType="CHAR" />
+    <result column="CLIENT_ID" property="clientId" jdbcType="INTEGER" />
+    <result column="ORG_ID" property="orgId" jdbcType="INTEGER" />
+    <result column="BPARTNER_ID" property="bpartnerId" jdbcType="INTEGER" />
+    <result column="DOCTYPE_ID" property="doctypeId" jdbcType="INTEGER" />
+    <result column="DOCTYPETARGET_ID" property="doctypetargetId" jdbcType="INTEGER" />
+    <result column="PROJECT_ID" property="projectId" jdbcType="INTEGER" />
+    <result column="PRICELIST_ID" property="pricelistId" jdbcType="INTEGER" />
+    <result column="WAREHOUSE_ID" property="warehouseId" jdbcType="INTEGER" />
+    <result column="URL" property="url" jdbcType="VARCHAR" />
+    <result column="MWS_ACCESS_KEY" property="mwsAccessKey" jdbcType="VARCHAR" />
+    <result column="MWS_MARKETPLACE_ID" property="mwsMarketplaceId" jdbcType="VARCHAR" />
+    <result column="MWS_SECRET_KEY" property="mwsSecretKey" jdbcType="VARCHAR" />
+    <result column="MWS_SELLER_ID" property="mwsSellerId" jdbcType="VARCHAR" />
+    <result column="SALESREP_ID" property="salesrepId" jdbcType="INTEGER" />
+    <result column="SELF_WAREHOUSE_ID" property="selfWarehouseId" jdbcType="INTEGER" />
+    <result column="TIME_ZONE" property="timeZone" jdbcType="VARCHAR" />
+    <result column="AMAZON_SALES_CHANNEL" property="amazonSalesChannel" jdbcType="VARCHAR" />
+    <result column="IS_NONAMAZON_INCLUDED" property="isNonamazonIncluded" jdbcType="CHAR" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="STORENAME_EB" property="storenameEb" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="pojo.AmazonImportConfigure" extends="BaseResultMap" >
+    <result column="TOKEN_EB" property="tokenEb" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, CREATED_AT, CREATED_ID, UPDATED_AT, UPDATED_ID, ISACTIVE, STATE, CLIENT_ID, ORG_ID, 
+    BPARTNER_ID, DOCTYPE_ID, DOCTYPETARGET_ID, PROJECT_ID, PRICELIST_ID, WAREHOUSE_ID, 
+    URL, MWS_ACCESS_KEY, MWS_MARKETPLACE_ID, MWS_SECRET_KEY, MWS_SELLER_ID, SALESREP_ID, 
+    SELF_WAREHOUSE_ID, TIME_ZONE, AMAZON_SALES_CHANNEL, IS_NONAMAZON_INCLUDED, TYPE, 
+    STORENAME_EB
+  </sql>
+  <sql id="Blob_Column_List" >
+    TOKEN_EB
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="pojo.AmazonImportConfigureExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from amazon_import_configure
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pojo.AmazonImportConfigureExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from amazon_import_configure
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from amazon_import_configure
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from amazon_import_configure
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pojo.AmazonImportConfigureExample" >
+    delete from amazon_import_configure
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pojo.AmazonImportConfigure" >
+    insert into amazon_import_configure (ID, CREATED_AT, CREATED_ID, 
+      UPDATED_AT, UPDATED_ID, ISACTIVE, 
+      STATE, CLIENT_ID, ORG_ID, 
+      BPARTNER_ID, DOCTYPE_ID, DOCTYPETARGET_ID, 
+      PROJECT_ID, PRICELIST_ID, WAREHOUSE_ID, 
+      URL, MWS_ACCESS_KEY, MWS_MARKETPLACE_ID, 
+      MWS_SECRET_KEY, MWS_SELLER_ID, SALESREP_ID, 
+      SELF_WAREHOUSE_ID, TIME_ZONE, AMAZON_SALES_CHANNEL, 
+      IS_NONAMAZON_INCLUDED, TYPE, STORENAME_EB, 
+      TOKEN_EB)
+    values (#{id,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, #{createdId,jdbcType=INTEGER}, 
+      #{updatedAt,jdbcType=TIMESTAMP}, #{updatedId,jdbcType=INTEGER}, #{isactive,jdbcType=CHAR}, 
+      #{state,jdbcType=CHAR}, #{clientId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, 
+      #{bpartnerId,jdbcType=INTEGER}, #{doctypeId,jdbcType=INTEGER}, #{doctypetargetId,jdbcType=INTEGER}, 
+      #{projectId,jdbcType=INTEGER}, #{pricelistId,jdbcType=INTEGER}, #{warehouseId,jdbcType=INTEGER}, 
+      #{url,jdbcType=VARCHAR}, #{mwsAccessKey,jdbcType=VARCHAR}, #{mwsMarketplaceId,jdbcType=VARCHAR}, 
+      #{mwsSecretKey,jdbcType=VARCHAR}, #{mwsSellerId,jdbcType=VARCHAR}, #{salesrepId,jdbcType=INTEGER}, 
+      #{selfWarehouseId,jdbcType=INTEGER}, #{timeZone,jdbcType=VARCHAR}, #{amazonSalesChannel,jdbcType=VARCHAR}, 
+      #{isNonamazonIncluded,jdbcType=CHAR}, #{type,jdbcType=VARCHAR}, #{storenameEb,jdbcType=VARCHAR}, 
+      #{tokenEb,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.AmazonImportConfigure" >
+    insert into amazon_import_configure
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="createdAt != null" >
+        CREATED_AT,
+      </if>
+      <if test="createdId != null" >
+        CREATED_ID,
+      </if>
+      <if test="updatedAt != null" >
+        UPDATED_AT,
+      </if>
+      <if test="updatedId != null" >
+        UPDATED_ID,
+      </if>
+      <if test="isactive != null" >
+        ISACTIVE,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="clientId != null" >
+        CLIENT_ID,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="bpartnerId != null" >
+        BPARTNER_ID,
+      </if>
+      <if test="doctypeId != null" >
+        DOCTYPE_ID,
+      </if>
+      <if test="doctypetargetId != null" >
+        DOCTYPETARGET_ID,
+      </if>
+      <if test="projectId != null" >
+        PROJECT_ID,
+      </if>
+      <if test="pricelistId != null" >
+        PRICELIST_ID,
+      </if>
+      <if test="warehouseId != null" >
+        WAREHOUSE_ID,
+      </if>
+      <if test="url != null" >
+        URL,
+      </if>
+      <if test="mwsAccessKey != null" >
+        MWS_ACCESS_KEY,
+      </if>
+      <if test="mwsMarketplaceId != null" >
+        MWS_MARKETPLACE_ID,
+      </if>
+      <if test="mwsSecretKey != null" >
+        MWS_SECRET_KEY,
+      </if>
+      <if test="mwsSellerId != null" >
+        MWS_SELLER_ID,
+      </if>
+      <if test="salesrepId != null" >
+        SALESREP_ID,
+      </if>
+      <if test="selfWarehouseId != null" >
+        SELF_WAREHOUSE_ID,
+      </if>
+      <if test="timeZone != null" >
+        TIME_ZONE,
+      </if>
+      <if test="amazonSalesChannel != null" >
+        AMAZON_SALES_CHANNEL,
+      </if>
+      <if test="isNonamazonIncluded != null" >
+        IS_NONAMAZON_INCLUDED,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="storenameEb != null" >
+        STORENAME_EB,
+      </if>
+      <if test="tokenEb != null" >
+        TOKEN_EB,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdId != null" >
+        #{createdId,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedId != null" >
+        #{updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="isactive != null" >
+        #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="bpartnerId != null" >
+        #{bpartnerId,jdbcType=INTEGER},
+      </if>
+      <if test="doctypeId != null" >
+        #{doctypeId,jdbcType=INTEGER},
+      </if>
+      <if test="doctypetargetId != null" >
+        #{doctypetargetId,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="pricelistId != null" >
+        #{pricelistId,jdbcType=INTEGER},
+      </if>
+      <if test="warehouseId != null" >
+        #{warehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="mwsAccessKey != null" >
+        #{mwsAccessKey,jdbcType=VARCHAR},
+      </if>
+      <if test="mwsMarketplaceId != null" >
+        #{mwsMarketplaceId,jdbcType=VARCHAR},
+      </if>
+      <if test="mwsSecretKey != null" >
+        #{mwsSecretKey,jdbcType=VARCHAR},
+      </if>
+      <if test="mwsSellerId != null" >
+        #{mwsSellerId,jdbcType=VARCHAR},
+      </if>
+      <if test="salesrepId != null" >
+        #{salesrepId,jdbcType=INTEGER},
+      </if>
+      <if test="selfWarehouseId != null" >
+        #{selfWarehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="timeZone != null" >
+        #{timeZone,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonSalesChannel != null" >
+        #{amazonSalesChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="isNonamazonIncluded != null" >
+        #{isNonamazonIncluded,jdbcType=CHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="storenameEb != null" >
+        #{storenameEb,jdbcType=VARCHAR},
+      </if>
+      <if test="tokenEb != null" >
+        #{tokenEb,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pojo.AmazonImportConfigureExample" resultType="java.lang.Integer" >
+    select count(*) from amazon_import_configure
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update amazon_import_configure
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdAt != null" >
+        CREATED_AT = #{record.createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdId != null" >
+        CREATED_ID = #{record.createdId,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatedAt != null" >
+        UPDATED_AT = #{record.updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedId != null" >
+        UPDATED_ID = #{record.updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="record.isactive != null" >
+        ISACTIVE = #{record.isactive,jdbcType=CHAR},
+      </if>
+      <if test="record.state != null" >
+        STATE = #{record.state,jdbcType=CHAR},
+      </if>
+      <if test="record.clientId != null" >
+        CLIENT_ID = #{record.clientId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orgId != null" >
+        ORG_ID = #{record.orgId,jdbcType=INTEGER},
+      </if>
+      <if test="record.bpartnerId != null" >
+        BPARTNER_ID = #{record.bpartnerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.doctypeId != null" >
+        DOCTYPE_ID = #{record.doctypeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.doctypetargetId != null" >
+        DOCTYPETARGET_ID = #{record.doctypetargetId,jdbcType=INTEGER},
+      </if>
+      <if test="record.projectId != null" >
+        PROJECT_ID = #{record.projectId,jdbcType=INTEGER},
+      </if>
+      <if test="record.pricelistId != null" >
+        PRICELIST_ID = #{record.pricelistId,jdbcType=INTEGER},
+      </if>
+      <if test="record.warehouseId != null" >
+        WAREHOUSE_ID = #{record.warehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="record.url != null" >
+        URL = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mwsAccessKey != null" >
+        MWS_ACCESS_KEY = #{record.mwsAccessKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mwsMarketplaceId != null" >
+        MWS_MARKETPLACE_ID = #{record.mwsMarketplaceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mwsSecretKey != null" >
+        MWS_SECRET_KEY = #{record.mwsSecretKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mwsSellerId != null" >
+        MWS_SELLER_ID = #{record.mwsSellerId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salesrepId != null" >
+        SALESREP_ID = #{record.salesrepId,jdbcType=INTEGER},
+      </if>
+      <if test="record.selfWarehouseId != null" >
+        SELF_WAREHOUSE_ID = #{record.selfWarehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="record.timeZone != null" >
+        TIME_ZONE = #{record.timeZone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonSalesChannel != null" >
+        AMAZON_SALES_CHANNEL = #{record.amazonSalesChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isNonamazonIncluded != null" >
+        IS_NONAMAZON_INCLUDED = #{record.isNonamazonIncluded,jdbcType=CHAR},
+      </if>
+      <if test="record.type != null" >
+        TYPE = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storenameEb != null" >
+        STORENAME_EB = #{record.storenameEb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tokenEb != null" >
+        TOKEN_EB = #{record.tokenEb,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update amazon_import_configure
+    set ID = #{record.id,jdbcType=INTEGER},
+      CREATED_AT = #{record.createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{record.createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{record.updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{record.updatedId,jdbcType=INTEGER},
+      ISACTIVE = #{record.isactive,jdbcType=CHAR},
+      STATE = #{record.state,jdbcType=CHAR},
+      CLIENT_ID = #{record.clientId,jdbcType=INTEGER},
+      ORG_ID = #{record.orgId,jdbcType=INTEGER},
+      BPARTNER_ID = #{record.bpartnerId,jdbcType=INTEGER},
+      DOCTYPE_ID = #{record.doctypeId,jdbcType=INTEGER},
+      DOCTYPETARGET_ID = #{record.doctypetargetId,jdbcType=INTEGER},
+      PROJECT_ID = #{record.projectId,jdbcType=INTEGER},
+      PRICELIST_ID = #{record.pricelistId,jdbcType=INTEGER},
+      WAREHOUSE_ID = #{record.warehouseId,jdbcType=INTEGER},
+      URL = #{record.url,jdbcType=VARCHAR},
+      MWS_ACCESS_KEY = #{record.mwsAccessKey,jdbcType=VARCHAR},
+      MWS_MARKETPLACE_ID = #{record.mwsMarketplaceId,jdbcType=VARCHAR},
+      MWS_SECRET_KEY = #{record.mwsSecretKey,jdbcType=VARCHAR},
+      MWS_SELLER_ID = #{record.mwsSellerId,jdbcType=VARCHAR},
+      SALESREP_ID = #{record.salesrepId,jdbcType=INTEGER},
+      SELF_WAREHOUSE_ID = #{record.selfWarehouseId,jdbcType=INTEGER},
+      TIME_ZONE = #{record.timeZone,jdbcType=VARCHAR},
+      AMAZON_SALES_CHANNEL = #{record.amazonSalesChannel,jdbcType=VARCHAR},
+      IS_NONAMAZON_INCLUDED = #{record.isNonamazonIncluded,jdbcType=CHAR},
+      TYPE = #{record.type,jdbcType=VARCHAR},
+      STORENAME_EB = #{record.storenameEb,jdbcType=VARCHAR},
+      TOKEN_EB = #{record.tokenEb,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update amazon_import_configure
+    set ID = #{record.id,jdbcType=INTEGER},
+      CREATED_AT = #{record.createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{record.createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{record.updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{record.updatedId,jdbcType=INTEGER},
+      ISACTIVE = #{record.isactive,jdbcType=CHAR},
+      STATE = #{record.state,jdbcType=CHAR},
+      CLIENT_ID = #{record.clientId,jdbcType=INTEGER},
+      ORG_ID = #{record.orgId,jdbcType=INTEGER},
+      BPARTNER_ID = #{record.bpartnerId,jdbcType=INTEGER},
+      DOCTYPE_ID = #{record.doctypeId,jdbcType=INTEGER},
+      DOCTYPETARGET_ID = #{record.doctypetargetId,jdbcType=INTEGER},
+      PROJECT_ID = #{record.projectId,jdbcType=INTEGER},
+      PRICELIST_ID = #{record.pricelistId,jdbcType=INTEGER},
+      WAREHOUSE_ID = #{record.warehouseId,jdbcType=INTEGER},
+      URL = #{record.url,jdbcType=VARCHAR},
+      MWS_ACCESS_KEY = #{record.mwsAccessKey,jdbcType=VARCHAR},
+      MWS_MARKETPLACE_ID = #{record.mwsMarketplaceId,jdbcType=VARCHAR},
+      MWS_SECRET_KEY = #{record.mwsSecretKey,jdbcType=VARCHAR},
+      MWS_SELLER_ID = #{record.mwsSellerId,jdbcType=VARCHAR},
+      SALESREP_ID = #{record.salesrepId,jdbcType=INTEGER},
+      SELF_WAREHOUSE_ID = #{record.selfWarehouseId,jdbcType=INTEGER},
+      TIME_ZONE = #{record.timeZone,jdbcType=VARCHAR},
+      AMAZON_SALES_CHANNEL = #{record.amazonSalesChannel,jdbcType=VARCHAR},
+      IS_NONAMAZON_INCLUDED = #{record.isNonamazonIncluded,jdbcType=CHAR},
+      TYPE = #{record.type,jdbcType=VARCHAR},
+      STORENAME_EB = #{record.storenameEb,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.AmazonImportConfigure" >
+    update amazon_import_configure
+    <set >
+      <if test="createdAt != null" >
+        CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdId != null" >
+        CREATED_ID = #{createdId,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null" >
+        UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedId != null" >
+        UPDATED_ID = #{updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="isactive != null" >
+        ISACTIVE = #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=CHAR},
+      </if>
+      <if test="clientId != null" >
+        CLIENT_ID = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="bpartnerId != null" >
+        BPARTNER_ID = #{bpartnerId,jdbcType=INTEGER},
+      </if>
+      <if test="doctypeId != null" >
+        DOCTYPE_ID = #{doctypeId,jdbcType=INTEGER},
+      </if>
+      <if test="doctypetargetId != null" >
+        DOCTYPETARGET_ID = #{doctypetargetId,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        PROJECT_ID = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="pricelistId != null" >
+        PRICELIST_ID = #{pricelistId,jdbcType=INTEGER},
+      </if>
+      <if test="warehouseId != null" >
+        WAREHOUSE_ID = #{warehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        URL = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="mwsAccessKey != null" >
+        MWS_ACCESS_KEY = #{mwsAccessKey,jdbcType=VARCHAR},
+      </if>
+      <if test="mwsMarketplaceId != null" >
+        MWS_MARKETPLACE_ID = #{mwsMarketplaceId,jdbcType=VARCHAR},
+      </if>
+      <if test="mwsSecretKey != null" >
+        MWS_SECRET_KEY = #{mwsSecretKey,jdbcType=VARCHAR},
+      </if>
+      <if test="mwsSellerId != null" >
+        MWS_SELLER_ID = #{mwsSellerId,jdbcType=VARCHAR},
+      </if>
+      <if test="salesrepId != null" >
+        SALESREP_ID = #{salesrepId,jdbcType=INTEGER},
+      </if>
+      <if test="selfWarehouseId != null" >
+        SELF_WAREHOUSE_ID = #{selfWarehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="timeZone != null" >
+        TIME_ZONE = #{timeZone,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonSalesChannel != null" >
+        AMAZON_SALES_CHANNEL = #{amazonSalesChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="isNonamazonIncluded != null" >
+        IS_NONAMAZON_INCLUDED = #{isNonamazonIncluded,jdbcType=CHAR},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="storenameEb != null" >
+        STORENAME_EB = #{storenameEb,jdbcType=VARCHAR},
+      </if>
+      <if test="tokenEb != null" >
+        TOKEN_EB = #{tokenEb,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="pojo.AmazonImportConfigure" >
+    update amazon_import_configure
+    set CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{updatedId,jdbcType=INTEGER},
+      ISACTIVE = #{isactive,jdbcType=CHAR},
+      STATE = #{state,jdbcType=CHAR},
+      CLIENT_ID = #{clientId,jdbcType=INTEGER},
+      ORG_ID = #{orgId,jdbcType=INTEGER},
+      BPARTNER_ID = #{bpartnerId,jdbcType=INTEGER},
+      DOCTYPE_ID = #{doctypeId,jdbcType=INTEGER},
+      DOCTYPETARGET_ID = #{doctypetargetId,jdbcType=INTEGER},
+      PROJECT_ID = #{projectId,jdbcType=INTEGER},
+      PRICELIST_ID = #{pricelistId,jdbcType=INTEGER},
+      WAREHOUSE_ID = #{warehouseId,jdbcType=INTEGER},
+      URL = #{url,jdbcType=VARCHAR},
+      MWS_ACCESS_KEY = #{mwsAccessKey,jdbcType=VARCHAR},
+      MWS_MARKETPLACE_ID = #{mwsMarketplaceId,jdbcType=VARCHAR},
+      MWS_SECRET_KEY = #{mwsSecretKey,jdbcType=VARCHAR},
+      MWS_SELLER_ID = #{mwsSellerId,jdbcType=VARCHAR},
+      SALESREP_ID = #{salesrepId,jdbcType=INTEGER},
+      SELF_WAREHOUSE_ID = #{selfWarehouseId,jdbcType=INTEGER},
+      TIME_ZONE = #{timeZone,jdbcType=VARCHAR},
+      AMAZON_SALES_CHANNEL = #{amazonSalesChannel,jdbcType=VARCHAR},
+      IS_NONAMAZON_INCLUDED = #{isNonamazonIncluded,jdbcType=CHAR},
+      TYPE = #{type,jdbcType=VARCHAR},
+      STORENAME_EB = #{storenameEb,jdbcType=VARCHAR},
+      TOKEN_EB = #{tokenEb,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.AmazonImportConfigure" >
+    update amazon_import_configure
+    set CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{updatedId,jdbcType=INTEGER},
+      ISACTIVE = #{isactive,jdbcType=CHAR},
+      STATE = #{state,jdbcType=CHAR},
+      CLIENT_ID = #{clientId,jdbcType=INTEGER},
+      ORG_ID = #{orgId,jdbcType=INTEGER},
+      BPARTNER_ID = #{bpartnerId,jdbcType=INTEGER},
+      DOCTYPE_ID = #{doctypeId,jdbcType=INTEGER},
+      DOCTYPETARGET_ID = #{doctypetargetId,jdbcType=INTEGER},
+      PROJECT_ID = #{projectId,jdbcType=INTEGER},
+      PRICELIST_ID = #{pricelistId,jdbcType=INTEGER},
+      WAREHOUSE_ID = #{warehouseId,jdbcType=INTEGER},
+      URL = #{url,jdbcType=VARCHAR},
+      MWS_ACCESS_KEY = #{mwsAccessKey,jdbcType=VARCHAR},
+      MWS_MARKETPLACE_ID = #{mwsMarketplaceId,jdbcType=VARCHAR},
+      MWS_SECRET_KEY = #{mwsSecretKey,jdbcType=VARCHAR},
+      MWS_SELLER_ID = #{mwsSellerId,jdbcType=VARCHAR},
+      SALESREP_ID = #{salesrepId,jdbcType=INTEGER},
+      SELF_WAREHOUSE_ID = #{selfWarehouseId,jdbcType=INTEGER},
+      TIME_ZONE = #{timeZone,jdbcType=VARCHAR},
+      AMAZON_SALES_CHANNEL = #{amazonSalesChannel,jdbcType=VARCHAR},
+      IS_NONAMAZON_INCLUDED = #{isNonamazonIncluded,jdbcType=CHAR},
+      TYPE = #{type,jdbcType=VARCHAR},
+      STORENAME_EB = #{storenameEb,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

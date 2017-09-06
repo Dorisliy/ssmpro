@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.AmazonOrderMapper" >
+  <resultMap id="BaseResultMap" type="pojo.AmazonOrder" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="CREATED_AT" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="CREATED_ID" property="createdId" jdbcType="INTEGER" />
+    <result column="UPDATED_AT" property="updatedAt" jdbcType="TIMESTAMP" />
+    <result column="UPDATED_ID" property="updatedId" jdbcType="INTEGER" />
+    <result column="STATE" property="state" jdbcType="CHAR" />
+    <result column="ISACTIVE" property="isactive" jdbcType="CHAR" />
+    <result column="CLINET_ID" property="clinetId" jdbcType="INTEGER" />
+    <result column="ORG_ID" property="orgId" jdbcType="INTEGER" />
+    <result column="C_ORDER_ID" property="cOrderId" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="AMAZON_ORDER_ID" property="amazonOrderId" jdbcType="VARCHAR" />
+    <result column="AMAZON_PURCHASE_DATE" property="amazonPurchaseDate" jdbcType="TIMESTAMP" />
+    <result column="AMAZON_LASTUPDATED_DATE" property="amazonLastupdatedDate" jdbcType="TIMESTAMP" />
+    <result column="AMAZON_ORDER_STATUS" property="amazonOrderStatus" jdbcType="VARCHAR" />
+    <result column="AMAZON_SALES_CHANNEL" property="amazonSalesChannel" jdbcType="VARCHAR" />
+    <result column="IS_IMPORTED" property="isImported" jdbcType="VARCHAR" />
+    <result column="AMAZON_IMPORT_ORDER_LOG_ID" property="amazonImportOrderLogId" jdbcType="INTEGER" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="IMPORT_FAILORDER_PROCESS" property="importFailorderProcess" jdbcType="CHAR" />
+    <result column="IMPORT_STATUS" property="importStatus" jdbcType="VARCHAR" />
+    <result column="AMAZON_MERCHANT_ORDER_ID" property="amazonMerchantOrderId" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="pojo.AmazonOrder" extends="BaseResultMap" >
+    <result column="CONTENT_TEXT" property="contentText" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, CREATED_AT, CREATED_ID, UPDATED_AT, UPDATED_ID, STATE, ISACTIVE, CLINET_ID, ORG_ID, 
+    C_ORDER_ID, NAME, AMAZON_ORDER_ID, AMAZON_PURCHASE_DATE, AMAZON_LASTUPDATED_DATE, 
+    AMAZON_ORDER_STATUS, AMAZON_SALES_CHANNEL, IS_IMPORTED, AMAZON_IMPORT_ORDER_LOG_ID, 
+    DESCRIPTION, IMPORT_FAILORDER_PROCESS, IMPORT_STATUS, AMAZON_MERCHANT_ORDER_ID
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT_TEXT
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="pojo.AmazonOrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from amazon_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pojo.AmazonOrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from amazon_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from amazon_order
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from amazon_order
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pojo.AmazonOrderExample" >
+    delete from amazon_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pojo.AmazonOrder" useGeneratedKeys="true" keyProperty="id">
+    insert into amazon_order (ID, CREATED_AT, CREATED_ID, 
+      UPDATED_AT, UPDATED_ID, STATE, 
+      ISACTIVE, CLINET_ID, ORG_ID, 
+      C_ORDER_ID, NAME, AMAZON_ORDER_ID, 
+      AMAZON_PURCHASE_DATE, AMAZON_LASTUPDATED_DATE, 
+      AMAZON_ORDER_STATUS, AMAZON_SALES_CHANNEL, 
+      IS_IMPORTED, AMAZON_IMPORT_ORDER_LOG_ID, DESCRIPTION, 
+      IMPORT_FAILORDER_PROCESS, IMPORT_STATUS, AMAZON_MERCHANT_ORDER_ID, 
+      CONTENT_TEXT)
+    values (#{id,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, #{createdId,jdbcType=INTEGER}, 
+      #{updatedAt,jdbcType=TIMESTAMP}, #{updatedId,jdbcType=INTEGER}, #{state,jdbcType=CHAR}, 
+      #{isactive,jdbcType=CHAR}, #{clinetId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, 
+      #{cOrderId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{amazonOrderId,jdbcType=VARCHAR}, 
+      #{amazonPurchaseDate,jdbcType=TIMESTAMP}, #{amazonLastupdatedDate,jdbcType=TIMESTAMP}, 
+      #{amazonOrderStatus,jdbcType=VARCHAR}, #{amazonSalesChannel,jdbcType=VARCHAR}, 
+      #{isImported,jdbcType=VARCHAR}, #{amazonImportOrderLogId,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{importFailorderProcess,jdbcType=CHAR}, #{importStatus,jdbcType=VARCHAR}, #{amazonMerchantOrderId,jdbcType=VARCHAR}, 
+      #{contentText,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.AmazonOrder" >
+    insert into amazon_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="createdAt != null" >
+        CREATED_AT,
+      </if>
+      <if test="createdId != null" >
+        CREATED_ID,
+      </if>
+      <if test="updatedAt != null" >
+        UPDATED_AT,
+      </if>
+      <if test="updatedId != null" >
+        UPDATED_ID,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="isactive != null" >
+        ISACTIVE,
+      </if>
+      <if test="clinetId != null" >
+        CLINET_ID,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="cOrderId != null" >
+        C_ORDER_ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="amazonOrderId != null" >
+        AMAZON_ORDER_ID,
+      </if>
+      <if test="amazonPurchaseDate != null" >
+        AMAZON_PURCHASE_DATE,
+      </if>
+      <if test="amazonLastupdatedDate != null" >
+        AMAZON_LASTUPDATED_DATE,
+      </if>
+      <if test="amazonOrderStatus != null" >
+        AMAZON_ORDER_STATUS,
+      </if>
+      <if test="amazonSalesChannel != null" >
+        AMAZON_SALES_CHANNEL,
+      </if>
+      <if test="isImported != null" >
+        IS_IMPORTED,
+      </if>
+      <if test="amazonImportOrderLogId != null" >
+        AMAZON_IMPORT_ORDER_LOG_ID,
+      </if>
+      <if test="description != null" >
+        DESCRIPTION,
+      </if>
+      <if test="importFailorderProcess != null" >
+        IMPORT_FAILORDER_PROCESS,
+      </if>
+      <if test="importStatus != null" >
+        IMPORT_STATUS,
+      </if>
+      <if test="amazonMerchantOrderId != null" >
+        AMAZON_MERCHANT_ORDER_ID,
+      </if>
+      <if test="contentText != null" >
+        CONTENT_TEXT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdId != null" >
+        #{createdId,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedId != null" >
+        #{updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="isactive != null" >
+        #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="clinetId != null" >
+        #{clinetId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="cOrderId != null" >
+        #{cOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonOrderId != null" >
+        #{amazonOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonPurchaseDate != null" >
+        #{amazonPurchaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amazonLastupdatedDate != null" >
+        #{amazonLastupdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amazonOrderStatus != null" >
+        #{amazonOrderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonSalesChannel != null" >
+        #{amazonSalesChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="isImported != null" >
+        #{isImported,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonImportOrderLogId != null" >
+        #{amazonImportOrderLogId,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="importFailorderProcess != null" >
+        #{importFailorderProcess,jdbcType=CHAR},
+      </if>
+      <if test="importStatus != null" >
+        #{importStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonMerchantOrderId != null" >
+        #{amazonMerchantOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="contentText != null" >
+        #{contentText,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pojo.AmazonOrderExample" resultType="java.lang.Integer" >
+    select count(*) from amazon_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update amazon_order
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdAt != null" >
+        CREATED_AT = #{record.createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdId != null" >
+        CREATED_ID = #{record.createdId,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatedAt != null" >
+        UPDATED_AT = #{record.updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedId != null" >
+        UPDATED_ID = #{record.updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="record.state != null" >
+        STATE = #{record.state,jdbcType=CHAR},
+      </if>
+      <if test="record.isactive != null" >
+        ISACTIVE = #{record.isactive,jdbcType=CHAR},
+      </if>
+      <if test="record.clinetId != null" >
+        CLINET_ID = #{record.clinetId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orgId != null" >
+        ORG_ID = #{record.orgId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cOrderId != null" >
+        C_ORDER_ID = #{record.cOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonOrderId != null" >
+        AMAZON_ORDER_ID = #{record.amazonOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonPurchaseDate != null" >
+        AMAZON_PURCHASE_DATE = #{record.amazonPurchaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.amazonLastupdatedDate != null" >
+        AMAZON_LASTUPDATED_DATE = #{record.amazonLastupdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.amazonOrderStatus != null" >
+        AMAZON_ORDER_STATUS = #{record.amazonOrderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonSalesChannel != null" >
+        AMAZON_SALES_CHANNEL = #{record.amazonSalesChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isImported != null" >
+        IS_IMPORTED = #{record.isImported,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonImportOrderLogId != null" >
+        AMAZON_IMPORT_ORDER_LOG_ID = #{record.amazonImportOrderLogId,jdbcType=INTEGER},
+      </if>
+      <if test="record.description != null" >
+        DESCRIPTION = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.importFailorderProcess != null" >
+        IMPORT_FAILORDER_PROCESS = #{record.importFailorderProcess,jdbcType=CHAR},
+      </if>
+      <if test="record.importStatus != null" >
+        IMPORT_STATUS = #{record.importStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonMerchantOrderId != null" >
+        AMAZON_MERCHANT_ORDER_ID = #{record.amazonMerchantOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contentText != null" >
+        CONTENT_TEXT = #{record.contentText,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update amazon_order
+    set ID = #{record.id,jdbcType=INTEGER},
+      CREATED_AT = #{record.createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{record.createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{record.updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{record.updatedId,jdbcType=INTEGER},
+      STATE = #{record.state,jdbcType=CHAR},
+      ISACTIVE = #{record.isactive,jdbcType=CHAR},
+      CLINET_ID = #{record.clinetId,jdbcType=INTEGER},
+      ORG_ID = #{record.orgId,jdbcType=INTEGER},
+      C_ORDER_ID = #{record.cOrderId,jdbcType=INTEGER},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      AMAZON_ORDER_ID = #{record.amazonOrderId,jdbcType=VARCHAR},
+      AMAZON_PURCHASE_DATE = #{record.amazonPurchaseDate,jdbcType=TIMESTAMP},
+      AMAZON_LASTUPDATED_DATE = #{record.amazonLastupdatedDate,jdbcType=TIMESTAMP},
+      AMAZON_ORDER_STATUS = #{record.amazonOrderStatus,jdbcType=VARCHAR},
+      AMAZON_SALES_CHANNEL = #{record.amazonSalesChannel,jdbcType=VARCHAR},
+      IS_IMPORTED = #{record.isImported,jdbcType=VARCHAR},
+      AMAZON_IMPORT_ORDER_LOG_ID = #{record.amazonImportOrderLogId,jdbcType=INTEGER},
+      DESCRIPTION = #{record.description,jdbcType=VARCHAR},
+      IMPORT_FAILORDER_PROCESS = #{record.importFailorderProcess,jdbcType=CHAR},
+      IMPORT_STATUS = #{record.importStatus,jdbcType=VARCHAR},
+      AMAZON_MERCHANT_ORDER_ID = #{record.amazonMerchantOrderId,jdbcType=VARCHAR},
+      CONTENT_TEXT = #{record.contentText,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update amazon_order
+    set ID = #{record.id,jdbcType=INTEGER},
+      CREATED_AT = #{record.createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{record.createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{record.updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{record.updatedId,jdbcType=INTEGER},
+      STATE = #{record.state,jdbcType=CHAR},
+      ISACTIVE = #{record.isactive,jdbcType=CHAR},
+      CLINET_ID = #{record.clinetId,jdbcType=INTEGER},
+      ORG_ID = #{record.orgId,jdbcType=INTEGER},
+      C_ORDER_ID = #{record.cOrderId,jdbcType=INTEGER},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      AMAZON_ORDER_ID = #{record.amazonOrderId,jdbcType=VARCHAR},
+      AMAZON_PURCHASE_DATE = #{record.amazonPurchaseDate,jdbcType=TIMESTAMP},
+      AMAZON_LASTUPDATED_DATE = #{record.amazonLastupdatedDate,jdbcType=TIMESTAMP},
+      AMAZON_ORDER_STATUS = #{record.amazonOrderStatus,jdbcType=VARCHAR},
+      AMAZON_SALES_CHANNEL = #{record.amazonSalesChannel,jdbcType=VARCHAR},
+      IS_IMPORTED = #{record.isImported,jdbcType=VARCHAR},
+      AMAZON_IMPORT_ORDER_LOG_ID = #{record.amazonImportOrderLogId,jdbcType=INTEGER},
+      DESCRIPTION = #{record.description,jdbcType=VARCHAR},
+      IMPORT_FAILORDER_PROCESS = #{record.importFailorderProcess,jdbcType=CHAR},
+      IMPORT_STATUS = #{record.importStatus,jdbcType=VARCHAR},
+      AMAZON_MERCHANT_ORDER_ID = #{record.amazonMerchantOrderId,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.AmazonOrder" >
+    update amazon_order
+    <set >
+      <if test="createdAt != null" >
+        CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdId != null" >
+        CREATED_ID = #{createdId,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null" >
+        UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedId != null" >
+        UPDATED_ID = #{updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=CHAR},
+      </if>
+      <if test="isactive != null" >
+        ISACTIVE = #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="clinetId != null" >
+        CLINET_ID = #{clinetId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="cOrderId != null" >
+        C_ORDER_ID = #{cOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonOrderId != null" >
+        AMAZON_ORDER_ID = #{amazonOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonPurchaseDate != null" >
+        AMAZON_PURCHASE_DATE = #{amazonPurchaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amazonLastupdatedDate != null" >
+        AMAZON_LASTUPDATED_DATE = #{amazonLastupdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amazonOrderStatus != null" >
+        AMAZON_ORDER_STATUS = #{amazonOrderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonSalesChannel != null" >
+        AMAZON_SALES_CHANNEL = #{amazonSalesChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="isImported != null" >
+        IS_IMPORTED = #{isImported,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonImportOrderLogId != null" >
+        AMAZON_IMPORT_ORDER_LOG_ID = #{amazonImportOrderLogId,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="importFailorderProcess != null" >
+        IMPORT_FAILORDER_PROCESS = #{importFailorderProcess,jdbcType=CHAR},
+      </if>
+      <if test="importStatus != null" >
+        IMPORT_STATUS = #{importStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonMerchantOrderId != null" >
+        AMAZON_MERCHANT_ORDER_ID = #{amazonMerchantOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="contentText != null" >
+        CONTENT_TEXT = #{contentText,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="pojo.AmazonOrder" >
+    update amazon_order
+    set CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{updatedId,jdbcType=INTEGER},
+      STATE = #{state,jdbcType=CHAR},
+      ISACTIVE = #{isactive,jdbcType=CHAR},
+      CLINET_ID = #{clinetId,jdbcType=INTEGER},
+      ORG_ID = #{orgId,jdbcType=INTEGER},
+      C_ORDER_ID = #{cOrderId,jdbcType=INTEGER},
+      NAME = #{name,jdbcType=VARCHAR},
+      AMAZON_ORDER_ID = #{amazonOrderId,jdbcType=VARCHAR},
+      AMAZON_PURCHASE_DATE = #{amazonPurchaseDate,jdbcType=TIMESTAMP},
+      AMAZON_LASTUPDATED_DATE = #{amazonLastupdatedDate,jdbcType=TIMESTAMP},
+      AMAZON_ORDER_STATUS = #{amazonOrderStatus,jdbcType=VARCHAR},
+      AMAZON_SALES_CHANNEL = #{amazonSalesChannel,jdbcType=VARCHAR},
+      IS_IMPORTED = #{isImported,jdbcType=VARCHAR},
+      AMAZON_IMPORT_ORDER_LOG_ID = #{amazonImportOrderLogId,jdbcType=INTEGER},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      IMPORT_FAILORDER_PROCESS = #{importFailorderProcess,jdbcType=CHAR},
+      IMPORT_STATUS = #{importStatus,jdbcType=VARCHAR},
+      AMAZON_MERCHANT_ORDER_ID = #{amazonMerchantOrderId,jdbcType=VARCHAR},
+      CONTENT_TEXT = #{contentText,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.AmazonOrder" >
+    update amazon_order
+    set CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{updatedId,jdbcType=INTEGER},
+      STATE = #{state,jdbcType=CHAR},
+      ISACTIVE = #{isactive,jdbcType=CHAR},
+      CLINET_ID = #{clinetId,jdbcType=INTEGER},
+      ORG_ID = #{orgId,jdbcType=INTEGER},
+      C_ORDER_ID = #{cOrderId,jdbcType=INTEGER},
+      NAME = #{name,jdbcType=VARCHAR},
+      AMAZON_ORDER_ID = #{amazonOrderId,jdbcType=VARCHAR},
+      AMAZON_PURCHASE_DATE = #{amazonPurchaseDate,jdbcType=TIMESTAMP},
+      AMAZON_LASTUPDATED_DATE = #{amazonLastupdatedDate,jdbcType=TIMESTAMP},
+      AMAZON_ORDER_STATUS = #{amazonOrderStatus,jdbcType=VARCHAR},
+      AMAZON_SALES_CHANNEL = #{amazonSalesChannel,jdbcType=VARCHAR},
+      IS_IMPORTED = #{isImported,jdbcType=VARCHAR},
+      AMAZON_IMPORT_ORDER_LOG_ID = #{amazonImportOrderLogId,jdbcType=INTEGER},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      IMPORT_FAILORDER_PROCESS = #{importFailorderProcess,jdbcType=CHAR},
+      IMPORT_STATUS = #{importStatus,jdbcType=VARCHAR},
+      AMAZON_MERCHANT_ORDER_ID = #{amazonMerchantOrderId,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateCOrderIdByAmzonOrderId" parameterType="pojo.AmazonImportOrderLog" >
+    update amazon_order ao
+    set C_ORDER_ID=(select co.ID from c_order co where co.AMAZON_ORDER_ID = ao.AMAZON_ORDER_ID)
+    where ao.AMAZON_IMPORT_ORDER_LOG_ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

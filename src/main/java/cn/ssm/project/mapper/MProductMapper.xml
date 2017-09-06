@@ -1,0 +1,4222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.MProductMapper" >
+  <resultMap id="BaseResultMap" type="pojo.MProduct" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="ad_client_id" property="adClientId" jdbcType="DECIMAL" />
+    <result column="ad_org_id" property="adOrgId" jdbcType="DECIMAL" />
+    <result column="isactive" property="isactive" jdbcType="CHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="createdby" property="createdby" jdbcType="DECIMAL" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="updatedby" property="updatedby" jdbcType="DECIMAL" />
+    <result column="value" property="value" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="upc" property="upc" jdbcType="VARCHAR" />
+    <result column="sku" property="sku" jdbcType="VARCHAR" />
+    <result column="c_uom_id" property="cUomId" jdbcType="DECIMAL" />
+    <result column="salesrep_id" property="salesrepId" jdbcType="DECIMAL" />
+    <result column="issummary" property="issummary" jdbcType="CHAR" />
+    <result column="isstocked" property="isstocked" jdbcType="CHAR" />
+    <result column="ispurchased" property="ispurchased" jdbcType="CHAR" />
+    <result column="issold" property="issold" jdbcType="CHAR" />
+    <result column="isbom" property="isbom" jdbcType="CHAR" />
+    <result column="isinvoiceprintdetails" property="isinvoiceprintdetails" jdbcType="CHAR" />
+    <result column="ispicklistprintdetails" property="ispicklistprintdetails" jdbcType="CHAR" />
+    <result column="isverified" property="isverified" jdbcType="CHAR" />
+    <result column="c_revenuerecognition_id" property="cRevenuerecognitionId" jdbcType="DECIMAL" />
+    <result column="m_product_category_id" property="mProductCategoryId" jdbcType="DECIMAL" />
+    <result column="classification" property="classification" jdbcType="VARCHAR" />
+    <result column="volume" property="volume" jdbcType="DECIMAL" />
+    <result column="weight" property="weight" jdbcType="DECIMAL" />
+    <result column="shelfwidth" property="shelfwidth" jdbcType="DECIMAL" />
+    <result column="shelfheight" property="shelfheight" jdbcType="DECIMAL" />
+    <result column="shelfdepth" property="shelfdepth" jdbcType="DECIMAL" />
+    <result column="unitsperpallet" property="unitsperpallet" jdbcType="DECIMAL" />
+    <result column="c_taxcategory_id" property="cTaxcategoryId" jdbcType="DECIMAL" />
+    <result column="s_resource_id" property="sResourceId" jdbcType="DECIMAL" />
+    <result column="discontinued" property="discontinued" jdbcType="CHAR" />
+    <result column="discontinuedby" property="discontinuedby" jdbcType="TIMESTAMP" />
+    <result column="processing" property="processing" jdbcType="CHAR" />
+    <result column="s_expensetype_id" property="sExpensetypeId" jdbcType="DECIMAL" />
+    <result column="producttype" property="producttype" jdbcType="CHAR" />
+    <result column="imageurl" property="imageurl" jdbcType="VARCHAR" />
+    <result column="descriptionurl" property="descriptionurl" jdbcType="VARCHAR" />
+    <result column="guaranteedays" property="guaranteedays" jdbcType="DECIMAL" />
+    <result column="r_mailtext_id" property="rMailtextId" jdbcType="DECIMAL" />
+    <result column="versionno" property="versionno" jdbcType="VARCHAR" />
+    <result column="m_attributeset_id" property="mAttributesetId" jdbcType="DECIMAL" />
+    <result column="m_attributesetinstance_id" property="mAttributesetinstanceId" jdbcType="DECIMAL" />
+    <result column="downloadurl" property="downloadurl" jdbcType="VARCHAR" />
+    <result column="m_freightcategory_id" property="mFreightcategoryId" jdbcType="DECIMAL" />
+    <result column="m_locator_id" property="mLocatorId" jdbcType="DECIMAL" />
+    <result column="guaranteedaysmin" property="guaranteedaysmin" jdbcType="DECIMAL" />
+    <result column="iswebstorefeatured" property="iswebstorefeatured" jdbcType="CHAR" />
+    <result column="isselfservice" property="isselfservice" jdbcType="CHAR" />
+    <result column="c_subscriptiontype_id" property="cSubscriptiontypeId" jdbcType="DECIMAL" />
+    <result column="isdropship" property="isdropship" jdbcType="CHAR" />
+    <result column="isexcludeautodelivery" property="isexcludeautodelivery" jdbcType="CHAR" />
+    <result column="group1" property="group1" jdbcType="VARCHAR" />
+    <result column="group2" property="group2" jdbcType="VARCHAR" />
+    <result column="istoformule" property="istoformule" jdbcType="CHAR" />
+    <result column="lowlevel" property="lowlevel" jdbcType="DECIMAL" />
+    <result column="unitsperpack" property="unitsperpack" jdbcType="DECIMAL" />
+    <result column="discontinuedat" property="discontinuedat" jdbcType="TIMESTAMP" />
+    <result column="copyfrom" property="copyfrom" jdbcType="CHAR" />
+    <result column="m_parttype_id" property="mParttypeId" jdbcType="DECIMAL" />
+    <result column="iskanban" property="iskanban" jdbcType="CHAR" />
+    <result column="ismanufactured" property="ismanufactured" jdbcType="CHAR" />
+    <result column="m_product_class_id" property="mProductClassId" jdbcType="DECIMAL" />
+    <result column="m_product_group_id" property="mProductGroupId" jdbcType="DECIMAL" />
+    <result column="m_product_classification_id" property="mProductClassificationId" jdbcType="DECIMAL" />
+    <result column="isphantom" property="isphantom" jdbcType="CHAR" />
+    <result column="locked_fee" property="lockedFee" jdbcType="DECIMAL" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="ocean_freight" property="oceanFreight" jdbcType="DECIMAL" />
+    <result column="charged_weight" property="chargedWeight" jdbcType="DECIMAL" />
+    <result column="air_freight" property="airFreight" jdbcType="DECIMAL" />
+    <result column="qty_box" property="qtyBox" jdbcType="DECIMAL" />
+    <result column="fnsku" property="fnsku" jdbcType="VARCHAR" />
+    <result column="ean" property="ean" jdbcType="VARCHAR" />
+    <result column="c_currency_id" property="cCurrencyId" jdbcType="DECIMAL" />
+    <result column="obo_innersku_id" property="oboInnerskuId" jdbcType="DECIMAL" />
+    <result column="boxwidth" property="boxwidth" jdbcType="DECIMAL" />
+    <result column="packetwidth" property="packetwidth" jdbcType="DECIMAL" />
+    <result column="boxlength" property="boxlength" jdbcType="DECIMAL" />
+    <result column="packetlength" property="packetlength" jdbcType="DECIMAL" />
+    <result column="boxheight" property="boxheight" jdbcType="DECIMAL" />
+    <result column="packetheight" property="packetheight" jdbcType="DECIMAL" />
+    <result column="obo_product_category1_id" property="oboProductCategory1Id" jdbcType="DECIMAL" />
+    <result column="moq" property="moq" jdbcType="DECIMAL" />
+    <result column="isglobal" property="isglobal" jdbcType="CHAR" />
+    <result column="boxvolume" property="boxvolume" jdbcType="DECIMAL" />
+    <result column="boxweight" property="boxweight" jdbcType="DECIMAL" />
+    <result column="packetvolume" property="packetvolume" jdbcType="DECIMAL" />
+    <result column="packetweight" property="packetweight" jdbcType="DECIMAL" />
+    <result column="is1byonebrand" property="is1byonebrand" jdbcType="CHAR" />
+    <result column="customs_code" property="customsCode" jdbcType="VARCHAR" />
+    <result column="material_quality" property="materialQuality" jdbcType="VARCHAR" />
+    <result column="uses" property="uses" jdbcType="VARCHAR" />
+    <result column="power" property="power" jdbcType="VARCHAR" />
+    <result column="battery_capacity" property="batteryCapacity" jdbcType="VARCHAR" />
+    <result column="voltage" property="voltage" jdbcType="VARCHAR" />
+    <result column="net_weight" property="netWeight" jdbcType="DECIMAL" />
+    <result column="gross_weight" property="grossWeight" jdbcType="DECIMAL" />
+    <result column="volume_weight" property="volumeWeight" jdbcType="DECIMAL" />
+    <result column="amazonsku" property="amazonsku" jdbcType="VARCHAR" />
+    <result column="width" property="width" jdbcType="DECIMAL" />
+    <result column="length" property="length" jdbcType="DECIMAL" />
+    <result column="height" property="height" jdbcType="DECIMAL" />
+    <result column="customs_category" property="customsCategory" jdbcType="VARCHAR" />
+    <result column="holiday_ordered_cycle" property="holidayOrderedCycle" jdbcType="DECIMAL" />
+    <result column="ordered_cycle" property="orderedCycle" jdbcType="DECIMAL" />
+    <result column="issellingwell" property="issellingwell" jdbcType="CHAR" />
+    <result column="planning_time" property="planningTime" jdbcType="DECIMAL" />
+    <result column="shipping_time" property="shippingTime" jdbcType="DECIMAL" />
+    <result column="datedelivery" property="datedelivery" jdbcType="DECIMAL" />
+    <result column="shiptype" property="shiptype" jdbcType="VARCHAR" />
+    <result column="iscombination" property="iscombination" jdbcType="CHAR" />
+    <result column="makeuprate" property="makeuprate" jdbcType="DECIMAL" />
+    <result column="original_place" property="originalPlace" jdbcType="VARCHAR" />
+    <result column="declaration_elements" property="declarationElements" jdbcType="VARCHAR" />
+    <result column="costingmethod" property="costingmethod" jdbcType="CHAR" />
+    <result column="pricetaxincluded" property="pricetaxincluded" jdbcType="DECIMAL" />
+    <result column="price1" property="price1" jdbcType="DECIMAL" />
+    <result column="price2" property="price2" jdbcType="DECIMAL" />
+    <result column="price3" property="price3" jdbcType="DECIMAL" />
+    <result column="price4" property="price4" jdbcType="DECIMAL" />
+    <result column="price5" property="price5" jdbcType="DECIMAL" />
+    <result column="qty_fcl" property="qtyFcl" jdbcType="VARCHAR" />
+    <result column="deliverydays" property="deliverydays" jdbcType="DECIMAL" />
+    <result column="image" property="image" jdbcType="DECIMAL" />
+    <result column="barcode" property="barcode" jdbcType="VARCHAR" />
+    <result column="salestatus" property="salestatus" jdbcType="CHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="amazonsize" property="amazonsize" jdbcType="VARCHAR" />
+    <result column="pregoodsdays" property="pregoodsdays" jdbcType="DECIMAL" />
+    <result column="onshelvesdate" property="onshelvesdate" jdbcType="DECIMAL" />
+    <result column="c_project_id" property="cProjectId" jdbcType="DECIMAL" />
+    <result column="item_type" property="itemType" jdbcType="VARCHAR" />
+    <result column="feed_product_type" property="feedProductType" jdbcType="VARCHAR" />
+    <result column="part_number" property="partNumber" jdbcType="VARCHAR" />
+    <result column="model" property="model" jdbcType="VARCHAR" />
+    <result column="external_product" property="externalProduct" jdbcType="DECIMAL" />
+    <result column="external_product_id_type" property="externalProductIdType" jdbcType="VARCHAR" />
+    <result column="manufacturer" property="manufacturer" jdbcType="VARCHAR" />
+    <result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+    <result column="product_tax_code" property="productTaxCode" jdbcType="VARCHAR" />
+    <result column="fulfillment_center_id" property="fulfillmentCenterId" jdbcType="DECIMAL" />
+    <result column="condition_type" property="conditionType" jdbcType="VARCHAR" />
+    <result column="update_delete" property="updateDelete" jdbcType="VARCHAR" />
+    <result column="main_image_url" property="mainImageUrl" jdbcType="VARCHAR" />
+    <result column="other_image_url1" property="otherImageUrl1" jdbcType="VARCHAR" />
+    <result column="other_image_url2" property="otherImageUrl2" jdbcType="VARCHAR" />
+    <result column="other_image_url3" property="otherImageUrl3" jdbcType="VARCHAR" />
+    <result column="other_image_url4" property="otherImageUrl4" jdbcType="VARCHAR" />
+    <result column="other_image_url5" property="otherImageUrl5" jdbcType="VARCHAR" />
+    <result column="other_image_url6" property="otherImageUrl6" jdbcType="VARCHAR" />
+    <result column="other_image_url7" property="otherImageUrl7" jdbcType="VARCHAR" />
+    <result column="other_image_url8" property="otherImageUrl8" jdbcType="VARCHAR" />
+    <result column="video" property="video" jdbcType="VARCHAR" />
+    <result column="instruction" property="instruction" jdbcType="VARCHAR" />
+    <result column="driver" property="driver" jdbcType="VARCHAR" />
+    <result column="list_price" property="listPrice" jdbcType="DECIMAL" />
+    <result column="standard_price" property="standardPrice" jdbcType="DECIMAL" />
+    <result column="sale_price" property="salePrice" jdbcType="DECIMAL" />
+    <result column="fba_fee" property="fbaFee" jdbcType="DECIMAL" />
+    <result column="sale_from_date" property="saleFromDate" jdbcType="TIMESTAMP" />
+    <result column="sale_end_date" property="saleEndDate" jdbcType="TIMESTAMP" />
+    <result column="item_weight" property="itemWeight" jdbcType="DECIMAL" />
+    <result column="item_weight_unit_of_measure" property="itemWeightUnitOfMeasure" jdbcType="VARCHAR" />
+    <result column="item_length" property="itemLength" jdbcType="DECIMAL" />
+    <result column="item_width" property="itemWidth" jdbcType="DECIMAL" />
+    <result column="item_height" property="itemHeight" jdbcType="DECIMAL" />
+    <result column="item_length_unit_of_measure" property="itemLengthUnitOfMeasure" jdbcType="VARCHAR" />
+    <result column="package_weight" property="packageWeight" jdbcType="DECIMAL" />
+    <result column="package_weight_unit_of_measure" property="packageWeightUnitOfMeasure" jdbcType="VARCHAR" />
+    <result column="package_length" property="packageLength" jdbcType="DECIMAL" />
+    <result column="package_width" property="packageWidth" jdbcType="DECIMAL" />
+    <result column="package_height" property="packageHeight" jdbcType="DECIMAL" />
+    <result column="package_length_unit_of_measure" property="packageLengthUnitOfMeasure" jdbcType="VARCHAR" />
+    <result column="out_package_length" property="outPackageLength" jdbcType="DECIMAL" />
+    <result column="out_package_width" property="outPackageWidth" jdbcType="DECIMAL" />
+    <result column="out_package_height" property="outPackageHeight" jdbcType="DECIMAL" />
+    <result column="out_package_length_unit" property="outPackageLengthUnit" jdbcType="VARCHAR" />
+    <result column="out_package_quantity" property="outPackageQuantity" jdbcType="DECIMAL" />
+    <result column="out_package_weight" property="outPackageWeight" jdbcType="DECIMAL" />
+    <result column="out_package_weight_unit" property="outPackageWeightUnit" jdbcType="VARCHAR" />
+    <result column="quantity" property="quantity" jdbcType="DECIMAL" />
+    <result column="max_order_quantity" property="maxOrderQuantity" jdbcType="VARCHAR" />
+    <result column="web_name" property="webName" jdbcType="VARCHAR" />
+    <result column="item_name" property="itemName" jdbcType="VARCHAR" />
+    <result column="parent_child" property="parentChild" jdbcType="VARCHAR" />
+    <result column="parent_sku" property="parentSku" jdbcType="VARCHAR" />
+    <result column="variation_theme" property="variationTheme" jdbcType="VARCHAR" />
+    <result column="size_name" property="sizeName" jdbcType="VARCHAR" />
+    <result column="size_map" property="sizeMap" jdbcType="VARCHAR" />
+    <result column="color_name" property="colorName" jdbcType="VARCHAR" />
+    <result column="color_map" property="colorMap" jdbcType="VARCHAR" />
+    <result column="style_name" property="styleName" jdbcType="VARCHAR" />
+    <result column="pattern_name" property="patternName" jdbcType="VARCHAR" />
+    <result column="website_variation" property="websiteVariation" jdbcType="VARCHAR" />
+    <result column="main_sku" property="mainSku" jdbcType="VARCHAR" />
+    <result column="template_id" property="templateId" jdbcType="VARCHAR" />
+    <result column="item_status" property="itemStatus" jdbcType="VARCHAR" />
+    <result column="template" property="template" jdbcType="VARCHAR" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
+    <result column="asin" property="asin" jdbcType="VARCHAR" />
+    <result column="isseasonal" property="isseasonal" jdbcType="CHAR" />
+    <result column="englishname" property="englishname" jdbcType="VARCHAR" />
+    <result column="airexpress" property="airexpress" jdbcType="DECIMAL" />
+    <result column="airshipping" property="airshipping" jdbcType="DECIMAL" />
+    <result column="dragonshipping" property="dragonshipping" jdbcType="DECIMAL" />
+    <result column="seashipping" property="seashipping" jdbcType="DECIMAL" />
+    <result column="landshipping" property="landshipping" jdbcType="DECIMAL" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="cat_name" property="catName" jdbcType="VARCHAR" />
+    <result column="poorg_id" property="poorgId" jdbcType="DECIMAL" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="pojo.MProductWithBLOBs" extends="BaseResultMap" >
+    <result column="documentnote" property="documentnote" jdbcType="LONGVARCHAR" />
+    <result column="help" property="help" jdbcType="LONGVARCHAR" />
+    <result column="bullet_point1" property="bulletPoint1" jdbcType="LONGVARCHAR" />
+    <result column="bullet_point2" property="bulletPoint2" jdbcType="LONGVARCHAR" />
+    <result column="bullet_point3" property="bulletPoint3" jdbcType="LONGVARCHAR" />
+    <result column="bullet_point4" property="bulletPoint4" jdbcType="LONGVARCHAR" />
+    <result column="bullet_point5" property="bulletPoint5" jdbcType="LONGVARCHAR" />
+    <result column="generic_keywords1" property="genericKeywords1" jdbcType="LONGVARCHAR" />
+    <result column="generic_keywords2" property="genericKeywords2" jdbcType="LONGVARCHAR" />
+    <result column="generic_keywords3" property="genericKeywords3" jdbcType="LONGVARCHAR" />
+    <result column="generic_keywords4" property="genericKeywords4" jdbcType="LONGVARCHAR" />
+    <result column="generic_keywords5" property="genericKeywords5" jdbcType="LONGVARCHAR" />
+    <result column="target_audience_keywords" property="targetAudienceKeywords" jdbcType="LONGVARCHAR" />
+    <result column="product_description" property="productDescription" jdbcType="LONGVARCHAR" />
+    <result column="more_details" property="moreDetails" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, value, 
+    name, description, upc, sku, c_uom_id, salesrep_id, issummary, isstocked, ispurchased, 
+    issold, isbom, isinvoiceprintdetails, ispicklistprintdetails, isverified, c_revenuerecognition_id, 
+    m_product_category_id, classification, volume, weight, shelfwidth, shelfheight, shelfdepth, 
+    unitsperpallet, c_taxcategory_id, s_resource_id, discontinued, discontinuedby, processing, 
+    s_expensetype_id, producttype, imageurl, descriptionurl, guaranteedays, r_mailtext_id, 
+    versionno, m_attributeset_id, m_attributesetinstance_id, downloadurl, m_freightcategory_id, 
+    m_locator_id, guaranteedaysmin, iswebstorefeatured, isselfservice, c_subscriptiontype_id, 
+    isdropship, isexcludeautodelivery, group1, group2, istoformule, lowlevel, unitsperpack, 
+    discontinuedat, copyfrom, m_parttype_id, iskanban, ismanufactured, m_product_class_id, 
+    m_product_group_id, m_product_classification_id, isphantom, locked_fee, price, ocean_freight, 
+    charged_weight, air_freight, qty_box, fnsku, ean, c_currency_id, obo_innersku_id, 
+    boxwidth, packetwidth, boxlength, packetlength, boxheight, packetheight, obo_product_category1_id, 
+    moq, isglobal, boxvolume, boxweight, packetvolume, packetweight, is1byonebrand, customs_code, 
+    material_quality, uses, power, battery_capacity, voltage, net_weight, gross_weight, 
+    volume_weight, amazonsku, width, length, height, customs_category, holiday_ordered_cycle, 
+    ordered_cycle, issellingwell, planning_time, shipping_time, datedelivery, shiptype, 
+    iscombination, makeuprate, original_place, declaration_elements, costingmethod, pricetaxincluded, 
+    price1, price2, price3, price4, price5, qty_fcl, deliverydays, image, barcode, salestatus, 
+    status, amazonsize, pregoodsdays, onshelvesdate, c_project_id, item_type, feed_product_type, 
+    part_number, model, external_product, external_product_id_type, manufacturer, brand_name, 
+    product_tax_code, fulfillment_center_id, condition_type, update_delete, main_image_url, 
+    other_image_url1, other_image_url2, other_image_url3, other_image_url4, other_image_url5, 
+    other_image_url6, other_image_url7, other_image_url8, video, instruction, driver, 
+    list_price, standard_price, sale_price, fba_fee, sale_from_date, sale_end_date, item_weight, 
+    item_weight_unit_of_measure, item_length, item_width, item_height, item_length_unit_of_measure, 
+    package_weight, package_weight_unit_of_measure, package_length, package_width, package_height, 
+    package_length_unit_of_measure, out_package_length, out_package_width, out_package_height, 
+    out_package_length_unit, out_package_quantity, out_package_weight, out_package_weight_unit, 
+    quantity, max_order_quantity, web_name, item_name, parent_child, parent_sku, variation_theme, 
+    size_name, size_map, color_name, color_map, style_name, pattern_name, website_variation, 
+    main_sku, template_id, item_status, template, country, asin, isseasonal, englishname, 
+    airexpress, airshipping, dragonshipping, seashipping, landshipping, currency, cat_name, 
+    poorg_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    documentnote, help, bullet_point1, bullet_point2, bullet_point3, bullet_point4, bullet_point5, 
+    generic_keywords1, generic_keywords2, generic_keywords3, generic_keywords4, generic_keywords5, 
+    target_audience_keywords, product_description, more_details
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="pojo.MProductExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from m_product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pojo.MProductExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from m_product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from m_product
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from m_product
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pojo.MProductExample" >
+    delete from m_product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pojo.MProductWithBLOBs" >
+    insert into m_product (ID, ad_client_id, ad_org_id, 
+      isactive, created, createdby, 
+      updated, updatedby, value, 
+      name, description, upc, 
+      sku, c_uom_id, salesrep_id, 
+      issummary, isstocked, ispurchased, 
+      issold, isbom, isinvoiceprintdetails, 
+      ispicklistprintdetails, isverified, c_revenuerecognition_id, 
+      m_product_category_id, classification, volume, 
+      weight, shelfwidth, shelfheight, 
+      shelfdepth, unitsperpallet, c_taxcategory_id, 
+      s_resource_id, discontinued, discontinuedby, 
+      processing, s_expensetype_id, producttype, 
+      imageurl, descriptionurl, guaranteedays, 
+      r_mailtext_id, versionno, m_attributeset_id, 
+      m_attributesetinstance_id, downloadurl, m_freightcategory_id, 
+      m_locator_id, guaranteedaysmin, iswebstorefeatured, 
+      isselfservice, c_subscriptiontype_id, isdropship, 
+      isexcludeautodelivery, group1, group2, 
+      istoformule, lowlevel, unitsperpack, 
+      discontinuedat, copyfrom, m_parttype_id, 
+      iskanban, ismanufactured, m_product_class_id, 
+      m_product_group_id, m_product_classification_id, 
+      isphantom, locked_fee, price, 
+      ocean_freight, charged_weight, air_freight, 
+      qty_box, fnsku, ean, 
+      c_currency_id, obo_innersku_id, boxwidth, 
+      packetwidth, boxlength, packetlength, 
+      boxheight, packetheight, obo_product_category1_id, 
+      moq, isglobal, boxvolume, 
+      boxweight, packetvolume, packetweight, 
+      is1byonebrand, customs_code, material_quality, 
+      uses, power, battery_capacity, 
+      voltage, net_weight, gross_weight, 
+      volume_weight, amazonsku, width, 
+      length, height, customs_category, 
+      holiday_ordered_cycle, ordered_cycle, issellingwell, 
+      planning_time, shipping_time, datedelivery, 
+      shiptype, iscombination, makeuprate, 
+      original_place, declaration_elements, costingmethod, 
+      pricetaxincluded, price1, price2, 
+      price3, price4, price5, 
+      qty_fcl, deliverydays, image, 
+      barcode, salestatus, status, 
+      amazonsize, pregoodsdays, onshelvesdate, 
+      c_project_id, item_type, feed_product_type, 
+      part_number, model, external_product, 
+      external_product_id_type, manufacturer, brand_name, 
+      product_tax_code, fulfillment_center_id, condition_type, 
+      update_delete, main_image_url, other_image_url1, 
+      other_image_url2, other_image_url3, other_image_url4, 
+      other_image_url5, other_image_url6, other_image_url7, 
+      other_image_url8, video, instruction, 
+      driver, list_price, standard_price, 
+      sale_price, fba_fee, sale_from_date, 
+      sale_end_date, item_weight, item_weight_unit_of_measure, 
+      item_length, item_width, item_height, 
+      item_length_unit_of_measure, package_weight, 
+      package_weight_unit_of_measure, package_length, 
+      package_width, package_height, package_length_unit_of_measure, 
+      out_package_length, out_package_width, out_package_height, 
+      out_package_length_unit, out_package_quantity, 
+      out_package_weight, out_package_weight_unit, 
+      quantity, max_order_quantity, web_name, 
+      item_name, parent_child, parent_sku, 
+      variation_theme, size_name, size_map, 
+      color_name, color_map, style_name, 
+      pattern_name, website_variation, main_sku, 
+      template_id, item_status, template, 
+      country, asin, isseasonal, 
+      englishname, airexpress, airshipping, 
+      dragonshipping, seashipping, landshipping, 
+      currency, cat_name, poorg_id, 
+      documentnote, help, bullet_point1, 
+      bullet_point2, bullet_point3, bullet_point4, 
+      bullet_point5, generic_keywords1, 
+      generic_keywords2, generic_keywords3, 
+      generic_keywords4, generic_keywords5, 
+      target_audience_keywords, product_description, 
+      more_details)
+    values (#{id,jdbcType=INTEGER}, #{adClientId,jdbcType=DECIMAL}, #{adOrgId,jdbcType=DECIMAL}, 
+      #{isactive,jdbcType=CHAR}, #{created,jdbcType=TIMESTAMP}, #{createdby,jdbcType=DECIMAL}, 
+      #{updated,jdbcType=TIMESTAMP}, #{updatedby,jdbcType=DECIMAL}, #{value,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{upc,jdbcType=VARCHAR}, 
+      #{sku,jdbcType=VARCHAR}, #{cUomId,jdbcType=DECIMAL}, #{salesrepId,jdbcType=DECIMAL}, 
+      #{issummary,jdbcType=CHAR}, #{isstocked,jdbcType=CHAR}, #{ispurchased,jdbcType=CHAR}, 
+      #{issold,jdbcType=CHAR}, #{isbom,jdbcType=CHAR}, #{isinvoiceprintdetails,jdbcType=CHAR}, 
+      #{ispicklistprintdetails,jdbcType=CHAR}, #{isverified,jdbcType=CHAR}, #{cRevenuerecognitionId,jdbcType=DECIMAL}, 
+      #{mProductCategoryId,jdbcType=DECIMAL}, #{classification,jdbcType=VARCHAR}, #{volume,jdbcType=DECIMAL}, 
+      #{weight,jdbcType=DECIMAL}, #{shelfwidth,jdbcType=DECIMAL}, #{shelfheight,jdbcType=DECIMAL}, 
+      #{shelfdepth,jdbcType=DECIMAL}, #{unitsperpallet,jdbcType=DECIMAL}, #{cTaxcategoryId,jdbcType=DECIMAL}, 
+      #{sResourceId,jdbcType=DECIMAL}, #{discontinued,jdbcType=CHAR}, #{discontinuedby,jdbcType=TIMESTAMP}, 
+      #{processing,jdbcType=CHAR}, #{sExpensetypeId,jdbcType=DECIMAL}, #{producttype,jdbcType=CHAR}, 
+      #{imageurl,jdbcType=VARCHAR}, #{descriptionurl,jdbcType=VARCHAR}, #{guaranteedays,jdbcType=DECIMAL}, 
+      #{rMailtextId,jdbcType=DECIMAL}, #{versionno,jdbcType=VARCHAR}, #{mAttributesetId,jdbcType=DECIMAL}, 
+      #{mAttributesetinstanceId,jdbcType=DECIMAL}, #{downloadurl,jdbcType=VARCHAR}, #{mFreightcategoryId,jdbcType=DECIMAL}, 
+      #{mLocatorId,jdbcType=DECIMAL}, #{guaranteedaysmin,jdbcType=DECIMAL}, #{iswebstorefeatured,jdbcType=CHAR}, 
+      #{isselfservice,jdbcType=CHAR}, #{cSubscriptiontypeId,jdbcType=DECIMAL}, #{isdropship,jdbcType=CHAR}, 
+      #{isexcludeautodelivery,jdbcType=CHAR}, #{group1,jdbcType=VARCHAR}, #{group2,jdbcType=VARCHAR}, 
+      #{istoformule,jdbcType=CHAR}, #{lowlevel,jdbcType=DECIMAL}, #{unitsperpack,jdbcType=DECIMAL}, 
+      #{discontinuedat,jdbcType=TIMESTAMP}, #{copyfrom,jdbcType=CHAR}, #{mParttypeId,jdbcType=DECIMAL}, 
+      #{iskanban,jdbcType=CHAR}, #{ismanufactured,jdbcType=CHAR}, #{mProductClassId,jdbcType=DECIMAL}, 
+      #{mProductGroupId,jdbcType=DECIMAL}, #{mProductClassificationId,jdbcType=DECIMAL}, 
+      #{isphantom,jdbcType=CHAR}, #{lockedFee,jdbcType=DECIMAL}, #{price,jdbcType=DECIMAL}, 
+      #{oceanFreight,jdbcType=DECIMAL}, #{chargedWeight,jdbcType=DECIMAL}, #{airFreight,jdbcType=DECIMAL}, 
+      #{qtyBox,jdbcType=DECIMAL}, #{fnsku,jdbcType=VARCHAR}, #{ean,jdbcType=VARCHAR}, 
+      #{cCurrencyId,jdbcType=DECIMAL}, #{oboInnerskuId,jdbcType=DECIMAL}, #{boxwidth,jdbcType=DECIMAL}, 
+      #{packetwidth,jdbcType=DECIMAL}, #{boxlength,jdbcType=DECIMAL}, #{packetlength,jdbcType=DECIMAL}, 
+      #{boxheight,jdbcType=DECIMAL}, #{packetheight,jdbcType=DECIMAL}, #{oboProductCategory1Id,jdbcType=DECIMAL}, 
+      #{moq,jdbcType=DECIMAL}, #{isglobal,jdbcType=CHAR}, #{boxvolume,jdbcType=DECIMAL}, 
+      #{boxweight,jdbcType=DECIMAL}, #{packetvolume,jdbcType=DECIMAL}, #{packetweight,jdbcType=DECIMAL}, 
+      #{is1byonebrand,jdbcType=CHAR}, #{customsCode,jdbcType=VARCHAR}, #{materialQuality,jdbcType=VARCHAR}, 
+      #{uses,jdbcType=VARCHAR}, #{power,jdbcType=VARCHAR}, #{batteryCapacity,jdbcType=VARCHAR}, 
+      #{voltage,jdbcType=VARCHAR}, #{netWeight,jdbcType=DECIMAL}, #{grossWeight,jdbcType=DECIMAL}, 
+      #{volumeWeight,jdbcType=DECIMAL}, #{amazonsku,jdbcType=VARCHAR}, #{width,jdbcType=DECIMAL}, 
+      #{length,jdbcType=DECIMAL}, #{height,jdbcType=DECIMAL}, #{customsCategory,jdbcType=VARCHAR}, 
+      #{holidayOrderedCycle,jdbcType=DECIMAL}, #{orderedCycle,jdbcType=DECIMAL}, #{issellingwell,jdbcType=CHAR}, 
+      #{planningTime,jdbcType=DECIMAL}, #{shippingTime,jdbcType=DECIMAL}, #{datedelivery,jdbcType=DECIMAL}, 
+      #{shiptype,jdbcType=VARCHAR}, #{iscombination,jdbcType=CHAR}, #{makeuprate,jdbcType=DECIMAL}, 
+      #{originalPlace,jdbcType=VARCHAR}, #{declarationElements,jdbcType=VARCHAR}, #{costingmethod,jdbcType=CHAR}, 
+      #{pricetaxincluded,jdbcType=DECIMAL}, #{price1,jdbcType=DECIMAL}, #{price2,jdbcType=DECIMAL}, 
+      #{price3,jdbcType=DECIMAL}, #{price4,jdbcType=DECIMAL}, #{price5,jdbcType=DECIMAL}, 
+      #{qtyFcl,jdbcType=VARCHAR}, #{deliverydays,jdbcType=DECIMAL}, #{image,jdbcType=DECIMAL}, 
+      #{barcode,jdbcType=VARCHAR}, #{salestatus,jdbcType=CHAR}, #{status,jdbcType=CHAR}, 
+      #{amazonsize,jdbcType=VARCHAR}, #{pregoodsdays,jdbcType=DECIMAL}, #{onshelvesdate,jdbcType=DECIMAL}, 
+      #{cProjectId,jdbcType=DECIMAL}, #{itemType,jdbcType=VARCHAR}, #{feedProductType,jdbcType=VARCHAR}, 
+      #{partNumber,jdbcType=VARCHAR}, #{model,jdbcType=VARCHAR}, #{externalProduct,jdbcType=DECIMAL}, 
+      #{externalProductIdType,jdbcType=VARCHAR}, #{manufacturer,jdbcType=VARCHAR}, #{brandName,jdbcType=VARCHAR}, 
+      #{productTaxCode,jdbcType=VARCHAR}, #{fulfillmentCenterId,jdbcType=DECIMAL}, #{conditionType,jdbcType=VARCHAR}, 
+      #{updateDelete,jdbcType=VARCHAR}, #{mainImageUrl,jdbcType=VARCHAR}, #{otherImageUrl1,jdbcType=VARCHAR}, 
+      #{otherImageUrl2,jdbcType=VARCHAR}, #{otherImageUrl3,jdbcType=VARCHAR}, #{otherImageUrl4,jdbcType=VARCHAR}, 
+      #{otherImageUrl5,jdbcType=VARCHAR}, #{otherImageUrl6,jdbcType=VARCHAR}, #{otherImageUrl7,jdbcType=VARCHAR}, 
+      #{otherImageUrl8,jdbcType=VARCHAR}, #{video,jdbcType=VARCHAR}, #{instruction,jdbcType=VARCHAR}, 
+      #{driver,jdbcType=VARCHAR}, #{listPrice,jdbcType=DECIMAL}, #{standardPrice,jdbcType=DECIMAL}, 
+      #{salePrice,jdbcType=DECIMAL}, #{fbaFee,jdbcType=DECIMAL}, #{saleFromDate,jdbcType=TIMESTAMP}, 
+      #{saleEndDate,jdbcType=TIMESTAMP}, #{itemWeight,jdbcType=DECIMAL}, #{itemWeightUnitOfMeasure,jdbcType=VARCHAR}, 
+      #{itemLength,jdbcType=DECIMAL}, #{itemWidth,jdbcType=DECIMAL}, #{itemHeight,jdbcType=DECIMAL}, 
+      #{itemLengthUnitOfMeasure,jdbcType=VARCHAR}, #{packageWeight,jdbcType=DECIMAL}, 
+      #{packageWeightUnitOfMeasure,jdbcType=VARCHAR}, #{packageLength,jdbcType=DECIMAL}, 
+      #{packageWidth,jdbcType=DECIMAL}, #{packageHeight,jdbcType=DECIMAL}, #{packageLengthUnitOfMeasure,jdbcType=VARCHAR}, 
+      #{outPackageLength,jdbcType=DECIMAL}, #{outPackageWidth,jdbcType=DECIMAL}, #{outPackageHeight,jdbcType=DECIMAL}, 
+      #{outPackageLengthUnit,jdbcType=VARCHAR}, #{outPackageQuantity,jdbcType=DECIMAL}, 
+      #{outPackageWeight,jdbcType=DECIMAL}, #{outPackageWeightUnit,jdbcType=VARCHAR}, 
+      #{quantity,jdbcType=DECIMAL}, #{maxOrderQuantity,jdbcType=VARCHAR}, #{webName,jdbcType=VARCHAR}, 
+      #{itemName,jdbcType=VARCHAR}, #{parentChild,jdbcType=VARCHAR}, #{parentSku,jdbcType=VARCHAR}, 
+      #{variationTheme,jdbcType=VARCHAR}, #{sizeName,jdbcType=VARCHAR}, #{sizeMap,jdbcType=VARCHAR}, 
+      #{colorName,jdbcType=VARCHAR}, #{colorMap,jdbcType=VARCHAR}, #{styleName,jdbcType=VARCHAR}, 
+      #{patternName,jdbcType=VARCHAR}, #{websiteVariation,jdbcType=VARCHAR}, #{mainSku,jdbcType=VARCHAR}, 
+      #{templateId,jdbcType=VARCHAR}, #{itemStatus,jdbcType=VARCHAR}, #{template,jdbcType=VARCHAR}, 
+      #{country,jdbcType=VARCHAR}, #{asin,jdbcType=VARCHAR}, #{isseasonal,jdbcType=CHAR}, 
+      #{englishname,jdbcType=VARCHAR}, #{airexpress,jdbcType=DECIMAL}, #{airshipping,jdbcType=DECIMAL}, 
+      #{dragonshipping,jdbcType=DECIMAL}, #{seashipping,jdbcType=DECIMAL}, #{landshipping,jdbcType=DECIMAL}, 
+      #{currency,jdbcType=VARCHAR}, #{catName,jdbcType=VARCHAR}, #{poorgId,jdbcType=DECIMAL}, 
+      #{documentnote,jdbcType=LONGVARCHAR}, #{help,jdbcType=LONGVARCHAR}, #{bulletPoint1,jdbcType=LONGVARCHAR}, 
+      #{bulletPoint2,jdbcType=LONGVARCHAR}, #{bulletPoint3,jdbcType=LONGVARCHAR}, #{bulletPoint4,jdbcType=LONGVARCHAR}, 
+      #{bulletPoint5,jdbcType=LONGVARCHAR}, #{genericKeywords1,jdbcType=LONGVARCHAR}, 
+      #{genericKeywords2,jdbcType=LONGVARCHAR}, #{genericKeywords3,jdbcType=LONGVARCHAR}, 
+      #{genericKeywords4,jdbcType=LONGVARCHAR}, #{genericKeywords5,jdbcType=LONGVARCHAR}, 
+      #{targetAudienceKeywords,jdbcType=LONGVARCHAR}, #{productDescription,jdbcType=LONGVARCHAR}, 
+      #{moreDetails,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.MProductWithBLOBs" >
+    insert into m_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="adClientId != null" >
+        ad_client_id,
+      </if>
+      <if test="adOrgId != null" >
+        ad_org_id,
+      </if>
+      <if test="isactive != null" >
+        isactive,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="createdby != null" >
+        createdby,
+      </if>
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="updatedby != null" >
+        updatedby,
+      </if>
+      <if test="value != null" >
+        value,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="upc != null" >
+        upc,
+      </if>
+      <if test="sku != null" >
+        sku,
+      </if>
+      <if test="cUomId != null" >
+        c_uom_id,
+      </if>
+      <if test="salesrepId != null" >
+        salesrep_id,
+      </if>
+      <if test="issummary != null" >
+        issummary,
+      </if>
+      <if test="isstocked != null" >
+        isstocked,
+      </if>
+      <if test="ispurchased != null" >
+        ispurchased,
+      </if>
+      <if test="issold != null" >
+        issold,
+      </if>
+      <if test="isbom != null" >
+        isbom,
+      </if>
+      <if test="isinvoiceprintdetails != null" >
+        isinvoiceprintdetails,
+      </if>
+      <if test="ispicklistprintdetails != null" >
+        ispicklistprintdetails,
+      </if>
+      <if test="isverified != null" >
+        isverified,
+      </if>
+      <if test="cRevenuerecognitionId != null" >
+        c_revenuerecognition_id,
+      </if>
+      <if test="mProductCategoryId != null" >
+        m_product_category_id,
+      </if>
+      <if test="classification != null" >
+        classification,
+      </if>
+      <if test="volume != null" >
+        volume,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="shelfwidth != null" >
+        shelfwidth,
+      </if>
+      <if test="shelfheight != null" >
+        shelfheight,
+      </if>
+      <if test="shelfdepth != null" >
+        shelfdepth,
+      </if>
+      <if test="unitsperpallet != null" >
+        unitsperpallet,
+      </if>
+      <if test="cTaxcategoryId != null" >
+        c_taxcategory_id,
+      </if>
+      <if test="sResourceId != null" >
+        s_resource_id,
+      </if>
+      <if test="discontinued != null" >
+        discontinued,
+      </if>
+      <if test="discontinuedby != null" >
+        discontinuedby,
+      </if>
+      <if test="processing != null" >
+        processing,
+      </if>
+      <if test="sExpensetypeId != null" >
+        s_expensetype_id,
+      </if>
+      <if test="producttype != null" >
+        producttype,
+      </if>
+      <if test="imageurl != null" >
+        imageurl,
+      </if>
+      <if test="descriptionurl != null" >
+        descriptionurl,
+      </if>
+      <if test="guaranteedays != null" >
+        guaranteedays,
+      </if>
+      <if test="rMailtextId != null" >
+        r_mailtext_id,
+      </if>
+      <if test="versionno != null" >
+        versionno,
+      </if>
+      <if test="mAttributesetId != null" >
+        m_attributeset_id,
+      </if>
+      <if test="mAttributesetinstanceId != null" >
+        m_attributesetinstance_id,
+      </if>
+      <if test="downloadurl != null" >
+        downloadurl,
+      </if>
+      <if test="mFreightcategoryId != null" >
+        m_freightcategory_id,
+      </if>
+      <if test="mLocatorId != null" >
+        m_locator_id,
+      </if>
+      <if test="guaranteedaysmin != null" >
+        guaranteedaysmin,
+      </if>
+      <if test="iswebstorefeatured != null" >
+        iswebstorefeatured,
+      </if>
+      <if test="isselfservice != null" >
+        isselfservice,
+      </if>
+      <if test="cSubscriptiontypeId != null" >
+        c_subscriptiontype_id,
+      </if>
+      <if test="isdropship != null" >
+        isdropship,
+      </if>
+      <if test="isexcludeautodelivery != null" >
+        isexcludeautodelivery,
+      </if>
+      <if test="group1 != null" >
+        group1,
+      </if>
+      <if test="group2 != null" >
+        group2,
+      </if>
+      <if test="istoformule != null" >
+        istoformule,
+      </if>
+      <if test="lowlevel != null" >
+        lowlevel,
+      </if>
+      <if test="unitsperpack != null" >
+        unitsperpack,
+      </if>
+      <if test="discontinuedat != null" >
+        discontinuedat,
+      </if>
+      <if test="copyfrom != null" >
+        copyfrom,
+      </if>
+      <if test="mParttypeId != null" >
+        m_parttype_id,
+      </if>
+      <if test="iskanban != null" >
+        iskanban,
+      </if>
+      <if test="ismanufactured != null" >
+        ismanufactured,
+      </if>
+      <if test="mProductClassId != null" >
+        m_product_class_id,
+      </if>
+      <if test="mProductGroupId != null" >
+        m_product_group_id,
+      </if>
+      <if test="mProductClassificationId != null" >
+        m_product_classification_id,
+      </if>
+      <if test="isphantom != null" >
+        isphantom,
+      </if>
+      <if test="lockedFee != null" >
+        locked_fee,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="oceanFreight != null" >
+        ocean_freight,
+      </if>
+      <if test="chargedWeight != null" >
+        charged_weight,
+      </if>
+      <if test="airFreight != null" >
+        air_freight,
+      </if>
+      <if test="qtyBox != null" >
+        qty_box,
+      </if>
+      <if test="fnsku != null" >
+        fnsku,
+      </if>
+      <if test="ean != null" >
+        ean,
+      </if>
+      <if test="cCurrencyId != null" >
+        c_currency_id,
+      </if>
+      <if test="oboInnerskuId != null" >
+        obo_innersku_id,
+      </if>
+      <if test="boxwidth != null" >
+        boxwidth,
+      </if>
+      <if test="packetwidth != null" >
+        packetwidth,
+      </if>
+      <if test="boxlength != null" >
+        boxlength,
+      </if>
+      <if test="packetlength != null" >
+        packetlength,
+      </if>
+      <if test="boxheight != null" >
+        boxheight,
+      </if>
+      <if test="packetheight != null" >
+        packetheight,
+      </if>
+      <if test="oboProductCategory1Id != null" >
+        obo_product_category1_id,
+      </if>
+      <if test="moq != null" >
+        moq,
+      </if>
+      <if test="isglobal != null" >
+        isglobal,
+      </if>
+      <if test="boxvolume != null" >
+        boxvolume,
+      </if>
+      <if test="boxweight != null" >
+        boxweight,
+      </if>
+      <if test="packetvolume != null" >
+        packetvolume,
+      </if>
+      <if test="packetweight != null" >
+        packetweight,
+      </if>
+      <if test="is1byonebrand != null" >
+        is1byonebrand,
+      </if>
+      <if test="customsCode != null" >
+        customs_code,
+      </if>
+      <if test="materialQuality != null" >
+        material_quality,
+      </if>
+      <if test="uses != null" >
+        uses,
+      </if>
+      <if test="power != null" >
+        power,
+      </if>
+      <if test="batteryCapacity != null" >
+        battery_capacity,
+      </if>
+      <if test="voltage != null" >
+        voltage,
+      </if>
+      <if test="netWeight != null" >
+        net_weight,
+      </if>
+      <if test="grossWeight != null" >
+        gross_weight,
+      </if>
+      <if test="volumeWeight != null" >
+        volume_weight,
+      </if>
+      <if test="amazonsku != null" >
+        amazonsku,
+      </if>
+      <if test="width != null" >
+        width,
+      </if>
+      <if test="length != null" >
+        length,
+      </if>
+      <if test="height != null" >
+        height,
+      </if>
+      <if test="customsCategory != null" >
+        customs_category,
+      </if>
+      <if test="holidayOrderedCycle != null" >
+        holiday_ordered_cycle,
+      </if>
+      <if test="orderedCycle != null" >
+        ordered_cycle,
+      </if>
+      <if test="issellingwell != null" >
+        issellingwell,
+      </if>
+      <if test="planningTime != null" >
+        planning_time,
+      </if>
+      <if test="shippingTime != null" >
+        shipping_time,
+      </if>
+      <if test="datedelivery != null" >
+        datedelivery,
+      </if>
+      <if test="shiptype != null" >
+        shiptype,
+      </if>
+      <if test="iscombination != null" >
+        iscombination,
+      </if>
+      <if test="makeuprate != null" >
+        makeuprate,
+      </if>
+      <if test="originalPlace != null" >
+        original_place,
+      </if>
+      <if test="declarationElements != null" >
+        declaration_elements,
+      </if>
+      <if test="costingmethod != null" >
+        costingmethod,
+      </if>
+      <if test="pricetaxincluded != null" >
+        pricetaxincluded,
+      </if>
+      <if test="price1 != null" >
+        price1,
+      </if>
+      <if test="price2 != null" >
+        price2,
+      </if>
+      <if test="price3 != null" >
+        price3,
+      </if>
+      <if test="price4 != null" >
+        price4,
+      </if>
+      <if test="price5 != null" >
+        price5,
+      </if>
+      <if test="qtyFcl != null" >
+        qty_fcl,
+      </if>
+      <if test="deliverydays != null" >
+        deliverydays,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="barcode != null" >
+        barcode,
+      </if>
+      <if test="salestatus != null" >
+        salestatus,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="amazonsize != null" >
+        amazonsize,
+      </if>
+      <if test="pregoodsdays != null" >
+        pregoodsdays,
+      </if>
+      <if test="onshelvesdate != null" >
+        onshelvesdate,
+      </if>
+      <if test="cProjectId != null" >
+        c_project_id,
+      </if>
+      <if test="itemType != null" >
+        item_type,
+      </if>
+      <if test="feedProductType != null" >
+        feed_product_type,
+      </if>
+      <if test="partNumber != null" >
+        part_number,
+      </if>
+      <if test="model != null" >
+        model,
+      </if>
+      <if test="externalProduct != null" >
+        external_product,
+      </if>
+      <if test="externalProductIdType != null" >
+        external_product_id_type,
+      </if>
+      <if test="manufacturer != null" >
+        manufacturer,
+      </if>
+      <if test="brandName != null" >
+        brand_name,
+      </if>
+      <if test="productTaxCode != null" >
+        product_tax_code,
+      </if>
+      <if test="fulfillmentCenterId != null" >
+        fulfillment_center_id,
+      </if>
+      <if test="conditionType != null" >
+        condition_type,
+      </if>
+      <if test="updateDelete != null" >
+        update_delete,
+      </if>
+      <if test="mainImageUrl != null" >
+        main_image_url,
+      </if>
+      <if test="otherImageUrl1 != null" >
+        other_image_url1,
+      </if>
+      <if test="otherImageUrl2 != null" >
+        other_image_url2,
+      </if>
+      <if test="otherImageUrl3 != null" >
+        other_image_url3,
+      </if>
+      <if test="otherImageUrl4 != null" >
+        other_image_url4,
+      </if>
+      <if test="otherImageUrl5 != null" >
+        other_image_url5,
+      </if>
+      <if test="otherImageUrl6 != null" >
+        other_image_url6,
+      </if>
+      <if test="otherImageUrl7 != null" >
+        other_image_url7,
+      </if>
+      <if test="otherImageUrl8 != null" >
+        other_image_url8,
+      </if>
+      <if test="video != null" >
+        video,
+      </if>
+      <if test="instruction != null" >
+        instruction,
+      </if>
+      <if test="driver != null" >
+        driver,
+      </if>
+      <if test="listPrice != null" >
+        list_price,
+      </if>
+      <if test="standardPrice != null" >
+        standard_price,
+      </if>
+      <if test="salePrice != null" >
+        sale_price,
+      </if>
+      <if test="fbaFee != null" >
+        fba_fee,
+      </if>
+      <if test="saleFromDate != null" >
+        sale_from_date,
+      </if>
+      <if test="saleEndDate != null" >
+        sale_end_date,
+      </if>
+      <if test="itemWeight != null" >
+        item_weight,
+      </if>
+      <if test="itemWeightUnitOfMeasure != null" >
+        item_weight_unit_of_measure,
+      </if>
+      <if test="itemLength != null" >
+        item_length,
+      </if>
+      <if test="itemWidth != null" >
+        item_width,
+      </if>
+      <if test="itemHeight != null" >
+        item_height,
+      </if>
+      <if test="itemLengthUnitOfMeasure != null" >
+        item_length_unit_of_measure,
+      </if>
+      <if test="packageWeight != null" >
+        package_weight,
+      </if>
+      <if test="packageWeightUnitOfMeasure != null" >
+        package_weight_unit_of_measure,
+      </if>
+      <if test="packageLength != null" >
+        package_length,
+      </if>
+      <if test="packageWidth != null" >
+        package_width,
+      </if>
+      <if test="packageHeight != null" >
+        package_height,
+      </if>
+      <if test="packageLengthUnitOfMeasure != null" >
+        package_length_unit_of_measure,
+      </if>
+      <if test="outPackageLength != null" >
+        out_package_length,
+      </if>
+      <if test="outPackageWidth != null" >
+        out_package_width,
+      </if>
+      <if test="outPackageHeight != null" >
+        out_package_height,
+      </if>
+      <if test="outPackageLengthUnit != null" >
+        out_package_length_unit,
+      </if>
+      <if test="outPackageQuantity != null" >
+        out_package_quantity,
+      </if>
+      <if test="outPackageWeight != null" >
+        out_package_weight,
+      </if>
+      <if test="outPackageWeightUnit != null" >
+        out_package_weight_unit,
+      </if>
+      <if test="quantity != null" >
+        quantity,
+      </if>
+      <if test="maxOrderQuantity != null" >
+        max_order_quantity,
+      </if>
+      <if test="webName != null" >
+        web_name,
+      </if>
+      <if test="itemName != null" >
+        item_name,
+      </if>
+      <if test="parentChild != null" >
+        parent_child,
+      </if>
+      <if test="parentSku != null" >
+        parent_sku,
+      </if>
+      <if test="variationTheme != null" >
+        variation_theme,
+      </if>
+      <if test="sizeName != null" >
+        size_name,
+      </if>
+      <if test="sizeMap != null" >
+        size_map,
+      </if>
+      <if test="colorName != null" >
+        color_name,
+      </if>
+      <if test="colorMap != null" >
+        color_map,
+      </if>
+      <if test="styleName != null" >
+        style_name,
+      </if>
+      <if test="patternName != null" >
+        pattern_name,
+      </if>
+      <if test="websiteVariation != null" >
+        website_variation,
+      </if>
+      <if test="mainSku != null" >
+        main_sku,
+      </if>
+      <if test="templateId != null" >
+        template_id,
+      </if>
+      <if test="itemStatus != null" >
+        item_status,
+      </if>
+      <if test="template != null" >
+        template,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="asin != null" >
+        asin,
+      </if>
+      <if test="isseasonal != null" >
+        isseasonal,
+      </if>
+      <if test="englishname != null" >
+        englishname,
+      </if>
+      <if test="airexpress != null" >
+        airexpress,
+      </if>
+      <if test="airshipping != null" >
+        airshipping,
+      </if>
+      <if test="dragonshipping != null" >
+        dragonshipping,
+      </if>
+      <if test="seashipping != null" >
+        seashipping,
+      </if>
+      <if test="landshipping != null" >
+        landshipping,
+      </if>
+      <if test="currency != null" >
+        currency,
+      </if>
+      <if test="catName != null" >
+        cat_name,
+      </if>
+      <if test="poorgId != null" >
+        poorg_id,
+      </if>
+      <if test="documentnote != null" >
+        documentnote,
+      </if>
+      <if test="help != null" >
+        help,
+      </if>
+      <if test="bulletPoint1 != null" >
+        bullet_point1,
+      </if>
+      <if test="bulletPoint2 != null" >
+        bullet_point2,
+      </if>
+      <if test="bulletPoint3 != null" >
+        bullet_point3,
+      </if>
+      <if test="bulletPoint4 != null" >
+        bullet_point4,
+      </if>
+      <if test="bulletPoint5 != null" >
+        bullet_point5,
+      </if>
+      <if test="genericKeywords1 != null" >
+        generic_keywords1,
+      </if>
+      <if test="genericKeywords2 != null" >
+        generic_keywords2,
+      </if>
+      <if test="genericKeywords3 != null" >
+        generic_keywords3,
+      </if>
+      <if test="genericKeywords4 != null" >
+        generic_keywords4,
+      </if>
+      <if test="genericKeywords5 != null" >
+        generic_keywords5,
+      </if>
+      <if test="targetAudienceKeywords != null" >
+        target_audience_keywords,
+      </if>
+      <if test="productDescription != null" >
+        product_description,
+      </if>
+      <if test="moreDetails != null" >
+        more_details,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="adClientId != null" >
+        #{adClientId,jdbcType=DECIMAL},
+      </if>
+      <if test="adOrgId != null" >
+        #{adOrgId,jdbcType=DECIMAL},
+      </if>
+      <if test="isactive != null" >
+        #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdby != null" >
+        #{createdby,jdbcType=DECIMAL},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedby != null" >
+        #{updatedby,jdbcType=DECIMAL},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="upc != null" >
+        #{upc,jdbcType=VARCHAR},
+      </if>
+      <if test="sku != null" >
+        #{sku,jdbcType=VARCHAR},
+      </if>
+      <if test="cUomId != null" >
+        #{cUomId,jdbcType=DECIMAL},
+      </if>
+      <if test="salesrepId != null" >
+        #{salesrepId,jdbcType=DECIMAL},
+      </if>
+      <if test="issummary != null" >
+        #{issummary,jdbcType=CHAR},
+      </if>
+      <if test="isstocked != null" >
+        #{isstocked,jdbcType=CHAR},
+      </if>
+      <if test="ispurchased != null" >
+        #{ispurchased,jdbcType=CHAR},
+      </if>
+      <if test="issold != null" >
+        #{issold,jdbcType=CHAR},
+      </if>
+      <if test="isbom != null" >
+        #{isbom,jdbcType=CHAR},
+      </if>
+      <if test="isinvoiceprintdetails != null" >
+        #{isinvoiceprintdetails,jdbcType=CHAR},
+      </if>
+      <if test="ispicklistprintdetails != null" >
+        #{ispicklistprintdetails,jdbcType=CHAR},
+      </if>
+      <if test="isverified != null" >
+        #{isverified,jdbcType=CHAR},
+      </if>
+      <if test="cRevenuerecognitionId != null" >
+        #{cRevenuerecognitionId,jdbcType=DECIMAL},
+      </if>
+      <if test="mProductCategoryId != null" >
+        #{mProductCategoryId,jdbcType=DECIMAL},
+      </if>
+      <if test="classification != null" >
+        #{classification,jdbcType=VARCHAR},
+      </if>
+      <if test="volume != null" >
+        #{volume,jdbcType=DECIMAL},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="shelfwidth != null" >
+        #{shelfwidth,jdbcType=DECIMAL},
+      </if>
+      <if test="shelfheight != null" >
+        #{shelfheight,jdbcType=DECIMAL},
+      </if>
+      <if test="shelfdepth != null" >
+        #{shelfdepth,jdbcType=DECIMAL},
+      </if>
+      <if test="unitsperpallet != null" >
+        #{unitsperpallet,jdbcType=DECIMAL},
+      </if>
+      <if test="cTaxcategoryId != null" >
+        #{cTaxcategoryId,jdbcType=DECIMAL},
+      </if>
+      <if test="sResourceId != null" >
+        #{sResourceId,jdbcType=DECIMAL},
+      </if>
+      <if test="discontinued != null" >
+        #{discontinued,jdbcType=CHAR},
+      </if>
+      <if test="discontinuedby != null" >
+        #{discontinuedby,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processing != null" >
+        #{processing,jdbcType=CHAR},
+      </if>
+      <if test="sExpensetypeId != null" >
+        #{sExpensetypeId,jdbcType=DECIMAL},
+      </if>
+      <if test="producttype != null" >
+        #{producttype,jdbcType=CHAR},
+      </if>
+      <if test="imageurl != null" >
+        #{imageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="descriptionurl != null" >
+        #{descriptionurl,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteedays != null" >
+        #{guaranteedays,jdbcType=DECIMAL},
+      </if>
+      <if test="rMailtextId != null" >
+        #{rMailtextId,jdbcType=DECIMAL},
+      </if>
+      <if test="versionno != null" >
+        #{versionno,jdbcType=VARCHAR},
+      </if>
+      <if test="mAttributesetId != null" >
+        #{mAttributesetId,jdbcType=DECIMAL},
+      </if>
+      <if test="mAttributesetinstanceId != null" >
+        #{mAttributesetinstanceId,jdbcType=DECIMAL},
+      </if>
+      <if test="downloadurl != null" >
+        #{downloadurl,jdbcType=VARCHAR},
+      </if>
+      <if test="mFreightcategoryId != null" >
+        #{mFreightcategoryId,jdbcType=DECIMAL},
+      </if>
+      <if test="mLocatorId != null" >
+        #{mLocatorId,jdbcType=DECIMAL},
+      </if>
+      <if test="guaranteedaysmin != null" >
+        #{guaranteedaysmin,jdbcType=DECIMAL},
+      </if>
+      <if test="iswebstorefeatured != null" >
+        #{iswebstorefeatured,jdbcType=CHAR},
+      </if>
+      <if test="isselfservice != null" >
+        #{isselfservice,jdbcType=CHAR},
+      </if>
+      <if test="cSubscriptiontypeId != null" >
+        #{cSubscriptiontypeId,jdbcType=DECIMAL},
+      </if>
+      <if test="isdropship != null" >
+        #{isdropship,jdbcType=CHAR},
+      </if>
+      <if test="isexcludeautodelivery != null" >
+        #{isexcludeautodelivery,jdbcType=CHAR},
+      </if>
+      <if test="group1 != null" >
+        #{group1,jdbcType=VARCHAR},
+      </if>
+      <if test="group2 != null" >
+        #{group2,jdbcType=VARCHAR},
+      </if>
+      <if test="istoformule != null" >
+        #{istoformule,jdbcType=CHAR},
+      </if>
+      <if test="lowlevel != null" >
+        #{lowlevel,jdbcType=DECIMAL},
+      </if>
+      <if test="unitsperpack != null" >
+        #{unitsperpack,jdbcType=DECIMAL},
+      </if>
+      <if test="discontinuedat != null" >
+        #{discontinuedat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="copyfrom != null" >
+        #{copyfrom,jdbcType=CHAR},
+      </if>
+      <if test="mParttypeId != null" >
+        #{mParttypeId,jdbcType=DECIMAL},
+      </if>
+      <if test="iskanban != null" >
+        #{iskanban,jdbcType=CHAR},
+      </if>
+      <if test="ismanufactured != null" >
+        #{ismanufactured,jdbcType=CHAR},
+      </if>
+      <if test="mProductClassId != null" >
+        #{mProductClassId,jdbcType=DECIMAL},
+      </if>
+      <if test="mProductGroupId != null" >
+        #{mProductGroupId,jdbcType=DECIMAL},
+      </if>
+      <if test="mProductClassificationId != null" >
+        #{mProductClassificationId,jdbcType=DECIMAL},
+      </if>
+      <if test="isphantom != null" >
+        #{isphantom,jdbcType=CHAR},
+      </if>
+      <if test="lockedFee != null" >
+        #{lockedFee,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="oceanFreight != null" >
+        #{oceanFreight,jdbcType=DECIMAL},
+      </if>
+      <if test="chargedWeight != null" >
+        #{chargedWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="airFreight != null" >
+        #{airFreight,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyBox != null" >
+        #{qtyBox,jdbcType=DECIMAL},
+      </if>
+      <if test="fnsku != null" >
+        #{fnsku,jdbcType=VARCHAR},
+      </if>
+      <if test="ean != null" >
+        #{ean,jdbcType=VARCHAR},
+      </if>
+      <if test="cCurrencyId != null" >
+        #{cCurrencyId,jdbcType=DECIMAL},
+      </if>
+      <if test="oboInnerskuId != null" >
+        #{oboInnerskuId,jdbcType=DECIMAL},
+      </if>
+      <if test="boxwidth != null" >
+        #{boxwidth,jdbcType=DECIMAL},
+      </if>
+      <if test="packetwidth != null" >
+        #{packetwidth,jdbcType=DECIMAL},
+      </if>
+      <if test="boxlength != null" >
+        #{boxlength,jdbcType=DECIMAL},
+      </if>
+      <if test="packetlength != null" >
+        #{packetlength,jdbcType=DECIMAL},
+      </if>
+      <if test="boxheight != null" >
+        #{boxheight,jdbcType=DECIMAL},
+      </if>
+      <if test="packetheight != null" >
+        #{packetheight,jdbcType=DECIMAL},
+      </if>
+      <if test="oboProductCategory1Id != null" >
+        #{oboProductCategory1Id,jdbcType=DECIMAL},
+      </if>
+      <if test="moq != null" >
+        #{moq,jdbcType=DECIMAL},
+      </if>
+      <if test="isglobal != null" >
+        #{isglobal,jdbcType=CHAR},
+      </if>
+      <if test="boxvolume != null" >
+        #{boxvolume,jdbcType=DECIMAL},
+      </if>
+      <if test="boxweight != null" >
+        #{boxweight,jdbcType=DECIMAL},
+      </if>
+      <if test="packetvolume != null" >
+        #{packetvolume,jdbcType=DECIMAL},
+      </if>
+      <if test="packetweight != null" >
+        #{packetweight,jdbcType=DECIMAL},
+      </if>
+      <if test="is1byonebrand != null" >
+        #{is1byonebrand,jdbcType=CHAR},
+      </if>
+      <if test="customsCode != null" >
+        #{customsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialQuality != null" >
+        #{materialQuality,jdbcType=VARCHAR},
+      </if>
+      <if test="uses != null" >
+        #{uses,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null" >
+        #{power,jdbcType=VARCHAR},
+      </if>
+      <if test="batteryCapacity != null" >
+        #{batteryCapacity,jdbcType=VARCHAR},
+      </if>
+      <if test="voltage != null" >
+        #{voltage,jdbcType=VARCHAR},
+      </if>
+      <if test="netWeight != null" >
+        #{netWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="grossWeight != null" >
+        #{grossWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="volumeWeight != null" >
+        #{volumeWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="amazonsku != null" >
+        #{amazonsku,jdbcType=VARCHAR},
+      </if>
+      <if test="width != null" >
+        #{width,jdbcType=DECIMAL},
+      </if>
+      <if test="length != null" >
+        #{length,jdbcType=DECIMAL},
+      </if>
+      <if test="height != null" >
+        #{height,jdbcType=DECIMAL},
+      </if>
+      <if test="customsCategory != null" >
+        #{customsCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="holidayOrderedCycle != null" >
+        #{holidayOrderedCycle,jdbcType=DECIMAL},
+      </if>
+      <if test="orderedCycle != null" >
+        #{orderedCycle,jdbcType=DECIMAL},
+      </if>
+      <if test="issellingwell != null" >
+        #{issellingwell,jdbcType=CHAR},
+      </if>
+      <if test="planningTime != null" >
+        #{planningTime,jdbcType=DECIMAL},
+      </if>
+      <if test="shippingTime != null" >
+        #{shippingTime,jdbcType=DECIMAL},
+      </if>
+      <if test="datedelivery != null" >
+        #{datedelivery,jdbcType=DECIMAL},
+      </if>
+      <if test="shiptype != null" >
+        #{shiptype,jdbcType=VARCHAR},
+      </if>
+      <if test="iscombination != null" >
+        #{iscombination,jdbcType=CHAR},
+      </if>
+      <if test="makeuprate != null" >
+        #{makeuprate,jdbcType=DECIMAL},
+      </if>
+      <if test="originalPlace != null" >
+        #{originalPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="declarationElements != null" >
+        #{declarationElements,jdbcType=VARCHAR},
+      </if>
+      <if test="costingmethod != null" >
+        #{costingmethod,jdbcType=CHAR},
+      </if>
+      <if test="pricetaxincluded != null" >
+        #{pricetaxincluded,jdbcType=DECIMAL},
+      </if>
+      <if test="price1 != null" >
+        #{price1,jdbcType=DECIMAL},
+      </if>
+      <if test="price2 != null" >
+        #{price2,jdbcType=DECIMAL},
+      </if>
+      <if test="price3 != null" >
+        #{price3,jdbcType=DECIMAL},
+      </if>
+      <if test="price4 != null" >
+        #{price4,jdbcType=DECIMAL},
+      </if>
+      <if test="price5 != null" >
+        #{price5,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyFcl != null" >
+        #{qtyFcl,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverydays != null" >
+        #{deliverydays,jdbcType=DECIMAL},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=DECIMAL},
+      </if>
+      <if test="barcode != null" >
+        #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="salestatus != null" >
+        #{salestatus,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="amazonsize != null" >
+        #{amazonsize,jdbcType=VARCHAR},
+      </if>
+      <if test="pregoodsdays != null" >
+        #{pregoodsdays,jdbcType=DECIMAL},
+      </if>
+      <if test="onshelvesdate != null" >
+        #{onshelvesdate,jdbcType=DECIMAL},
+      </if>
+      <if test="cProjectId != null" >
+        #{cProjectId,jdbcType=DECIMAL},
+      </if>
+      <if test="itemType != null" >
+        #{itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="feedProductType != null" >
+        #{feedProductType,jdbcType=VARCHAR},
+      </if>
+      <if test="partNumber != null" >
+        #{partNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null" >
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="externalProduct != null" >
+        #{externalProduct,jdbcType=DECIMAL},
+      </if>
+      <if test="externalProductIdType != null" >
+        #{externalProductIdType,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturer != null" >
+        #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null" >
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="productTaxCode != null" >
+        #{productTaxCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fulfillmentCenterId != null" >
+        #{fulfillmentCenterId,jdbcType=DECIMAL},
+      </if>
+      <if test="conditionType != null" >
+        #{conditionType,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDelete != null" >
+        #{updateDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="mainImageUrl != null" >
+        #{mainImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="otherImageUrl1 != null" >
+        #{otherImageUrl1,jdbcType=VARCHAR},
+      </if>
+      <if test="otherImageUrl2 != null" >
+        #{otherImageUrl2,jdbcType=VARCHAR},
+      </if>
+      <if test="otherImageUrl3 != null" >
+        #{otherImageUrl3,jdbcType=VARCHAR},
+      </if>
+      <if test="otherImageUrl4 != null" >
+        #{otherImageUrl4,jdbcType=VARCHAR},
+      </if>
+      <if test="otherImageUrl5 != null" >
+        #{otherImageUrl5,jdbcType=VARCHAR},
+      </if>
+      <if test="otherImageUrl6 != null" >
+        #{otherImageUrl6,jdbcType=VARCHAR},
+      </if>
+      <if test="otherImageUrl7 != null" >
+        #{otherImageUrl7,jdbcType=VARCHAR},
+      </if>
+      <if test="otherImageUrl8 != null" >
+        #{otherImageUrl8,jdbcType=VARCHAR},
+      </if>
+      <if test="video != null" >
+        #{video,jdbcType=VARCHAR},
+      </if>
+      <if test="instruction != null" >
+        #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="driver != null" >
+        #{driver,jdbcType=VARCHAR},
+      </if>
+      <if test="listPrice != null" >
+        #{listPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="standardPrice != null" >
+        #{standardPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="salePrice != null" >
+        #{salePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="fbaFee != null" >
+        #{fbaFee,jdbcType=DECIMAL},
+      </if>
+      <if test="saleFromDate != null" >
+        #{saleFromDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saleEndDate != null" >
+        #{saleEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemWeight != null" >
+        #{itemWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="itemWeightUnitOfMeasure != null" >
+        #{itemWeightUnitOfMeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="itemLength != null" >
+        #{itemLength,jdbcType=DECIMAL},
+      </if>
+      <if test="itemWidth != null" >
+        #{itemWidth,jdbcType=DECIMAL},
+      </if>
+      <if test="itemHeight != null" >
+        #{itemHeight,jdbcType=DECIMAL},
+      </if>
+      <if test="itemLengthUnitOfMeasure != null" >
+        #{itemLengthUnitOfMeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="packageWeight != null" >
+        #{packageWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="packageWeightUnitOfMeasure != null" >
+        #{packageWeightUnitOfMeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="packageLength != null" >
+        #{packageLength,jdbcType=DECIMAL},
+      </if>
+      <if test="packageWidth != null" >
+        #{packageWidth,jdbcType=DECIMAL},
+      </if>
+      <if test="packageHeight != null" >
+        #{packageHeight,jdbcType=DECIMAL},
+      </if>
+      <if test="packageLengthUnitOfMeasure != null" >
+        #{packageLengthUnitOfMeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="outPackageLength != null" >
+        #{outPackageLength,jdbcType=DECIMAL},
+      </if>
+      <if test="outPackageWidth != null" >
+        #{outPackageWidth,jdbcType=DECIMAL},
+      </if>
+      <if test="outPackageHeight != null" >
+        #{outPackageHeight,jdbcType=DECIMAL},
+      </if>
+      <if test="outPackageLengthUnit != null" >
+        #{outPackageLengthUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="outPackageQuantity != null" >
+        #{outPackageQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="outPackageWeight != null" >
+        #{outPackageWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="outPackageWeightUnit != null" >
+        #{outPackageWeightUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="maxOrderQuantity != null" >
+        #{maxOrderQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="webName != null" >
+        #{webName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null" >
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentChild != null" >
+        #{parentChild,jdbcType=VARCHAR},
+      </if>
+      <if test="parentSku != null" >
+        #{parentSku,jdbcType=VARCHAR},
+      </if>
+      <if test="variationTheme != null" >
+        #{variationTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="sizeName != null" >
+        #{sizeName,jdbcType=VARCHAR},
+      </if>
+      <if test="sizeMap != null" >
+        #{sizeMap,jdbcType=VARCHAR},
+      </if>
+      <if test="colorName != null" >
+        #{colorName,jdbcType=VARCHAR},
+      </if>
+      <if test="colorMap != null" >
+        #{colorMap,jdbcType=VARCHAR},
+      </if>
+      <if test="styleName != null" >
+        #{styleName,jdbcType=VARCHAR},
+      </if>
+      <if test="patternName != null" >
+        #{patternName,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteVariation != null" >
+        #{websiteVariation,jdbcType=VARCHAR},
+      </if>
+      <if test="mainSku != null" >
+        #{mainSku,jdbcType=VARCHAR},
+      </if>
+      <if test="templateId != null" >
+        #{templateId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemStatus != null" >
+        #{itemStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="template != null" >
+        #{template,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="asin != null" >
+        #{asin,jdbcType=VARCHAR},
+      </if>
+      <if test="isseasonal != null" >
+        #{isseasonal,jdbcType=CHAR},
+      </if>
+      <if test="englishname != null" >
+        #{englishname,jdbcType=VARCHAR},
+      </if>
+      <if test="airexpress != null" >
+        #{airexpress,jdbcType=DECIMAL},
+      </if>
+      <if test="airshipping != null" >
+        #{airshipping,jdbcType=DECIMAL},
+      </if>
+      <if test="dragonshipping != null" >
+        #{dragonshipping,jdbcType=DECIMAL},
+      </if>
+      <if test="seashipping != null" >
+        #{seashipping,jdbcType=DECIMAL},
+      </if>
+      <if test="landshipping != null" >
+        #{landshipping,jdbcType=DECIMAL},
+      </if>
+      <if test="currency != null" >
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="catName != null" >
+        #{catName,jdbcType=VARCHAR},
+      </if>
+      <if test="poorgId != null" >
+        #{poorgId,jdbcType=DECIMAL},
+      </if>
+      <if test="documentnote != null" >
+        #{documentnote,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="help != null" >
+        #{help,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bulletPoint1 != null" >
+        #{bulletPoint1,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bulletPoint2 != null" >
+        #{bulletPoint2,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bulletPoint3 != null" >
+        #{bulletPoint3,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bulletPoint4 != null" >
+        #{bulletPoint4,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bulletPoint5 != null" >
+        #{bulletPoint5,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="genericKeywords1 != null" >
+        #{genericKeywords1,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="genericKeywords2 != null" >
+        #{genericKeywords2,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="genericKeywords3 != null" >
+        #{genericKeywords3,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="genericKeywords4 != null" >
+        #{genericKeywords4,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="genericKeywords5 != null" >
+        #{genericKeywords5,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="targetAudienceKeywords != null" >
+        #{targetAudienceKeywords,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="productDescription != null" >
+        #{productDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="moreDetails != null" >
+        #{moreDetails,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pojo.MProductExample" resultType="java.lang.Integer" >
+    select count(*) from m_product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update m_product
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.adClientId != null" >
+        ad_client_id = #{record.adClientId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.adOrgId != null" >
+        ad_org_id = #{record.adOrgId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isactive != null" >
+        isactive = #{record.isactive,jdbcType=CHAR},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdby != null" >
+        createdby = #{record.createdby,jdbcType=DECIMAL},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedby != null" >
+        updatedby = #{record.updatedby,jdbcType=DECIMAL},
+      </if>
+      <if test="record.value != null" >
+        value = #{record.value,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.upc != null" >
+        upc = #{record.upc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sku != null" >
+        sku = #{record.sku,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cUomId != null" >
+        c_uom_id = #{record.cUomId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.salesrepId != null" >
+        salesrep_id = #{record.salesrepId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.issummary != null" >
+        issummary = #{record.issummary,jdbcType=CHAR},
+      </if>
+      <if test="record.isstocked != null" >
+        isstocked = #{record.isstocked,jdbcType=CHAR},
+      </if>
+      <if test="record.ispurchased != null" >
+        ispurchased = #{record.ispurchased,jdbcType=CHAR},
+      </if>
+      <if test="record.issold != null" >
+        issold = #{record.issold,jdbcType=CHAR},
+      </if>
+      <if test="record.isbom != null" >
+        isbom = #{record.isbom,jdbcType=CHAR},
+      </if>
+      <if test="record.isinvoiceprintdetails != null" >
+        isinvoiceprintdetails = #{record.isinvoiceprintdetails,jdbcType=CHAR},
+      </if>
+      <if test="record.ispicklistprintdetails != null" >
+        ispicklistprintdetails = #{record.ispicklistprintdetails,jdbcType=CHAR},
+      </if>
+      <if test="record.isverified != null" >
+        isverified = #{record.isverified,jdbcType=CHAR},
+      </if>
+      <if test="record.cRevenuerecognitionId != null" >
+        c_revenuerecognition_id = #{record.cRevenuerecognitionId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.mProductCategoryId != null" >
+        m_product_category_id = #{record.mProductCategoryId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.classification != null" >
+        classification = #{record.classification,jdbcType=VARCHAR},
+      </if>
+      <if test="record.volume != null" >
+        volume = #{record.volume,jdbcType=DECIMAL},
+      </if>
+      <if test="record.weight != null" >
+        weight = #{record.weight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.shelfwidth != null" >
+        shelfwidth = #{record.shelfwidth,jdbcType=DECIMAL},
+      </if>
+      <if test="record.shelfheight != null" >
+        shelfheight = #{record.shelfheight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.shelfdepth != null" >
+        shelfdepth = #{record.shelfdepth,jdbcType=DECIMAL},
+      </if>
+      <if test="record.unitsperpallet != null" >
+        unitsperpallet = #{record.unitsperpallet,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cTaxcategoryId != null" >
+        c_taxcategory_id = #{record.cTaxcategoryId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sResourceId != null" >
+        s_resource_id = #{record.sResourceId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.discontinued != null" >
+        discontinued = #{record.discontinued,jdbcType=CHAR},
+      </if>
+      <if test="record.discontinuedby != null" >
+        discontinuedby = #{record.discontinuedby,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.processing != null" >
+        processing = #{record.processing,jdbcType=CHAR},
+      </if>
+      <if test="record.sExpensetypeId != null" >
+        s_expensetype_id = #{record.sExpensetypeId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.producttype != null" >
+        producttype = #{record.producttype,jdbcType=CHAR},
+      </if>
+      <if test="record.imageurl != null" >
+        imageurl = #{record.imageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.descriptionurl != null" >
+        descriptionurl = #{record.descriptionurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guaranteedays != null" >
+        guaranteedays = #{record.guaranteedays,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rMailtextId != null" >
+        r_mailtext_id = #{record.rMailtextId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.versionno != null" >
+        versionno = #{record.versionno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mAttributesetId != null" >
+        m_attributeset_id = #{record.mAttributesetId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.mAttributesetinstanceId != null" >
+        m_attributesetinstance_id = #{record.mAttributesetinstanceId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.downloadurl != null" >
+        downloadurl = #{record.downloadurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mFreightcategoryId != null" >
+        m_freightcategory_id = #{record.mFreightcategoryId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.mLocatorId != null" >
+        m_locator_id = #{record.mLocatorId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.guaranteedaysmin != null" >
+        guaranteedaysmin = #{record.guaranteedaysmin,jdbcType=DECIMAL},
+      </if>
+      <if test="record.iswebstorefeatured != null" >
+        iswebstorefeatured = #{record.iswebstorefeatured,jdbcType=CHAR},
+      </if>
+      <if test="record.isselfservice != null" >
+        isselfservice = #{record.isselfservice,jdbcType=CHAR},
+      </if>
+      <if test="record.cSubscriptiontypeId != null" >
+        c_subscriptiontype_id = #{record.cSubscriptiontypeId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isdropship != null" >
+        isdropship = #{record.isdropship,jdbcType=CHAR},
+      </if>
+      <if test="record.isexcludeautodelivery != null" >
+        isexcludeautodelivery = #{record.isexcludeautodelivery,jdbcType=CHAR},
+      </if>
+      <if test="record.group1 != null" >
+        group1 = #{record.group1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.group2 != null" >
+        group2 = #{record.group2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.istoformule != null" >
+        istoformule = #{record.istoformule,jdbcType=CHAR},
+      </if>
+      <if test="record.lowlevel != null" >
+        lowlevel = #{record.lowlevel,jdbcType=DECIMAL},
+      </if>
+      <if test="record.unitsperpack != null" >
+        unitsperpack = #{record.unitsperpack,jdbcType=DECIMAL},
+      </if>
+      <if test="record.discontinuedat != null" >
+        discontinuedat = #{record.discontinuedat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.copyfrom != null" >
+        copyfrom = #{record.copyfrom,jdbcType=CHAR},
+      </if>
+      <if test="record.mParttypeId != null" >
+        m_parttype_id = #{record.mParttypeId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.iskanban != null" >
+        iskanban = #{record.iskanban,jdbcType=CHAR},
+      </if>
+      <if test="record.ismanufactured != null" >
+        ismanufactured = #{record.ismanufactured,jdbcType=CHAR},
+      </if>
+      <if test="record.mProductClassId != null" >
+        m_product_class_id = #{record.mProductClassId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.mProductGroupId != null" >
+        m_product_group_id = #{record.mProductGroupId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.mProductClassificationId != null" >
+        m_product_classification_id = #{record.mProductClassificationId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isphantom != null" >
+        isphantom = #{record.isphantom,jdbcType=CHAR},
+      </if>
+      <if test="record.lockedFee != null" >
+        locked_fee = #{record.lockedFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=DECIMAL},
+      </if>
+      <if test="record.oceanFreight != null" >
+        ocean_freight = #{record.oceanFreight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.chargedWeight != null" >
+        charged_weight = #{record.chargedWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.airFreight != null" >
+        air_freight = #{record.airFreight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.qtyBox != null" >
+        qty_box = #{record.qtyBox,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fnsku != null" >
+        fnsku = #{record.fnsku,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ean != null" >
+        ean = #{record.ean,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cCurrencyId != null" >
+        c_currency_id = #{record.cCurrencyId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.oboInnerskuId != null" >
+        obo_innersku_id = #{record.oboInnerskuId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.boxwidth != null" >
+        boxwidth = #{record.boxwidth,jdbcType=DECIMAL},
+      </if>
+      <if test="record.packetwidth != null" >
+        packetwidth = #{record.packetwidth,jdbcType=DECIMAL},
+      </if>
+      <if test="record.boxlength != null" >
+        boxlength = #{record.boxlength,jdbcType=DECIMAL},
+      </if>
+      <if test="record.packetlength != null" >
+        packetlength = #{record.packetlength,jdbcType=DECIMAL},
+      </if>
+      <if test="record.boxheight != null" >
+        boxheight = #{record.boxheight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.packetheight != null" >
+        packetheight = #{record.packetheight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.oboProductCategory1Id != null" >
+        obo_product_category1_id = #{record.oboProductCategory1Id,jdbcType=DECIMAL},
+      </if>
+      <if test="record.moq != null" >
+        moq = #{record.moq,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isglobal != null" >
+        isglobal = #{record.isglobal,jdbcType=CHAR},
+      </if>
+      <if test="record.boxvolume != null" >
+        boxvolume = #{record.boxvolume,jdbcType=DECIMAL},
+      </if>
+      <if test="record.boxweight != null" >
+        boxweight = #{record.boxweight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.packetvolume != null" >
+        packetvolume = #{record.packetvolume,jdbcType=DECIMAL},
+      </if>
+      <if test="record.packetweight != null" >
+        packetweight = #{record.packetweight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.is1byonebrand != null" >
+        is1byonebrand = #{record.is1byonebrand,jdbcType=CHAR},
+      </if>
+      <if test="record.customsCode != null" >
+        customs_code = #{record.customsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.materialQuality != null" >
+        material_quality = #{record.materialQuality,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uses != null" >
+        uses = #{record.uses,jdbcType=VARCHAR},
+      </if>
+      <if test="record.power != null" >
+        power = #{record.power,jdbcType=VARCHAR},
+      </if>
+      <if test="record.batteryCapacity != null" >
+        battery_capacity = #{record.batteryCapacity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.voltage != null" >
+        voltage = #{record.voltage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.netWeight != null" >
+        net_weight = #{record.netWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.grossWeight != null" >
+        gross_weight = #{record.grossWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.volumeWeight != null" >
+        volume_weight = #{record.volumeWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.amazonsku != null" >
+        amazonsku = #{record.amazonsku,jdbcType=VARCHAR},
+      </if>
+      <if test="record.width != null" >
+        width = #{record.width,jdbcType=DECIMAL},
+      </if>
+      <if test="record.length != null" >
+        length = #{record.length,jdbcType=DECIMAL},
+      </if>
+      <if test="record.height != null" >
+        height = #{record.height,jdbcType=DECIMAL},
+      </if>
+      <if test="record.customsCategory != null" >
+        customs_category = #{record.customsCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.holidayOrderedCycle != null" >
+        holiday_ordered_cycle = #{record.holidayOrderedCycle,jdbcType=DECIMAL},
+      </if>
+      <if test="record.orderedCycle != null" >
+        ordered_cycle = #{record.orderedCycle,jdbcType=DECIMAL},
+      </if>
+      <if test="record.issellingwell != null" >
+        issellingwell = #{record.issellingwell,jdbcType=CHAR},
+      </if>
+      <if test="record.planningTime != null" >
+        planning_time = #{record.planningTime,jdbcType=DECIMAL},
+      </if>
+      <if test="record.shippingTime != null" >
+        shipping_time = #{record.shippingTime,jdbcType=DECIMAL},
+      </if>
+      <if test="record.datedelivery != null" >
+        datedelivery = #{record.datedelivery,jdbcType=DECIMAL},
+      </if>
+      <if test="record.shiptype != null" >
+        shiptype = #{record.shiptype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iscombination != null" >
+        iscombination = #{record.iscombination,jdbcType=CHAR},
+      </if>
+      <if test="record.makeuprate != null" >
+        makeuprate = #{record.makeuprate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.originalPlace != null" >
+        original_place = #{record.originalPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.declarationElements != null" >
+        declaration_elements = #{record.declarationElements,jdbcType=VARCHAR},
+      </if>
+      <if test="record.costingmethod != null" >
+        costingmethod = #{record.costingmethod,jdbcType=CHAR},
+      </if>
+      <if test="record.pricetaxincluded != null" >
+        pricetaxincluded = #{record.pricetaxincluded,jdbcType=DECIMAL},
+      </if>
+      <if test="record.price1 != null" >
+        price1 = #{record.price1,jdbcType=DECIMAL},
+      </if>
+      <if test="record.price2 != null" >
+        price2 = #{record.price2,jdbcType=DECIMAL},
+      </if>
+      <if test="record.price3 != null" >
+        price3 = #{record.price3,jdbcType=DECIMAL},
+      </if>
+      <if test="record.price4 != null" >
+        price4 = #{record.price4,jdbcType=DECIMAL},
+      </if>
+      <if test="record.price5 != null" >
+        price5 = #{record.price5,jdbcType=DECIMAL},
+      </if>
+      <if test="record.qtyFcl != null" >
+        qty_fcl = #{record.qtyFcl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deliverydays != null" >
+        deliverydays = #{record.deliverydays,jdbcType=DECIMAL},
+      </if>
+      <if test="record.image != null" >
+        image = #{record.image,jdbcType=DECIMAL},
+      </if>
+      <if test="record.barcode != null" >
+        barcode = #{record.barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salestatus != null" >
+        salestatus = #{record.salestatus,jdbcType=CHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=CHAR},
+      </if>
+      <if test="record.amazonsize != null" >
+        amazonsize = #{record.amazonsize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pregoodsdays != null" >
+        pregoodsdays = #{record.pregoodsdays,jdbcType=DECIMAL},
+      </if>
+      <if test="record.onshelvesdate != null" >
+        onshelvesdate = #{record.onshelvesdate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cProjectId != null" >
+        c_project_id = #{record.cProjectId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.itemType != null" >
+        item_type = #{record.itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.feedProductType != null" >
+        feed_product_type = #{record.feedProductType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.partNumber != null" >
+        part_number = #{record.partNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.model != null" >
+        model = #{record.model,jdbcType=VARCHAR},
+      </if>
+      <if test="record.externalProduct != null" >
+        external_product = #{record.externalProduct,jdbcType=DECIMAL},
+      </if>
+      <if test="record.externalProductIdType != null" >
+        external_product_id_type = #{record.externalProductIdType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.manufacturer != null" >
+        manufacturer = #{record.manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandName != null" >
+        brand_name = #{record.brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productTaxCode != null" >
+        product_tax_code = #{record.productTaxCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fulfillmentCenterId != null" >
+        fulfillment_center_id = #{record.fulfillmentCenterId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.conditionType != null" >
+        condition_type = #{record.conditionType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateDelete != null" >
+        update_delete = #{record.updateDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mainImageUrl != null" >
+        main_image_url = #{record.mainImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.otherImageUrl1 != null" >
+        other_image_url1 = #{record.otherImageUrl1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.otherImageUrl2 != null" >
+        other_image_url2 = #{record.otherImageUrl2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.otherImageUrl3 != null" >
+        other_image_url3 = #{record.otherImageUrl3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.otherImageUrl4 != null" >
+        other_image_url4 = #{record.otherImageUrl4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.otherImageUrl5 != null" >
+        other_image_url5 = #{record.otherImageUrl5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.otherImageUrl6 != null" >
+        other_image_url6 = #{record.otherImageUrl6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.otherImageUrl7 != null" >
+        other_image_url7 = #{record.otherImageUrl7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.otherImageUrl8 != null" >
+        other_image_url8 = #{record.otherImageUrl8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.video != null" >
+        video = #{record.video,jdbcType=VARCHAR},
+      </if>
+      <if test="record.instruction != null" >
+        instruction = #{record.instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.driver != null" >
+        driver = #{record.driver,jdbcType=VARCHAR},
+      </if>
+      <if test="record.listPrice != null" >
+        list_price = #{record.listPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.standardPrice != null" >
+        standard_price = #{record.standardPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.salePrice != null" >
+        sale_price = #{record.salePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fbaFee != null" >
+        fba_fee = #{record.fbaFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.saleFromDate != null" >
+        sale_from_date = #{record.saleFromDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.saleEndDate != null" >
+        sale_end_date = #{record.saleEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.itemWeight != null" >
+        item_weight = #{record.itemWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.itemWeightUnitOfMeasure != null" >
+        item_weight_unit_of_measure = #{record.itemWeightUnitOfMeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemLength != null" >
+        item_length = #{record.itemLength,jdbcType=DECIMAL},
+      </if>
+      <if test="record.itemWidth != null" >
+        item_width = #{record.itemWidth,jdbcType=DECIMAL},
+      </if>
+      <if test="record.itemHeight != null" >
+        item_height = #{record.itemHeight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.itemLengthUnitOfMeasure != null" >
+        item_length_unit_of_measure = #{record.itemLengthUnitOfMeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="record.packageWeight != null" >
+        package_weight = #{record.packageWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.packageWeightUnitOfMeasure != null" >
+        package_weight_unit_of_measure = #{record.packageWeightUnitOfMeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="record.packageLength != null" >
+        package_length = #{record.packageLength,jdbcType=DECIMAL},
+      </if>
+      <if test="record.packageWidth != null" >
+        package_width = #{record.packageWidth,jdbcType=DECIMAL},
+      </if>
+      <if test="record.packageHeight != null" >
+        package_height = #{record.packageHeight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.packageLengthUnitOfMeasure != null" >
+        package_length_unit_of_measure = #{record.packageLengthUnitOfMeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="record.outPackageLength != null" >
+        out_package_length = #{record.outPackageLength,jdbcType=DECIMAL},
+      </if>
+      <if test="record.outPackageWidth != null" >
+        out_package_width = #{record.outPackageWidth,jdbcType=DECIMAL},
+      </if>
+      <if test="record.outPackageHeight != null" >
+        out_package_height = #{record.outPackageHeight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.outPackageLengthUnit != null" >
+        out_package_length_unit = #{record.outPackageLengthUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.outPackageQuantity != null" >
+        out_package_quantity = #{record.outPackageQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="record.outPackageWeight != null" >
+        out_package_weight = #{record.outPackageWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.outPackageWeightUnit != null" >
+        out_package_weight_unit = #{record.outPackageWeightUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.quantity != null" >
+        quantity = #{record.quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="record.maxOrderQuantity != null" >
+        max_order_quantity = #{record.maxOrderQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.webName != null" >
+        web_name = #{record.webName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemName != null" >
+        item_name = #{record.itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentChild != null" >
+        parent_child = #{record.parentChild,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentSku != null" >
+        parent_sku = #{record.parentSku,jdbcType=VARCHAR},
+      </if>
+      <if test="record.variationTheme != null" >
+        variation_theme = #{record.variationTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sizeName != null" >
+        size_name = #{record.sizeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sizeMap != null" >
+        size_map = #{record.sizeMap,jdbcType=VARCHAR},
+      </if>
+      <if test="record.colorName != null" >
+        color_name = #{record.colorName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.colorMap != null" >
+        color_map = #{record.colorMap,jdbcType=VARCHAR},
+      </if>
+      <if test="record.styleName != null" >
+        style_name = #{record.styleName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.patternName != null" >
+        pattern_name = #{record.patternName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.websiteVariation != null" >
+        website_variation = #{record.websiteVariation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mainSku != null" >
+        main_sku = #{record.mainSku,jdbcType=VARCHAR},
+      </if>
+      <if test="record.templateId != null" >
+        template_id = #{record.templateId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemStatus != null" >
+        item_status = #{record.itemStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.template != null" >
+        template = #{record.template,jdbcType=VARCHAR},
+      </if>
+      <if test="record.country != null" >
+        country = #{record.country,jdbcType=VARCHAR},
+      </if>
+      <if test="record.asin != null" >
+        asin = #{record.asin,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isseasonal != null" >
+        isseasonal = #{record.isseasonal,jdbcType=CHAR},
+      </if>
+      <if test="record.englishname != null" >
+        englishname = #{record.englishname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.airexpress != null" >
+        airexpress = #{record.airexpress,jdbcType=DECIMAL},
+      </if>
+      <if test="record.airshipping != null" >
+        airshipping = #{record.airshipping,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dragonshipping != null" >
+        dragonshipping = #{record.dragonshipping,jdbcType=DECIMAL},
+      </if>
+      <if test="record.seashipping != null" >
+        seashipping = #{record.seashipping,jdbcType=DECIMAL},
+      </if>
+      <if test="record.landshipping != null" >
+        landshipping = #{record.landshipping,jdbcType=DECIMAL},
+      </if>
+      <if test="record.currency != null" >
+        currency = #{record.currency,jdbcType=VARCHAR},
+      </if>
+      <if test="record.catName != null" >
+        cat_name = #{record.catName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.poorgId != null" >
+        poorg_id = #{record.poorgId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.documentnote != null" >
+        documentnote = #{record.documentnote,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.help != null" >
+        help = #{record.help,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.bulletPoint1 != null" >
+        bullet_point1 = #{record.bulletPoint1,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.bulletPoint2 != null" >
+        bullet_point2 = #{record.bulletPoint2,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.bulletPoint3 != null" >
+        bullet_point3 = #{record.bulletPoint3,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.bulletPoint4 != null" >
+        bullet_point4 = #{record.bulletPoint4,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.bulletPoint5 != null" >
+        bullet_point5 = #{record.bulletPoint5,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.genericKeywords1 != null" >
+        generic_keywords1 = #{record.genericKeywords1,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.genericKeywords2 != null" >
+        generic_keywords2 = #{record.genericKeywords2,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.genericKeywords3 != null" >
+        generic_keywords3 = #{record.genericKeywords3,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.genericKeywords4 != null" >
+        generic_keywords4 = #{record.genericKeywords4,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.genericKeywords5 != null" >
+        generic_keywords5 = #{record.genericKeywords5,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.targetAudienceKeywords != null" >
+        target_audience_keywords = #{record.targetAudienceKeywords,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.productDescription != null" >
+        product_description = #{record.productDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.moreDetails != null" >
+        more_details = #{record.moreDetails,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update m_product
+    set ID = #{record.id,jdbcType=INTEGER},
+      ad_client_id = #{record.adClientId,jdbcType=DECIMAL},
+      ad_org_id = #{record.adOrgId,jdbcType=DECIMAL},
+      isactive = #{record.isactive,jdbcType=CHAR},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      createdby = #{record.createdby,jdbcType=DECIMAL},
+      updated = #{record.updated,jdbcType=TIMESTAMP},
+      updatedby = #{record.updatedby,jdbcType=DECIMAL},
+      value = #{record.value,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
+      upc = #{record.upc,jdbcType=VARCHAR},
+      sku = #{record.sku,jdbcType=VARCHAR},
+      c_uom_id = #{record.cUomId,jdbcType=DECIMAL},
+      salesrep_id = #{record.salesrepId,jdbcType=DECIMAL},
+      issummary = #{record.issummary,jdbcType=CHAR},
+      isstocked = #{record.isstocked,jdbcType=CHAR},
+      ispurchased = #{record.ispurchased,jdbcType=CHAR},
+      issold = #{record.issold,jdbcType=CHAR},
+      isbom = #{record.isbom,jdbcType=CHAR},
+      isinvoiceprintdetails = #{record.isinvoiceprintdetails,jdbcType=CHAR},
+      ispicklistprintdetails = #{record.ispicklistprintdetails,jdbcType=CHAR},
+      isverified = #{record.isverified,jdbcType=CHAR},
+      c_revenuerecognition_id = #{record.cRevenuerecognitionId,jdbcType=DECIMAL},
+      m_product_category_id = #{record.mProductCategoryId,jdbcType=DECIMAL},
+      classification = #{record.classification,jdbcType=VARCHAR},
+      volume = #{record.volume,jdbcType=DECIMAL},
+      weight = #{record.weight,jdbcType=DECIMAL},
+      shelfwidth = #{record.shelfwidth,jdbcType=DECIMAL},
+      shelfheight = #{record.shelfheight,jdbcType=DECIMAL},
+      shelfdepth = #{record.shelfdepth,jdbcType=DECIMAL},
+      unitsperpallet = #{record.unitsperpallet,jdbcType=DECIMAL},
+      c_taxcategory_id = #{record.cTaxcategoryId,jdbcType=DECIMAL},
+      s_resource_id = #{record.sResourceId,jdbcType=DECIMAL},
+      discontinued = #{record.discontinued,jdbcType=CHAR},
+      discontinuedby = #{record.discontinuedby,jdbcType=TIMESTAMP},
+      processing = #{record.processing,jdbcType=CHAR},
+      s_expensetype_id = #{record.sExpensetypeId,jdbcType=DECIMAL},
+      producttype = #{record.producttype,jdbcType=CHAR},
+      imageurl = #{record.imageurl,jdbcType=VARCHAR},
+      descriptionurl = #{record.descriptionurl,jdbcType=VARCHAR},
+      guaranteedays = #{record.guaranteedays,jdbcType=DECIMAL},
+      r_mailtext_id = #{record.rMailtextId,jdbcType=DECIMAL},
+      versionno = #{record.versionno,jdbcType=VARCHAR},
+      m_attributeset_id = #{record.mAttributesetId,jdbcType=DECIMAL},
+      m_attributesetinstance_id = #{record.mAttributesetinstanceId,jdbcType=DECIMAL},
+      downloadurl = #{record.downloadurl,jdbcType=VARCHAR},
+      m_freightcategory_id = #{record.mFreightcategoryId,jdbcType=DECIMAL},
+      m_locator_id = #{record.mLocatorId,jdbcType=DECIMAL},
+      guaranteedaysmin = #{record.guaranteedaysmin,jdbcType=DECIMAL},
+      iswebstorefeatured = #{record.iswebstorefeatured,jdbcType=CHAR},
+      isselfservice = #{record.isselfservice,jdbcType=CHAR},
+      c_subscriptiontype_id = #{record.cSubscriptiontypeId,jdbcType=DECIMAL},
+      isdropship = #{record.isdropship,jdbcType=CHAR},
+      isexcludeautodelivery = #{record.isexcludeautodelivery,jdbcType=CHAR},
+      group1 = #{record.group1,jdbcType=VARCHAR},
+      group2 = #{record.group2,jdbcType=VARCHAR},
+      istoformule = #{record.istoformule,jdbcType=CHAR},
+      lowlevel = #{record.lowlevel,jdbcType=DECIMAL},
+      unitsperpack = #{record.unitsperpack,jdbcType=DECIMAL},
+      discontinuedat = #{record.discontinuedat,jdbcType=TIMESTAMP},
+      copyfrom = #{record.copyfrom,jdbcType=CHAR},
+      m_parttype_id = #{record.mParttypeId,jdbcType=DECIMAL},
+      iskanban = #{record.iskanban,jdbcType=CHAR},
+      ismanufactured = #{record.ismanufactured,jdbcType=CHAR},
+      m_product_class_id = #{record.mProductClassId,jdbcType=DECIMAL},
+      m_product_group_id = #{record.mProductGroupId,jdbcType=DECIMAL},
+      m_product_classification_id = #{record.mProductClassificationId,jdbcType=DECIMAL},
+      isphantom = #{record.isphantom,jdbcType=CHAR},
+      locked_fee = #{record.lockedFee,jdbcType=DECIMAL},
+      price = #{record.price,jdbcType=DECIMAL},
+      ocean_freight = #{record.oceanFreight,jdbcType=DECIMAL},
+      charged_weight = #{record.chargedWeight,jdbcType=DECIMAL},
+      air_freight = #{record.airFreight,jdbcType=DECIMAL},
+      qty_box = #{record.qtyBox,jdbcType=DECIMAL},
+      fnsku = #{record.fnsku,jdbcType=VARCHAR},
+      ean = #{record.ean,jdbcType=VARCHAR},
+      c_currency_id = #{record.cCurrencyId,jdbcType=DECIMAL},
+      obo_innersku_id = #{record.oboInnerskuId,jdbcType=DECIMAL},
+      boxwidth = #{record.boxwidth,jdbcType=DECIMAL},
+      packetwidth = #{record.packetwidth,jdbcType=DECIMAL},
+      boxlength = #{record.boxlength,jdbcType=DECIMAL},
+      packetlength = #{record.packetlength,jdbcType=DECIMAL},
+      boxheight = #{record.boxheight,jdbcType=DECIMAL},
+      packetheight = #{record.packetheight,jdbcType=DECIMAL},
+      obo_product_category1_id = #{record.oboProductCategory1Id,jdbcType=DECIMAL},
+      moq = #{record.moq,jdbcType=DECIMAL},
+      isglobal = #{record.isglobal,jdbcType=CHAR},
+      boxvolume = #{record.boxvolume,jdbcType=DECIMAL},
+      boxweight = #{record.boxweight,jdbcType=DECIMAL},
+      packetvolume = #{record.packetvolume,jdbcType=DECIMAL},
+      packetweight = #{record.packetweight,jdbcType=DECIMAL},
+      is1byonebrand = #{record.is1byonebrand,jdbcType=CHAR},
+      customs_code = #{record.customsCode,jdbcType=VARCHAR},
+      material_quality = #{record.materialQuality,jdbcType=VARCHAR},
+      uses = #{record.uses,jdbcType=VARCHAR},
+      power = #{record.power,jdbcType=VARCHAR},
+      battery_capacity = #{record.batteryCapacity,jdbcType=VARCHAR},
+      voltage = #{record.voltage,jdbcType=VARCHAR},
+      net_weight = #{record.netWeight,jdbcType=DECIMAL},
+      gross_weight = #{record.grossWeight,jdbcType=DECIMAL},
+      volume_weight = #{record.volumeWeight,jdbcType=DECIMAL},
+      amazonsku = #{record.amazonsku,jdbcType=VARCHAR},
+      width = #{record.width,jdbcType=DECIMAL},
+      length = #{record.length,jdbcType=DECIMAL},
+      height = #{record.height,jdbcType=DECIMAL},
+      customs_category = #{record.customsCategory,jdbcType=VARCHAR},
+      holiday_ordered_cycle = #{record.holidayOrderedCycle,jdbcType=DECIMAL},
+      ordered_cycle = #{record.orderedCycle,jdbcType=DECIMAL},
+      issellingwell = #{record.issellingwell,jdbcType=CHAR},
+      planning_time = #{record.planningTime,jdbcType=DECIMAL},
+      shipping_time = #{record.shippingTime,jdbcType=DECIMAL},
+      datedelivery = #{record.datedelivery,jdbcType=DECIMAL},
+      shiptype = #{record.shiptype,jdbcType=VARCHAR},
+      iscombination = #{record.iscombination,jdbcType=CHAR},
+      makeuprate = #{record.makeuprate,jdbcType=DECIMAL},
+      original_place = #{record.originalPlace,jdbcType=VARCHAR},
+      declaration_elements = #{record.declarationElements,jdbcType=VARCHAR},
+      costingmethod = #{record.costingmethod,jdbcType=CHAR},
+      pricetaxincluded = #{record.pricetaxincluded,jdbcType=DECIMAL},
+      price1 = #{record.price1,jdbcType=DECIMAL},
+      price2 = #{record.price2,jdbcType=DECIMAL},
+      price3 = #{record.price3,jdbcType=DECIMAL},
+      price4 = #{record.price4,jdbcType=DECIMAL},
+      price5 = #{record.price5,jdbcType=DECIMAL},
+      qty_fcl = #{record.qtyFcl,jdbcType=VARCHAR},
+      deliverydays = #{record.deliverydays,jdbcType=DECIMAL},
+      image = #{record.image,jdbcType=DECIMAL},
+      barcode = #{record.barcode,jdbcType=VARCHAR},
+      salestatus = #{record.salestatus,jdbcType=CHAR},
+      status = #{record.status,jdbcType=CHAR},
+      amazonsize = #{record.amazonsize,jdbcType=VARCHAR},
+      pregoodsdays = #{record.pregoodsdays,jdbcType=DECIMAL},
+      onshelvesdate = #{record.onshelvesdate,jdbcType=DECIMAL},
+      c_project_id = #{record.cProjectId,jdbcType=DECIMAL},
+      item_type = #{record.itemType,jdbcType=VARCHAR},
+      feed_product_type = #{record.feedProductType,jdbcType=VARCHAR},
+      part_number = #{record.partNumber,jdbcType=VARCHAR},
+      model = #{record.model,jdbcType=VARCHAR},
+      external_product = #{record.externalProduct,jdbcType=DECIMAL},
+      external_product_id_type = #{record.externalProductIdType,jdbcType=VARCHAR},
+      manufacturer = #{record.manufacturer,jdbcType=VARCHAR},
+      brand_name = #{record.brandName,jdbcType=VARCHAR},
+      product_tax_code = #{record.productTaxCode,jdbcType=VARCHAR},
+      fulfillment_center_id = #{record.fulfillmentCenterId,jdbcType=DECIMAL},
+      condition_type = #{record.conditionType,jdbcType=VARCHAR},
+      update_delete = #{record.updateDelete,jdbcType=VARCHAR},
+      main_image_url = #{record.mainImageUrl,jdbcType=VARCHAR},
+      other_image_url1 = #{record.otherImageUrl1,jdbcType=VARCHAR},
+      other_image_url2 = #{record.otherImageUrl2,jdbcType=VARCHAR},
+      other_image_url3 = #{record.otherImageUrl3,jdbcType=VARCHAR},
+      other_image_url4 = #{record.otherImageUrl4,jdbcType=VARCHAR},
+      other_image_url5 = #{record.otherImageUrl5,jdbcType=VARCHAR},
+      other_image_url6 = #{record.otherImageUrl6,jdbcType=VARCHAR},
+      other_image_url7 = #{record.otherImageUrl7,jdbcType=VARCHAR},
+      other_image_url8 = #{record.otherImageUrl8,jdbcType=VARCHAR},
+      video = #{record.video,jdbcType=VARCHAR},
+      instruction = #{record.instruction,jdbcType=VARCHAR},
+      driver = #{record.driver,jdbcType=VARCHAR},
+      list_price = #{record.listPrice,jdbcType=DECIMAL},
+      standard_price = #{record.standardPrice,jdbcType=DECIMAL},
+      sale_price = #{record.salePrice,jdbcType=DECIMAL},
+      fba_fee = #{record.fbaFee,jdbcType=DECIMAL},
+      sale_from_date = #{record.saleFromDate,jdbcType=TIMESTAMP},
+      sale_end_date = #{record.saleEndDate,jdbcType=TIMESTAMP},
+      item_weight = #{record.itemWeight,jdbcType=DECIMAL},
+      item_weight_unit_of_measure = #{record.itemWeightUnitOfMeasure,jdbcType=VARCHAR},
+      item_length = #{record.itemLength,jdbcType=DECIMAL},
+      item_width = #{record.itemWidth,jdbcType=DECIMAL},
+      item_height = #{record.itemHeight,jdbcType=DECIMAL},
+      item_length_unit_of_measure = #{record.itemLengthUnitOfMeasure,jdbcType=VARCHAR},
+      package_weight = #{record.packageWeight,jdbcType=DECIMAL},
+      package_weight_unit_of_measure = #{record.packageWeightUnitOfMeasure,jdbcType=VARCHAR},
+      package_length = #{record.packageLength,jdbcType=DECIMAL},
+      package_width = #{record.packageWidth,jdbcType=DECIMAL},
+      package_height = #{record.packageHeight,jdbcType=DECIMAL},
+      package_length_unit_of_measure = #{record.packageLengthUnitOfMeasure,jdbcType=VARCHAR},
+      out_package_length = #{record.outPackageLength,jdbcType=DECIMAL},
+      out_package_width = #{record.outPackageWidth,jdbcType=DECIMAL},
+      out_package_height = #{record.outPackageHeight,jdbcType=DECIMAL},
+      out_package_length_unit = #{record.outPackageLengthUnit,jdbcType=VARCHAR},
+      out_package_quantity = #{record.outPackageQuantity,jdbcType=DECIMAL},
+      out_package_weight = #{record.outPackageWeight,jdbcType=DECIMAL},
+      out_package_weight_unit = #{record.outPackageWeightUnit,jdbcType=VARCHAR},
+      quantity = #{record.quantity,jdbcType=DECIMAL},
+      max_order_quantity = #{record.maxOrderQuantity,jdbcType=VARCHAR},
+      web_name = #{record.webName,jdbcType=VARCHAR},
+      item_name = #{record.itemName,jdbcType=VARCHAR},
+      parent_child = #{record.parentChild,jdbcType=VARCHAR},
+      parent_sku = #{record.parentSku,jdbcType=VARCHAR},
+      variation_theme = #{record.variationTheme,jdbcType=VARCHAR},
+      size_name = #{record.sizeName,jdbcType=VARCHAR},
+      size_map = #{record.sizeMap,jdbcType=VARCHAR},
+      color_name = #{record.colorName,jdbcType=VARCHAR},
+      color_map = #{record.colorMap,jdbcType=VARCHAR},
+      style_name = #{record.styleName,jdbcType=VARCHAR},
+      pattern_name = #{record.patternName,jdbcType=VARCHAR},
+      website_variation = #{record.websiteVariation,jdbcType=VARCHAR},
+      main_sku = #{record.mainSku,jdbcType=VARCHAR},
+      template_id = #{record.templateId,jdbcType=VARCHAR},
+      item_status = #{record.itemStatus,jdbcType=VARCHAR},
+      template = #{record.template,jdbcType=VARCHAR},
+      country = #{record.country,jdbcType=VARCHAR},
+      asin = #{record.asin,jdbcType=VARCHAR},
+      isseasonal = #{record.isseasonal,jdbcType=CHAR},
+      englishname = #{record.englishname,jdbcType=VARCHAR},
+      airexpress = #{record.airexpress,jdbcType=DECIMAL},
+      airshipping = #{record.airshipping,jdbcType=DECIMAL},
+      dragonshipping = #{record.dragonshipping,jdbcType=DECIMAL},
+      seashipping = #{record.seashipping,jdbcType=DECIMAL},
+      landshipping = #{record.landshipping,jdbcType=DECIMAL},
+      currency = #{record.currency,jdbcType=VARCHAR},
+      cat_name = #{record.catName,jdbcType=VARCHAR},
+      poorg_id = #{record.poorgId,jdbcType=DECIMAL},
+      documentnote = #{record.documentnote,jdbcType=LONGVARCHAR},
+      help = #{record.help,jdbcType=LONGVARCHAR},
+      bullet_point1 = #{record.bulletPoint1,jdbcType=LONGVARCHAR},
+      bullet_point2 = #{record.bulletPoint2,jdbcType=LONGVARCHAR},
+      bullet_point3 = #{record.bulletPoint3,jdbcType=LONGVARCHAR},
+      bullet_point4 = #{record.bulletPoint4,jdbcType=LONGVARCHAR},
+      bullet_point5 = #{record.bulletPoint5,jdbcType=LONGVARCHAR},
+      generic_keywords1 = #{record.genericKeywords1,jdbcType=LONGVARCHAR},
+      generic_keywords2 = #{record.genericKeywords2,jdbcType=LONGVARCHAR},
+      generic_keywords3 = #{record.genericKeywords3,jdbcType=LONGVARCHAR},
+      generic_keywords4 = #{record.genericKeywords4,jdbcType=LONGVARCHAR},
+      generic_keywords5 = #{record.genericKeywords5,jdbcType=LONGVARCHAR},
+      target_audience_keywords = #{record.targetAudienceKeywords,jdbcType=LONGVARCHAR},
+      product_description = #{record.productDescription,jdbcType=LONGVARCHAR},
+      more_details = #{record.moreDetails,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update m_product
+    set ID = #{record.id,jdbcType=INTEGER},
+      ad_client_id = #{record.adClientId,jdbcType=DECIMAL},
+      ad_org_id = #{record.adOrgId,jdbcType=DECIMAL},
+      isactive = #{record.isactive,jdbcType=CHAR},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      createdby = #{record.createdby,jdbcType=DECIMAL},
+      updated = #{record.updated,jdbcType=TIMESTAMP},
+      updatedby = #{record.updatedby,jdbcType=DECIMAL},
+      value = #{record.value,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
+      upc = #{record.upc,jdbcType=VARCHAR},
+      sku = #{record.sku,jdbcType=VARCHAR},
+      c_uom_id = #{record.cUomId,jdbcType=DECIMAL},
+      salesrep_id = #{record.salesrepId,jdbcType=DECIMAL},
+      issummary = #{record.issummary,jdbcType=CHAR},
+      isstocked = #{record.isstocked,jdbcType=CHAR},
+      ispurchased = #{record.ispurchased,jdbcType=CHAR},
+      issold = #{record.issold,jdbcType=CHAR},
+      isbom = #{record.isbom,jdbcType=CHAR},
+      isinvoiceprintdetails = #{record.isinvoiceprintdetails,jdbcType=CHAR},
+      ispicklistprintdetails = #{record.ispicklistprintdetails,jdbcType=CHAR},
+      isverified = #{record.isverified,jdbcType=CHAR},
+      c_revenuerecognition_id = #{record.cRevenuerecognitionId,jdbcType=DECIMAL},
+      m_product_category_id = #{record.mProductCategoryId,jdbcType=DECIMAL},
+      classification = #{record.classification,jdbcType=VARCHAR},
+      volume = #{record.volume,jdbcType=DECIMAL},
+      weight = #{record.weight,jdbcType=DECIMAL},
+      shelfwidth = #{record.shelfwidth,jdbcType=DECIMAL},
+      shelfheight = #{record.shelfheight,jdbcType=DECIMAL},
+      shelfdepth = #{record.shelfdepth,jdbcType=DECIMAL},
+      unitsperpallet = #{record.unitsperpallet,jdbcType=DECIMAL},
+      c_taxcategory_id = #{record.cTaxcategoryId,jdbcType=DECIMAL},
+      s_resource_id = #{record.sResourceId,jdbcType=DECIMAL},
+      discontinued = #{record.discontinued,jdbcType=CHAR},
+      discontinuedby = #{record.discontinuedby,jdbcType=TIMESTAMP},
+      processing = #{record.processing,jdbcType=CHAR},
+      s_expensetype_id = #{record.sExpensetypeId,jdbcType=DECIMAL},
+      producttype = #{record.producttype,jdbcType=CHAR},
+      imageurl = #{record.imageurl,jdbcType=VARCHAR},
+      descriptionurl = #{record.descriptionurl,jdbcType=VARCHAR},
+      guaranteedays = #{record.guaranteedays,jdbcType=DECIMAL},
+      r_mailtext_id = #{record.rMailtextId,jdbcType=DECIMAL},
+      versionno = #{record.versionno,jdbcType=VARCHAR},
+      m_attributeset_id = #{record.mAttributesetId,jdbcType=DECIMAL},
+      m_attributesetinstance_id = #{record.mAttributesetinstanceId,jdbcType=DECIMAL},
+      downloadurl = #{record.downloadurl,jdbcType=VARCHAR},
+      m_freightcategory_id = #{record.mFreightcategoryId,jdbcType=DECIMAL},
+      m_locator_id = #{record.mLocatorId,jdbcType=DECIMAL},
+      guaranteedaysmin = #{record.guaranteedaysmin,jdbcType=DECIMAL},
+      iswebstorefeatured = #{record.iswebstorefeatured,jdbcType=CHAR},
+      isselfservice = #{record.isselfservice,jdbcType=CHAR},
+      c_subscriptiontype_id = #{record.cSubscriptiontypeId,jdbcType=DECIMAL},
+      isdropship = #{record.isdropship,jdbcType=CHAR},
+      isexcludeautodelivery = #{record.isexcludeautodelivery,jdbcType=CHAR},
+      group1 = #{record.group1,jdbcType=VARCHAR},
+      group2 = #{record.group2,jdbcType=VARCHAR},
+      istoformule = #{record.istoformule,jdbcType=CHAR},
+      lowlevel = #{record.lowlevel,jdbcType=DECIMAL},
+      unitsperpack = #{record.unitsperpack,jdbcType=DECIMAL},
+      discontinuedat = #{record.discontinuedat,jdbcType=TIMESTAMP},
+      copyfrom = #{record.copyfrom,jdbcType=CHAR},
+      m_parttype_id = #{record.mParttypeId,jdbcType=DECIMAL},
+      iskanban = #{record.iskanban,jdbcType=CHAR},
+      ismanufactured = #{record.ismanufactured,jdbcType=CHAR},
+      m_product_class_id = #{record.mProductClassId,jdbcType=DECIMAL},
+      m_product_group_id = #{record.mProductGroupId,jdbcType=DECIMAL},
+      m_product_classification_id = #{record.mProductClassificationId,jdbcType=DECIMAL},
+      isphantom = #{record.isphantom,jdbcType=CHAR},
+      locked_fee = #{record.lockedFee,jdbcType=DECIMAL},
+      price = #{record.price,jdbcType=DECIMAL},
+      ocean_freight = #{record.oceanFreight,jdbcType=DECIMAL},
+      charged_weight = #{record.chargedWeight,jdbcType=DECIMAL},
+      air_freight = #{record.airFreight,jdbcType=DECIMAL},
+      qty_box = #{record.qtyBox,jdbcType=DECIMAL},
+      fnsku = #{record.fnsku,jdbcType=VARCHAR},
+      ean = #{record.ean,jdbcType=VARCHAR},
+      c_currency_id = #{record.cCurrencyId,jdbcType=DECIMAL},
+      obo_innersku_id = #{record.oboInnerskuId,jdbcType=DECIMAL},
+      boxwidth = #{record.boxwidth,jdbcType=DECIMAL},
+      packetwidth = #{record.packetwidth,jdbcType=DECIMAL},
+      boxlength = #{record.boxlength,jdbcType=DECIMAL},
+      packetlength = #{record.packetlength,jdbcType=DECIMAL},
+      boxheight = #{record.boxheight,jdbcType=DECIMAL},
+      packetheight = #{record.packetheight,jdbcType=DECIMAL},
+      obo_product_category1_id = #{record.oboProductCategory1Id,jdbcType=DECIMAL},
+      moq = #{record.moq,jdbcType=DECIMAL},
+      isglobal = #{record.isglobal,jdbcType=CHAR},
+      boxvolume = #{record.boxvolume,jdbcType=DECIMAL},
+      boxweight = #{record.boxweight,jdbcType=DECIMAL},
+      packetvolume = #{record.packetvolume,jdbcType=DECIMAL},
+      packetweight = #{record.packetweight,jdbcType=DECIMAL},
+      is1byonebrand = #{record.is1byonebrand,jdbcType=CHAR},
+      customs_code = #{record.customsCode,jdbcType=VARCHAR},
+      material_quality = #{record.materialQuality,jdbcType=VARCHAR},
+      uses = #{record.uses,jdbcType=VARCHAR},
+      power = #{record.power,jdbcType=VARCHAR},
+      battery_capacity = #{record.batteryCapacity,jdbcType=VARCHAR},
+      voltage = #{record.voltage,jdbcType=VARCHAR},
+      net_weight = #{record.netWeight,jdbcType=DECIMAL},
+      gross_weight = #{record.grossWeight,jdbcType=DECIMAL},
+      volume_weight = #{record.volumeWeight,jdbcType=DECIMAL},
+      amazonsku = #{record.amazonsku,jdbcType=VARCHAR},
+      width = #{record.width,jdbcType=DECIMAL},
+      length = #{record.length,jdbcType=DECIMAL},
+      height = #{record.height,jdbcType=DECIMAL},
+      customs_category = #{record.customsCategory,jdbcType=VARCHAR},
+      holiday_ordered_cycle = #{record.holidayOrderedCycle,jdbcType=DECIMAL},
+      ordered_cycle = #{record.orderedCycle,jdbcType=DECIMAL},
+      issellingwell = #{record.issellingwell,jdbcType=CHAR},
+      planning_time = #{record.planningTime,jdbcType=DECIMAL},
+      shipping_time = #{record.shippingTime,jdbcType=DECIMAL},
+      datedelivery = #{record.datedelivery,jdbcType=DECIMAL},
+      shiptype = #{record.shiptype,jdbcType=VARCHAR},
+      iscombination = #{record.iscombination,jdbcType=CHAR},
+      makeuprate = #{record.makeuprate,jdbcType=DECIMAL},
+      original_place = #{record.originalPlace,jdbcType=VARCHAR},
+      declaration_elements = #{record.declarationElements,jdbcType=VARCHAR},
+      costingmethod = #{record.costingmethod,jdbcType=CHAR},
+      pricetaxincluded = #{record.pricetaxincluded,jdbcType=DECIMAL},
+      price1 = #{record.price1,jdbcType=DECIMAL},
+      price2 = #{record.price2,jdbcType=DECIMAL},
+      price3 = #{record.price3,jdbcType=DECIMAL},
+      price4 = #{record.price4,jdbcType=DECIMAL},
+      price5 = #{record.price5,jdbcType=DECIMAL},
+      qty_fcl = #{record.qtyFcl,jdbcType=VARCHAR},
+      deliverydays = #{record.deliverydays,jdbcType=DECIMAL},
+      image = #{record.image,jdbcType=DECIMAL},
+      barcode = #{record.barcode,jdbcType=VARCHAR},
+      salestatus = #{record.salestatus,jdbcType=CHAR},
+      status = #{record.status,jdbcType=CHAR},
+      amazonsize = #{record.amazonsize,jdbcType=VARCHAR},
+      pregoodsdays = #{record.pregoodsdays,jdbcType=DECIMAL},
+      onshelvesdate = #{record.onshelvesdate,jdbcType=DECIMAL},
+      c_project_id = #{record.cProjectId,jdbcType=DECIMAL},
+      item_type = #{record.itemType,jdbcType=VARCHAR},
+      feed_product_type = #{record.feedProductType,jdbcType=VARCHAR},
+      part_number = #{record.partNumber,jdbcType=VARCHAR},
+      model = #{record.model,jdbcType=VARCHAR},
+      external_product = #{record.externalProduct,jdbcType=DECIMAL},
+      external_product_id_type = #{record.externalProductIdType,jdbcType=VARCHAR},
+      manufacturer = #{record.manufacturer,jdbcType=VARCHAR},
+      brand_name = #{record.brandName,jdbcType=VARCHAR},
+      product_tax_code = #{record.productTaxCode,jdbcType=VARCHAR},
+      fulfillment_center_id = #{record.fulfillmentCenterId,jdbcType=DECIMAL},
+      condition_type = #{record.conditionType,jdbcType=VARCHAR},
+      update_delete = #{record.updateDelete,jdbcType=VARCHAR},
+      main_image_url = #{record.mainImageUrl,jdbcType=VARCHAR},
+      other_image_url1 = #{record.otherImageUrl1,jdbcType=VARCHAR},
+      other_image_url2 = #{record.otherImageUrl2,jdbcType=VARCHAR},
+      other_image_url3 = #{record.otherImageUrl3,jdbcType=VARCHAR},
+      other_image_url4 = #{record.otherImageUrl4,jdbcType=VARCHAR},
+      other_image_url5 = #{record.otherImageUrl5,jdbcType=VARCHAR},
+      other_image_url6 = #{record.otherImageUrl6,jdbcType=VARCHAR},
+      other_image_url7 = #{record.otherImageUrl7,jdbcType=VARCHAR},
+      other_image_url8 = #{record.otherImageUrl8,jdbcType=VARCHAR},
+      video = #{record.video,jdbcType=VARCHAR},
+      instruction = #{record.instruction,jdbcType=VARCHAR},
+      driver = #{record.driver,jdbcType=VARCHAR},
+      list_price = #{record.listPrice,jdbcType=DECIMAL},
+      standard_price = #{record.standardPrice,jdbcType=DECIMAL},
+      sale_price = #{record.salePrice,jdbcType=DECIMAL},
+      fba_fee = #{record.fbaFee,jdbcType=DECIMAL},
+      sale_from_date = #{record.saleFromDate,jdbcType=TIMESTAMP},
+      sale_end_date = #{record.saleEndDate,jdbcType=TIMESTAMP},
+      item_weight = #{record.itemWeight,jdbcType=DECIMAL},
+      item_weight_unit_of_measure = #{record.itemWeightUnitOfMeasure,jdbcType=VARCHAR},
+      item_length = #{record.itemLength,jdbcType=DECIMAL},
+      item_width = #{record.itemWidth,jdbcType=DECIMAL},
+      item_height = #{record.itemHeight,jdbcType=DECIMAL},
+      item_length_unit_of_measure = #{record.itemLengthUnitOfMeasure,jdbcType=VARCHAR},
+      package_weight = #{record.packageWeight,jdbcType=DECIMAL},
+      package_weight_unit_of_measure = #{record.packageWeightUnitOfMeasure,jdbcType=VARCHAR},
+      package_length = #{record.packageLength,jdbcType=DECIMAL},
+      package_width = #{record.packageWidth,jdbcType=DECIMAL},
+      package_height = #{record.packageHeight,jdbcType=DECIMAL},
+      package_length_unit_of_measure = #{record.packageLengthUnitOfMeasure,jdbcType=VARCHAR},
+      out_package_length = #{record.outPackageLength,jdbcType=DECIMAL},
+      out_package_width = #{record.outPackageWidth,jdbcType=DECIMAL},
+      out_package_height = #{record.outPackageHeight,jdbcType=DECIMAL},
+      out_package_length_unit = #{record.outPackageLengthUnit,jdbcType=VARCHAR},
+      out_package_quantity = #{record.outPackageQuantity,jdbcType=DECIMAL},
+      out_package_weight = #{record.outPackageWeight,jdbcType=DECIMAL},
+      out_package_weight_unit = #{record.outPackageWeightUnit,jdbcType=VARCHAR},
+      quantity = #{record.quantity,jdbcType=DECIMAL},
+      max_order_quantity = #{record.maxOrderQuantity,jdbcType=VARCHAR},
+      web_name = #{record.webName,jdbcType=VARCHAR},
+      item_name = #{record.itemName,jdbcType=VARCHAR},
+      parent_child = #{record.parentChild,jdbcType=VARCHAR},
+      parent_sku = #{record.parentSku,jdbcType=VARCHAR},
+      variation_theme = #{record.variationTheme,jdbcType=VARCHAR},
+      size_name = #{record.sizeName,jdbcType=VARCHAR},
+      size_map = #{record.sizeMap,jdbcType=VARCHAR},
+      color_name = #{record.colorName,jdbcType=VARCHAR},
+      color_map = #{record.colorMap,jdbcType=VARCHAR},
+      style_name = #{record.styleName,jdbcType=VARCHAR},
+      pattern_name = #{record.patternName,jdbcType=VARCHAR},
+      website_variation = #{record.websiteVariation,jdbcType=VARCHAR},
+      main_sku = #{record.mainSku,jdbcType=VARCHAR},
+      template_id = #{record.templateId,jdbcType=VARCHAR},
+      item_status = #{record.itemStatus,jdbcType=VARCHAR},
+      template = #{record.template,jdbcType=VARCHAR},
+      country = #{record.country,jdbcType=VARCHAR},
+      asin = #{record.asin,jdbcType=VARCHAR},
+      isseasonal = #{record.isseasonal,jdbcType=CHAR},
+      englishname = #{record.englishname,jdbcType=VARCHAR},
+      airexpress = #{record.airexpress,jdbcType=DECIMAL},
+      airshipping = #{record.airshipping,jdbcType=DECIMAL},
+      dragonshipping = #{record.dragonshipping,jdbcType=DECIMAL},
+      seashipping = #{record.seashipping,jdbcType=DECIMAL},
+      landshipping = #{record.landshipping,jdbcType=DECIMAL},
+      currency = #{record.currency,jdbcType=VARCHAR},
+      cat_name = #{record.catName,jdbcType=VARCHAR},
+      poorg_id = #{record.poorgId,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.MProductWithBLOBs" >
+    update m_product
+    <set >
+      <if test="adClientId != null" >
+        ad_client_id = #{adClientId,jdbcType=DECIMAL},
+      </if>
+      <if test="adOrgId != null" >
+        ad_org_id = #{adOrgId,jdbcType=DECIMAL},
+      </if>
+      <if test="isactive != null" >
+        isactive = #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdby != null" >
+        createdby = #{createdby,jdbcType=DECIMAL},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedby != null" >
+        updatedby = #{updatedby,jdbcType=DECIMAL},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="upc != null" >
+        upc = #{upc,jdbcType=VARCHAR},
+      </if>
+      <if test="sku != null" >
+        sku = #{sku,jdbcType=VARCHAR},
+      </if>
+      <if test="cUomId != null" >
+        c_uom_id = #{cUomId,jdbcType=DECIMAL},
+      </if>
+      <if test="salesrepId != null" >
+        salesrep_id = #{salesrepId,jdbcType=DECIMAL},
+      </if>
+      <if test="issummary != null" >
+        issummary = #{issummary,jdbcType=CHAR},
+      </if>
+      <if test="isstocked != null" >
+        isstocked = #{isstocked,jdbcType=CHAR},
+      </if>
+      <if test="ispurchased != null" >
+        ispurchased = #{ispurchased,jdbcType=CHAR},
+      </if>
+      <if test="issold != null" >
+        issold = #{issold,jdbcType=CHAR},
+      </if>
+      <if test="isbom != null" >
+        isbom = #{isbom,jdbcType=CHAR},
+      </if>
+      <if test="isinvoiceprintdetails != null" >
+        isinvoiceprintdetails = #{isinvoiceprintdetails,jdbcType=CHAR},
+      </if>
+      <if test="ispicklistprintdetails != null" >
+        ispicklistprintdetails = #{ispicklistprintdetails,jdbcType=CHAR},
+      </if>
+      <if test="isverified != null" >
+        isverified = #{isverified,jdbcType=CHAR},
+      </if>
+      <if test="cRevenuerecognitionId != null" >
+        c_revenuerecognition_id = #{cRevenuerecognitionId,jdbcType=DECIMAL},
+      </if>
+      <if test="mProductCategoryId != null" >
+        m_product_category_id = #{mProductCategoryId,jdbcType=DECIMAL},
+      </if>
+      <if test="classification != null" >
+        classification = #{classification,jdbcType=VARCHAR},
+      </if>
+      <if test="volume != null" >
+        volume = #{volume,jdbcType=DECIMAL},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="shelfwidth != null" >
+        shelfwidth = #{shelfwidth,jdbcType=DECIMAL},
+      </if>
+      <if test="shelfheight != null" >
+        shelfheight = #{shelfheight,jdbcType=DECIMAL},
+      </if>
+      <if test="shelfdepth != null" >
+        shelfdepth = #{shelfdepth,jdbcType=DECIMAL},
+      </if>
+      <if test="unitsperpallet != null" >
+        unitsperpallet = #{unitsperpallet,jdbcType=DECIMAL},
+      </if>
+      <if test="cTaxcategoryId != null" >
+        c_taxcategory_id = #{cTaxcategoryId,jdbcType=DECIMAL},
+      </if>
+      <if test="sResourceId != null" >
+        s_resource_id = #{sResourceId,jdbcType=DECIMAL},
+      </if>
+      <if test="discontinued != null" >
+        discontinued = #{discontinued,jdbcType=CHAR},
+      </if>
+      <if test="discontinuedby != null" >
+        discontinuedby = #{discontinuedby,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processing != null" >
+        processing = #{processing,jdbcType=CHAR},
+      </if>
+      <if test="sExpensetypeId != null" >
+        s_expensetype_id = #{sExpensetypeId,jdbcType=DECIMAL},
+      </if>
+      <if test="producttype != null" >
+        producttype = #{producttype,jdbcType=CHAR},
+      </if>
+      <if test="imageurl != null" >
+        imageurl = #{imageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="descriptionurl != null" >
+        descriptionurl = #{descriptionurl,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteedays != null" >
+        guaranteedays = #{guaranteedays,jdbcType=DECIMAL},
+      </if>
+      <if test="rMailtextId != null" >
+        r_mailtext_id = #{rMailtextId,jdbcType=DECIMAL},
+      </if>
+      <if test="versionno != null" >
+        versionno = #{versionno,jdbcType=VARCHAR},
+      </if>
+      <if test="mAttributesetId != null" >
+        m_attributeset_id = #{mAttributesetId,jdbcType=DECIMAL},
+      </if>
+      <if test="mAttributesetinstanceId != null" >
+        m_attributesetinstance_id = #{mAttributesetinstanceId,jdbcType=DECIMAL},
+      </if>
+      <if test="downloadurl != null" >
+        downloadurl = #{downloadurl,jdbcType=VARCHAR},
+      </if>
+      <if test="mFreightcategoryId != null" >
+        m_freightcategory_id = #{mFreightcategoryId,jdbcType=DECIMAL},
+      </if>
+      <if test="mLocatorId != null" >
+        m_locator_id = #{mLocatorId,jdbcType=DECIMAL},
+      </if>
+      <if test="guaranteedaysmin != null" >
+        guaranteedaysmin = #{guaranteedaysmin,jdbcType=DECIMAL},
+      </if>
+      <if test="iswebstorefeatured != null" >
+        iswebstorefeatured = #{iswebstorefeatured,jdbcType=CHAR},
+      </if>
+      <if test="isselfservice != null" >
+        isselfservice = #{isselfservice,jdbcType=CHAR},
+      </if>
+      <if test="cSubscriptiontypeId != null" >
+        c_subscriptiontype_id = #{cSubscriptiontypeId,jdbcType=DECIMAL},
+      </if>
+      <if test="isdropship != null" >
+        isdropship = #{isdropship,jdbcType=CHAR},
+      </if>
+      <if test="isexcludeautodelivery != null" >
+        isexcludeautodelivery = #{isexcludeautodelivery,jdbcType=CHAR},
+      </if>
+      <if test="group1 != null" >
+        group1 = #{group1,jdbcType=VARCHAR},
+      </if>
+      <if test="group2 != null" >
+        group2 = #{group2,jdbcType=VARCHAR},
+      </if>
+      <if test="istoformule != null" >
+        istoformule = #{istoformule,jdbcType=CHAR},
+      </if>
+      <if test="lowlevel != null" >
+        lowlevel = #{lowlevel,jdbcType=DECIMAL},
+      </if>
+      <if test="unitsperpack != null" >
+        unitsperpack = #{unitsperpack,jdbcType=DECIMAL},
+      </if>
+      <if test="discontinuedat != null" >
+        discontinuedat = #{discontinuedat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="copyfrom != null" >
+        copyfrom = #{copyfrom,jdbcType=CHAR},
+      </if>
+      <if test="mParttypeId != null" >
+        m_parttype_id = #{mParttypeId,jdbcType=DECIMAL},
+      </if>
+      <if test="iskanban != null" >
+        iskanban = #{iskanban,jdbcType=CHAR},
+      </if>
+      <if test="ismanufactured != null" >
+        ismanufactured = #{ismanufactured,jdbcType=CHAR},
+      </if>
+      <if test="mProductClassId != null" >
+        m_product_class_id = #{mProductClassId,jdbcType=DECIMAL},
+      </if>
+      <if test="mProductGroupId != null" >
+        m_product_group_id = #{mProductGroupId,jdbcType=DECIMAL},
+      </if>
+      <if test="mProductClassificationId != null" >
+        m_product_classification_id = #{mProductClassificationId,jdbcType=DECIMAL},
+      </if>
+      <if test="isphantom != null" >
+        isphantom = #{isphantom,jdbcType=CHAR},
+      </if>
+      <if test="lockedFee != null" >
+        locked_fee = #{lockedFee,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="oceanFreight != null" >
+        ocean_freight = #{oceanFreight,jdbcType=DECIMAL},
+      </if>
+      <if test="chargedWeight != null" >
+        charged_weight = #{chargedWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="airFreight != null" >
+        air_freight = #{airFreight,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyBox != null" >
+        qty_box = #{qtyBox,jdbcType=DECIMAL},
+      </if>
+      <if test="fnsku != null" >
+        fnsku = #{fnsku,jdbcType=VARCHAR},
+      </if>
+      <if test="ean != null" >
+        ean = #{ean,jdbcType=VARCHAR},
+      </if>
+      <if test="cCurrencyId != null" >
+        c_currency_id = #{cCurrencyId,jdbcType=DECIMAL},
+      </if>
+      <if test="oboInnerskuId != null" >
+        obo_innersku_id = #{oboInnerskuId,jdbcType=DECIMAL},
+      </if>
+      <if test="boxwidth != null" >
+        boxwidth = #{boxwidth,jdbcType=DECIMAL},
+      </if>
+      <if test="packetwidth != null" >
+        packetwidth = #{packetwidth,jdbcType=DECIMAL},
+      </if>
+      <if test="boxlength != null" >
+        boxlength = #{boxlength,jdbcType=DECIMAL},
+      </if>
+      <if test="packetlength != null" >
+        packetlength = #{packetlength,jdbcType=DECIMAL},
+      </if>
+      <if test="boxheight != null" >
+        boxheight = #{boxheight,jdbcType=DECIMAL},
+      </if>
+      <if test="packetheight != null" >
+        packetheight = #{packetheight,jdbcType=DECIMAL},
+      </if>
+      <if test="oboProductCategory1Id != null" >
+        obo_product_category1_id = #{oboProductCategory1Id,jdbcType=DECIMAL},
+      </if>
+      <if test="moq != null" >
+        moq = #{moq,jdbcType=DECIMAL},
+      </if>
+      <if test="isglobal != null" >
+        isglobal = #{isglobal,jdbcType=CHAR},
+      </if>
+      <if test="boxvolume != null" >
+        boxvolume = #{boxvolume,jdbcType=DECIMAL},
+      </if>
+      <if test="boxweight != null" >
+        boxweight = #{boxweight,jdbcType=DECIMAL},
+      </if>
+      <if test="packetvolume != null" >
+        packetvolume = #{packetvolume,jdbcType=DECIMAL},
+      </if>
+      <if test="packetweight != null" >
+        packetweight = #{packetweight,jdbcType=DECIMAL},
+      </if>
+      <if test="is1byonebrand != null" >
+        is1byonebrand = #{is1byonebrand,jdbcType=CHAR},
+      </if>
+      <if test="customsCode != null" >
+        customs_code = #{customsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialQuality != null" >
+        material_quality = #{materialQuality,jdbcType=VARCHAR},
+      </if>
+      <if test="uses != null" >
+        uses = #{uses,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null" >
+        power = #{power,jdbcType=VARCHAR},
+      </if>
+      <if test="batteryCapacity != null" >
+        battery_capacity = #{batteryCapacity,jdbcType=VARCHAR},
+      </if>
+      <if test="voltage != null" >
+        voltage = #{voltage,jdbcType=VARCHAR},
+      </if>
+      <if test="netWeight != null" >
+        net_weight = #{netWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="grossWeight != null" >
+        gross_weight = #{grossWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="volumeWeight != null" >
+        volume_weight = #{volumeWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="amazonsku != null" >
+        amazonsku = #{amazonsku,jdbcType=VARCHAR},
+      </if>
+      <if test="width != null" >
+        width = #{width,jdbcType=DECIMAL},
+      </if>
+      <if test="length != null" >
+        length = #{length,jdbcType=DECIMAL},
+      </if>
+      <if test="height != null" >
+        height = #{height,jdbcType=DECIMAL},
+      </if>
+      <if test="customsCategory != null" >
+        customs_category = #{customsCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="holidayOrderedCycle != null" >
+        holiday_ordered_cycle = #{holidayOrderedCycle,jdbcType=DECIMAL},
+      </if>
+      <if test="orderedCycle != null" >
+        ordered_cycle = #{orderedCycle,jdbcType=DECIMAL},
+      </if>
+      <if test="issellingwell != null" >
+        issellingwell = #{issellingwell,jdbcType=CHAR},
+      </if>
+      <if test="planningTime != null" >
+        planning_time = #{planningTime,jdbcType=DECIMAL},
+      </if>
+      <if test="shippingTime != null" >
+        shipping_time = #{shippingTime,jdbcType=DECIMAL},
+      </if>
+      <if test="datedelivery != null" >
+        datedelivery = #{datedelivery,jdbcType=DECIMAL},
+      </if>
+      <if test="shiptype != null" >
+        shiptype = #{shiptype,jdbcType=VARCHAR},
+      </if>
+      <if test="iscombination != null" >
+        iscombination = #{iscombination,jdbcType=CHAR},
+      </if>
+      <if test="makeuprate != null" >
+        makeuprate = #{makeuprate,jdbcType=DECIMAL},
+      </if>
+      <if test="originalPlace != null" >
+        original_place = #{originalPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="declarationElements != null" >
+        declaration_elements = #{declarationElements,jdbcType=VARCHAR},
+      </if>
+      <if test="costingmethod != null" >
+        costingmethod = #{costingmethod,jdbcType=CHAR},
+      </if>
+      <if test="pricetaxincluded != null" >
+        pricetaxincluded = #{pricetaxincluded,jdbcType=DECIMAL},
+      </if>
+      <if test="price1 != null" >
+        price1 = #{price1,jdbcType=DECIMAL},
+      </if>
+      <if test="price2 != null" >
+        price2 = #{price2,jdbcType=DECIMAL},
+      </if>
+      <if test="price3 != null" >
+        price3 = #{price3,jdbcType=DECIMAL},
+      </if>
+      <if test="price4 != null" >
+        price4 = #{price4,jdbcType=DECIMAL},
+      </if>
+      <if test="price5 != null" >
+        price5 = #{price5,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyFcl != null" >
+        qty_fcl = #{qtyFcl,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverydays != null" >
+        deliverydays = #{deliverydays,jdbcType=DECIMAL},
+      </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=DECIMAL},
+      </if>
+      <if test="barcode != null" >
+        barcode = #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="salestatus != null" >
+        salestatus = #{salestatus,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="amazonsize != null" >
+        amazonsize = #{amazonsize,jdbcType=VARCHAR},
+      </if>
+      <if test="pregoodsdays != null" >
+        pregoodsdays = #{pregoodsdays,jdbcType=DECIMAL},
+      </if>
+      <if test="onshelvesdate != null" >
+        onshelvesdate = #{onshelvesdate,jdbcType=DECIMAL},
+      </if>
+      <if test="cProjectId != null" >
+        c_project_id = #{cProjectId,jdbcType=DECIMAL},
+      </if>
+      <if test="itemType != null" >
+        item_type = #{itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="feedProductType != null" >
+        feed_product_type = #{feedProductType,jdbcType=VARCHAR},
+      </if>
+      <if test="partNumber != null" >
+        part_number = #{partNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null" >
+        model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="externalProduct != null" >
+        external_product = #{externalProduct,jdbcType=DECIMAL},
+      </if>
+      <if test="externalProductIdType != null" >
+        external_product_id_type = #{externalProductIdType,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturer != null" >
+        manufacturer = #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null" >
+        brand_name = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="productTaxCode != null" >
+        product_tax_code = #{productTaxCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fulfillmentCenterId != null" >
+        fulfillment_center_id = #{fulfillmentCenterId,jdbcType=DECIMAL},
+      </if>
+      <if test="conditionType != null" >
+        condition_type = #{conditionType,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDelete != null" >
+        update_delete = #{updateDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="mainImageUrl != null" >
+        main_image_url = #{mainImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="otherImageUrl1 != null" >
+        other_image_url1 = #{otherImageUrl1,jdbcType=VARCHAR},
+      </if>
+      <if test="otherImageUrl2 != null" >
+        other_image_url2 = #{otherImageUrl2,jdbcType=VARCHAR},
+      </if>
+      <if test="otherImageUrl3 != null" >
+        other_image_url3 = #{otherImageUrl3,jdbcType=VARCHAR},
+      </if>
+      <if test="otherImageUrl4 != null" >
+        other_image_url4 = #{otherImageUrl4,jdbcType=VARCHAR},
+      </if>
+      <if test="otherImageUrl5 != null" >
+        other_image_url5 = #{otherImageUrl5,jdbcType=VARCHAR},
+      </if>
+      <if test="otherImageUrl6 != null" >
+        other_image_url6 = #{otherImageUrl6,jdbcType=VARCHAR},
+      </if>
+      <if test="otherImageUrl7 != null" >
+        other_image_url7 = #{otherImageUrl7,jdbcType=VARCHAR},
+      </if>
+      <if test="otherImageUrl8 != null" >
+        other_image_url8 = #{otherImageUrl8,jdbcType=VARCHAR},
+      </if>
+      <if test="video != null" >
+        video = #{video,jdbcType=VARCHAR},
+      </if>
+      <if test="instruction != null" >
+        instruction = #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="driver != null" >
+        driver = #{driver,jdbcType=VARCHAR},
+      </if>
+      <if test="listPrice != null" >
+        list_price = #{listPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="standardPrice != null" >
+        standard_price = #{standardPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="salePrice != null" >
+        sale_price = #{salePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="fbaFee != null" >
+        fba_fee = #{fbaFee,jdbcType=DECIMAL},
+      </if>
+      <if test="saleFromDate != null" >
+        sale_from_date = #{saleFromDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saleEndDate != null" >
+        sale_end_date = #{saleEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemWeight != null" >
+        item_weight = #{itemWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="itemWeightUnitOfMeasure != null" >
+        item_weight_unit_of_measure = #{itemWeightUnitOfMeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="itemLength != null" >
+        item_length = #{itemLength,jdbcType=DECIMAL},
+      </if>
+      <if test="itemWidth != null" >
+        item_width = #{itemWidth,jdbcType=DECIMAL},
+      </if>
+      <if test="itemHeight != null" >
+        item_height = #{itemHeight,jdbcType=DECIMAL},
+      </if>
+      <if test="itemLengthUnitOfMeasure != null" >
+        item_length_unit_of_measure = #{itemLengthUnitOfMeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="packageWeight != null" >
+        package_weight = #{packageWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="packageWeightUnitOfMeasure != null" >
+        package_weight_unit_of_measure = #{packageWeightUnitOfMeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="packageLength != null" >
+        package_length = #{packageLength,jdbcType=DECIMAL},
+      </if>
+      <if test="packageWidth != null" >
+        package_width = #{packageWidth,jdbcType=DECIMAL},
+      </if>
+      <if test="packageHeight != null" >
+        package_height = #{packageHeight,jdbcType=DECIMAL},
+      </if>
+      <if test="packageLengthUnitOfMeasure != null" >
+        package_length_unit_of_measure = #{packageLengthUnitOfMeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="outPackageLength != null" >
+        out_package_length = #{outPackageLength,jdbcType=DECIMAL},
+      </if>
+      <if test="outPackageWidth != null" >
+        out_package_width = #{outPackageWidth,jdbcType=DECIMAL},
+      </if>
+      <if test="outPackageHeight != null" >
+        out_package_height = #{outPackageHeight,jdbcType=DECIMAL},
+      </if>
+      <if test="outPackageLengthUnit != null" >
+        out_package_length_unit = #{outPackageLengthUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="outPackageQuantity != null" >
+        out_package_quantity = #{outPackageQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="outPackageWeight != null" >
+        out_package_weight = #{outPackageWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="outPackageWeightUnit != null" >
+        out_package_weight_unit = #{outPackageWeightUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null" >
+        quantity = #{quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="maxOrderQuantity != null" >
+        max_order_quantity = #{maxOrderQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="webName != null" >
+        web_name = #{webName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null" >
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentChild != null" >
+        parent_child = #{parentChild,jdbcType=VARCHAR},
+      </if>
+      <if test="parentSku != null" >
+        parent_sku = #{parentSku,jdbcType=VARCHAR},
+      </if>
+      <if test="variationTheme != null" >
+        variation_theme = #{variationTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="sizeName != null" >
+        size_name = #{sizeName,jdbcType=VARCHAR},
+      </if>
+      <if test="sizeMap != null" >
+        size_map = #{sizeMap,jdbcType=VARCHAR},
+      </if>
+      <if test="colorName != null" >
+        color_name = #{colorName,jdbcType=VARCHAR},
+      </if>
+      <if test="colorMap != null" >
+        color_map = #{colorMap,jdbcType=VARCHAR},
+      </if>
+      <if test="styleName != null" >
+        style_name = #{styleName,jdbcType=VARCHAR},
+      </if>
+      <if test="patternName != null" >
+        pattern_name = #{patternName,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteVariation != null" >
+        website_variation = #{websiteVariation,jdbcType=VARCHAR},
+      </if>
+      <if test="mainSku != null" >
+        main_sku = #{mainSku,jdbcType=VARCHAR},
+      </if>
+      <if test="templateId != null" >
+        template_id = #{templateId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemStatus != null" >
+        item_status = #{itemStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="template != null" >
+        template = #{template,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="asin != null" >
+        asin = #{asin,jdbcType=VARCHAR},
+      </if>
+      <if test="isseasonal != null" >
+        isseasonal = #{isseasonal,jdbcType=CHAR},
+      </if>
+      <if test="englishname != null" >
+        englishname = #{englishname,jdbcType=VARCHAR},
+      </if>
+      <if test="airexpress != null" >
+        airexpress = #{airexpress,jdbcType=DECIMAL},
+      </if>
+      <if test="airshipping != null" >
+        airshipping = #{airshipping,jdbcType=DECIMAL},
+      </if>
+      <if test="dragonshipping != null" >
+        dragonshipping = #{dragonshipping,jdbcType=DECIMAL},
+      </if>
+      <if test="seashipping != null" >
+        seashipping = #{seashipping,jdbcType=DECIMAL},
+      </if>
+      <if test="landshipping != null" >
+        landshipping = #{landshipping,jdbcType=DECIMAL},
+      </if>
+      <if test="currency != null" >
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="catName != null" >
+        cat_name = #{catName,jdbcType=VARCHAR},
+      </if>
+      <if test="poorgId != null" >
+        poorg_id = #{poorgId,jdbcType=DECIMAL},
+      </if>
+      <if test="documentnote != null" >
+        documentnote = #{documentnote,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="help != null" >
+        help = #{help,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bulletPoint1 != null" >
+        bullet_point1 = #{bulletPoint1,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bulletPoint2 != null" >
+        bullet_point2 = #{bulletPoint2,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bulletPoint3 != null" >
+        bullet_point3 = #{bulletPoint3,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bulletPoint4 != null" >
+        bullet_point4 = #{bulletPoint4,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bulletPoint5 != null" >
+        bullet_point5 = #{bulletPoint5,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="genericKeywords1 != null" >
+        generic_keywords1 = #{genericKeywords1,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="genericKeywords2 != null" >
+        generic_keywords2 = #{genericKeywords2,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="genericKeywords3 != null" >
+        generic_keywords3 = #{genericKeywords3,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="genericKeywords4 != null" >
+        generic_keywords4 = #{genericKeywords4,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="genericKeywords5 != null" >
+        generic_keywords5 = #{genericKeywords5,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="targetAudienceKeywords != null" >
+        target_audience_keywords = #{targetAudienceKeywords,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="productDescription != null" >
+        product_description = #{productDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="moreDetails != null" >
+        more_details = #{moreDetails,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="pojo.MProductWithBLOBs" >
+    update m_product
+    set ad_client_id = #{adClientId,jdbcType=DECIMAL},
+      ad_org_id = #{adOrgId,jdbcType=DECIMAL},
+      isactive = #{isactive,jdbcType=CHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      createdby = #{createdby,jdbcType=DECIMAL},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      updatedby = #{updatedby,jdbcType=DECIMAL},
+      value = #{value,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      upc = #{upc,jdbcType=VARCHAR},
+      sku = #{sku,jdbcType=VARCHAR},
+      c_uom_id = #{cUomId,jdbcType=DECIMAL},
+      salesrep_id = #{salesrepId,jdbcType=DECIMAL},
+      issummary = #{issummary,jdbcType=CHAR},
+      isstocked = #{isstocked,jdbcType=CHAR},
+      ispurchased = #{ispurchased,jdbcType=CHAR},
+      issold = #{issold,jdbcType=CHAR},
+      isbom = #{isbom,jdbcType=CHAR},
+      isinvoiceprintdetails = #{isinvoiceprintdetails,jdbcType=CHAR},
+      ispicklistprintdetails = #{ispicklistprintdetails,jdbcType=CHAR},
+      isverified = #{isverified,jdbcType=CHAR},
+      c_revenuerecognition_id = #{cRevenuerecognitionId,jdbcType=DECIMAL},
+      m_product_category_id = #{mProductCategoryId,jdbcType=DECIMAL},
+      classification = #{classification,jdbcType=VARCHAR},
+      volume = #{volume,jdbcType=DECIMAL},
+      weight = #{weight,jdbcType=DECIMAL},
+      shelfwidth = #{shelfwidth,jdbcType=DECIMAL},
+      shelfheight = #{shelfheight,jdbcType=DECIMAL},
+      shelfdepth = #{shelfdepth,jdbcType=DECIMAL},
+      unitsperpallet = #{unitsperpallet,jdbcType=DECIMAL},
+      c_taxcategory_id = #{cTaxcategoryId,jdbcType=DECIMAL},
+      s_resource_id = #{sResourceId,jdbcType=DECIMAL},
+      discontinued = #{discontinued,jdbcType=CHAR},
+      discontinuedby = #{discontinuedby,jdbcType=TIMESTAMP},
+      processing = #{processing,jdbcType=CHAR},
+      s_expensetype_id = #{sExpensetypeId,jdbcType=DECIMAL},
+      producttype = #{producttype,jdbcType=CHAR},
+      imageurl = #{imageurl,jdbcType=VARCHAR},
+      descriptionurl = #{descriptionurl,jdbcType=VARCHAR},
+      guaranteedays = #{guaranteedays,jdbcType=DECIMAL},
+      r_mailtext_id = #{rMailtextId,jdbcType=DECIMAL},
+      versionno = #{versionno,jdbcType=VARCHAR},
+      m_attributeset_id = #{mAttributesetId,jdbcType=DECIMAL},
+      m_attributesetinstance_id = #{mAttributesetinstanceId,jdbcType=DECIMAL},
+      downloadurl = #{downloadurl,jdbcType=VARCHAR},
+      m_freightcategory_id = #{mFreightcategoryId,jdbcType=DECIMAL},
+      m_locator_id = #{mLocatorId,jdbcType=DECIMAL},
+      guaranteedaysmin = #{guaranteedaysmin,jdbcType=DECIMAL},
+      iswebstorefeatured = #{iswebstorefeatured,jdbcType=CHAR},
+      isselfservice = #{isselfservice,jdbcType=CHAR},
+      c_subscriptiontype_id = #{cSubscriptiontypeId,jdbcType=DECIMAL},
+      isdropship = #{isdropship,jdbcType=CHAR},
+      isexcludeautodelivery = #{isexcludeautodelivery,jdbcType=CHAR},
+      group1 = #{group1,jdbcType=VARCHAR},
+      group2 = #{group2,jdbcType=VARCHAR},
+      istoformule = #{istoformule,jdbcType=CHAR},
+      lowlevel = #{lowlevel,jdbcType=DECIMAL},
+      unitsperpack = #{unitsperpack,jdbcType=DECIMAL},
+      discontinuedat = #{discontinuedat,jdbcType=TIMESTAMP},
+      copyfrom = #{copyfrom,jdbcType=CHAR},
+      m_parttype_id = #{mParttypeId,jdbcType=DECIMAL},
+      iskanban = #{iskanban,jdbcType=CHAR},
+      ismanufactured = #{ismanufactured,jdbcType=CHAR},
+      m_product_class_id = #{mProductClassId,jdbcType=DECIMAL},
+      m_product_group_id = #{mProductGroupId,jdbcType=DECIMAL},
+      m_product_classification_id = #{mProductClassificationId,jdbcType=DECIMAL},
+      isphantom = #{isphantom,jdbcType=CHAR},
+      locked_fee = #{lockedFee,jdbcType=DECIMAL},
+      price = #{price,jdbcType=DECIMAL},
+      ocean_freight = #{oceanFreight,jdbcType=DECIMAL},
+      charged_weight = #{chargedWeight,jdbcType=DECIMAL},
+      air_freight = #{airFreight,jdbcType=DECIMAL},
+      qty_box = #{qtyBox,jdbcType=DECIMAL},
+      fnsku = #{fnsku,jdbcType=VARCHAR},
+      ean = #{ean,jdbcType=VARCHAR},
+      c_currency_id = #{cCurrencyId,jdbcType=DECIMAL},
+      obo_innersku_id = #{oboInnerskuId,jdbcType=DECIMAL},
+      boxwidth = #{boxwidth,jdbcType=DECIMAL},
+      packetwidth = #{packetwidth,jdbcType=DECIMAL},
+      boxlength = #{boxlength,jdbcType=DECIMAL},
+      packetlength = #{packetlength,jdbcType=DECIMAL},
+      boxheight = #{boxheight,jdbcType=DECIMAL},
+      packetheight = #{packetheight,jdbcType=DECIMAL},
+      obo_product_category1_id = #{oboProductCategory1Id,jdbcType=DECIMAL},
+      moq = #{moq,jdbcType=DECIMAL},
+      isglobal = #{isglobal,jdbcType=CHAR},
+      boxvolume = #{boxvolume,jdbcType=DECIMAL},
+      boxweight = #{boxweight,jdbcType=DECIMAL},
+      packetvolume = #{packetvolume,jdbcType=DECIMAL},
+      packetweight = #{packetweight,jdbcType=DECIMAL},
+      is1byonebrand = #{is1byonebrand,jdbcType=CHAR},
+      customs_code = #{customsCode,jdbcType=VARCHAR},
+      material_quality = #{materialQuality,jdbcType=VARCHAR},
+      uses = #{uses,jdbcType=VARCHAR},
+      power = #{power,jdbcType=VARCHAR},
+      battery_capacity = #{batteryCapacity,jdbcType=VARCHAR},
+      voltage = #{voltage,jdbcType=VARCHAR},
+      net_weight = #{netWeight,jdbcType=DECIMAL},
+      gross_weight = #{grossWeight,jdbcType=DECIMAL},
+      volume_weight = #{volumeWeight,jdbcType=DECIMAL},
+      amazonsku = #{amazonsku,jdbcType=VARCHAR},
+      width = #{width,jdbcType=DECIMAL},
+      length = #{length,jdbcType=DECIMAL},
+      height = #{height,jdbcType=DECIMAL},
+      customs_category = #{customsCategory,jdbcType=VARCHAR},
+      holiday_ordered_cycle = #{holidayOrderedCycle,jdbcType=DECIMAL},
+      ordered_cycle = #{orderedCycle,jdbcType=DECIMAL},
+      issellingwell = #{issellingwell,jdbcType=CHAR},
+      planning_time = #{planningTime,jdbcType=DECIMAL},
+      shipping_time = #{shippingTime,jdbcType=DECIMAL},
+      datedelivery = #{datedelivery,jdbcType=DECIMAL},
+      shiptype = #{shiptype,jdbcType=VARCHAR},
+      iscombination = #{iscombination,jdbcType=CHAR},
+      makeuprate = #{makeuprate,jdbcType=DECIMAL},
+      original_place = #{originalPlace,jdbcType=VARCHAR},
+      declaration_elements = #{declarationElements,jdbcType=VARCHAR},
+      costingmethod = #{costingmethod,jdbcType=CHAR},
+      pricetaxincluded = #{pricetaxincluded,jdbcType=DECIMAL},
+      price1 = #{price1,jdbcType=DECIMAL},
+      price2 = #{price2,jdbcType=DECIMAL},
+      price3 = #{price3,jdbcType=DECIMAL},
+      price4 = #{price4,jdbcType=DECIMAL},
+      price5 = #{price5,jdbcType=DECIMAL},
+      qty_fcl = #{qtyFcl,jdbcType=VARCHAR},
+      deliverydays = #{deliverydays,jdbcType=DECIMAL},
+      image = #{image,jdbcType=DECIMAL},
+      barcode = #{barcode,jdbcType=VARCHAR},
+      salestatus = #{salestatus,jdbcType=CHAR},
+      status = #{status,jdbcType=CHAR},
+      amazonsize = #{amazonsize,jdbcType=VARCHAR},
+      pregoodsdays = #{pregoodsdays,jdbcType=DECIMAL},
+      onshelvesdate = #{onshelvesdate,jdbcType=DECIMAL},
+      c_project_id = #{cProjectId,jdbcType=DECIMAL},
+      item_type = #{itemType,jdbcType=VARCHAR},
+      feed_product_type = #{feedProductType,jdbcType=VARCHAR},
+      part_number = #{partNumber,jdbcType=VARCHAR},
+      model = #{model,jdbcType=VARCHAR},
+      external_product = #{externalProduct,jdbcType=DECIMAL},
+      external_product_id_type = #{externalProductIdType,jdbcType=VARCHAR},
+      manufacturer = #{manufacturer,jdbcType=VARCHAR},
+      brand_name = #{brandName,jdbcType=VARCHAR},
+      product_tax_code = #{productTaxCode,jdbcType=VARCHAR},
+      fulfillment_center_id = #{fulfillmentCenterId,jdbcType=DECIMAL},
+      condition_type = #{conditionType,jdbcType=VARCHAR},
+      update_delete = #{updateDelete,jdbcType=VARCHAR},
+      main_image_url = #{mainImageUrl,jdbcType=VARCHAR},
+      other_image_url1 = #{otherImageUrl1,jdbcType=VARCHAR},
+      other_image_url2 = #{otherImageUrl2,jdbcType=VARCHAR},
+      other_image_url3 = #{otherImageUrl3,jdbcType=VARCHAR},
+      other_image_url4 = #{otherImageUrl4,jdbcType=VARCHAR},
+      other_image_url5 = #{otherImageUrl5,jdbcType=VARCHAR},
+      other_image_url6 = #{otherImageUrl6,jdbcType=VARCHAR},
+      other_image_url7 = #{otherImageUrl7,jdbcType=VARCHAR},
+      other_image_url8 = #{otherImageUrl8,jdbcType=VARCHAR},
+      video = #{video,jdbcType=VARCHAR},
+      instruction = #{instruction,jdbcType=VARCHAR},
+      driver = #{driver,jdbcType=VARCHAR},
+      list_price = #{listPrice,jdbcType=DECIMAL},
+      standard_price = #{standardPrice,jdbcType=DECIMAL},
+      sale_price = #{salePrice,jdbcType=DECIMAL},
+      fba_fee = #{fbaFee,jdbcType=DECIMAL},
+      sale_from_date = #{saleFromDate,jdbcType=TIMESTAMP},
+      sale_end_date = #{saleEndDate,jdbcType=TIMESTAMP},
+      item_weight = #{itemWeight,jdbcType=DECIMAL},
+      item_weight_unit_of_measure = #{itemWeightUnitOfMeasure,jdbcType=VARCHAR},
+      item_length = #{itemLength,jdbcType=DECIMAL},
+      item_width = #{itemWidth,jdbcType=DECIMAL},
+      item_height = #{itemHeight,jdbcType=DECIMAL},
+      item_length_unit_of_measure = #{itemLengthUnitOfMeasure,jdbcType=VARCHAR},
+      package_weight = #{packageWeight,jdbcType=DECIMAL},
+      package_weight_unit_of_measure = #{packageWeightUnitOfMeasure,jdbcType=VARCHAR},
+      package_length = #{packageLength,jdbcType=DECIMAL},
+      package_width = #{packageWidth,jdbcType=DECIMAL},
+      package_height = #{packageHeight,jdbcType=DECIMAL},
+      package_length_unit_of_measure = #{packageLengthUnitOfMeasure,jdbcType=VARCHAR},
+      out_package_length = #{outPackageLength,jdbcType=DECIMAL},
+      out_package_width = #{outPackageWidth,jdbcType=DECIMAL},
+      out_package_height = #{outPackageHeight,jdbcType=DECIMAL},
+      out_package_length_unit = #{outPackageLengthUnit,jdbcType=VARCHAR},
+      out_package_quantity = #{outPackageQuantity,jdbcType=DECIMAL},
+      out_package_weight = #{outPackageWeight,jdbcType=DECIMAL},
+      out_package_weight_unit = #{outPackageWeightUnit,jdbcType=VARCHAR},
+      quantity = #{quantity,jdbcType=DECIMAL},
+      max_order_quantity = #{maxOrderQuantity,jdbcType=VARCHAR},
+      web_name = #{webName,jdbcType=VARCHAR},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      parent_child = #{parentChild,jdbcType=VARCHAR},
+      parent_sku = #{parentSku,jdbcType=VARCHAR},
+      variation_theme = #{variationTheme,jdbcType=VARCHAR},
+      size_name = #{sizeName,jdbcType=VARCHAR},
+      size_map = #{sizeMap,jdbcType=VARCHAR},
+      color_name = #{colorName,jdbcType=VARCHAR},
+      color_map = #{colorMap,jdbcType=VARCHAR},
+      style_name = #{styleName,jdbcType=VARCHAR},
+      pattern_name = #{patternName,jdbcType=VARCHAR},
+      website_variation = #{websiteVariation,jdbcType=VARCHAR},
+      main_sku = #{mainSku,jdbcType=VARCHAR},
+      template_id = #{templateId,jdbcType=VARCHAR},
+      item_status = #{itemStatus,jdbcType=VARCHAR},
+      template = #{template,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      asin = #{asin,jdbcType=VARCHAR},
+      isseasonal = #{isseasonal,jdbcType=CHAR},
+      englishname = #{englishname,jdbcType=VARCHAR},
+      airexpress = #{airexpress,jdbcType=DECIMAL},
+      airshipping = #{airshipping,jdbcType=DECIMAL},
+      dragonshipping = #{dragonshipping,jdbcType=DECIMAL},
+      seashipping = #{seashipping,jdbcType=DECIMAL},
+      landshipping = #{landshipping,jdbcType=DECIMAL},
+      currency = #{currency,jdbcType=VARCHAR},
+      cat_name = #{catName,jdbcType=VARCHAR},
+      poorg_id = #{poorgId,jdbcType=DECIMAL},
+      documentnote = #{documentnote,jdbcType=LONGVARCHAR},
+      help = #{help,jdbcType=LONGVARCHAR},
+      bullet_point1 = #{bulletPoint1,jdbcType=LONGVARCHAR},
+      bullet_point2 = #{bulletPoint2,jdbcType=LONGVARCHAR},
+      bullet_point3 = #{bulletPoint3,jdbcType=LONGVARCHAR},
+      bullet_point4 = #{bulletPoint4,jdbcType=LONGVARCHAR},
+      bullet_point5 = #{bulletPoint5,jdbcType=LONGVARCHAR},
+      generic_keywords1 = #{genericKeywords1,jdbcType=LONGVARCHAR},
+      generic_keywords2 = #{genericKeywords2,jdbcType=LONGVARCHAR},
+      generic_keywords3 = #{genericKeywords3,jdbcType=LONGVARCHAR},
+      generic_keywords4 = #{genericKeywords4,jdbcType=LONGVARCHAR},
+      generic_keywords5 = #{genericKeywords5,jdbcType=LONGVARCHAR},
+      target_audience_keywords = #{targetAudienceKeywords,jdbcType=LONGVARCHAR},
+      product_description = #{productDescription,jdbcType=LONGVARCHAR},
+      more_details = #{moreDetails,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.MProduct" >
+    update m_product
+    set ad_client_id = #{adClientId,jdbcType=DECIMAL},
+      ad_org_id = #{adOrgId,jdbcType=DECIMAL},
+      isactive = #{isactive,jdbcType=CHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      createdby = #{createdby,jdbcType=DECIMAL},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      updatedby = #{updatedby,jdbcType=DECIMAL},
+      value = #{value,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      upc = #{upc,jdbcType=VARCHAR},
+      sku = #{sku,jdbcType=VARCHAR},
+      c_uom_id = #{cUomId,jdbcType=DECIMAL},
+      salesrep_id = #{salesrepId,jdbcType=DECIMAL},
+      issummary = #{issummary,jdbcType=CHAR},
+      isstocked = #{isstocked,jdbcType=CHAR},
+      ispurchased = #{ispurchased,jdbcType=CHAR},
+      issold = #{issold,jdbcType=CHAR},
+      isbom = #{isbom,jdbcType=CHAR},
+      isinvoiceprintdetails = #{isinvoiceprintdetails,jdbcType=CHAR},
+      ispicklistprintdetails = #{ispicklistprintdetails,jdbcType=CHAR},
+      isverified = #{isverified,jdbcType=CHAR},
+      c_revenuerecognition_id = #{cRevenuerecognitionId,jdbcType=DECIMAL},
+      m_product_category_id = #{mProductCategoryId,jdbcType=DECIMAL},
+      classification = #{classification,jdbcType=VARCHAR},
+      volume = #{volume,jdbcType=DECIMAL},
+      weight = #{weight,jdbcType=DECIMAL},
+      shelfwidth = #{shelfwidth,jdbcType=DECIMAL},
+      shelfheight = #{shelfheight,jdbcType=DECIMAL},
+      shelfdepth = #{shelfdepth,jdbcType=DECIMAL},
+      unitsperpallet = #{unitsperpallet,jdbcType=DECIMAL},
+      c_taxcategory_id = #{cTaxcategoryId,jdbcType=DECIMAL},
+      s_resource_id = #{sResourceId,jdbcType=DECIMAL},
+      discontinued = #{discontinued,jdbcType=CHAR},
+      discontinuedby = #{discontinuedby,jdbcType=TIMESTAMP},
+      processing = #{processing,jdbcType=CHAR},
+      s_expensetype_id = #{sExpensetypeId,jdbcType=DECIMAL},
+      producttype = #{producttype,jdbcType=CHAR},
+      imageurl = #{imageurl,jdbcType=VARCHAR},
+      descriptionurl = #{descriptionurl,jdbcType=VARCHAR},
+      guaranteedays = #{guaranteedays,jdbcType=DECIMAL},
+      r_mailtext_id = #{rMailtextId,jdbcType=DECIMAL},
+      versionno = #{versionno,jdbcType=VARCHAR},
+      m_attributeset_id = #{mAttributesetId,jdbcType=DECIMAL},
+      m_attributesetinstance_id = #{mAttributesetinstanceId,jdbcType=DECIMAL},
+      downloadurl = #{downloadurl,jdbcType=VARCHAR},
+      m_freightcategory_id = #{mFreightcategoryId,jdbcType=DECIMAL},
+      m_locator_id = #{mLocatorId,jdbcType=DECIMAL},
+      guaranteedaysmin = #{guaranteedaysmin,jdbcType=DECIMAL},
+      iswebstorefeatured = #{iswebstorefeatured,jdbcType=CHAR},
+      isselfservice = #{isselfservice,jdbcType=CHAR},
+      c_subscriptiontype_id = #{cSubscriptiontypeId,jdbcType=DECIMAL},
+      isdropship = #{isdropship,jdbcType=CHAR},
+      isexcludeautodelivery = #{isexcludeautodelivery,jdbcType=CHAR},
+      group1 = #{group1,jdbcType=VARCHAR},
+      group2 = #{group2,jdbcType=VARCHAR},
+      istoformule = #{istoformule,jdbcType=CHAR},
+      lowlevel = #{lowlevel,jdbcType=DECIMAL},
+      unitsperpack = #{unitsperpack,jdbcType=DECIMAL},
+      discontinuedat = #{discontinuedat,jdbcType=TIMESTAMP},
+      copyfrom = #{copyfrom,jdbcType=CHAR},
+      m_parttype_id = #{mParttypeId,jdbcType=DECIMAL},
+      iskanban = #{iskanban,jdbcType=CHAR},
+      ismanufactured = #{ismanufactured,jdbcType=CHAR},
+      m_product_class_id = #{mProductClassId,jdbcType=DECIMAL},
+      m_product_group_id = #{mProductGroupId,jdbcType=DECIMAL},
+      m_product_classification_id = #{mProductClassificationId,jdbcType=DECIMAL},
+      isphantom = #{isphantom,jdbcType=CHAR},
+      locked_fee = #{lockedFee,jdbcType=DECIMAL},
+      price = #{price,jdbcType=DECIMAL},
+      ocean_freight = #{oceanFreight,jdbcType=DECIMAL},
+      charged_weight = #{chargedWeight,jdbcType=DECIMAL},
+      air_freight = #{airFreight,jdbcType=DECIMAL},
+      qty_box = #{qtyBox,jdbcType=DECIMAL},
+      fnsku = #{fnsku,jdbcType=VARCHAR},
+      ean = #{ean,jdbcType=VARCHAR},
+      c_currency_id = #{cCurrencyId,jdbcType=DECIMAL},
+      obo_innersku_id = #{oboInnerskuId,jdbcType=DECIMAL},
+      boxwidth = #{boxwidth,jdbcType=DECIMAL},
+      packetwidth = #{packetwidth,jdbcType=DECIMAL},
+      boxlength = #{boxlength,jdbcType=DECIMAL},
+      packetlength = #{packetlength,jdbcType=DECIMAL},
+      boxheight = #{boxheight,jdbcType=DECIMAL},
+      packetheight = #{packetheight,jdbcType=DECIMAL},
+      obo_product_category1_id = #{oboProductCategory1Id,jdbcType=DECIMAL},
+      moq = #{moq,jdbcType=DECIMAL},
+      isglobal = #{isglobal,jdbcType=CHAR},
+      boxvolume = #{boxvolume,jdbcType=DECIMAL},
+      boxweight = #{boxweight,jdbcType=DECIMAL},
+      packetvolume = #{packetvolume,jdbcType=DECIMAL},
+      packetweight = #{packetweight,jdbcType=DECIMAL},
+      is1byonebrand = #{is1byonebrand,jdbcType=CHAR},
+      customs_code = #{customsCode,jdbcType=VARCHAR},
+      material_quality = #{materialQuality,jdbcType=VARCHAR},
+      uses = #{uses,jdbcType=VARCHAR},
+      power = #{power,jdbcType=VARCHAR},
+      battery_capacity = #{batteryCapacity,jdbcType=VARCHAR},
+      voltage = #{voltage,jdbcType=VARCHAR},
+      net_weight = #{netWeight,jdbcType=DECIMAL},
+      gross_weight = #{grossWeight,jdbcType=DECIMAL},
+      volume_weight = #{volumeWeight,jdbcType=DECIMAL},
+      amazonsku = #{amazonsku,jdbcType=VARCHAR},
+      width = #{width,jdbcType=DECIMAL},
+      length = #{length,jdbcType=DECIMAL},
+      height = #{height,jdbcType=DECIMAL},
+      customs_category = #{customsCategory,jdbcType=VARCHAR},
+      holiday_ordered_cycle = #{holidayOrderedCycle,jdbcType=DECIMAL},
+      ordered_cycle = #{orderedCycle,jdbcType=DECIMAL},
+      issellingwell = #{issellingwell,jdbcType=CHAR},
+      planning_time = #{planningTime,jdbcType=DECIMAL},
+      shipping_time = #{shippingTime,jdbcType=DECIMAL},
+      datedelivery = #{datedelivery,jdbcType=DECIMAL},
+      shiptype = #{shiptype,jdbcType=VARCHAR},
+      iscombination = #{iscombination,jdbcType=CHAR},
+      makeuprate = #{makeuprate,jdbcType=DECIMAL},
+      original_place = #{originalPlace,jdbcType=VARCHAR},
+      declaration_elements = #{declarationElements,jdbcType=VARCHAR},
+      costingmethod = #{costingmethod,jdbcType=CHAR},
+      pricetaxincluded = #{pricetaxincluded,jdbcType=DECIMAL},
+      price1 = #{price1,jdbcType=DECIMAL},
+      price2 = #{price2,jdbcType=DECIMAL},
+      price3 = #{price3,jdbcType=DECIMAL},
+      price4 = #{price4,jdbcType=DECIMAL},
+      price5 = #{price5,jdbcType=DECIMAL},
+      qty_fcl = #{qtyFcl,jdbcType=VARCHAR},
+      deliverydays = #{deliverydays,jdbcType=DECIMAL},
+      image = #{image,jdbcType=DECIMAL},
+      barcode = #{barcode,jdbcType=VARCHAR},
+      salestatus = #{salestatus,jdbcType=CHAR},
+      status = #{status,jdbcType=CHAR},
+      amazonsize = #{amazonsize,jdbcType=VARCHAR},
+      pregoodsdays = #{pregoodsdays,jdbcType=DECIMAL},
+      onshelvesdate = #{onshelvesdate,jdbcType=DECIMAL},
+      c_project_id = #{cProjectId,jdbcType=DECIMAL},
+      item_type = #{itemType,jdbcType=VARCHAR},
+      feed_product_type = #{feedProductType,jdbcType=VARCHAR},
+      part_number = #{partNumber,jdbcType=VARCHAR},
+      model = #{model,jdbcType=VARCHAR},
+      external_product = #{externalProduct,jdbcType=DECIMAL},
+      external_product_id_type = #{externalProductIdType,jdbcType=VARCHAR},
+      manufacturer = #{manufacturer,jdbcType=VARCHAR},
+      brand_name = #{brandName,jdbcType=VARCHAR},
+      product_tax_code = #{productTaxCode,jdbcType=VARCHAR},
+      fulfillment_center_id = #{fulfillmentCenterId,jdbcType=DECIMAL},
+      condition_type = #{conditionType,jdbcType=VARCHAR},
+      update_delete = #{updateDelete,jdbcType=VARCHAR},
+      main_image_url = #{mainImageUrl,jdbcType=VARCHAR},
+      other_image_url1 = #{otherImageUrl1,jdbcType=VARCHAR},
+      other_image_url2 = #{otherImageUrl2,jdbcType=VARCHAR},
+      other_image_url3 = #{otherImageUrl3,jdbcType=VARCHAR},
+      other_image_url4 = #{otherImageUrl4,jdbcType=VARCHAR},
+      other_image_url5 = #{otherImageUrl5,jdbcType=VARCHAR},
+      other_image_url6 = #{otherImageUrl6,jdbcType=VARCHAR},
+      other_image_url7 = #{otherImageUrl7,jdbcType=VARCHAR},
+      other_image_url8 = #{otherImageUrl8,jdbcType=VARCHAR},
+      video = #{video,jdbcType=VARCHAR},
+      instruction = #{instruction,jdbcType=VARCHAR},
+      driver = #{driver,jdbcType=VARCHAR},
+      list_price = #{listPrice,jdbcType=DECIMAL},
+      standard_price = #{standardPrice,jdbcType=DECIMAL},
+      sale_price = #{salePrice,jdbcType=DECIMAL},
+      fba_fee = #{fbaFee,jdbcType=DECIMAL},
+      sale_from_date = #{saleFromDate,jdbcType=TIMESTAMP},
+      sale_end_date = #{saleEndDate,jdbcType=TIMESTAMP},
+      item_weight = #{itemWeight,jdbcType=DECIMAL},
+      item_weight_unit_of_measure = #{itemWeightUnitOfMeasure,jdbcType=VARCHAR},
+      item_length = #{itemLength,jdbcType=DECIMAL},
+      item_width = #{itemWidth,jdbcType=DECIMAL},
+      item_height = #{itemHeight,jdbcType=DECIMAL},
+      item_length_unit_of_measure = #{itemLengthUnitOfMeasure,jdbcType=VARCHAR},
+      package_weight = #{packageWeight,jdbcType=DECIMAL},
+      package_weight_unit_of_measure = #{packageWeightUnitOfMeasure,jdbcType=VARCHAR},
+      package_length = #{packageLength,jdbcType=DECIMAL},
+      package_width = #{packageWidth,jdbcType=DECIMAL},
+      package_height = #{packageHeight,jdbcType=DECIMAL},
+      package_length_unit_of_measure = #{packageLengthUnitOfMeasure,jdbcType=VARCHAR},
+      out_package_length = #{outPackageLength,jdbcType=DECIMAL},
+      out_package_width = #{outPackageWidth,jdbcType=DECIMAL},
+      out_package_height = #{outPackageHeight,jdbcType=DECIMAL},
+      out_package_length_unit = #{outPackageLengthUnit,jdbcType=VARCHAR},
+      out_package_quantity = #{outPackageQuantity,jdbcType=DECIMAL},
+      out_package_weight = #{outPackageWeight,jdbcType=DECIMAL},
+      out_package_weight_unit = #{outPackageWeightUnit,jdbcType=VARCHAR},
+      quantity = #{quantity,jdbcType=DECIMAL},
+      max_order_quantity = #{maxOrderQuantity,jdbcType=VARCHAR},
+      web_name = #{webName,jdbcType=VARCHAR},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      parent_child = #{parentChild,jdbcType=VARCHAR},
+      parent_sku = #{parentSku,jdbcType=VARCHAR},
+      variation_theme = #{variationTheme,jdbcType=VARCHAR},
+      size_name = #{sizeName,jdbcType=VARCHAR},
+      size_map = #{sizeMap,jdbcType=VARCHAR},
+      color_name = #{colorName,jdbcType=VARCHAR},
+      color_map = #{colorMap,jdbcType=VARCHAR},
+      style_name = #{styleName,jdbcType=VARCHAR},
+      pattern_name = #{patternName,jdbcType=VARCHAR},
+      website_variation = #{websiteVariation,jdbcType=VARCHAR},
+      main_sku = #{mainSku,jdbcType=VARCHAR},
+      template_id = #{templateId,jdbcType=VARCHAR},
+      item_status = #{itemStatus,jdbcType=VARCHAR},
+      template = #{template,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      asin = #{asin,jdbcType=VARCHAR},
+      isseasonal = #{isseasonal,jdbcType=CHAR},
+      englishname = #{englishname,jdbcType=VARCHAR},
+      airexpress = #{airexpress,jdbcType=DECIMAL},
+      airshipping = #{airshipping,jdbcType=DECIMAL},
+      dragonshipping = #{dragonshipping,jdbcType=DECIMAL},
+      seashipping = #{seashipping,jdbcType=DECIMAL},
+      landshipping = #{landshipping,jdbcType=DECIMAL},
+      currency = #{currency,jdbcType=VARCHAR},
+      cat_name = #{catName,jdbcType=VARCHAR},
+      poorg_id = #{poorgId,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

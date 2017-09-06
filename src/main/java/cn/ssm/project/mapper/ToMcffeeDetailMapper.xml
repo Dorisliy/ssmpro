@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.ToMcffeeDetailMapper" >
+  <resultMap id="BaseResultMap" type="pojo.ToMcffeeDetail" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="CREATED_AT" property="createdAt" jdbcType="INTEGER" />
+    <result column="CREATED_ID" property="createdId" jdbcType="INTEGER" />
+    <result column="UPDATED_AT" property="updatedAt" jdbcType="INTEGER" />
+    <result column="UPDATED_ID" property="updatedId" jdbcType="INTEGER" />
+    <result column="ISACTIVE" property="isactive" jdbcType="CHAR" />
+    <result column="STATE" property="state" jdbcType="CHAR" />
+    <result column="RULE_ID" property="ruleId" jdbcType="INTEGER" />
+    <result column="LINE" property="line" jdbcType="INTEGER" />
+    <result column="LENGTH_MAX" property="lengthMax" jdbcType="DECIMAL" />
+    <result column="WIDTH_MAX" property="widthMax" jdbcType="DECIMAL" />
+    <result column="HEIGHT_MAX" property="heightMax" jdbcType="DECIMAL" />
+    <result column="LENGTH_ADDWMAX" property="lengthAddwmax" jdbcType="DECIMAL" />
+    <result column="WEIGHT_MAX" property="weightMax" jdbcType="DECIMAL" />
+    <result column="DIAGONAL_MAX" property="diagonalMax" jdbcType="DECIMAL" />
+    <result column="PACKAGE_TYPE" property="packageType" jdbcType="VARCHAR" />
+    <result column="PACKAGE_WEIGHT" property="packageWeight" jdbcType="DECIMAL" />
+    <result column="YKG" property="ykg" jdbcType="DECIMAL" />
+    <result column="YKG_PRICE_SHIP" property="ykgPriceShip" jdbcType="DECIMAL" />
+    <result column="YKG_PRICE_EXP" property="ykgPriceExp" jdbcType="DECIMAL" />
+    <result column="YKG_PRICE_PRI" property="ykgPricePri" jdbcType="DECIMAL" />
+    <result column="OVERWEIGHT_NUM" property="overweightNum" jdbcType="DECIMAL" />
+    <result column="OVERWEIGHT_PRICE_SHIP" property="overweightPriceShip" jdbcType="DECIMAL" />
+    <result column="OVERWEIGHT_PRICE_EXP" property="overweightPriceExp" jdbcType="DECIMAL" />
+    <result column="OVERWEIGHT_PRICE_PRI" property="overweightPricePri" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, CREATED_AT, CREATED_ID, UPDATED_AT, UPDATED_ID, ISACTIVE, STATE, RULE_ID, LINE, 
+    LENGTH_MAX, WIDTH_MAX, HEIGHT_MAX, LENGTH_ADDWMAX, WEIGHT_MAX, DIAGONAL_MAX, PACKAGE_TYPE, 
+    PACKAGE_WEIGHT, YKG, YKG_PRICE_SHIP, YKG_PRICE_EXP, YKG_PRICE_PRI, OVERWEIGHT_NUM, 
+    OVERWEIGHT_PRICE_SHIP, OVERWEIGHT_PRICE_EXP, OVERWEIGHT_PRICE_PRI
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pojo.ToMcffeeDetailExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from to_mcffee_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from to_mcffee_detail
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from to_mcffee_detail
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pojo.ToMcffeeDetailExample" >
+    delete from to_mcffee_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pojo.ToMcffeeDetail" >
+    insert into to_mcffee_detail (ID, CREATED_AT, CREATED_ID, 
+      UPDATED_AT, UPDATED_ID, ISACTIVE, 
+      STATE, RULE_ID, LINE, LENGTH_MAX, 
+      WIDTH_MAX, HEIGHT_MAX, LENGTH_ADDWMAX, 
+      WEIGHT_MAX, DIAGONAL_MAX, PACKAGE_TYPE, 
+      PACKAGE_WEIGHT, YKG, YKG_PRICE_SHIP, 
+      YKG_PRICE_EXP, YKG_PRICE_PRI, OVERWEIGHT_NUM, 
+      OVERWEIGHT_PRICE_SHIP, OVERWEIGHT_PRICE_EXP, 
+      OVERWEIGHT_PRICE_PRI)
+    values (#{id,jdbcType=INTEGER}, #{createdAt,jdbcType=INTEGER}, #{createdId,jdbcType=INTEGER}, 
+      #{updatedAt,jdbcType=INTEGER}, #{updatedId,jdbcType=INTEGER}, #{isactive,jdbcType=CHAR}, 
+      #{state,jdbcType=CHAR}, #{ruleId,jdbcType=INTEGER}, #{line,jdbcType=INTEGER}, #{lengthMax,jdbcType=DECIMAL}, 
+      #{widthMax,jdbcType=DECIMAL}, #{heightMax,jdbcType=DECIMAL}, #{lengthAddwmax,jdbcType=DECIMAL}, 
+      #{weightMax,jdbcType=DECIMAL}, #{diagonalMax,jdbcType=DECIMAL}, #{packageType,jdbcType=VARCHAR}, 
+      #{packageWeight,jdbcType=DECIMAL}, #{ykg,jdbcType=DECIMAL}, #{ykgPriceShip,jdbcType=DECIMAL}, 
+      #{ykgPriceExp,jdbcType=DECIMAL}, #{ykgPricePri,jdbcType=DECIMAL}, #{overweightNum,jdbcType=DECIMAL}, 
+      #{overweightPriceShip,jdbcType=DECIMAL}, #{overweightPriceExp,jdbcType=DECIMAL}, 
+      #{overweightPricePri,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.ToMcffeeDetail" >
+    insert into to_mcffee_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="createdAt != null" >
+        CREATED_AT,
+      </if>
+      <if test="createdId != null" >
+        CREATED_ID,
+      </if>
+      <if test="updatedAt != null" >
+        UPDATED_AT,
+      </if>
+      <if test="updatedId != null" >
+        UPDATED_ID,
+      </if>
+      <if test="isactive != null" >
+        ISACTIVE,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="ruleId != null" >
+        RULE_ID,
+      </if>
+      <if test="line != null" >
+        LINE,
+      </if>
+      <if test="lengthMax != null" >
+        LENGTH_MAX,
+      </if>
+      <if test="widthMax != null" >
+        WIDTH_MAX,
+      </if>
+      <if test="heightMax != null" >
+        HEIGHT_MAX,
+      </if>
+      <if test="lengthAddwmax != null" >
+        LENGTH_ADDWMAX,
+      </if>
+      <if test="weightMax != null" >
+        WEIGHT_MAX,
+      </if>
+      <if test="diagonalMax != null" >
+        DIAGONAL_MAX,
+      </if>
+      <if test="packageType != null" >
+        PACKAGE_TYPE,
+      </if>
+      <if test="packageWeight != null" >
+        PACKAGE_WEIGHT,
+      </if>
+      <if test="ykg != null" >
+        YKG,
+      </if>
+      <if test="ykgPriceShip != null" >
+        YKG_PRICE_SHIP,
+      </if>
+      <if test="ykgPriceExp != null" >
+        YKG_PRICE_EXP,
+      </if>
+      <if test="ykgPricePri != null" >
+        YKG_PRICE_PRI,
+      </if>
+      <if test="overweightNum != null" >
+        OVERWEIGHT_NUM,
+      </if>
+      <if test="overweightPriceShip != null" >
+        OVERWEIGHT_PRICE_SHIP,
+      </if>
+      <if test="overweightPriceExp != null" >
+        OVERWEIGHT_PRICE_EXP,
+      </if>
+      <if test="overweightPricePri != null" >
+        OVERWEIGHT_PRICE_PRI,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=INTEGER},
+      </if>
+      <if test="createdId != null" >
+        #{createdId,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt,jdbcType=INTEGER},
+      </if>
+      <if test="updatedId != null" >
+        #{updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="isactive != null" >
+        #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="ruleId != null" >
+        #{ruleId,jdbcType=INTEGER},
+      </if>
+      <if test="line != null" >
+        #{line,jdbcType=INTEGER},
+      </if>
+      <if test="lengthMax != null" >
+        #{lengthMax,jdbcType=DECIMAL},
+      </if>
+      <if test="widthMax != null" >
+        #{widthMax,jdbcType=DECIMAL},
+      </if>
+      <if test="heightMax != null" >
+        #{heightMax,jdbcType=DECIMAL},
+      </if>
+      <if test="lengthAddwmax != null" >
+        #{lengthAddwmax,jdbcType=DECIMAL},
+      </if>
+      <if test="weightMax != null" >
+        #{weightMax,jdbcType=DECIMAL},
+      </if>
+      <if test="diagonalMax != null" >
+        #{diagonalMax,jdbcType=DECIMAL},
+      </if>
+      <if test="packageType != null" >
+        #{packageType,jdbcType=VARCHAR},
+      </if>
+      <if test="packageWeight != null" >
+        #{packageWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="ykg != null" >
+        #{ykg,jdbcType=DECIMAL},
+      </if>
+      <if test="ykgPriceShip != null" >
+        #{ykgPriceShip,jdbcType=DECIMAL},
+      </if>
+      <if test="ykgPriceExp != null" >
+        #{ykgPriceExp,jdbcType=DECIMAL},
+      </if>
+      <if test="ykgPricePri != null" >
+        #{ykgPricePri,jdbcType=DECIMAL},
+      </if>
+      <if test="overweightNum != null" >
+        #{overweightNum,jdbcType=DECIMAL},
+      </if>
+      <if test="overweightPriceShip != null" >
+        #{overweightPriceShip,jdbcType=DECIMAL},
+      </if>
+      <if test="overweightPriceExp != null" >
+        #{overweightPriceExp,jdbcType=DECIMAL},
+      </if>
+      <if test="overweightPricePri != null" >
+        #{overweightPricePri,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pojo.ToMcffeeDetailExample" resultType="java.lang.Integer" >
+    select count(*) from to_mcffee_detail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update to_mcffee_detail
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdAt != null" >
+        CREATED_AT = #{record.createdAt,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdId != null" >
+        CREATED_ID = #{record.createdId,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatedAt != null" >
+        UPDATED_AT = #{record.updatedAt,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatedId != null" >
+        UPDATED_ID = #{record.updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="record.isactive != null" >
+        ISACTIVE = #{record.isactive,jdbcType=CHAR},
+      </if>
+      <if test="record.state != null" >
+        STATE = #{record.state,jdbcType=CHAR},
+      </if>
+      <if test="record.ruleId != null" >
+        RULE_ID = #{record.ruleId,jdbcType=INTEGER},
+      </if>
+      <if test="record.line != null" >
+        LINE = #{record.line,jdbcType=INTEGER},
+      </if>
+      <if test="record.lengthMax != null" >
+        LENGTH_MAX = #{record.lengthMax,jdbcType=DECIMAL},
+      </if>
+      <if test="record.widthMax != null" >
+        WIDTH_MAX = #{record.widthMax,jdbcType=DECIMAL},
+      </if>
+      <if test="record.heightMax != null" >
+        HEIGHT_MAX = #{record.heightMax,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lengthAddwmax != null" >
+        LENGTH_ADDWMAX = #{record.lengthAddwmax,jdbcType=DECIMAL},
+      </if>
+      <if test="record.weightMax != null" >
+        WEIGHT_MAX = #{record.weightMax,jdbcType=DECIMAL},
+      </if>
+      <if test="record.diagonalMax != null" >
+        DIAGONAL_MAX = #{record.diagonalMax,jdbcType=DECIMAL},
+      </if>
+      <if test="record.packageType != null" >
+        PACKAGE_TYPE = #{record.packageType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.packageWeight != null" >
+        PACKAGE_WEIGHT = #{record.packageWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ykg != null" >
+        YKG = #{record.ykg,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ykgPriceShip != null" >
+        YKG_PRICE_SHIP = #{record.ykgPriceShip,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ykgPriceExp != null" >
+        YKG_PRICE_EXP = #{record.ykgPriceExp,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ykgPricePri != null" >
+        YKG_PRICE_PRI = #{record.ykgPricePri,jdbcType=DECIMAL},
+      </if>
+      <if test="record.overweightNum != null" >
+        OVERWEIGHT_NUM = #{record.overweightNum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.overweightPriceShip != null" >
+        OVERWEIGHT_PRICE_SHIP = #{record.overweightPriceShip,jdbcType=DECIMAL},
+      </if>
+      <if test="record.overweightPriceExp != null" >
+        OVERWEIGHT_PRICE_EXP = #{record.overweightPriceExp,jdbcType=DECIMAL},
+      </if>
+      <if test="record.overweightPricePri != null" >
+        OVERWEIGHT_PRICE_PRI = #{record.overweightPricePri,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update to_mcffee_detail
+    set ID = #{record.id,jdbcType=INTEGER},
+      CREATED_AT = #{record.createdAt,jdbcType=INTEGER},
+      CREATED_ID = #{record.createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{record.updatedAt,jdbcType=INTEGER},
+      UPDATED_ID = #{record.updatedId,jdbcType=INTEGER},
+      ISACTIVE = #{record.isactive,jdbcType=CHAR},
+      STATE = #{record.state,jdbcType=CHAR},
+      RULE_ID = #{record.ruleId,jdbcType=INTEGER},
+      LINE = #{record.line,jdbcType=INTEGER},
+      LENGTH_MAX = #{record.lengthMax,jdbcType=DECIMAL},
+      WIDTH_MAX = #{record.widthMax,jdbcType=DECIMAL},
+      HEIGHT_MAX = #{record.heightMax,jdbcType=DECIMAL},
+      LENGTH_ADDWMAX = #{record.lengthAddwmax,jdbcType=DECIMAL},
+      WEIGHT_MAX = #{record.weightMax,jdbcType=DECIMAL},
+      DIAGONAL_MAX = #{record.diagonalMax,jdbcType=DECIMAL},
+      PACKAGE_TYPE = #{record.packageType,jdbcType=VARCHAR},
+      PACKAGE_WEIGHT = #{record.packageWeight,jdbcType=DECIMAL},
+      YKG = #{record.ykg,jdbcType=DECIMAL},
+      YKG_PRICE_SHIP = #{record.ykgPriceShip,jdbcType=DECIMAL},
+      YKG_PRICE_EXP = #{record.ykgPriceExp,jdbcType=DECIMAL},
+      YKG_PRICE_PRI = #{record.ykgPricePri,jdbcType=DECIMAL},
+      OVERWEIGHT_NUM = #{record.overweightNum,jdbcType=DECIMAL},
+      OVERWEIGHT_PRICE_SHIP = #{record.overweightPriceShip,jdbcType=DECIMAL},
+      OVERWEIGHT_PRICE_EXP = #{record.overweightPriceExp,jdbcType=DECIMAL},
+      OVERWEIGHT_PRICE_PRI = #{record.overweightPricePri,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.ToMcffeeDetail" >
+    update to_mcffee_detail
+    <set >
+      <if test="createdAt != null" >
+        CREATED_AT = #{createdAt,jdbcType=INTEGER},
+      </if>
+      <if test="createdId != null" >
+        CREATED_ID = #{createdId,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null" >
+        UPDATED_AT = #{updatedAt,jdbcType=INTEGER},
+      </if>
+      <if test="updatedId != null" >
+        UPDATED_ID = #{updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="isactive != null" >
+        ISACTIVE = #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=CHAR},
+      </if>
+      <if test="ruleId != null" >
+        RULE_ID = #{ruleId,jdbcType=INTEGER},
+      </if>
+      <if test="line != null" >
+        LINE = #{line,jdbcType=INTEGER},
+      </if>
+      <if test="lengthMax != null" >
+        LENGTH_MAX = #{lengthMax,jdbcType=DECIMAL},
+      </if>
+      <if test="widthMax != null" >
+        WIDTH_MAX = #{widthMax,jdbcType=DECIMAL},
+      </if>
+      <if test="heightMax != null" >
+        HEIGHT_MAX = #{heightMax,jdbcType=DECIMAL},
+      </if>
+      <if test="lengthAddwmax != null" >
+        LENGTH_ADDWMAX = #{lengthAddwmax,jdbcType=DECIMAL},
+      </if>
+      <if test="weightMax != null" >
+        WEIGHT_MAX = #{weightMax,jdbcType=DECIMAL},
+      </if>
+      <if test="diagonalMax != null" >
+        DIAGONAL_MAX = #{diagonalMax,jdbcType=DECIMAL},
+      </if>
+      <if test="packageType != null" >
+        PACKAGE_TYPE = #{packageType,jdbcType=VARCHAR},
+      </if>
+      <if test="packageWeight != null" >
+        PACKAGE_WEIGHT = #{packageWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="ykg != null" >
+        YKG = #{ykg,jdbcType=DECIMAL},
+      </if>
+      <if test="ykgPriceShip != null" >
+        YKG_PRICE_SHIP = #{ykgPriceShip,jdbcType=DECIMAL},
+      </if>
+      <if test="ykgPriceExp != null" >
+        YKG_PRICE_EXP = #{ykgPriceExp,jdbcType=DECIMAL},
+      </if>
+      <if test="ykgPricePri != null" >
+        YKG_PRICE_PRI = #{ykgPricePri,jdbcType=DECIMAL},
+      </if>
+      <if test="overweightNum != null" >
+        OVERWEIGHT_NUM = #{overweightNum,jdbcType=DECIMAL},
+      </if>
+      <if test="overweightPriceShip != null" >
+        OVERWEIGHT_PRICE_SHIP = #{overweightPriceShip,jdbcType=DECIMAL},
+      </if>
+      <if test="overweightPriceExp != null" >
+        OVERWEIGHT_PRICE_EXP = #{overweightPriceExp,jdbcType=DECIMAL},
+      </if>
+      <if test="overweightPricePri != null" >
+        OVERWEIGHT_PRICE_PRI = #{overweightPricePri,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.ToMcffeeDetail" >
+    update to_mcffee_detail
+    set CREATED_AT = #{createdAt,jdbcType=INTEGER},
+      CREATED_ID = #{createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{updatedAt,jdbcType=INTEGER},
+      UPDATED_ID = #{updatedId,jdbcType=INTEGER},
+      ISACTIVE = #{isactive,jdbcType=CHAR},
+      STATE = #{state,jdbcType=CHAR},
+      RULE_ID = #{ruleId,jdbcType=INTEGER},
+      LINE = #{line,jdbcType=INTEGER},
+      LENGTH_MAX = #{lengthMax,jdbcType=DECIMAL},
+      WIDTH_MAX = #{widthMax,jdbcType=DECIMAL},
+      HEIGHT_MAX = #{heightMax,jdbcType=DECIMAL},
+      LENGTH_ADDWMAX = #{lengthAddwmax,jdbcType=DECIMAL},
+      WEIGHT_MAX = #{weightMax,jdbcType=DECIMAL},
+      DIAGONAL_MAX = #{diagonalMax,jdbcType=DECIMAL},
+      PACKAGE_TYPE = #{packageType,jdbcType=VARCHAR},
+      PACKAGE_WEIGHT = #{packageWeight,jdbcType=DECIMAL},
+      YKG = #{ykg,jdbcType=DECIMAL},
+      YKG_PRICE_SHIP = #{ykgPriceShip,jdbcType=DECIMAL},
+      YKG_PRICE_EXP = #{ykgPriceExp,jdbcType=DECIMAL},
+      YKG_PRICE_PRI = #{ykgPricePri,jdbcType=DECIMAL},
+      OVERWEIGHT_NUM = #{overweightNum,jdbcType=DECIMAL},
+      OVERWEIGHT_PRICE_SHIP = #{overweightPriceShip,jdbcType=DECIMAL},
+      OVERWEIGHT_PRICE_EXP = #{overweightPriceExp,jdbcType=DECIMAL},
+      OVERWEIGHT_PRICE_PRI = #{overweightPricePri,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

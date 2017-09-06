@@ -1,0 +1,1543 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.COrderLineMapper" >
+  <resultMap id="BaseResultMap" type="pojo.COrderLine" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="ad_client_id" property="adClientId" jdbcType="DECIMAL" />
+    <result column="ad_org_id" property="adOrgId" jdbcType="DECIMAL" />
+    <result column="isactive" property="isactive" jdbcType="CHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="createdby" property="createdby" jdbcType="DECIMAL" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="updatedby" property="updatedby" jdbcType="DECIMAL" />
+    <result column="c_order_id" property="cOrderId" jdbcType="DECIMAL" />
+    <result column="line" property="line" jdbcType="DECIMAL" />
+    <result column="c_bpartner_id" property="cBpartnerId" jdbcType="DECIMAL" />
+    <result column="c_bpartner_location_id" property="cBpartnerLocationId" jdbcType="DECIMAL" />
+    <result column="dateordered" property="dateordered" jdbcType="TIMESTAMP" />
+    <result column="datepromised" property="datepromised" jdbcType="TIMESTAMP" />
+    <result column="datedelivered" property="datedelivered" jdbcType="TIMESTAMP" />
+    <result column="dateinvoiced" property="dateinvoiced" jdbcType="TIMESTAMP" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="m_product_id" property="mProductId" jdbcType="DECIMAL" />
+    <result column="m_warehouse_id" property="mWarehouseId" jdbcType="DECIMAL" />
+    <result column="c_uom_id" property="cUomId" jdbcType="DECIMAL" />
+    <result column="qtyordered" property="qtyordered" jdbcType="DECIMAL" />
+    <result column="qtyreserved" property="qtyreserved" jdbcType="DECIMAL" />
+    <result column="qtydelivered" property="qtydelivered" jdbcType="DECIMAL" />
+    <result column="qtyinvoiced" property="qtyinvoiced" jdbcType="DECIMAL" />
+    <result column="m_shipper_id" property="mShipperId" jdbcType="DECIMAL" />
+    <result column="c_currency_id" property="cCurrencyId" jdbcType="DECIMAL" />
+    <result column="pricelist" property="pricelist" jdbcType="DECIMAL" />
+    <result column="priceactual" property="priceactual" jdbcType="DECIMAL" />
+    <result column="pricelimit" property="pricelimit" jdbcType="DECIMAL" />
+    <result column="linenetamt" property="linenetamt" jdbcType="DECIMAL" />
+    <result column="discount" property="discount" jdbcType="DECIMAL" />
+    <result column="freightamt" property="freightamt" jdbcType="DECIMAL" />
+    <result column="c_charge_id" property="cChargeId" jdbcType="DECIMAL" />
+    <result column="c_tax_id" property="cTaxId" jdbcType="DECIMAL" />
+    <result column="s_resourceassignment_id" property="sResourceassignmentId" jdbcType="DECIMAL" />
+    <result column="ref_orderline_id" property="refOrderlineId" jdbcType="DECIMAL" />
+    <result column="m_attributesetinstance_id" property="mAttributesetinstanceId" jdbcType="DECIMAL" />
+    <result column="isdescription" property="isdescription" jdbcType="CHAR" />
+    <result column="processed" property="processed" jdbcType="CHAR" />
+    <result column="qtyentered" property="qtyentered" jdbcType="DECIMAL" />
+    <result column="priceentered" property="priceentered" jdbcType="DECIMAL" />
+    <result column="c_project_id" property="cProjectId" jdbcType="DECIMAL" />
+    <result column="pricecost" property="pricecost" jdbcType="DECIMAL" />
+    <result column="qtylostsales" property="qtylostsales" jdbcType="DECIMAL" />
+    <result column="c_projectphase_id" property="cProjectphaseId" jdbcType="DECIMAL" />
+    <result column="c_projecttask_id" property="cProjecttaskId" jdbcType="DECIMAL" />
+    <result column="rrstartdate" property="rrstartdate" jdbcType="TIMESTAMP" />
+    <result column="rramt" property="rramt" jdbcType="DECIMAL" />
+    <result column="c_campaign_id" property="cCampaignId" jdbcType="DECIMAL" />
+    <result column="c_activity_id" property="cActivityId" jdbcType="DECIMAL" />
+    <result column="user1_id" property="user1Id" jdbcType="DECIMAL" />
+    <result column="user2_id" property="user2Id" jdbcType="DECIMAL" />
+    <result column="ad_orgtrx_id" property="adOrgtrxId" jdbcType="DECIMAL" />
+    <result column="link_orderline_id" property="linkOrderlineId" jdbcType="DECIMAL" />
+    <result column="pp_cost_collector_id" property="ppCostCollectorId" jdbcType="DECIMAL" />
+    <result column="m_promotion_id" property="mPromotionId" jdbcType="DECIMAL" />
+    <result column="isconsumesforecast" property="isconsumesforecast" jdbcType="CHAR" />
+    <result column="createfrom" property="createfrom" jdbcType="CHAR" />
+    <result column="createshipment" property="createshipment" jdbcType="CHAR" />
+    <result column="amazonasin" property="amazonasin" jdbcType="VARCHAR" />
+    <result column="amazonsku" property="amazonsku" jdbcType="VARCHAR" />
+    <result column="amazonitemstatus" property="amazonitemstatus" jdbcType="VARCHAR" />
+    <result column="amazonproductname" property="amazonproductname" jdbcType="VARCHAR" />
+    <result column="amazonquantity" property="amazonquantity" jdbcType="DECIMAL" />
+    <result column="amazonpromotionid" property="amazonpromotionid" jdbcType="VARCHAR" />
+    <result column="amazonpromotiondiscount" property="amazonpromotiondiscount" jdbcType="DECIMAL" />
+    <result column="itempromotiondiscount" property="itempromotiondiscount" jdbcType="DECIMAL" />
+    <result column="shippromotiondiscount" property="shippromotiondiscount" jdbcType="DECIMAL" />
+    <result column="box_qty" property="boxQty" jdbcType="DECIMAL" />
+    <result column="qty_box" property="qtyBox" jdbcType="DECIMAL" />
+    <result column="taxamt" property="taxamt" jdbcType="DECIMAL" />
+    <result column="chargeamt" property="chargeamt" jdbcType="DECIMAL" />
+    <result column="linetotalamt" property="linetotalamt" jdbcType="DECIMAL" />
+    <result column="boxwidth" property="boxwidth" jdbcType="DECIMAL" />
+    <result column="boxlength" property="boxlength" jdbcType="DECIMAL" />
+    <result column="boxheight" property="boxheight" jdbcType="DECIMAL" />
+    <result column="gross_weight" property="grossWeight" jdbcType="DECIMAL" />
+    <result column="net_weight" property="netWeight" jdbcType="DECIMAL" />
+    <result column="inspectiondate" property="inspectiondate" jdbcType="TIMESTAMP" />
+    <result column="inspectionstatus" property="inspectionstatus" jdbcType="VARCHAR" />
+    <result column="inspectiondescription" property="inspectiondescription" jdbcType="VARCHAR" />
+    <result column="inspector" property="inspector" jdbcType="VARCHAR" />
+    <result column="boxvolume" property="boxvolume" jdbcType="DECIMAL" />
+    <result column="inspectioncontent" property="inspectioncontent" jdbcType="VARCHAR" />
+    <result column="m_fnsku" property="mFnsku" jdbcType="VARCHAR" />
+    <result column="link_product_id" property="linkProductId" jdbcType="DECIMAL" />
+    <result column="qtytransfer" property="qtytransfer" jdbcType="DECIMAL" />
+    <result column="qtyplanfromv" property="qtyplanfromv" jdbcType="DECIMAL" />
+    <result column="qtyplanfromc" property="qtyplanfromc" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, ad_client_id, ad_org_id, isactive, created, createdby, updated, updatedby, c_order_id, 
+    line, c_bpartner_id, c_bpartner_location_id, dateordered, datepromised, datedelivered, 
+    dateinvoiced, description, m_product_id, m_warehouse_id, c_uom_id, qtyordered, qtyreserved, 
+    qtydelivered, qtyinvoiced, m_shipper_id, c_currency_id, pricelist, priceactual, pricelimit, 
+    linenetamt, discount, freightamt, c_charge_id, c_tax_id, s_resourceassignment_id, 
+    ref_orderline_id, m_attributesetinstance_id, isdescription, processed, qtyentered, 
+    priceentered, c_project_id, pricecost, qtylostsales, c_projectphase_id, c_projecttask_id, 
+    rrstartdate, rramt, c_campaign_id, c_activity_id, user1_id, user2_id, ad_orgtrx_id, 
+    link_orderline_id, pp_cost_collector_id, m_promotion_id, isconsumesforecast, createfrom, 
+    createshipment, amazonasin, amazonsku, amazonitemstatus, amazonproductname, amazonquantity, 
+    amazonpromotionid, amazonpromotiondiscount, itempromotiondiscount, shippromotiondiscount, 
+    box_qty, qty_box, taxamt, chargeamt, linetotalamt, boxwidth, boxlength, boxheight, 
+    gross_weight, net_weight, inspectiondate, inspectionstatus, inspectiondescription, 
+    inspector, boxvolume, inspectioncontent, m_fnsku, link_product_id, qtytransfer, qtyplanfromv, 
+    qtyplanfromc
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pojo.COrderLineExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from c_order_line
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from c_order_line
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from c_order_line
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pojo.COrderLineExample" >
+    delete from c_order_line
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pojo.COrderLine" >
+    insert into c_order_line (ID, ad_client_id, ad_org_id, 
+      isactive, created, createdby, 
+      updated, updatedby, c_order_id, 
+      line, c_bpartner_id, c_bpartner_location_id, 
+      dateordered, datepromised, datedelivered, 
+      dateinvoiced, description, m_product_id, 
+      m_warehouse_id, c_uom_id, qtyordered, 
+      qtyreserved, qtydelivered, qtyinvoiced, 
+      m_shipper_id, c_currency_id, pricelist, 
+      priceactual, pricelimit, linenetamt, 
+      discount, freightamt, c_charge_id, 
+      c_tax_id, s_resourceassignment_id, ref_orderline_id, 
+      m_attributesetinstance_id, isdescription, processed, 
+      qtyentered, priceentered, c_project_id, 
+      pricecost, qtylostsales, c_projectphase_id, 
+      c_projecttask_id, rrstartdate, rramt, 
+      c_campaign_id, c_activity_id, user1_id, 
+      user2_id, ad_orgtrx_id, link_orderline_id, 
+      pp_cost_collector_id, m_promotion_id, isconsumesforecast, 
+      createfrom, createshipment, amazonasin, 
+      amazonsku, amazonitemstatus, amazonproductname, 
+      amazonquantity, amazonpromotionid, amazonpromotiondiscount, 
+      itempromotiondiscount, shippromotiondiscount, 
+      box_qty, qty_box, taxamt, 
+      chargeamt, linetotalamt, boxwidth, 
+      boxlength, boxheight, gross_weight, 
+      net_weight, inspectiondate, inspectionstatus, 
+      inspectiondescription, inspector, boxvolume, 
+      inspectioncontent, m_fnsku, link_product_id, 
+      qtytransfer, qtyplanfromv, qtyplanfromc
+      )
+    values (#{id,jdbcType=INTEGER}, #{adClientId,jdbcType=DECIMAL}, #{adOrgId,jdbcType=DECIMAL}, 
+      #{isactive,jdbcType=CHAR}, #{created,jdbcType=TIMESTAMP}, #{createdby,jdbcType=DECIMAL}, 
+      #{updated,jdbcType=TIMESTAMP}, #{updatedby,jdbcType=DECIMAL}, #{cOrderId,jdbcType=DECIMAL}, 
+      #{line,jdbcType=DECIMAL}, #{cBpartnerId,jdbcType=DECIMAL}, #{cBpartnerLocationId,jdbcType=DECIMAL}, 
+      #{dateordered,jdbcType=TIMESTAMP}, #{datepromised,jdbcType=TIMESTAMP}, #{datedelivered,jdbcType=TIMESTAMP}, 
+      #{dateinvoiced,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR}, #{mProductId,jdbcType=DECIMAL}, 
+      #{mWarehouseId,jdbcType=DECIMAL}, #{cUomId,jdbcType=DECIMAL}, #{qtyordered,jdbcType=DECIMAL}, 
+      #{qtyreserved,jdbcType=DECIMAL}, #{qtydelivered,jdbcType=DECIMAL}, #{qtyinvoiced,jdbcType=DECIMAL}, 
+      #{mShipperId,jdbcType=DECIMAL}, #{cCurrencyId,jdbcType=DECIMAL}, #{pricelist,jdbcType=DECIMAL}, 
+      #{priceactual,jdbcType=DECIMAL}, #{pricelimit,jdbcType=DECIMAL}, #{linenetamt,jdbcType=DECIMAL}, 
+      #{discount,jdbcType=DECIMAL}, #{freightamt,jdbcType=DECIMAL}, #{cChargeId,jdbcType=DECIMAL}, 
+      #{cTaxId,jdbcType=DECIMAL}, #{sResourceassignmentId,jdbcType=DECIMAL}, #{refOrderlineId,jdbcType=DECIMAL}, 
+      #{mAttributesetinstanceId,jdbcType=DECIMAL}, #{isdescription,jdbcType=CHAR}, #{processed,jdbcType=CHAR}, 
+      #{qtyentered,jdbcType=DECIMAL}, #{priceentered,jdbcType=DECIMAL}, #{cProjectId,jdbcType=DECIMAL}, 
+      #{pricecost,jdbcType=DECIMAL}, #{qtylostsales,jdbcType=DECIMAL}, #{cProjectphaseId,jdbcType=DECIMAL}, 
+      #{cProjecttaskId,jdbcType=DECIMAL}, #{rrstartdate,jdbcType=TIMESTAMP}, #{rramt,jdbcType=DECIMAL}, 
+      #{cCampaignId,jdbcType=DECIMAL}, #{cActivityId,jdbcType=DECIMAL}, #{user1Id,jdbcType=DECIMAL}, 
+      #{user2Id,jdbcType=DECIMAL}, #{adOrgtrxId,jdbcType=DECIMAL}, #{linkOrderlineId,jdbcType=DECIMAL}, 
+      #{ppCostCollectorId,jdbcType=DECIMAL}, #{mPromotionId,jdbcType=DECIMAL}, #{isconsumesforecast,jdbcType=CHAR}, 
+      #{createfrom,jdbcType=CHAR}, #{createshipment,jdbcType=CHAR}, #{amazonasin,jdbcType=VARCHAR}, 
+      #{amazonsku,jdbcType=VARCHAR}, #{amazonitemstatus,jdbcType=VARCHAR}, #{amazonproductname,jdbcType=VARCHAR}, 
+      #{amazonquantity,jdbcType=DECIMAL}, #{amazonpromotionid,jdbcType=VARCHAR}, #{amazonpromotiondiscount,jdbcType=DECIMAL}, 
+      #{itempromotiondiscount,jdbcType=DECIMAL}, #{shippromotiondiscount,jdbcType=DECIMAL}, 
+      #{boxQty,jdbcType=DECIMAL}, #{qtyBox,jdbcType=DECIMAL}, #{taxamt,jdbcType=DECIMAL}, 
+      #{chargeamt,jdbcType=DECIMAL}, #{linetotalamt,jdbcType=DECIMAL}, #{boxwidth,jdbcType=DECIMAL}, 
+      #{boxlength,jdbcType=DECIMAL}, #{boxheight,jdbcType=DECIMAL}, #{grossWeight,jdbcType=DECIMAL}, 
+      #{netWeight,jdbcType=DECIMAL}, #{inspectiondate,jdbcType=TIMESTAMP}, #{inspectionstatus,jdbcType=VARCHAR}, 
+      #{inspectiondescription,jdbcType=VARCHAR}, #{inspector,jdbcType=VARCHAR}, #{boxvolume,jdbcType=DECIMAL}, 
+      #{inspectioncontent,jdbcType=VARCHAR}, #{mFnsku,jdbcType=VARCHAR}, #{linkProductId,jdbcType=DECIMAL}, 
+      #{qtytransfer,jdbcType=DECIMAL}, #{qtyplanfromv,jdbcType=DECIMAL}, #{qtyplanfromc,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.COrderLine" >
+    insert into c_order_line
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="adClientId != null" >
+        ad_client_id,
+      </if>
+      <if test="adOrgId != null" >
+        ad_org_id,
+      </if>
+      <if test="isactive != null" >
+        isactive,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="createdby != null" >
+        createdby,
+      </if>
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="updatedby != null" >
+        updatedby,
+      </if>
+      <if test="cOrderId != null" >
+        c_order_id,
+      </if>
+      <if test="line != null" >
+        line,
+      </if>
+      <if test="cBpartnerId != null" >
+        c_bpartner_id,
+      </if>
+      <if test="cBpartnerLocationId != null" >
+        c_bpartner_location_id,
+      </if>
+      <if test="dateordered != null" >
+        dateordered,
+      </if>
+      <if test="datepromised != null" >
+        datepromised,
+      </if>
+      <if test="datedelivered != null" >
+        datedelivered,
+      </if>
+      <if test="dateinvoiced != null" >
+        dateinvoiced,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="mProductId != null" >
+        m_product_id,
+      </if>
+      <if test="mWarehouseId != null" >
+        m_warehouse_id,
+      </if>
+      <if test="cUomId != null" >
+        c_uom_id,
+      </if>
+      <if test="qtyordered != null" >
+        qtyordered,
+      </if>
+      <if test="qtyreserved != null" >
+        qtyreserved,
+      </if>
+      <if test="qtydelivered != null" >
+        qtydelivered,
+      </if>
+      <if test="qtyinvoiced != null" >
+        qtyinvoiced,
+      </if>
+      <if test="mShipperId != null" >
+        m_shipper_id,
+      </if>
+      <if test="cCurrencyId != null" >
+        c_currency_id,
+      </if>
+      <if test="pricelist != null" >
+        pricelist,
+      </if>
+      <if test="priceactual != null" >
+        priceactual,
+      </if>
+      <if test="pricelimit != null" >
+        pricelimit,
+      </if>
+      <if test="linenetamt != null" >
+        linenetamt,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="freightamt != null" >
+        freightamt,
+      </if>
+      <if test="cChargeId != null" >
+        c_charge_id,
+      </if>
+      <if test="cTaxId != null" >
+        c_tax_id,
+      </if>
+      <if test="sResourceassignmentId != null" >
+        s_resourceassignment_id,
+      </if>
+      <if test="refOrderlineId != null" >
+        ref_orderline_id,
+      </if>
+      <if test="mAttributesetinstanceId != null" >
+        m_attributesetinstance_id,
+      </if>
+      <if test="isdescription != null" >
+        isdescription,
+      </if>
+      <if test="processed != null" >
+        processed,
+      </if>
+      <if test="qtyentered != null" >
+        qtyentered,
+      </if>
+      <if test="priceentered != null" >
+        priceentered,
+      </if>
+      <if test="cProjectId != null" >
+        c_project_id,
+      </if>
+      <if test="pricecost != null" >
+        pricecost,
+      </if>
+      <if test="qtylostsales != null" >
+        qtylostsales,
+      </if>
+      <if test="cProjectphaseId != null" >
+        c_projectphase_id,
+      </if>
+      <if test="cProjecttaskId != null" >
+        c_projecttask_id,
+      </if>
+      <if test="rrstartdate != null" >
+        rrstartdate,
+      </if>
+      <if test="rramt != null" >
+        rramt,
+      </if>
+      <if test="cCampaignId != null" >
+        c_campaign_id,
+      </if>
+      <if test="cActivityId != null" >
+        c_activity_id,
+      </if>
+      <if test="user1Id != null" >
+        user1_id,
+      </if>
+      <if test="user2Id != null" >
+        user2_id,
+      </if>
+      <if test="adOrgtrxId != null" >
+        ad_orgtrx_id,
+      </if>
+      <if test="linkOrderlineId != null" >
+        link_orderline_id,
+      </if>
+      <if test="ppCostCollectorId != null" >
+        pp_cost_collector_id,
+      </if>
+      <if test="mPromotionId != null" >
+        m_promotion_id,
+      </if>
+      <if test="isconsumesforecast != null" >
+        isconsumesforecast,
+      </if>
+      <if test="createfrom != null" >
+        createfrom,
+      </if>
+      <if test="createshipment != null" >
+        createshipment,
+      </if>
+      <if test="amazonasin != null" >
+        amazonasin,
+      </if>
+      <if test="amazonsku != null" >
+        amazonsku,
+      </if>
+      <if test="amazonitemstatus != null" >
+        amazonitemstatus,
+      </if>
+      <if test="amazonproductname != null" >
+        amazonproductname,
+      </if>
+      <if test="amazonquantity != null" >
+        amazonquantity,
+      </if>
+      <if test="amazonpromotionid != null" >
+        amazonpromotionid,
+      </if>
+      <if test="amazonpromotiondiscount != null" >
+        amazonpromotiondiscount,
+      </if>
+      <if test="itempromotiondiscount != null" >
+        itempromotiondiscount,
+      </if>
+      <if test="shippromotiondiscount != null" >
+        shippromotiondiscount,
+      </if>
+      <if test="boxQty != null" >
+        box_qty,
+      </if>
+      <if test="qtyBox != null" >
+        qty_box,
+      </if>
+      <if test="taxamt != null" >
+        taxamt,
+      </if>
+      <if test="chargeamt != null" >
+        chargeamt,
+      </if>
+      <if test="linetotalamt != null" >
+        linetotalamt,
+      </if>
+      <if test="boxwidth != null" >
+        boxwidth,
+      </if>
+      <if test="boxlength != null" >
+        boxlength,
+      </if>
+      <if test="boxheight != null" >
+        boxheight,
+      </if>
+      <if test="grossWeight != null" >
+        gross_weight,
+      </if>
+      <if test="netWeight != null" >
+        net_weight,
+      </if>
+      <if test="inspectiondate != null" >
+        inspectiondate,
+      </if>
+      <if test="inspectionstatus != null" >
+        inspectionstatus,
+      </if>
+      <if test="inspectiondescription != null" >
+        inspectiondescription,
+      </if>
+      <if test="inspector != null" >
+        inspector,
+      </if>
+      <if test="boxvolume != null" >
+        boxvolume,
+      </if>
+      <if test="inspectioncontent != null" >
+        inspectioncontent,
+      </if>
+      <if test="mFnsku != null" >
+        m_fnsku,
+      </if>
+      <if test="linkProductId != null" >
+        link_product_id,
+      </if>
+      <if test="qtytransfer != null" >
+        qtytransfer,
+      </if>
+      <if test="qtyplanfromv != null" >
+        qtyplanfromv,
+      </if>
+      <if test="qtyplanfromc != null" >
+        qtyplanfromc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="adClientId != null" >
+        #{adClientId,jdbcType=DECIMAL},
+      </if>
+      <if test="adOrgId != null" >
+        #{adOrgId,jdbcType=DECIMAL},
+      </if>
+      <if test="isactive != null" >
+        #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdby != null" >
+        #{createdby,jdbcType=DECIMAL},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedby != null" >
+        #{updatedby,jdbcType=DECIMAL},
+      </if>
+      <if test="cOrderId != null" >
+        #{cOrderId,jdbcType=DECIMAL},
+      </if>
+      <if test="line != null" >
+        #{line,jdbcType=DECIMAL},
+      </if>
+      <if test="cBpartnerId != null" >
+        #{cBpartnerId,jdbcType=DECIMAL},
+      </if>
+      <if test="cBpartnerLocationId != null" >
+        #{cBpartnerLocationId,jdbcType=DECIMAL},
+      </if>
+      <if test="dateordered != null" >
+        #{dateordered,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datepromised != null" >
+        #{datepromised,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datedelivered != null" >
+        #{datedelivered,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dateinvoiced != null" >
+        #{dateinvoiced,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="mProductId != null" >
+        #{mProductId,jdbcType=DECIMAL},
+      </if>
+      <if test="mWarehouseId != null" >
+        #{mWarehouseId,jdbcType=DECIMAL},
+      </if>
+      <if test="cUomId != null" >
+        #{cUomId,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyordered != null" >
+        #{qtyordered,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyreserved != null" >
+        #{qtyreserved,jdbcType=DECIMAL},
+      </if>
+      <if test="qtydelivered != null" >
+        #{qtydelivered,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyinvoiced != null" >
+        #{qtyinvoiced,jdbcType=DECIMAL},
+      </if>
+      <if test="mShipperId != null" >
+        #{mShipperId,jdbcType=DECIMAL},
+      </if>
+      <if test="cCurrencyId != null" >
+        #{cCurrencyId,jdbcType=DECIMAL},
+      </if>
+      <if test="pricelist != null" >
+        #{pricelist,jdbcType=DECIMAL},
+      </if>
+      <if test="priceactual != null" >
+        #{priceactual,jdbcType=DECIMAL},
+      </if>
+      <if test="pricelimit != null" >
+        #{pricelimit,jdbcType=DECIMAL},
+      </if>
+      <if test="linenetamt != null" >
+        #{linenetamt,jdbcType=DECIMAL},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="freightamt != null" >
+        #{freightamt,jdbcType=DECIMAL},
+      </if>
+      <if test="cChargeId != null" >
+        #{cChargeId,jdbcType=DECIMAL},
+      </if>
+      <if test="cTaxId != null" >
+        #{cTaxId,jdbcType=DECIMAL},
+      </if>
+      <if test="sResourceassignmentId != null" >
+        #{sResourceassignmentId,jdbcType=DECIMAL},
+      </if>
+      <if test="refOrderlineId != null" >
+        #{refOrderlineId,jdbcType=DECIMAL},
+      </if>
+      <if test="mAttributesetinstanceId != null" >
+        #{mAttributesetinstanceId,jdbcType=DECIMAL},
+      </if>
+      <if test="isdescription != null" >
+        #{isdescription,jdbcType=CHAR},
+      </if>
+      <if test="processed != null" >
+        #{processed,jdbcType=CHAR},
+      </if>
+      <if test="qtyentered != null" >
+        #{qtyentered,jdbcType=DECIMAL},
+      </if>
+      <if test="priceentered != null" >
+        #{priceentered,jdbcType=DECIMAL},
+      </if>
+      <if test="cProjectId != null" >
+        #{cProjectId,jdbcType=DECIMAL},
+      </if>
+      <if test="pricecost != null" >
+        #{pricecost,jdbcType=DECIMAL},
+      </if>
+      <if test="qtylostsales != null" >
+        #{qtylostsales,jdbcType=DECIMAL},
+      </if>
+      <if test="cProjectphaseId != null" >
+        #{cProjectphaseId,jdbcType=DECIMAL},
+      </if>
+      <if test="cProjecttaskId != null" >
+        #{cProjecttaskId,jdbcType=DECIMAL},
+      </if>
+      <if test="rrstartdate != null" >
+        #{rrstartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rramt != null" >
+        #{rramt,jdbcType=DECIMAL},
+      </if>
+      <if test="cCampaignId != null" >
+        #{cCampaignId,jdbcType=DECIMAL},
+      </if>
+      <if test="cActivityId != null" >
+        #{cActivityId,jdbcType=DECIMAL},
+      </if>
+      <if test="user1Id != null" >
+        #{user1Id,jdbcType=DECIMAL},
+      </if>
+      <if test="user2Id != null" >
+        #{user2Id,jdbcType=DECIMAL},
+      </if>
+      <if test="adOrgtrxId != null" >
+        #{adOrgtrxId,jdbcType=DECIMAL},
+      </if>
+      <if test="linkOrderlineId != null" >
+        #{linkOrderlineId,jdbcType=DECIMAL},
+      </if>
+      <if test="ppCostCollectorId != null" >
+        #{ppCostCollectorId,jdbcType=DECIMAL},
+      </if>
+      <if test="mPromotionId != null" >
+        #{mPromotionId,jdbcType=DECIMAL},
+      </if>
+      <if test="isconsumesforecast != null" >
+        #{isconsumesforecast,jdbcType=CHAR},
+      </if>
+      <if test="createfrom != null" >
+        #{createfrom,jdbcType=CHAR},
+      </if>
+      <if test="createshipment != null" >
+        #{createshipment,jdbcType=CHAR},
+      </if>
+      <if test="amazonasin != null" >
+        #{amazonasin,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonsku != null" >
+        #{amazonsku,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonitemstatus != null" >
+        #{amazonitemstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonproductname != null" >
+        #{amazonproductname,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonquantity != null" >
+        #{amazonquantity,jdbcType=DECIMAL},
+      </if>
+      <if test="amazonpromotionid != null" >
+        #{amazonpromotionid,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonpromotiondiscount != null" >
+        #{amazonpromotiondiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="itempromotiondiscount != null" >
+        #{itempromotiondiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="shippromotiondiscount != null" >
+        #{shippromotiondiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="boxQty != null" >
+        #{boxQty,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyBox != null" >
+        #{qtyBox,jdbcType=DECIMAL},
+      </if>
+      <if test="taxamt != null" >
+        #{taxamt,jdbcType=DECIMAL},
+      </if>
+      <if test="chargeamt != null" >
+        #{chargeamt,jdbcType=DECIMAL},
+      </if>
+      <if test="linetotalamt != null" >
+        #{linetotalamt,jdbcType=DECIMAL},
+      </if>
+      <if test="boxwidth != null" >
+        #{boxwidth,jdbcType=DECIMAL},
+      </if>
+      <if test="boxlength != null" >
+        #{boxlength,jdbcType=DECIMAL},
+      </if>
+      <if test="boxheight != null" >
+        #{boxheight,jdbcType=DECIMAL},
+      </if>
+      <if test="grossWeight != null" >
+        #{grossWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="netWeight != null" >
+        #{netWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="inspectiondate != null" >
+        #{inspectiondate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inspectionstatus != null" >
+        #{inspectionstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectiondescription != null" >
+        #{inspectiondescription,jdbcType=VARCHAR},
+      </if>
+      <if test="inspector != null" >
+        #{inspector,jdbcType=VARCHAR},
+      </if>
+      <if test="boxvolume != null" >
+        #{boxvolume,jdbcType=DECIMAL},
+      </if>
+      <if test="inspectioncontent != null" >
+        #{inspectioncontent,jdbcType=VARCHAR},
+      </if>
+      <if test="mFnsku != null" >
+        #{mFnsku,jdbcType=VARCHAR},
+      </if>
+      <if test="linkProductId != null" >
+        #{linkProductId,jdbcType=DECIMAL},
+      </if>
+      <if test="qtytransfer != null" >
+        #{qtytransfer,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyplanfromv != null" >
+        #{qtyplanfromv,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyplanfromc != null" >
+        #{qtyplanfromc,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pojo.COrderLineExample" resultType="java.lang.Integer" >
+    select count(*) from c_order_line
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update c_order_line
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.adClientId != null" >
+        ad_client_id = #{record.adClientId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.adOrgId != null" >
+        ad_org_id = #{record.adOrgId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isactive != null" >
+        isactive = #{record.isactive,jdbcType=CHAR},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdby != null" >
+        createdby = #{record.createdby,jdbcType=DECIMAL},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedby != null" >
+        updatedby = #{record.updatedby,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cOrderId != null" >
+        c_order_id = #{record.cOrderId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.line != null" >
+        line = #{record.line,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cBpartnerId != null" >
+        c_bpartner_id = #{record.cBpartnerId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cBpartnerLocationId != null" >
+        c_bpartner_location_id = #{record.cBpartnerLocationId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dateordered != null" >
+        dateordered = #{record.dateordered,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.datepromised != null" >
+        datepromised = #{record.datepromised,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.datedelivered != null" >
+        datedelivered = #{record.datedelivered,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.dateinvoiced != null" >
+        dateinvoiced = #{record.dateinvoiced,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mProductId != null" >
+        m_product_id = #{record.mProductId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.mWarehouseId != null" >
+        m_warehouse_id = #{record.mWarehouseId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cUomId != null" >
+        c_uom_id = #{record.cUomId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.qtyordered != null" >
+        qtyordered = #{record.qtyordered,jdbcType=DECIMAL},
+      </if>
+      <if test="record.qtyreserved != null" >
+        qtyreserved = #{record.qtyreserved,jdbcType=DECIMAL},
+      </if>
+      <if test="record.qtydelivered != null" >
+        qtydelivered = #{record.qtydelivered,jdbcType=DECIMAL},
+      </if>
+      <if test="record.qtyinvoiced != null" >
+        qtyinvoiced = #{record.qtyinvoiced,jdbcType=DECIMAL},
+      </if>
+      <if test="record.mShipperId != null" >
+        m_shipper_id = #{record.mShipperId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cCurrencyId != null" >
+        c_currency_id = #{record.cCurrencyId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.pricelist != null" >
+        pricelist = #{record.pricelist,jdbcType=DECIMAL},
+      </if>
+      <if test="record.priceactual != null" >
+        priceactual = #{record.priceactual,jdbcType=DECIMAL},
+      </if>
+      <if test="record.pricelimit != null" >
+        pricelimit = #{record.pricelimit,jdbcType=DECIMAL},
+      </if>
+      <if test="record.linenetamt != null" >
+        linenetamt = #{record.linenetamt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.discount != null" >
+        discount = #{record.discount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.freightamt != null" >
+        freightamt = #{record.freightamt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cChargeId != null" >
+        c_charge_id = #{record.cChargeId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cTaxId != null" >
+        c_tax_id = #{record.cTaxId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sResourceassignmentId != null" >
+        s_resourceassignment_id = #{record.sResourceassignmentId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.refOrderlineId != null" >
+        ref_orderline_id = #{record.refOrderlineId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.mAttributesetinstanceId != null" >
+        m_attributesetinstance_id = #{record.mAttributesetinstanceId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isdescription != null" >
+        isdescription = #{record.isdescription,jdbcType=CHAR},
+      </if>
+      <if test="record.processed != null" >
+        processed = #{record.processed,jdbcType=CHAR},
+      </if>
+      <if test="record.qtyentered != null" >
+        qtyentered = #{record.qtyentered,jdbcType=DECIMAL},
+      </if>
+      <if test="record.priceentered != null" >
+        priceentered = #{record.priceentered,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cProjectId != null" >
+        c_project_id = #{record.cProjectId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.pricecost != null" >
+        pricecost = #{record.pricecost,jdbcType=DECIMAL},
+      </if>
+      <if test="record.qtylostsales != null" >
+        qtylostsales = #{record.qtylostsales,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cProjectphaseId != null" >
+        c_projectphase_id = #{record.cProjectphaseId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cProjecttaskId != null" >
+        c_projecttask_id = #{record.cProjecttaskId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rrstartdate != null" >
+        rrstartdate = #{record.rrstartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rramt != null" >
+        rramt = #{record.rramt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cCampaignId != null" >
+        c_campaign_id = #{record.cCampaignId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cActivityId != null" >
+        c_activity_id = #{record.cActivityId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.user1Id != null" >
+        user1_id = #{record.user1Id,jdbcType=DECIMAL},
+      </if>
+      <if test="record.user2Id != null" >
+        user2_id = #{record.user2Id,jdbcType=DECIMAL},
+      </if>
+      <if test="record.adOrgtrxId != null" >
+        ad_orgtrx_id = #{record.adOrgtrxId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.linkOrderlineId != null" >
+        link_orderline_id = #{record.linkOrderlineId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ppCostCollectorId != null" >
+        pp_cost_collector_id = #{record.ppCostCollectorId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.mPromotionId != null" >
+        m_promotion_id = #{record.mPromotionId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isconsumesforecast != null" >
+        isconsumesforecast = #{record.isconsumesforecast,jdbcType=CHAR},
+      </if>
+      <if test="record.createfrom != null" >
+        createfrom = #{record.createfrom,jdbcType=CHAR},
+      </if>
+      <if test="record.createshipment != null" >
+        createshipment = #{record.createshipment,jdbcType=CHAR},
+      </if>
+      <if test="record.amazonasin != null" >
+        amazonasin = #{record.amazonasin,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonsku != null" >
+        amazonsku = #{record.amazonsku,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonitemstatus != null" >
+        amazonitemstatus = #{record.amazonitemstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonproductname != null" >
+        amazonproductname = #{record.amazonproductname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonquantity != null" >
+        amazonquantity = #{record.amazonquantity,jdbcType=DECIMAL},
+      </if>
+      <if test="record.amazonpromotionid != null" >
+        amazonpromotionid = #{record.amazonpromotionid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonpromotiondiscount != null" >
+        amazonpromotiondiscount = #{record.amazonpromotiondiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.itempromotiondiscount != null" >
+        itempromotiondiscount = #{record.itempromotiondiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.shippromotiondiscount != null" >
+        shippromotiondiscount = #{record.shippromotiondiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.boxQty != null" >
+        box_qty = #{record.boxQty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.qtyBox != null" >
+        qty_box = #{record.qtyBox,jdbcType=DECIMAL},
+      </if>
+      <if test="record.taxamt != null" >
+        taxamt = #{record.taxamt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.chargeamt != null" >
+        chargeamt = #{record.chargeamt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.linetotalamt != null" >
+        linetotalamt = #{record.linetotalamt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.boxwidth != null" >
+        boxwidth = #{record.boxwidth,jdbcType=DECIMAL},
+      </if>
+      <if test="record.boxlength != null" >
+        boxlength = #{record.boxlength,jdbcType=DECIMAL},
+      </if>
+      <if test="record.boxheight != null" >
+        boxheight = #{record.boxheight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.grossWeight != null" >
+        gross_weight = #{record.grossWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.netWeight != null" >
+        net_weight = #{record.netWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.inspectiondate != null" >
+        inspectiondate = #{record.inspectiondate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.inspectionstatus != null" >
+        inspectionstatus = #{record.inspectionstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.inspectiondescription != null" >
+        inspectiondescription = #{record.inspectiondescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.inspector != null" >
+        inspector = #{record.inspector,jdbcType=VARCHAR},
+      </if>
+      <if test="record.boxvolume != null" >
+        boxvolume = #{record.boxvolume,jdbcType=DECIMAL},
+      </if>
+      <if test="record.inspectioncontent != null" >
+        inspectioncontent = #{record.inspectioncontent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mFnsku != null" >
+        m_fnsku = #{record.mFnsku,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkProductId != null" >
+        link_product_id = #{record.linkProductId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.qtytransfer != null" >
+        qtytransfer = #{record.qtytransfer,jdbcType=DECIMAL},
+      </if>
+      <if test="record.qtyplanfromv != null" >
+        qtyplanfromv = #{record.qtyplanfromv,jdbcType=DECIMAL},
+      </if>
+      <if test="record.qtyplanfromc != null" >
+        qtyplanfromc = #{record.qtyplanfromc,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update c_order_line
+    set ID = #{record.id,jdbcType=INTEGER},
+      ad_client_id = #{record.adClientId,jdbcType=DECIMAL},
+      ad_org_id = #{record.adOrgId,jdbcType=DECIMAL},
+      isactive = #{record.isactive,jdbcType=CHAR},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      createdby = #{record.createdby,jdbcType=DECIMAL},
+      updated = #{record.updated,jdbcType=TIMESTAMP},
+      updatedby = #{record.updatedby,jdbcType=DECIMAL},
+      c_order_id = #{record.cOrderId,jdbcType=DECIMAL},
+      line = #{record.line,jdbcType=DECIMAL},
+      c_bpartner_id = #{record.cBpartnerId,jdbcType=DECIMAL},
+      c_bpartner_location_id = #{record.cBpartnerLocationId,jdbcType=DECIMAL},
+      dateordered = #{record.dateordered,jdbcType=TIMESTAMP},
+      datepromised = #{record.datepromised,jdbcType=TIMESTAMP},
+      datedelivered = #{record.datedelivered,jdbcType=TIMESTAMP},
+      dateinvoiced = #{record.dateinvoiced,jdbcType=TIMESTAMP},
+      description = #{record.description,jdbcType=VARCHAR},
+      m_product_id = #{record.mProductId,jdbcType=DECIMAL},
+      m_warehouse_id = #{record.mWarehouseId,jdbcType=DECIMAL},
+      c_uom_id = #{record.cUomId,jdbcType=DECIMAL},
+      qtyordered = #{record.qtyordered,jdbcType=DECIMAL},
+      qtyreserved = #{record.qtyreserved,jdbcType=DECIMAL},
+      qtydelivered = #{record.qtydelivered,jdbcType=DECIMAL},
+      qtyinvoiced = #{record.qtyinvoiced,jdbcType=DECIMAL},
+      m_shipper_id = #{record.mShipperId,jdbcType=DECIMAL},
+      c_currency_id = #{record.cCurrencyId,jdbcType=DECIMAL},
+      pricelist = #{record.pricelist,jdbcType=DECIMAL},
+      priceactual = #{record.priceactual,jdbcType=DECIMAL},
+      pricelimit = #{record.pricelimit,jdbcType=DECIMAL},
+      linenetamt = #{record.linenetamt,jdbcType=DECIMAL},
+      discount = #{record.discount,jdbcType=DECIMAL},
+      freightamt = #{record.freightamt,jdbcType=DECIMAL},
+      c_charge_id = #{record.cChargeId,jdbcType=DECIMAL},
+      c_tax_id = #{record.cTaxId,jdbcType=DECIMAL},
+      s_resourceassignment_id = #{record.sResourceassignmentId,jdbcType=DECIMAL},
+      ref_orderline_id = #{record.refOrderlineId,jdbcType=DECIMAL},
+      m_attributesetinstance_id = #{record.mAttributesetinstanceId,jdbcType=DECIMAL},
+      isdescription = #{record.isdescription,jdbcType=CHAR},
+      processed = #{record.processed,jdbcType=CHAR},
+      qtyentered = #{record.qtyentered,jdbcType=DECIMAL},
+      priceentered = #{record.priceentered,jdbcType=DECIMAL},
+      c_project_id = #{record.cProjectId,jdbcType=DECIMAL},
+      pricecost = #{record.pricecost,jdbcType=DECIMAL},
+      qtylostsales = #{record.qtylostsales,jdbcType=DECIMAL},
+      c_projectphase_id = #{record.cProjectphaseId,jdbcType=DECIMAL},
+      c_projecttask_id = #{record.cProjecttaskId,jdbcType=DECIMAL},
+      rrstartdate = #{record.rrstartdate,jdbcType=TIMESTAMP},
+      rramt = #{record.rramt,jdbcType=DECIMAL},
+      c_campaign_id = #{record.cCampaignId,jdbcType=DECIMAL},
+      c_activity_id = #{record.cActivityId,jdbcType=DECIMAL},
+      user1_id = #{record.user1Id,jdbcType=DECIMAL},
+      user2_id = #{record.user2Id,jdbcType=DECIMAL},
+      ad_orgtrx_id = #{record.adOrgtrxId,jdbcType=DECIMAL},
+      link_orderline_id = #{record.linkOrderlineId,jdbcType=DECIMAL},
+      pp_cost_collector_id = #{record.ppCostCollectorId,jdbcType=DECIMAL},
+      m_promotion_id = #{record.mPromotionId,jdbcType=DECIMAL},
+      isconsumesforecast = #{record.isconsumesforecast,jdbcType=CHAR},
+      createfrom = #{record.createfrom,jdbcType=CHAR},
+      createshipment = #{record.createshipment,jdbcType=CHAR},
+      amazonasin = #{record.amazonasin,jdbcType=VARCHAR},
+      amazonsku = #{record.amazonsku,jdbcType=VARCHAR},
+      amazonitemstatus = #{record.amazonitemstatus,jdbcType=VARCHAR},
+      amazonproductname = #{record.amazonproductname,jdbcType=VARCHAR},
+      amazonquantity = #{record.amazonquantity,jdbcType=DECIMAL},
+      amazonpromotionid = #{record.amazonpromotionid,jdbcType=VARCHAR},
+      amazonpromotiondiscount = #{record.amazonpromotiondiscount,jdbcType=DECIMAL},
+      itempromotiondiscount = #{record.itempromotiondiscount,jdbcType=DECIMAL},
+      shippromotiondiscount = #{record.shippromotiondiscount,jdbcType=DECIMAL},
+      box_qty = #{record.boxQty,jdbcType=DECIMAL},
+      qty_box = #{record.qtyBox,jdbcType=DECIMAL},
+      taxamt = #{record.taxamt,jdbcType=DECIMAL},
+      chargeamt = #{record.chargeamt,jdbcType=DECIMAL},
+      linetotalamt = #{record.linetotalamt,jdbcType=DECIMAL},
+      boxwidth = #{record.boxwidth,jdbcType=DECIMAL},
+      boxlength = #{record.boxlength,jdbcType=DECIMAL},
+      boxheight = #{record.boxheight,jdbcType=DECIMAL},
+      gross_weight = #{record.grossWeight,jdbcType=DECIMAL},
+      net_weight = #{record.netWeight,jdbcType=DECIMAL},
+      inspectiondate = #{record.inspectiondate,jdbcType=TIMESTAMP},
+      inspectionstatus = #{record.inspectionstatus,jdbcType=VARCHAR},
+      inspectiondescription = #{record.inspectiondescription,jdbcType=VARCHAR},
+      inspector = #{record.inspector,jdbcType=VARCHAR},
+      boxvolume = #{record.boxvolume,jdbcType=DECIMAL},
+      inspectioncontent = #{record.inspectioncontent,jdbcType=VARCHAR},
+      m_fnsku = #{record.mFnsku,jdbcType=VARCHAR},
+      link_product_id = #{record.linkProductId,jdbcType=DECIMAL},
+      qtytransfer = #{record.qtytransfer,jdbcType=DECIMAL},
+      qtyplanfromv = #{record.qtyplanfromv,jdbcType=DECIMAL},
+      qtyplanfromc = #{record.qtyplanfromc,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.COrderLine" >
+    update c_order_line
+    <set >
+      <if test="adClientId != null" >
+        ad_client_id = #{adClientId,jdbcType=DECIMAL},
+      </if>
+      <if test="adOrgId != null" >
+        ad_org_id = #{adOrgId,jdbcType=DECIMAL},
+      </if>
+      <if test="isactive != null" >
+        isactive = #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdby != null" >
+        createdby = #{createdby,jdbcType=DECIMAL},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedby != null" >
+        updatedby = #{updatedby,jdbcType=DECIMAL},
+      </if>
+      <if test="cOrderId != null" >
+        c_order_id = #{cOrderId,jdbcType=DECIMAL},
+      </if>
+      <if test="line != null" >
+        line = #{line,jdbcType=DECIMAL},
+      </if>
+      <if test="cBpartnerId != null" >
+        c_bpartner_id = #{cBpartnerId,jdbcType=DECIMAL},
+      </if>
+      <if test="cBpartnerLocationId != null" >
+        c_bpartner_location_id = #{cBpartnerLocationId,jdbcType=DECIMAL},
+      </if>
+      <if test="dateordered != null" >
+        dateordered = #{dateordered,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datepromised != null" >
+        datepromised = #{datepromised,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datedelivered != null" >
+        datedelivered = #{datedelivered,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dateinvoiced != null" >
+        dateinvoiced = #{dateinvoiced,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="mProductId != null" >
+        m_product_id = #{mProductId,jdbcType=DECIMAL},
+      </if>
+      <if test="mWarehouseId != null" >
+        m_warehouse_id = #{mWarehouseId,jdbcType=DECIMAL},
+      </if>
+      <if test="cUomId != null" >
+        c_uom_id = #{cUomId,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyordered != null" >
+        qtyordered = #{qtyordered,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyreserved != null" >
+        qtyreserved = #{qtyreserved,jdbcType=DECIMAL},
+      </if>
+      <if test="qtydelivered != null" >
+        qtydelivered = #{qtydelivered,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyinvoiced != null" >
+        qtyinvoiced = #{qtyinvoiced,jdbcType=DECIMAL},
+      </if>
+      <if test="mShipperId != null" >
+        m_shipper_id = #{mShipperId,jdbcType=DECIMAL},
+      </if>
+      <if test="cCurrencyId != null" >
+        c_currency_id = #{cCurrencyId,jdbcType=DECIMAL},
+      </if>
+      <if test="pricelist != null" >
+        pricelist = #{pricelist,jdbcType=DECIMAL},
+      </if>
+      <if test="priceactual != null" >
+        priceactual = #{priceactual,jdbcType=DECIMAL},
+      </if>
+      <if test="pricelimit != null" >
+        pricelimit = #{pricelimit,jdbcType=DECIMAL},
+      </if>
+      <if test="linenetamt != null" >
+        linenetamt = #{linenetamt,jdbcType=DECIMAL},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="freightamt != null" >
+        freightamt = #{freightamt,jdbcType=DECIMAL},
+      </if>
+      <if test="cChargeId != null" >
+        c_charge_id = #{cChargeId,jdbcType=DECIMAL},
+      </if>
+      <if test="cTaxId != null" >
+        c_tax_id = #{cTaxId,jdbcType=DECIMAL},
+      </if>
+      <if test="sResourceassignmentId != null" >
+        s_resourceassignment_id = #{sResourceassignmentId,jdbcType=DECIMAL},
+      </if>
+      <if test="refOrderlineId != null" >
+        ref_orderline_id = #{refOrderlineId,jdbcType=DECIMAL},
+      </if>
+      <if test="mAttributesetinstanceId != null" >
+        m_attributesetinstance_id = #{mAttributesetinstanceId,jdbcType=DECIMAL},
+      </if>
+      <if test="isdescription != null" >
+        isdescription = #{isdescription,jdbcType=CHAR},
+      </if>
+      <if test="processed != null" >
+        processed = #{processed,jdbcType=CHAR},
+      </if>
+      <if test="qtyentered != null" >
+        qtyentered = #{qtyentered,jdbcType=DECIMAL},
+      </if>
+      <if test="priceentered != null" >
+        priceentered = #{priceentered,jdbcType=DECIMAL},
+      </if>
+      <if test="cProjectId != null" >
+        c_project_id = #{cProjectId,jdbcType=DECIMAL},
+      </if>
+      <if test="pricecost != null" >
+        pricecost = #{pricecost,jdbcType=DECIMAL},
+      </if>
+      <if test="qtylostsales != null" >
+        qtylostsales = #{qtylostsales,jdbcType=DECIMAL},
+      </if>
+      <if test="cProjectphaseId != null" >
+        c_projectphase_id = #{cProjectphaseId,jdbcType=DECIMAL},
+      </if>
+      <if test="cProjecttaskId != null" >
+        c_projecttask_id = #{cProjecttaskId,jdbcType=DECIMAL},
+      </if>
+      <if test="rrstartdate != null" >
+        rrstartdate = #{rrstartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rramt != null" >
+        rramt = #{rramt,jdbcType=DECIMAL},
+      </if>
+      <if test="cCampaignId != null" >
+        c_campaign_id = #{cCampaignId,jdbcType=DECIMAL},
+      </if>
+      <if test="cActivityId != null" >
+        c_activity_id = #{cActivityId,jdbcType=DECIMAL},
+      </if>
+      <if test="user1Id != null" >
+        user1_id = #{user1Id,jdbcType=DECIMAL},
+      </if>
+      <if test="user2Id != null" >
+        user2_id = #{user2Id,jdbcType=DECIMAL},
+      </if>
+      <if test="adOrgtrxId != null" >
+        ad_orgtrx_id = #{adOrgtrxId,jdbcType=DECIMAL},
+      </if>
+      <if test="linkOrderlineId != null" >
+        link_orderline_id = #{linkOrderlineId,jdbcType=DECIMAL},
+      </if>
+      <if test="ppCostCollectorId != null" >
+        pp_cost_collector_id = #{ppCostCollectorId,jdbcType=DECIMAL},
+      </if>
+      <if test="mPromotionId != null" >
+        m_promotion_id = #{mPromotionId,jdbcType=DECIMAL},
+      </if>
+      <if test="isconsumesforecast != null" >
+        isconsumesforecast = #{isconsumesforecast,jdbcType=CHAR},
+      </if>
+      <if test="createfrom != null" >
+        createfrom = #{createfrom,jdbcType=CHAR},
+      </if>
+      <if test="createshipment != null" >
+        createshipment = #{createshipment,jdbcType=CHAR},
+      </if>
+      <if test="amazonasin != null" >
+        amazonasin = #{amazonasin,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonsku != null" >
+        amazonsku = #{amazonsku,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonitemstatus != null" >
+        amazonitemstatus = #{amazonitemstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonproductname != null" >
+        amazonproductname = #{amazonproductname,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonquantity != null" >
+        amazonquantity = #{amazonquantity,jdbcType=DECIMAL},
+      </if>
+      <if test="amazonpromotionid != null" >
+        amazonpromotionid = #{amazonpromotionid,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonpromotiondiscount != null" >
+        amazonpromotiondiscount = #{amazonpromotiondiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="itempromotiondiscount != null" >
+        itempromotiondiscount = #{itempromotiondiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="shippromotiondiscount != null" >
+        shippromotiondiscount = #{shippromotiondiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="boxQty != null" >
+        box_qty = #{boxQty,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyBox != null" >
+        qty_box = #{qtyBox,jdbcType=DECIMAL},
+      </if>
+      <if test="taxamt != null" >
+        taxamt = #{taxamt,jdbcType=DECIMAL},
+      </if>
+      <if test="chargeamt != null" >
+        chargeamt = #{chargeamt,jdbcType=DECIMAL},
+      </if>
+      <if test="linetotalamt != null" >
+        linetotalamt = #{linetotalamt,jdbcType=DECIMAL},
+      </if>
+      <if test="boxwidth != null" >
+        boxwidth = #{boxwidth,jdbcType=DECIMAL},
+      </if>
+      <if test="boxlength != null" >
+        boxlength = #{boxlength,jdbcType=DECIMAL},
+      </if>
+      <if test="boxheight != null" >
+        boxheight = #{boxheight,jdbcType=DECIMAL},
+      </if>
+      <if test="grossWeight != null" >
+        gross_weight = #{grossWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="netWeight != null" >
+        net_weight = #{netWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="inspectiondate != null" >
+        inspectiondate = #{inspectiondate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inspectionstatus != null" >
+        inspectionstatus = #{inspectionstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectiondescription != null" >
+        inspectiondescription = #{inspectiondescription,jdbcType=VARCHAR},
+      </if>
+      <if test="inspector != null" >
+        inspector = #{inspector,jdbcType=VARCHAR},
+      </if>
+      <if test="boxvolume != null" >
+        boxvolume = #{boxvolume,jdbcType=DECIMAL},
+      </if>
+      <if test="inspectioncontent != null" >
+        inspectioncontent = #{inspectioncontent,jdbcType=VARCHAR},
+      </if>
+      <if test="mFnsku != null" >
+        m_fnsku = #{mFnsku,jdbcType=VARCHAR},
+      </if>
+      <if test="linkProductId != null" >
+        link_product_id = #{linkProductId,jdbcType=DECIMAL},
+      </if>
+      <if test="qtytransfer != null" >
+        qtytransfer = #{qtytransfer,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyplanfromv != null" >
+        qtyplanfromv = #{qtyplanfromv,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyplanfromc != null" >
+        qtyplanfromc = #{qtyplanfromc,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.COrderLine" >
+    update c_order_line
+    set ad_client_id = #{adClientId,jdbcType=DECIMAL},
+      ad_org_id = #{adOrgId,jdbcType=DECIMAL},
+      isactive = #{isactive,jdbcType=CHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      createdby = #{createdby,jdbcType=DECIMAL},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      updatedby = #{updatedby,jdbcType=DECIMAL},
+      c_order_id = #{cOrderId,jdbcType=DECIMAL},
+      line = #{line,jdbcType=DECIMAL},
+      c_bpartner_id = #{cBpartnerId,jdbcType=DECIMAL},
+      c_bpartner_location_id = #{cBpartnerLocationId,jdbcType=DECIMAL},
+      dateordered = #{dateordered,jdbcType=TIMESTAMP},
+      datepromised = #{datepromised,jdbcType=TIMESTAMP},
+      datedelivered = #{datedelivered,jdbcType=TIMESTAMP},
+      dateinvoiced = #{dateinvoiced,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR},
+      m_product_id = #{mProductId,jdbcType=DECIMAL},
+      m_warehouse_id = #{mWarehouseId,jdbcType=DECIMAL},
+      c_uom_id = #{cUomId,jdbcType=DECIMAL},
+      qtyordered = #{qtyordered,jdbcType=DECIMAL},
+      qtyreserved = #{qtyreserved,jdbcType=DECIMAL},
+      qtydelivered = #{qtydelivered,jdbcType=DECIMAL},
+      qtyinvoiced = #{qtyinvoiced,jdbcType=DECIMAL},
+      m_shipper_id = #{mShipperId,jdbcType=DECIMAL},
+      c_currency_id = #{cCurrencyId,jdbcType=DECIMAL},
+      pricelist = #{pricelist,jdbcType=DECIMAL},
+      priceactual = #{priceactual,jdbcType=DECIMAL},
+      pricelimit = #{pricelimit,jdbcType=DECIMAL},
+      linenetamt = #{linenetamt,jdbcType=DECIMAL},
+      discount = #{discount,jdbcType=DECIMAL},
+      freightamt = #{freightamt,jdbcType=DECIMAL},
+      c_charge_id = #{cChargeId,jdbcType=DECIMAL},
+      c_tax_id = #{cTaxId,jdbcType=DECIMAL},
+      s_resourceassignment_id = #{sResourceassignmentId,jdbcType=DECIMAL},
+      ref_orderline_id = #{refOrderlineId,jdbcType=DECIMAL},
+      m_attributesetinstance_id = #{mAttributesetinstanceId,jdbcType=DECIMAL},
+      isdescription = #{isdescription,jdbcType=CHAR},
+      processed = #{processed,jdbcType=CHAR},
+      qtyentered = #{qtyentered,jdbcType=DECIMAL},
+      priceentered = #{priceentered,jdbcType=DECIMAL},
+      c_project_id = #{cProjectId,jdbcType=DECIMAL},
+      pricecost = #{pricecost,jdbcType=DECIMAL},
+      qtylostsales = #{qtylostsales,jdbcType=DECIMAL},
+      c_projectphase_id = #{cProjectphaseId,jdbcType=DECIMAL},
+      c_projecttask_id = #{cProjecttaskId,jdbcType=DECIMAL},
+      rrstartdate = #{rrstartdate,jdbcType=TIMESTAMP},
+      rramt = #{rramt,jdbcType=DECIMAL},
+      c_campaign_id = #{cCampaignId,jdbcType=DECIMAL},
+      c_activity_id = #{cActivityId,jdbcType=DECIMAL},
+      user1_id = #{user1Id,jdbcType=DECIMAL},
+      user2_id = #{user2Id,jdbcType=DECIMAL},
+      ad_orgtrx_id = #{adOrgtrxId,jdbcType=DECIMAL},
+      link_orderline_id = #{linkOrderlineId,jdbcType=DECIMAL},
+      pp_cost_collector_id = #{ppCostCollectorId,jdbcType=DECIMAL},
+      m_promotion_id = #{mPromotionId,jdbcType=DECIMAL},
+      isconsumesforecast = #{isconsumesforecast,jdbcType=CHAR},
+      createfrom = #{createfrom,jdbcType=CHAR},
+      createshipment = #{createshipment,jdbcType=CHAR},
+      amazonasin = #{amazonasin,jdbcType=VARCHAR},
+      amazonsku = #{amazonsku,jdbcType=VARCHAR},
+      amazonitemstatus = #{amazonitemstatus,jdbcType=VARCHAR},
+      amazonproductname = #{amazonproductname,jdbcType=VARCHAR},
+      amazonquantity = #{amazonquantity,jdbcType=DECIMAL},
+      amazonpromotionid = #{amazonpromotionid,jdbcType=VARCHAR},
+      amazonpromotiondiscount = #{amazonpromotiondiscount,jdbcType=DECIMAL},
+      itempromotiondiscount = #{itempromotiondiscount,jdbcType=DECIMAL},
+      shippromotiondiscount = #{shippromotiondiscount,jdbcType=DECIMAL},
+      box_qty = #{boxQty,jdbcType=DECIMAL},
+      qty_box = #{qtyBox,jdbcType=DECIMAL},
+      taxamt = #{taxamt,jdbcType=DECIMAL},
+      chargeamt = #{chargeamt,jdbcType=DECIMAL},
+      linetotalamt = #{linetotalamt,jdbcType=DECIMAL},
+      boxwidth = #{boxwidth,jdbcType=DECIMAL},
+      boxlength = #{boxlength,jdbcType=DECIMAL},
+      boxheight = #{boxheight,jdbcType=DECIMAL},
+      gross_weight = #{grossWeight,jdbcType=DECIMAL},
+      net_weight = #{netWeight,jdbcType=DECIMAL},
+      inspectiondate = #{inspectiondate,jdbcType=TIMESTAMP},
+      inspectionstatus = #{inspectionstatus,jdbcType=VARCHAR},
+      inspectiondescription = #{inspectiondescription,jdbcType=VARCHAR},
+      inspector = #{inspector,jdbcType=VARCHAR},
+      boxvolume = #{boxvolume,jdbcType=DECIMAL},
+      inspectioncontent = #{inspectioncontent,jdbcType=VARCHAR},
+      m_fnsku = #{mFnsku,jdbcType=VARCHAR},
+      link_product_id = #{linkProductId,jdbcType=DECIMAL},
+      qtytransfer = #{qtytransfer,jdbcType=DECIMAL},
+      qtyplanfromv = #{qtyplanfromv,jdbcType=DECIMAL},
+      qtyplanfromc = #{qtyplanfromc,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

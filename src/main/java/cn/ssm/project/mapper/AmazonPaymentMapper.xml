@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.AmazonPaymentMapper" >
+  <resultMap id="BaseResultMap" type="pojo.AmazonPayment" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="CREATED_AT" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="CREATED_ID" property="createdId" jdbcType="INTEGER" />
+    <result column="UPDATED_AT" property="updatedAt" jdbcType="TIMESTAMP" />
+    <result column="UPDATED_ID" property="updatedId" jdbcType="INTEGER" />
+    <result column="ISACTIVE" property="isactive" jdbcType="CHAR" />
+    <result column="STATE" property="state" jdbcType="CHAR" />
+    <result column="CLIENT_ID" property="clientId" jdbcType="INTEGER" />
+    <result column="ORG_ID" property="orgId" jdbcType="INTEGER" />
+    <result column="AMAZON_IMPORT_PAYMENT_LOG_ID" property="amazonImportPaymentLogId" jdbcType="INTEGER" />
+    <result column="C_INVOICE_ID" property="cInvoiceId" jdbcType="INTEGER" />
+    <result column="C_INVOICE_LINE_ID" property="cInvoiceLineId" jdbcType="INTEGER" />
+    <result column="M_INOUT_ID" property="mInoutId" jdbcType="INTEGER" />
+    <result column="M_INOUT_LINE_ID" property="mInoutLineId" jdbcType="INTEGER" />
+    <result column="C_ORDER_ID" property="cOrderId" jdbcType="INTEGER" />
+    <result column="C_ORDER_LINE_ID" property="cOrderLineId" jdbcType="INTEGER" />
+    <result column="M_MOVEMENT_ID" property="mMovementId" jdbcType="INTEGER" />
+    <result column="M_MOVEMENT_LINE_ID" property="mMovementLineId" jdbcType="INTEGER" />
+    <result column="DATE_TIME" property="dateTime" jdbcType="TIMESTAMP" />
+    <result column="SETTLEEMENT_ID" property="settleementId" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="ORDER_ID" property="orderId" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="QUANTITY" property="quantity" jdbcType="DECIMAL" />
+    <result column="MARKETPLACE" property="marketplace" jdbcType="VARCHAR" />
+    <result column="FULFILLMENT" property="fulfillment" jdbcType="VARCHAR" />
+    <result column="ORDER_CITY" property="orderCity" jdbcType="VARCHAR" />
+    <result column="PRODUCT_SALES" property="productSales" jdbcType="DECIMAL" />
+    <result column="SHIPPING_CREDITS" property="shippingCredits" jdbcType="DECIMAL" />
+    <result column="GIFT_WRAP_CREDITS" property="giftWrapCredits" jdbcType="DECIMAL" />
+    <result column="PROMOTIONAL_REBATES" property="promotionalRebates" jdbcType="DECIMAL" />
+    <result column="SALES_TAX_COLLECTD" property="salesTaxCollectd" jdbcType="DECIMAL" />
+    <result column="SELLING_FEES" property="sellingFees" jdbcType="DECIMAL" />
+    <result column="FBA_FEES" property="fbaFees" jdbcType="DECIMAL" />
+    <result column="OTHER_TRANSACTION_FEES" property="otherTransactionFees" jdbcType="DECIMAL" />
+    <result column="OTHER" property="other" jdbcType="DECIMAL" />
+    <result column="TOTAL" property="total" jdbcType="DECIMAL" />
+    <result column="IMPORT_DESCRIPTION" property="importDescription" jdbcType="VARCHAR" />
+    <result column="IS_IMPORTED" property="isImported" jdbcType="CHAR" />
+    <result column="ORDER_POSTAL" property="orderPostal" jdbcType="VARCHAR" />
+    <result column="ORDER_STATE" property="orderState" jdbcType="VARCHAR" />
+    <result column="SKU" property="sku" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, CREATED_AT, CREATED_ID, UPDATED_AT, UPDATED_ID, ISACTIVE, STATE, CLIENT_ID, ORG_ID, 
+    AMAZON_IMPORT_PAYMENT_LOG_ID, C_INVOICE_ID, C_INVOICE_LINE_ID, M_INOUT_ID, M_INOUT_LINE_ID, 
+    C_ORDER_ID, C_ORDER_LINE_ID, M_MOVEMENT_ID, M_MOVEMENT_LINE_ID, DATE_TIME, SETTLEEMENT_ID, 
+    TYPE, ORDER_ID, DESCRIPTION, QUANTITY, MARKETPLACE, FULFILLMENT, ORDER_CITY, PRODUCT_SALES, 
+    SHIPPING_CREDITS, GIFT_WRAP_CREDITS, PROMOTIONAL_REBATES, SALES_TAX_COLLECTD, SELLING_FEES, 
+    FBA_FEES, OTHER_TRANSACTION_FEES, OTHER, TOTAL, IMPORT_DESCRIPTION, IS_IMPORTED, 
+    ORDER_POSTAL, ORDER_STATE, SKU
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pojo.AmazonPaymentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from amazon_payment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from amazon_payment
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from amazon_payment
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pojo.AmazonPaymentExample" >
+    delete from amazon_payment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pojo.AmazonPayment" useGeneratedKeys="true" keyProperty="id">
+    insert into amazon_payment (ID, CREATED_AT, CREATED_ID, 
+      UPDATED_AT, UPDATED_ID, ISACTIVE, 
+      STATE, CLIENT_ID, ORG_ID, 
+      AMAZON_IMPORT_PAYMENT_LOG_ID, C_INVOICE_ID, C_INVOICE_LINE_ID, 
+      M_INOUT_ID, M_INOUT_LINE_ID, C_ORDER_ID, 
+      C_ORDER_LINE_ID, M_MOVEMENT_ID, M_MOVEMENT_LINE_ID, 
+      DATE_TIME, SETTLEEMENT_ID, TYPE, 
+      ORDER_ID, DESCRIPTION, QUANTITY, 
+      MARKETPLACE, FULFILLMENT, ORDER_CITY, 
+      PRODUCT_SALES, SHIPPING_CREDITS, GIFT_WRAP_CREDITS, 
+      PROMOTIONAL_REBATES, SALES_TAX_COLLECTD, SELLING_FEES, 
+      FBA_FEES, OTHER_TRANSACTION_FEES, OTHER, 
+      TOTAL, IMPORT_DESCRIPTION, IS_IMPORTED, 
+      ORDER_POSTAL, ORDER_STATE, SKU
+      )
+    values (#{id,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, #{createdId,jdbcType=INTEGER}, 
+      #{updatedAt,jdbcType=TIMESTAMP}, #{updatedId,jdbcType=INTEGER}, #{isactive,jdbcType=CHAR}, 
+      #{state,jdbcType=CHAR}, #{clientId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, 
+      #{amazonImportPaymentLogId,jdbcType=INTEGER}, #{cInvoiceId,jdbcType=INTEGER}, #{cInvoiceLineId,jdbcType=INTEGER}, 
+      #{mInoutId,jdbcType=INTEGER}, #{mInoutLineId,jdbcType=INTEGER}, #{cOrderId,jdbcType=INTEGER}, 
+      #{cOrderLineId,jdbcType=INTEGER}, #{mMovementId,jdbcType=INTEGER}, #{mMovementLineId,jdbcType=INTEGER}, 
+      #{dateTime,jdbcType=TIMESTAMP}, #{settleementId,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{orderId,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{quantity,jdbcType=DECIMAL}, 
+      #{marketplace,jdbcType=VARCHAR}, #{fulfillment,jdbcType=VARCHAR}, #{orderCity,jdbcType=VARCHAR}, 
+      #{productSales,jdbcType=DECIMAL}, #{shippingCredits,jdbcType=DECIMAL}, #{giftWrapCredits,jdbcType=DECIMAL}, 
+      #{promotionalRebates,jdbcType=DECIMAL}, #{salesTaxCollectd,jdbcType=DECIMAL}, #{sellingFees,jdbcType=DECIMAL}, 
+      #{fbaFees,jdbcType=DECIMAL}, #{otherTransactionFees,jdbcType=DECIMAL}, #{other,jdbcType=DECIMAL}, 
+      #{total,jdbcType=DECIMAL}, #{importDescription,jdbcType=VARCHAR}, #{isImported,jdbcType=CHAR}, 
+      #{orderPostal,jdbcType=VARCHAR}, #{orderState,jdbcType=VARCHAR}, #{sku,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.AmazonPayment" >
+    insert into amazon_payment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="createdAt != null" >
+        CREATED_AT,
+      </if>
+      <if test="createdId != null" >
+        CREATED_ID,
+      </if>
+      <if test="updatedAt != null" >
+        UPDATED_AT,
+      </if>
+      <if test="updatedId != null" >
+        UPDATED_ID,
+      </if>
+      <if test="isactive != null" >
+        ISACTIVE,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="clientId != null" >
+        CLIENT_ID,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="amazonImportPaymentLogId != null" >
+        AMAZON_IMPORT_PAYMENT_LOG_ID,
+      </if>
+      <if test="cInvoiceId != null" >
+        C_INVOICE_ID,
+      </if>
+      <if test="cInvoiceLineId != null" >
+        C_INVOICE_LINE_ID,
+      </if>
+      <if test="mInoutId != null" >
+        M_INOUT_ID,
+      </if>
+      <if test="mInoutLineId != null" >
+        M_INOUT_LINE_ID,
+      </if>
+      <if test="cOrderId != null" >
+        C_ORDER_ID,
+      </if>
+      <if test="cOrderLineId != null" >
+        C_ORDER_LINE_ID,
+      </if>
+      <if test="mMovementId != null" >
+        M_MOVEMENT_ID,
+      </if>
+      <if test="mMovementLineId != null" >
+        M_MOVEMENT_LINE_ID,
+      </if>
+      <if test="dateTime != null" >
+        DATE_TIME,
+      </if>
+      <if test="settleementId != null" >
+        SETTLEEMENT_ID,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="orderId != null" >
+        ORDER_ID,
+      </if>
+      <if test="description != null" >
+        DESCRIPTION,
+      </if>
+      <if test="quantity != null" >
+        QUANTITY,
+      </if>
+      <if test="marketplace != null" >
+        MARKETPLACE,
+      </if>
+      <if test="fulfillment != null" >
+        FULFILLMENT,
+      </if>
+      <if test="orderCity != null" >
+        ORDER_CITY,
+      </if>
+      <if test="productSales != null" >
+        PRODUCT_SALES,
+      </if>
+      <if test="shippingCredits != null" >
+        SHIPPING_CREDITS,
+      </if>
+      <if test="giftWrapCredits != null" >
+        GIFT_WRAP_CREDITS,
+      </if>
+      <if test="promotionalRebates != null" >
+        PROMOTIONAL_REBATES,
+      </if>
+      <if test="salesTaxCollectd != null" >
+        SALES_TAX_COLLECTD,
+      </if>
+      <if test="sellingFees != null" >
+        SELLING_FEES,
+      </if>
+      <if test="fbaFees != null" >
+        FBA_FEES,
+      </if>
+      <if test="otherTransactionFees != null" >
+        OTHER_TRANSACTION_FEES,
+      </if>
+      <if test="other != null" >
+        OTHER,
+      </if>
+      <if test="total != null" >
+        TOTAL,
+      </if>
+      <if test="importDescription != null" >
+        IMPORT_DESCRIPTION,
+      </if>
+      <if test="isImported != null" >
+        IS_IMPORTED,
+      </if>
+      <if test="orderPostal != null" >
+        ORDER_POSTAL,
+      </if>
+      <if test="orderState != null" >
+        ORDER_STATE,
+      </if>
+      <if test="sku != null" >
+        SKU,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdId != null" >
+        #{createdId,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedId != null" >
+        #{updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="isactive != null" >
+        #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="amazonImportPaymentLogId != null" >
+        #{amazonImportPaymentLogId,jdbcType=INTEGER},
+      </if>
+      <if test="cInvoiceId != null" >
+        #{cInvoiceId,jdbcType=INTEGER},
+      </if>
+      <if test="cInvoiceLineId != null" >
+        #{cInvoiceLineId,jdbcType=INTEGER},
+      </if>
+      <if test="mInoutId != null" >
+        #{mInoutId,jdbcType=INTEGER},
+      </if>
+      <if test="mInoutLineId != null" >
+        #{mInoutLineId,jdbcType=INTEGER},
+      </if>
+      <if test="cOrderId != null" >
+        #{cOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="cOrderLineId != null" >
+        #{cOrderLineId,jdbcType=INTEGER},
+      </if>
+      <if test="mMovementId != null" >
+        #{mMovementId,jdbcType=INTEGER},
+      </if>
+      <if test="mMovementLineId != null" >
+        #{mMovementLineId,jdbcType=INTEGER},
+      </if>
+      <if test="dateTime != null" >
+        #{dateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="settleementId != null" >
+        #{settleementId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="marketplace != null" >
+        #{marketplace,jdbcType=VARCHAR},
+      </if>
+      <if test="fulfillment != null" >
+        #{fulfillment,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCity != null" >
+        #{orderCity,jdbcType=VARCHAR},
+      </if>
+      <if test="productSales != null" >
+        #{productSales,jdbcType=DECIMAL},
+      </if>
+      <if test="shippingCredits != null" >
+        #{shippingCredits,jdbcType=DECIMAL},
+      </if>
+      <if test="giftWrapCredits != null" >
+        #{giftWrapCredits,jdbcType=DECIMAL},
+      </if>
+      <if test="promotionalRebates != null" >
+        #{promotionalRebates,jdbcType=DECIMAL},
+      </if>
+      <if test="salesTaxCollectd != null" >
+        #{salesTaxCollectd,jdbcType=DECIMAL},
+      </if>
+      <if test="sellingFees != null" >
+        #{sellingFees,jdbcType=DECIMAL},
+      </if>
+      <if test="fbaFees != null" >
+        #{fbaFees,jdbcType=DECIMAL},
+      </if>
+      <if test="otherTransactionFees != null" >
+        #{otherTransactionFees,jdbcType=DECIMAL},
+      </if>
+      <if test="other != null" >
+        #{other,jdbcType=DECIMAL},
+      </if>
+      <if test="total != null" >
+        #{total,jdbcType=DECIMAL},
+      </if>
+      <if test="importDescription != null" >
+        #{importDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="isImported != null" >
+        #{isImported,jdbcType=CHAR},
+      </if>
+      <if test="orderPostal != null" >
+        #{orderPostal,jdbcType=VARCHAR},
+      </if>
+      <if test="orderState != null" >
+        #{orderState,jdbcType=VARCHAR},
+      </if>
+      <if test="sku != null" >
+        #{sku,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pojo.AmazonPaymentExample" resultType="java.lang.Integer" >
+    select count(*) from amazon_payment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update amazon_payment
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdAt != null" >
+        CREATED_AT = #{record.createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdId != null" >
+        CREATED_ID = #{record.createdId,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatedAt != null" >
+        UPDATED_AT = #{record.updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedId != null" >
+        UPDATED_ID = #{record.updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="record.isactive != null" >
+        ISACTIVE = #{record.isactive,jdbcType=CHAR},
+      </if>
+      <if test="record.state != null" >
+        STATE = #{record.state,jdbcType=CHAR},
+      </if>
+      <if test="record.clientId != null" >
+        CLIENT_ID = #{record.clientId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orgId != null" >
+        ORG_ID = #{record.orgId,jdbcType=INTEGER},
+      </if>
+      <if test="record.amazonImportPaymentLogId != null" >
+        AMAZON_IMPORT_PAYMENT_LOG_ID = #{record.amazonImportPaymentLogId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cInvoiceId != null" >
+        C_INVOICE_ID = #{record.cInvoiceId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cInvoiceLineId != null" >
+        C_INVOICE_LINE_ID = #{record.cInvoiceLineId,jdbcType=INTEGER},
+      </if>
+      <if test="record.mInoutId != null" >
+        M_INOUT_ID = #{record.mInoutId,jdbcType=INTEGER},
+      </if>
+      <if test="record.mInoutLineId != null" >
+        M_INOUT_LINE_ID = #{record.mInoutLineId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cOrderId != null" >
+        C_ORDER_ID = #{record.cOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cOrderLineId != null" >
+        C_ORDER_LINE_ID = #{record.cOrderLineId,jdbcType=INTEGER},
+      </if>
+      <if test="record.mMovementId != null" >
+        M_MOVEMENT_ID = #{record.mMovementId,jdbcType=INTEGER},
+      </if>
+      <if test="record.mMovementLineId != null" >
+        M_MOVEMENT_LINE_ID = #{record.mMovementLineId,jdbcType=INTEGER},
+      </if>
+      <if test="record.dateTime != null" >
+        DATE_TIME = #{record.dateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.settleementId != null" >
+        SETTLEEMENT_ID = #{record.settleementId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        TYPE = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderId != null" >
+        ORDER_ID = #{record.orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null" >
+        DESCRIPTION = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.quantity != null" >
+        QUANTITY = #{record.quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="record.marketplace != null" >
+        MARKETPLACE = #{record.marketplace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fulfillment != null" >
+        FULFILLMENT = #{record.fulfillment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderCity != null" >
+        ORDER_CITY = #{record.orderCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productSales != null" >
+        PRODUCT_SALES = #{record.productSales,jdbcType=DECIMAL},
+      </if>
+      <if test="record.shippingCredits != null" >
+        SHIPPING_CREDITS = #{record.shippingCredits,jdbcType=DECIMAL},
+      </if>
+      <if test="record.giftWrapCredits != null" >
+        GIFT_WRAP_CREDITS = #{record.giftWrapCredits,jdbcType=DECIMAL},
+      </if>
+      <if test="record.promotionalRebates != null" >
+        PROMOTIONAL_REBATES = #{record.promotionalRebates,jdbcType=DECIMAL},
+      </if>
+      <if test="record.salesTaxCollectd != null" >
+        SALES_TAX_COLLECTD = #{record.salesTaxCollectd,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sellingFees != null" >
+        SELLING_FEES = #{record.sellingFees,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fbaFees != null" >
+        FBA_FEES = #{record.fbaFees,jdbcType=DECIMAL},
+      </if>
+      <if test="record.otherTransactionFees != null" >
+        OTHER_TRANSACTION_FEES = #{record.otherTransactionFees,jdbcType=DECIMAL},
+      </if>
+      <if test="record.other != null" >
+        OTHER = #{record.other,jdbcType=DECIMAL},
+      </if>
+      <if test="record.total != null" >
+        TOTAL = #{record.total,jdbcType=DECIMAL},
+      </if>
+      <if test="record.importDescription != null" >
+        IMPORT_DESCRIPTION = #{record.importDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isImported != null" >
+        IS_IMPORTED = #{record.isImported,jdbcType=CHAR},
+      </if>
+      <if test="record.orderPostal != null" >
+        ORDER_POSTAL = #{record.orderPostal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderState != null" >
+        ORDER_STATE = #{record.orderState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sku != null" >
+        SKU = #{record.sku,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update amazon_payment
+    set ID = #{record.id,jdbcType=INTEGER},
+      CREATED_AT = #{record.createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{record.createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{record.updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{record.updatedId,jdbcType=INTEGER},
+      ISACTIVE = #{record.isactive,jdbcType=CHAR},
+      STATE = #{record.state,jdbcType=CHAR},
+      CLIENT_ID = #{record.clientId,jdbcType=INTEGER},
+      ORG_ID = #{record.orgId,jdbcType=INTEGER},
+      AMAZON_IMPORT_PAYMENT_LOG_ID = #{record.amazonImportPaymentLogId,jdbcType=INTEGER},
+      C_INVOICE_ID = #{record.cInvoiceId,jdbcType=INTEGER},
+      C_INVOICE_LINE_ID = #{record.cInvoiceLineId,jdbcType=INTEGER},
+      M_INOUT_ID = #{record.mInoutId,jdbcType=INTEGER},
+      M_INOUT_LINE_ID = #{record.mInoutLineId,jdbcType=INTEGER},
+      C_ORDER_ID = #{record.cOrderId,jdbcType=INTEGER},
+      C_ORDER_LINE_ID = #{record.cOrderLineId,jdbcType=INTEGER},
+      M_MOVEMENT_ID = #{record.mMovementId,jdbcType=INTEGER},
+      M_MOVEMENT_LINE_ID = #{record.mMovementLineId,jdbcType=INTEGER},
+      DATE_TIME = #{record.dateTime,jdbcType=TIMESTAMP},
+      SETTLEEMENT_ID = #{record.settleementId,jdbcType=VARCHAR},
+      TYPE = #{record.type,jdbcType=VARCHAR},
+      ORDER_ID = #{record.orderId,jdbcType=VARCHAR},
+      DESCRIPTION = #{record.description,jdbcType=VARCHAR},
+      QUANTITY = #{record.quantity,jdbcType=DECIMAL},
+      MARKETPLACE = #{record.marketplace,jdbcType=VARCHAR},
+      FULFILLMENT = #{record.fulfillment,jdbcType=VARCHAR},
+      ORDER_CITY = #{record.orderCity,jdbcType=VARCHAR},
+      PRODUCT_SALES = #{record.productSales,jdbcType=DECIMAL},
+      SHIPPING_CREDITS = #{record.shippingCredits,jdbcType=DECIMAL},
+      GIFT_WRAP_CREDITS = #{record.giftWrapCredits,jdbcType=DECIMAL},
+      PROMOTIONAL_REBATES = #{record.promotionalRebates,jdbcType=DECIMAL},
+      SALES_TAX_COLLECTD = #{record.salesTaxCollectd,jdbcType=DECIMAL},
+      SELLING_FEES = #{record.sellingFees,jdbcType=DECIMAL},
+      FBA_FEES = #{record.fbaFees,jdbcType=DECIMAL},
+      OTHER_TRANSACTION_FEES = #{record.otherTransactionFees,jdbcType=DECIMAL},
+      OTHER = #{record.other,jdbcType=DECIMAL},
+      TOTAL = #{record.total,jdbcType=DECIMAL},
+      IMPORT_DESCRIPTION = #{record.importDescription,jdbcType=VARCHAR},
+      IS_IMPORTED = #{record.isImported,jdbcType=CHAR},
+      ORDER_POSTAL = #{record.orderPostal,jdbcType=VARCHAR},
+      ORDER_STATE = #{record.orderState,jdbcType=VARCHAR},
+      SKU = #{record.sku,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.AmazonPayment" >
+    update amazon_payment
+    <set >
+      <if test="createdAt != null" >
+        CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdId != null" >
+        CREATED_ID = #{createdId,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null" >
+        UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedId != null" >
+        UPDATED_ID = #{updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="isactive != null" >
+        ISACTIVE = #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=CHAR},
+      </if>
+      <if test="clientId != null" >
+        CLIENT_ID = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="amazonImportPaymentLogId != null" >
+        AMAZON_IMPORT_PAYMENT_LOG_ID = #{amazonImportPaymentLogId,jdbcType=INTEGER},
+      </if>
+      <if test="cInvoiceId != null" >
+        C_INVOICE_ID = #{cInvoiceId,jdbcType=INTEGER},
+      </if>
+      <if test="cInvoiceLineId != null" >
+        C_INVOICE_LINE_ID = #{cInvoiceLineId,jdbcType=INTEGER},
+      </if>
+      <if test="mInoutId != null" >
+        M_INOUT_ID = #{mInoutId,jdbcType=INTEGER},
+      </if>
+      <if test="mInoutLineId != null" >
+        M_INOUT_LINE_ID = #{mInoutLineId,jdbcType=INTEGER},
+      </if>
+      <if test="cOrderId != null" >
+        C_ORDER_ID = #{cOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="cOrderLineId != null" >
+        C_ORDER_LINE_ID = #{cOrderLineId,jdbcType=INTEGER},
+      </if>
+      <if test="mMovementId != null" >
+        M_MOVEMENT_ID = #{mMovementId,jdbcType=INTEGER},
+      </if>
+      <if test="mMovementLineId != null" >
+        M_MOVEMENT_LINE_ID = #{mMovementLineId,jdbcType=INTEGER},
+      </if>
+      <if test="dateTime != null" >
+        DATE_TIME = #{dateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="settleementId != null" >
+        SETTLEEMENT_ID = #{settleementId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null" >
+        QUANTITY = #{quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="marketplace != null" >
+        MARKETPLACE = #{marketplace,jdbcType=VARCHAR},
+      </if>
+      <if test="fulfillment != null" >
+        FULFILLMENT = #{fulfillment,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCity != null" >
+        ORDER_CITY = #{orderCity,jdbcType=VARCHAR},
+      </if>
+      <if test="productSales != null" >
+        PRODUCT_SALES = #{productSales,jdbcType=DECIMAL},
+      </if>
+      <if test="shippingCredits != null" >
+        SHIPPING_CREDITS = #{shippingCredits,jdbcType=DECIMAL},
+      </if>
+      <if test="giftWrapCredits != null" >
+        GIFT_WRAP_CREDITS = #{giftWrapCredits,jdbcType=DECIMAL},
+      </if>
+      <if test="promotionalRebates != null" >
+        PROMOTIONAL_REBATES = #{promotionalRebates,jdbcType=DECIMAL},
+      </if>
+      <if test="salesTaxCollectd != null" >
+        SALES_TAX_COLLECTD = #{salesTaxCollectd,jdbcType=DECIMAL},
+      </if>
+      <if test="sellingFees != null" >
+        SELLING_FEES = #{sellingFees,jdbcType=DECIMAL},
+      </if>
+      <if test="fbaFees != null" >
+        FBA_FEES = #{fbaFees,jdbcType=DECIMAL},
+      </if>
+      <if test="otherTransactionFees != null" >
+        OTHER_TRANSACTION_FEES = #{otherTransactionFees,jdbcType=DECIMAL},
+      </if>
+      <if test="other != null" >
+        OTHER = #{other,jdbcType=DECIMAL},
+      </if>
+      <if test="total != null" >
+        TOTAL = #{total,jdbcType=DECIMAL},
+      </if>
+      <if test="importDescription != null" >
+        IMPORT_DESCRIPTION = #{importDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="isImported != null" >
+        IS_IMPORTED = #{isImported,jdbcType=CHAR},
+      </if>
+      <if test="orderPostal != null" >
+        ORDER_POSTAL = #{orderPostal,jdbcType=VARCHAR},
+      </if>
+      <if test="orderState != null" >
+        ORDER_STATE = #{orderState,jdbcType=VARCHAR},
+      </if>
+      <if test="sku != null" >
+        SKU = #{sku,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.AmazonPayment" >
+    update amazon_payment
+    set CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{updatedId,jdbcType=INTEGER},
+      ISACTIVE = #{isactive,jdbcType=CHAR},
+      STATE = #{state,jdbcType=CHAR},
+      CLIENT_ID = #{clientId,jdbcType=INTEGER},
+      ORG_ID = #{orgId,jdbcType=INTEGER},
+      AMAZON_IMPORT_PAYMENT_LOG_ID = #{amazonImportPaymentLogId,jdbcType=INTEGER},
+      C_INVOICE_ID = #{cInvoiceId,jdbcType=INTEGER},
+      C_INVOICE_LINE_ID = #{cInvoiceLineId,jdbcType=INTEGER},
+      M_INOUT_ID = #{mInoutId,jdbcType=INTEGER},
+      M_INOUT_LINE_ID = #{mInoutLineId,jdbcType=INTEGER},
+      C_ORDER_ID = #{cOrderId,jdbcType=INTEGER},
+      C_ORDER_LINE_ID = #{cOrderLineId,jdbcType=INTEGER},
+      M_MOVEMENT_ID = #{mMovementId,jdbcType=INTEGER},
+      M_MOVEMENT_LINE_ID = #{mMovementLineId,jdbcType=INTEGER},
+      DATE_TIME = #{dateTime,jdbcType=TIMESTAMP},
+      SETTLEEMENT_ID = #{settleementId,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=VARCHAR},
+      ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      QUANTITY = #{quantity,jdbcType=DECIMAL},
+      MARKETPLACE = #{marketplace,jdbcType=VARCHAR},
+      FULFILLMENT = #{fulfillment,jdbcType=VARCHAR},
+      ORDER_CITY = #{orderCity,jdbcType=VARCHAR},
+      PRODUCT_SALES = #{productSales,jdbcType=DECIMAL},
+      SHIPPING_CREDITS = #{shippingCredits,jdbcType=DECIMAL},
+      GIFT_WRAP_CREDITS = #{giftWrapCredits,jdbcType=DECIMAL},
+      PROMOTIONAL_REBATES = #{promotionalRebates,jdbcType=DECIMAL},
+      SALES_TAX_COLLECTD = #{salesTaxCollectd,jdbcType=DECIMAL},
+      SELLING_FEES = #{sellingFees,jdbcType=DECIMAL},
+      FBA_FEES = #{fbaFees,jdbcType=DECIMAL},
+      OTHER_TRANSACTION_FEES = #{otherTransactionFees,jdbcType=DECIMAL},
+      OTHER = #{other,jdbcType=DECIMAL},
+      TOTAL = #{total,jdbcType=DECIMAL},
+      IMPORT_DESCRIPTION = #{importDescription,jdbcType=VARCHAR},
+      IS_IMPORTED = #{isImported,jdbcType=CHAR},
+      ORDER_POSTAL = #{orderPostal,jdbcType=VARCHAR},
+      ORDER_STATE = #{orderState,jdbcType=VARCHAR},
+      SKU = #{sku,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

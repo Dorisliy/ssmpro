@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.AmazonImportPaymentLogMapper" >
+  <resultMap id="BaseResultMap" type="pojo.AmazonImportPaymentLog" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="CREATED_AT" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="CREATED_ID" property="createdId" jdbcType="INTEGER" />
+    <result column="UPDATED_AT" property="updatedAt" jdbcType="TIMESTAMP" />
+    <result column="UPDATED_ID" property="updatedId" jdbcType="INTEGER" />
+    <result column="ISACTIVE" property="isactive" jdbcType="CHAR" />
+    <result column="STATE" property="state" jdbcType="CHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="CLIENT_ID" property="clientId" jdbcType="INTEGER" />
+    <result column="ORG_ID" property="orgId" jdbcType="INTEGER" />
+    <result column="REPORT_REQUESTED_ID" property="reportRequestedId" jdbcType="VARCHAR" />
+    <result column="GENERATED_REPORT_ID" property="generatedReportId" jdbcType="VARCHAR" />
+    <result column="REQUEST_TIMESTAMP" property="requestTimestamp" jdbcType="TIMESTAMP" />
+    <result column="REQUEST_END_TIMESTAMP" property="requestEndTimestamp" jdbcType="TIMESTAMP" />
+    <result column="REPORT_FILENAME" property="reportFilename" jdbcType="VARCHAR" />
+    <result column="TOTAL_IMPORT_NUM" property="totalImportNum" jdbcType="DECIMAL" />
+    <result column="SUCCESS_NUM" property="successNum" jdbcType="DECIMAL" />
+    <result column="FAIL_NUM" property="failNum" jdbcType="DECIMAL" />
+    <result column="TOTAL_DEAL_NUM" property="totalDealNum" jdbcType="DECIMAL" />
+    <result column="IS_INVOICES_CREATED" property="isInvoicesCreated" jdbcType="CHAR" />
+    <result column="INVOICE_NUM" property="invoiceNum" jdbcType="DECIMAL" />
+    <result column="CREATE_SHIPMENT" property="createShipment" jdbcType="CHAR" />
+    <result column="CREATE_INVOICE" property="createInvoice" jdbcType="CHAR" />
+    <result column="GENERATE_INVOICE" property="generateInvoice" jdbcType="CHAR" />
+    <result column="PROCESSING" property="processing" jdbcType="CHAR" />
+    <result column="GENERATE_PAYMENT" property="generatePayment" jdbcType="CHAR" />
+    <result column="IS_GENERATE_PAYMENT" property="isGeneratePayment" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, CREATED_AT, CREATED_ID, UPDATED_AT, UPDATED_ID, ISACTIVE, STATE, NAME, CLIENT_ID, 
+    ORG_ID, REPORT_REQUESTED_ID, GENERATED_REPORT_ID, REQUEST_TIMESTAMP, REQUEST_END_TIMESTAMP, 
+    REPORT_FILENAME, TOTAL_IMPORT_NUM, SUCCESS_NUM, FAIL_NUM, TOTAL_DEAL_NUM, IS_INVOICES_CREATED, 
+    INVOICE_NUM, CREATE_SHIPMENT, CREATE_INVOICE, GENERATE_INVOICE, PROCESSING, GENERATE_PAYMENT, 
+    IS_GENERATE_PAYMENT
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pojo.AmazonImportPaymentLogExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from amazon_import_payment_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from amazon_import_payment_log
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from amazon_import_payment_log
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pojo.AmazonImportPaymentLogExample" >
+    delete from amazon_import_payment_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pojo.AmazonImportPaymentLog" useGeneratedKeys="true" keyProperty="id">
+    insert into amazon_import_payment_log (ID, CREATED_AT, CREATED_ID, 
+      UPDATED_AT, UPDATED_ID, ISACTIVE, 
+      STATE, NAME, CLIENT_ID, 
+      ORG_ID, REPORT_REQUESTED_ID, GENERATED_REPORT_ID, 
+      REQUEST_TIMESTAMP, REQUEST_END_TIMESTAMP, 
+      REPORT_FILENAME, TOTAL_IMPORT_NUM, SUCCESS_NUM, 
+      FAIL_NUM, TOTAL_DEAL_NUM, IS_INVOICES_CREATED, 
+      INVOICE_NUM, CREATE_SHIPMENT, CREATE_INVOICE, 
+      GENERATE_INVOICE, PROCESSING, GENERATE_PAYMENT, 
+      IS_GENERATE_PAYMENT)
+    values (#{id,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, #{createdId,jdbcType=INTEGER}, 
+      #{updatedAt,jdbcType=TIMESTAMP}, #{updatedId,jdbcType=INTEGER}, #{isactive,jdbcType=CHAR}, 
+      #{state,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{clientId,jdbcType=INTEGER}, 
+      #{orgId,jdbcType=INTEGER}, #{reportRequestedId,jdbcType=VARCHAR}, #{generatedReportId,jdbcType=VARCHAR}, 
+      #{requestTimestamp,jdbcType=TIMESTAMP}, #{requestEndTimestamp,jdbcType=TIMESTAMP}, 
+      #{reportFilename,jdbcType=VARCHAR}, #{totalImportNum,jdbcType=DECIMAL}, #{successNum,jdbcType=DECIMAL}, 
+      #{failNum,jdbcType=DECIMAL}, #{totalDealNum,jdbcType=DECIMAL}, #{isInvoicesCreated,jdbcType=CHAR}, 
+      #{invoiceNum,jdbcType=DECIMAL}, #{createShipment,jdbcType=CHAR}, #{createInvoice,jdbcType=CHAR}, 
+      #{generateInvoice,jdbcType=CHAR}, #{processing,jdbcType=CHAR}, #{generatePayment,jdbcType=CHAR}, 
+      #{isGeneratePayment,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.AmazonImportPaymentLog" >
+    insert into amazon_import_payment_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="createdAt != null" >
+        CREATED_AT,
+      </if>
+      <if test="createdId != null" >
+        CREATED_ID,
+      </if>
+      <if test="updatedAt != null" >
+        UPDATED_AT,
+      </if>
+      <if test="updatedId != null" >
+        UPDATED_ID,
+      </if>
+      <if test="isactive != null" >
+        ISACTIVE,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="clientId != null" >
+        CLIENT_ID,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="reportRequestedId != null" >
+        REPORT_REQUESTED_ID,
+      </if>
+      <if test="generatedReportId != null" >
+        GENERATED_REPORT_ID,
+      </if>
+      <if test="requestTimestamp != null" >
+        REQUEST_TIMESTAMP,
+      </if>
+      <if test="requestEndTimestamp != null" >
+        REQUEST_END_TIMESTAMP,
+      </if>
+      <if test="reportFilename != null" >
+        REPORT_FILENAME,
+      </if>
+      <if test="totalImportNum != null" >
+        TOTAL_IMPORT_NUM,
+      </if>
+      <if test="successNum != null" >
+        SUCCESS_NUM,
+      </if>
+      <if test="failNum != null" >
+        FAIL_NUM,
+      </if>
+      <if test="totalDealNum != null" >
+        TOTAL_DEAL_NUM,
+      </if>
+      <if test="isInvoicesCreated != null" >
+        IS_INVOICES_CREATED,
+      </if>
+      <if test="invoiceNum != null" >
+        INVOICE_NUM,
+      </if>
+      <if test="createShipment != null" >
+        CREATE_SHIPMENT,
+      </if>
+      <if test="createInvoice != null" >
+        CREATE_INVOICE,
+      </if>
+      <if test="generateInvoice != null" >
+        GENERATE_INVOICE,
+      </if>
+      <if test="processing != null" >
+        PROCESSING,
+      </if>
+      <if test="generatePayment != null" >
+        GENERATE_PAYMENT,
+      </if>
+      <if test="isGeneratePayment != null" >
+        IS_GENERATE_PAYMENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdId != null" >
+        #{createdId,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedId != null" >
+        #{updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="isactive != null" >
+        #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="reportRequestedId != null" >
+        #{reportRequestedId,jdbcType=VARCHAR},
+      </if>
+      <if test="generatedReportId != null" >
+        #{generatedReportId,jdbcType=VARCHAR},
+      </if>
+      <if test="requestTimestamp != null" >
+        #{requestTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requestEndTimestamp != null" >
+        #{requestEndTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reportFilename != null" >
+        #{reportFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="totalImportNum != null" >
+        #{totalImportNum,jdbcType=DECIMAL},
+      </if>
+      <if test="successNum != null" >
+        #{successNum,jdbcType=DECIMAL},
+      </if>
+      <if test="failNum != null" >
+        #{failNum,jdbcType=DECIMAL},
+      </if>
+      <if test="totalDealNum != null" >
+        #{totalDealNum,jdbcType=DECIMAL},
+      </if>
+      <if test="isInvoicesCreated != null" >
+        #{isInvoicesCreated,jdbcType=CHAR},
+      </if>
+      <if test="invoiceNum != null" >
+        #{invoiceNum,jdbcType=DECIMAL},
+      </if>
+      <if test="createShipment != null" >
+        #{createShipment,jdbcType=CHAR},
+      </if>
+      <if test="createInvoice != null" >
+        #{createInvoice,jdbcType=CHAR},
+      </if>
+      <if test="generateInvoice != null" >
+        #{generateInvoice,jdbcType=CHAR},
+      </if>
+      <if test="processing != null" >
+        #{processing,jdbcType=CHAR},
+      </if>
+      <if test="generatePayment != null" >
+        #{generatePayment,jdbcType=CHAR},
+      </if>
+      <if test="isGeneratePayment != null" >
+        #{isGeneratePayment,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pojo.AmazonImportPaymentLogExample" resultType="java.lang.Integer" >
+    select count(*) from amazon_import_payment_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update amazon_import_payment_log
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdAt != null" >
+        CREATED_AT = #{record.createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdId != null" >
+        CREATED_ID = #{record.createdId,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatedAt != null" >
+        UPDATED_AT = #{record.updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedId != null" >
+        UPDATED_ID = #{record.updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="record.isactive != null" >
+        ISACTIVE = #{record.isactive,jdbcType=CHAR},
+      </if>
+      <if test="record.state != null" >
+        STATE = #{record.state,jdbcType=CHAR},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clientId != null" >
+        CLIENT_ID = #{record.clientId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orgId != null" >
+        ORG_ID = #{record.orgId,jdbcType=INTEGER},
+      </if>
+      <if test="record.reportRequestedId != null" >
+        REPORT_REQUESTED_ID = #{record.reportRequestedId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.generatedReportId != null" >
+        GENERATED_REPORT_ID = #{record.generatedReportId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requestTimestamp != null" >
+        REQUEST_TIMESTAMP = #{record.requestTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.requestEndTimestamp != null" >
+        REQUEST_END_TIMESTAMP = #{record.requestEndTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.reportFilename != null" >
+        REPORT_FILENAME = #{record.reportFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.totalImportNum != null" >
+        TOTAL_IMPORT_NUM = #{record.totalImportNum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.successNum != null" >
+        SUCCESS_NUM = #{record.successNum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.failNum != null" >
+        FAIL_NUM = #{record.failNum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.totalDealNum != null" >
+        TOTAL_DEAL_NUM = #{record.totalDealNum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isInvoicesCreated != null" >
+        IS_INVOICES_CREATED = #{record.isInvoicesCreated,jdbcType=CHAR},
+      </if>
+      <if test="record.invoiceNum != null" >
+        INVOICE_NUM = #{record.invoiceNum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createShipment != null" >
+        CREATE_SHIPMENT = #{record.createShipment,jdbcType=CHAR},
+      </if>
+      <if test="record.createInvoice != null" >
+        CREATE_INVOICE = #{record.createInvoice,jdbcType=CHAR},
+      </if>
+      <if test="record.generateInvoice != null" >
+        GENERATE_INVOICE = #{record.generateInvoice,jdbcType=CHAR},
+      </if>
+      <if test="record.processing != null" >
+        PROCESSING = #{record.processing,jdbcType=CHAR},
+      </if>
+      <if test="record.generatePayment != null" >
+        GENERATE_PAYMENT = #{record.generatePayment,jdbcType=CHAR},
+      </if>
+      <if test="record.isGeneratePayment != null" >
+        IS_GENERATE_PAYMENT = #{record.isGeneratePayment,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update amazon_import_payment_log
+    set ID = #{record.id,jdbcType=INTEGER},
+      CREATED_AT = #{record.createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{record.createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{record.updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{record.updatedId,jdbcType=INTEGER},
+      ISACTIVE = #{record.isactive,jdbcType=CHAR},
+      STATE = #{record.state,jdbcType=CHAR},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      CLIENT_ID = #{record.clientId,jdbcType=INTEGER},
+      ORG_ID = #{record.orgId,jdbcType=INTEGER},
+      REPORT_REQUESTED_ID = #{record.reportRequestedId,jdbcType=VARCHAR},
+      GENERATED_REPORT_ID = #{record.generatedReportId,jdbcType=VARCHAR},
+      REQUEST_TIMESTAMP = #{record.requestTimestamp,jdbcType=TIMESTAMP},
+      REQUEST_END_TIMESTAMP = #{record.requestEndTimestamp,jdbcType=TIMESTAMP},
+      REPORT_FILENAME = #{record.reportFilename,jdbcType=VARCHAR},
+      TOTAL_IMPORT_NUM = #{record.totalImportNum,jdbcType=DECIMAL},
+      SUCCESS_NUM = #{record.successNum,jdbcType=DECIMAL},
+      FAIL_NUM = #{record.failNum,jdbcType=DECIMAL},
+      TOTAL_DEAL_NUM = #{record.totalDealNum,jdbcType=DECIMAL},
+      IS_INVOICES_CREATED = #{record.isInvoicesCreated,jdbcType=CHAR},
+      INVOICE_NUM = #{record.invoiceNum,jdbcType=DECIMAL},
+      CREATE_SHIPMENT = #{record.createShipment,jdbcType=CHAR},
+      CREATE_INVOICE = #{record.createInvoice,jdbcType=CHAR},
+      GENERATE_INVOICE = #{record.generateInvoice,jdbcType=CHAR},
+      PROCESSING = #{record.processing,jdbcType=CHAR},
+      GENERATE_PAYMENT = #{record.generatePayment,jdbcType=CHAR},
+      IS_GENERATE_PAYMENT = #{record.isGeneratePayment,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.AmazonImportPaymentLog" >
+    update amazon_import_payment_log
+    <set >
+      <if test="createdAt != null" >
+        CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdId != null" >
+        CREATED_ID = #{createdId,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null" >
+        UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedId != null" >
+        UPDATED_ID = #{updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="isactive != null" >
+        ISACTIVE = #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        CLIENT_ID = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="reportRequestedId != null" >
+        REPORT_REQUESTED_ID = #{reportRequestedId,jdbcType=VARCHAR},
+      </if>
+      <if test="generatedReportId != null" >
+        GENERATED_REPORT_ID = #{generatedReportId,jdbcType=VARCHAR},
+      </if>
+      <if test="requestTimestamp != null" >
+        REQUEST_TIMESTAMP = #{requestTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requestEndTimestamp != null" >
+        REQUEST_END_TIMESTAMP = #{requestEndTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reportFilename != null" >
+        REPORT_FILENAME = #{reportFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="totalImportNum != null" >
+        TOTAL_IMPORT_NUM = #{totalImportNum,jdbcType=DECIMAL},
+      </if>
+      <if test="successNum != null" >
+        SUCCESS_NUM = #{successNum,jdbcType=DECIMAL},
+      </if>
+      <if test="failNum != null" >
+        FAIL_NUM = #{failNum,jdbcType=DECIMAL},
+      </if>
+      <if test="totalDealNum != null" >
+        TOTAL_DEAL_NUM = #{totalDealNum,jdbcType=DECIMAL},
+      </if>
+      <if test="isInvoicesCreated != null" >
+        IS_INVOICES_CREATED = #{isInvoicesCreated,jdbcType=CHAR},
+      </if>
+      <if test="invoiceNum != null" >
+        INVOICE_NUM = #{invoiceNum,jdbcType=DECIMAL},
+      </if>
+      <if test="createShipment != null" >
+        CREATE_SHIPMENT = #{createShipment,jdbcType=CHAR},
+      </if>
+      <if test="createInvoice != null" >
+        CREATE_INVOICE = #{createInvoice,jdbcType=CHAR},
+      </if>
+      <if test="generateInvoice != null" >
+        GENERATE_INVOICE = #{generateInvoice,jdbcType=CHAR},
+      </if>
+      <if test="processing != null" >
+        PROCESSING = #{processing,jdbcType=CHAR},
+      </if>
+      <if test="generatePayment != null" >
+        GENERATE_PAYMENT = #{generatePayment,jdbcType=CHAR},
+      </if>
+      <if test="isGeneratePayment != null" >
+        IS_GENERATE_PAYMENT = #{isGeneratePayment,jdbcType=CHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.AmazonImportPaymentLog" >
+    update amazon_import_payment_log
+    set CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{updatedId,jdbcType=INTEGER},
+      ISACTIVE = #{isactive,jdbcType=CHAR},
+      STATE = #{state,jdbcType=CHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      CLIENT_ID = #{clientId,jdbcType=INTEGER},
+      ORG_ID = #{orgId,jdbcType=INTEGER},
+      REPORT_REQUESTED_ID = #{reportRequestedId,jdbcType=VARCHAR},
+      GENERATED_REPORT_ID = #{generatedReportId,jdbcType=VARCHAR},
+      REQUEST_TIMESTAMP = #{requestTimestamp,jdbcType=TIMESTAMP},
+      REQUEST_END_TIMESTAMP = #{requestEndTimestamp,jdbcType=TIMESTAMP},
+      REPORT_FILENAME = #{reportFilename,jdbcType=VARCHAR},
+      TOTAL_IMPORT_NUM = #{totalImportNum,jdbcType=DECIMAL},
+      SUCCESS_NUM = #{successNum,jdbcType=DECIMAL},
+      FAIL_NUM = #{failNum,jdbcType=DECIMAL},
+      TOTAL_DEAL_NUM = #{totalDealNum,jdbcType=DECIMAL},
+      IS_INVOICES_CREATED = #{isInvoicesCreated,jdbcType=CHAR},
+      INVOICE_NUM = #{invoiceNum,jdbcType=DECIMAL},
+      CREATE_SHIPMENT = #{createShipment,jdbcType=CHAR},
+      CREATE_INVOICE = #{createInvoice,jdbcType=CHAR},
+      GENERATE_INVOICE = #{generateInvoice,jdbcType=CHAR},
+      PROCESSING = #{processing,jdbcType=CHAR},
+      GENERATE_PAYMENT = #{generatePayment,jdbcType=CHAR},
+      IS_GENERATE_PAYMENT = #{isGeneratePayment,jdbcType=CHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

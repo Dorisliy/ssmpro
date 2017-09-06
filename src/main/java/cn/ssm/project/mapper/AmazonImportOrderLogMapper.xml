@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.AmazonImportOrderLogMapper" >
+  <resultMap id="BaseResultMap" type="pojo.AmazonImportOrderLog" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="CREATED_AT" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="CREATED_ID" property="createdId" jdbcType="INTEGER" />
+    <result column="UPDATED_AT" property="updatedAt" jdbcType="TIMESTAMP" />
+    <result column="UPDATED_ID" property="updatedId" jdbcType="INTEGER" />
+    <result column="CLIENT_ID" property="clientId" jdbcType="INTEGER" />
+    <result column="ORG_ID" property="orgId" jdbcType="INTEGER" />
+    <result column="STATE" property="state" jdbcType="CHAR" />
+    <result column="ISACTIVE" property="isactive" jdbcType="CHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="REPORT_REQUESTED_ID" property="reportRequestedId" jdbcType="VARCHAR" />
+    <result column="GENERATED_REPORT_ID" property="generatedReportId" jdbcType="VARCHAR" />
+    <result column="REQUEST_TIMESTAMP" property="requestTimestamp" jdbcType="TIMESTAMP" />
+    <result column="REPORT_FILENAME" property="reportFilename" jdbcType="VARCHAR" />
+    <result column="TOTAL_ORDER_NUM" property="totalOrderNum" jdbcType="DECIMAL" />
+    <result column="SUCCESS_NUM" property="successNum" jdbcType="DECIMAL" />
+    <result column="FAIL_NUM" property="failNum" jdbcType="DECIMAL" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="AMAZON_IMPORT_CONFIGURE_ID" property="amazonImportConfigureId" jdbcType="INTEGER" />
+    <result column="PROCESSING" property="processing" jdbcType="CHAR" />
+    <result column="ERROR_MESSAGE" property="errorMessage" jdbcType="VARCHAR" />
+    <result column="REPORT_PROCESSING_STATUS" property="reportProcessingStatus" jdbcType="VARCHAR" />
+    <result column="QUERY_START_DATE" property="queryStartDate" jdbcType="TIMESTAMP" />
+    <result column="QUERY_END_DATE" property="queryEndDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, CREATED_AT, CREATED_ID, UPDATED_AT, UPDATED_ID, CLIENT_ID, ORG_ID, STATE, ISACTIVE, 
+    NAME, REPORT_REQUESTED_ID, GENERATED_REPORT_ID, REQUEST_TIMESTAMP, REPORT_FILENAME, 
+    TOTAL_ORDER_NUM, SUCCESS_NUM, FAIL_NUM, DESCRIPTION, AMAZON_IMPORT_CONFIGURE_ID, 
+    PROCESSING, ERROR_MESSAGE, REPORT_PROCESSING_STATUS, QUERY_START_DATE, QUERY_END_DATE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pojo.AmazonImportOrderLogExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from amazon_import_order_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from amazon_import_order_log
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from amazon_import_order_log
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="pojo.AmazonImportOrderLogExample" >
+    delete from amazon_import_order_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="pojo.AmazonImportOrderLog" useGeneratedKeys="true" keyProperty="id">
+    insert into amazon_import_order_log (ID, CREATED_AT, CREATED_ID, 
+      UPDATED_AT, UPDATED_ID, CLIENT_ID, 
+      ORG_ID, STATE, ISACTIVE, NAME, 
+      REPORT_REQUESTED_ID, GENERATED_REPORT_ID, REQUEST_TIMESTAMP, 
+      REPORT_FILENAME, TOTAL_ORDER_NUM, SUCCESS_NUM, 
+      FAIL_NUM, DESCRIPTION, AMAZON_IMPORT_CONFIGURE_ID, 
+      PROCESSING, ERROR_MESSAGE, REPORT_PROCESSING_STATUS, 
+      QUERY_START_DATE, QUERY_END_DATE)
+    values (#{id,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, #{createdId,jdbcType=INTEGER}, 
+      #{updatedAt,jdbcType=TIMESTAMP}, #{updatedId,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER}, 
+      #{orgId,jdbcType=INTEGER}, #{state,jdbcType=CHAR}, #{isactive,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, 
+      #{reportRequestedId,jdbcType=VARCHAR}, #{generatedReportId,jdbcType=VARCHAR}, #{requestTimestamp,jdbcType=TIMESTAMP}, 
+      #{reportFilename,jdbcType=VARCHAR}, #{totalOrderNum,jdbcType=DECIMAL}, #{successNum,jdbcType=DECIMAL}, 
+      #{failNum,jdbcType=DECIMAL}, #{description,jdbcType=VARCHAR}, #{amazonImportConfigureId,jdbcType=INTEGER}, 
+      #{processing,jdbcType=CHAR}, #{errorMessage,jdbcType=VARCHAR}, #{reportProcessingStatus,jdbcType=VARCHAR}, 
+      #{queryStartDate,jdbcType=TIMESTAMP}, #{queryEndDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.AmazonImportOrderLog" >
+    insert into amazon_import_order_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="createdAt != null" >
+        CREATED_AT,
+      </if>
+      <if test="createdId != null" >
+        CREATED_ID,
+      </if>
+      <if test="updatedAt != null" >
+        UPDATED_AT,
+      </if>
+      <if test="updatedId != null" >
+        UPDATED_ID,
+      </if>
+      <if test="clientId != null" >
+        CLIENT_ID,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="isactive != null" >
+        ISACTIVE,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="reportRequestedId != null" >
+        REPORT_REQUESTED_ID,
+      </if>
+      <if test="generatedReportId != null" >
+        GENERATED_REPORT_ID,
+      </if>
+      <if test="requestTimestamp != null" >
+        REQUEST_TIMESTAMP,
+      </if>
+      <if test="reportFilename != null" >
+        REPORT_FILENAME,
+      </if>
+      <if test="totalOrderNum != null" >
+        TOTAL_ORDER_NUM,
+      </if>
+      <if test="successNum != null" >
+        SUCCESS_NUM,
+      </if>
+      <if test="failNum != null" >
+        FAIL_NUM,
+      </if>
+      <if test="description != null" >
+        DESCRIPTION,
+      </if>
+      <if test="amazonImportConfigureId != null" >
+        AMAZON_IMPORT_CONFIGURE_ID,
+      </if>
+      <if test="processing != null" >
+        PROCESSING,
+      </if>
+      <if test="errorMessage != null" >
+        ERROR_MESSAGE,
+      </if>
+      <if test="reportProcessingStatus != null" >
+        REPORT_PROCESSING_STATUS,
+      </if>
+      <if test="queryStartDate != null" >
+        QUERY_START_DATE,
+      </if>
+      <if test="queryEndDate != null" >
+        QUERY_END_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdId != null" >
+        #{createdId,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedId != null" >
+        #{updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="isactive != null" >
+        #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="reportRequestedId != null" >
+        #{reportRequestedId,jdbcType=VARCHAR},
+      </if>
+      <if test="generatedReportId != null" >
+        #{generatedReportId,jdbcType=VARCHAR},
+      </if>
+      <if test="requestTimestamp != null" >
+        #{requestTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reportFilename != null" >
+        #{reportFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="totalOrderNum != null" >
+        #{totalOrderNum,jdbcType=DECIMAL},
+      </if>
+      <if test="successNum != null" >
+        #{successNum,jdbcType=DECIMAL},
+      </if>
+      <if test="failNum != null" >
+        #{failNum,jdbcType=DECIMAL},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonImportConfigureId != null" >
+        #{amazonImportConfigureId,jdbcType=INTEGER},
+      </if>
+      <if test="processing != null" >
+        #{processing,jdbcType=CHAR},
+      </if>
+      <if test="errorMessage != null" >
+        #{errorMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="reportProcessingStatus != null" >
+        #{reportProcessingStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="queryStartDate != null" >
+        #{queryStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="queryEndDate != null" >
+        #{queryEndDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="pojo.AmazonImportOrderLogExample" resultType="java.lang.Integer" >
+    select count(*) from amazon_import_order_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update amazon_import_order_log
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdAt != null" >
+        CREATED_AT = #{record.createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdId != null" >
+        CREATED_ID = #{record.createdId,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatedAt != null" >
+        UPDATED_AT = #{record.updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedId != null" >
+        UPDATED_ID = #{record.updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="record.clientId != null" >
+        CLIENT_ID = #{record.clientId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orgId != null" >
+        ORG_ID = #{record.orgId,jdbcType=INTEGER},
+      </if>
+      <if test="record.state != null" >
+        STATE = #{record.state,jdbcType=CHAR},
+      </if>
+      <if test="record.isactive != null" >
+        ISACTIVE = #{record.isactive,jdbcType=CHAR},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reportRequestedId != null" >
+        REPORT_REQUESTED_ID = #{record.reportRequestedId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.generatedReportId != null" >
+        GENERATED_REPORT_ID = #{record.generatedReportId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requestTimestamp != null" >
+        REQUEST_TIMESTAMP = #{record.requestTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.reportFilename != null" >
+        REPORT_FILENAME = #{record.reportFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.totalOrderNum != null" >
+        TOTAL_ORDER_NUM = #{record.totalOrderNum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.successNum != null" >
+        SUCCESS_NUM = #{record.successNum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.failNum != null" >
+        FAIL_NUM = #{record.failNum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.description != null" >
+        DESCRIPTION = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonImportConfigureId != null" >
+        AMAZON_IMPORT_CONFIGURE_ID = #{record.amazonImportConfigureId,jdbcType=INTEGER},
+      </if>
+      <if test="record.processing != null" >
+        PROCESSING = #{record.processing,jdbcType=CHAR},
+      </if>
+      <if test="record.errorMessage != null" >
+        ERROR_MESSAGE = #{record.errorMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reportProcessingStatus != null" >
+        REPORT_PROCESSING_STATUS = #{record.reportProcessingStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.queryStartDate != null" >
+        QUERY_START_DATE = #{record.queryStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.queryEndDate != null" >
+        QUERY_END_DATE = #{record.queryEndDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update amazon_import_order_log
+    set ID = #{record.id,jdbcType=INTEGER},
+      CREATED_AT = #{record.createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{record.createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{record.updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{record.updatedId,jdbcType=INTEGER},
+      CLIENT_ID = #{record.clientId,jdbcType=INTEGER},
+      ORG_ID = #{record.orgId,jdbcType=INTEGER},
+      STATE = #{record.state,jdbcType=CHAR},
+      ISACTIVE = #{record.isactive,jdbcType=CHAR},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      REPORT_REQUESTED_ID = #{record.reportRequestedId,jdbcType=VARCHAR},
+      GENERATED_REPORT_ID = #{record.generatedReportId,jdbcType=VARCHAR},
+      REQUEST_TIMESTAMP = #{record.requestTimestamp,jdbcType=TIMESTAMP},
+      REPORT_FILENAME = #{record.reportFilename,jdbcType=VARCHAR},
+      TOTAL_ORDER_NUM = #{record.totalOrderNum,jdbcType=DECIMAL},
+      SUCCESS_NUM = #{record.successNum,jdbcType=DECIMAL},
+      FAIL_NUM = #{record.failNum,jdbcType=DECIMAL},
+      DESCRIPTION = #{record.description,jdbcType=VARCHAR},
+      AMAZON_IMPORT_CONFIGURE_ID = #{record.amazonImportConfigureId,jdbcType=INTEGER},
+      PROCESSING = #{record.processing,jdbcType=CHAR},
+      ERROR_MESSAGE = #{record.errorMessage,jdbcType=VARCHAR},
+      REPORT_PROCESSING_STATUS = #{record.reportProcessingStatus,jdbcType=VARCHAR},
+      QUERY_START_DATE = #{record.queryStartDate,jdbcType=TIMESTAMP},
+      QUERY_END_DATE = #{record.queryEndDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.AmazonImportOrderLog" >
+    update amazon_import_order_log
+    <set >
+      <if test="createdAt != null" >
+        CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdId != null" >
+        CREATED_ID = #{createdId,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null" >
+        UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedId != null" >
+        UPDATED_ID = #{updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        CLIENT_ID = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=CHAR},
+      </if>
+      <if test="isactive != null" >
+        ISACTIVE = #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="reportRequestedId != null" >
+        REPORT_REQUESTED_ID = #{reportRequestedId,jdbcType=VARCHAR},
+      </if>
+      <if test="generatedReportId != null" >
+        GENERATED_REPORT_ID = #{generatedReportId,jdbcType=VARCHAR},
+      </if>
+      <if test="requestTimestamp != null" >
+        REQUEST_TIMESTAMP = #{requestTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reportFilename != null" >
+        REPORT_FILENAME = #{reportFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="totalOrderNum != null" >
+        TOTAL_ORDER_NUM = #{totalOrderNum,jdbcType=DECIMAL},
+      </if>
+      <if test="successNum != null" >
+        SUCCESS_NUM = #{successNum,jdbcType=DECIMAL},
+      </if>
+      <if test="failNum != null" >
+        FAIL_NUM = #{failNum,jdbcType=DECIMAL},
+      </if>
+      <if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonImportConfigureId != null" >
+        AMAZON_IMPORT_CONFIGURE_ID = #{amazonImportConfigureId,jdbcType=INTEGER},
+      </if>
+      <if test="processing != null" >
+        PROCESSING = #{processing,jdbcType=CHAR},
+      </if>
+      <if test="errorMessage != null" >
+        ERROR_MESSAGE = #{errorMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="reportProcessingStatus != null" >
+        REPORT_PROCESSING_STATUS = #{reportProcessingStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="queryStartDate != null" >
+        QUERY_START_DATE = #{queryStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="queryEndDate != null" >
+        QUERY_END_DATE = #{queryEndDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.AmazonImportOrderLog" >
+    update amazon_import_order_log
+    set CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{updatedId,jdbcType=INTEGER},
+      CLIENT_ID = #{clientId,jdbcType=INTEGER},
+      ORG_ID = #{orgId,jdbcType=INTEGER},
+      STATE = #{state,jdbcType=CHAR},
+      ISACTIVE = #{isactive,jdbcType=CHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      REPORT_REQUESTED_ID = #{reportRequestedId,jdbcType=VARCHAR},
+      GENERATED_REPORT_ID = #{generatedReportId,jdbcType=VARCHAR},
+      REQUEST_TIMESTAMP = #{requestTimestamp,jdbcType=TIMESTAMP},
+      REPORT_FILENAME = #{reportFilename,jdbcType=VARCHAR},
+      TOTAL_ORDER_NUM = #{totalOrderNum,jdbcType=DECIMAL},
+      SUCCESS_NUM = #{successNum,jdbcType=DECIMAL},
+      FAIL_NUM = #{failNum,jdbcType=DECIMAL},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      AMAZON_IMPORT_CONFIGURE_ID = #{amazonImportConfigureId,jdbcType=INTEGER},
+      PROCESSING = #{processing,jdbcType=CHAR},
+      ERROR_MESSAGE = #{errorMessage,jdbcType=VARCHAR},
+      REPORT_PROCESSING_STATUS = #{reportProcessingStatus,jdbcType=VARCHAR},
+      QUERY_START_DATE = #{queryStartDate,jdbcType=TIMESTAMP},
+      QUERY_END_DATE = #{queryEndDate,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
