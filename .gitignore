@@ -1,3 +1,6 @@
 .idea/
 overlays/
 target/
+/.idea
+/target
+/*.iml
