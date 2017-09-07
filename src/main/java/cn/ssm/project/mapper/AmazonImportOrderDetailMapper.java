@@ -1,10 +1,9 @@
 package cn.ssm.project.mapper;
 
-import org.apache.ibatis.annotations.Param;
 import cn.ssm.project.pojo.AmazonImportOrderDetail;
 import cn.ssm.project.pojo.AmazonImportOrderDetailExample;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface AmazonImportOrderDetailMapper {
     int countByExample(AmazonImportOrderDetailExample example);

@@ -257,7 +257,7 @@ public class ImportAmOrderServiceImpl implements ImportAmOrderService {
             }
 
             //TODO 亚马逊拉取的订单和本地订单相关联
-            amazonOrderMapper.updateCOrderIdByAmzonOrderId(historyLog);
+            //amazonOrderMapper.updateCOrderIdByAmzonOrderId(historyLog);
 
             //TODO 更新本地订单信息
             List<AmazonOrder> amazonOrderList = new ArrayList<AmazonOrder>();
@@ -289,7 +289,7 @@ public class ImportAmOrderServiceImpl implements ImportAmOrderService {
                         amazonOrder.setcOrderId(cOrder.getId());
                         amazonOrder.setIsImported("Y");
                     }
-                    amazonOrder.setDescription(logMsg);
+                    //amazonOrder.setDescription(logMsg);
 
                     if (success) {
                         amazonOrder.setImportStatus("success");
@@ -307,7 +307,7 @@ public class ImportAmOrderServiceImpl implements ImportAmOrderService {
                     failNo++;
                     logMsg = e.getMessage();
                     //save the fail log
-                    amazonOrder.setDescription(logMsg);
+                    //amazonOrder.setDescription(logMsg);
                     amazonOrder.setImportStatus("fail");
                     amazonOrderMapper.updateByPrimaryKey(amazonOrder);
                 }
@@ -652,40 +652,14 @@ public class ImportAmOrderServiceImpl implements ImportAmOrderService {
             }
             //order fields
             cOrder.setAmazonOrderId(xmlOrder.getElementsByTagName("AmazonOrderID").item(0).getTextContent());
-            cOrder.setOrgtrxId(configure.getOrgId());
+
             cOrder.setOrgId(configure.getOrgId());
-            cOrder.setcDoctypetargetId(configure.getDoctypetargetId()); //Amazon order
-            cOrder.setDateOrdered(cOrder.getAmazonPurchaseDate());
-            cOrder.setDateAcct(cOrder.getAmazonPurchaseDate());
-            cOrder.setDatePromised(cOrder.getAmazonPurchaseDate());
-            cOrder.setBpartnerId(configure.getBpartnerId()); //Amazon Customer
+
             //delivery
-            cOrder.setDeliveryRule("F"); //hard code to Force
-            cOrder.setDeliveryViaRule("P"); //hard code to Pickup
-            cOrder.setFreightcostRule("I"); //hard code to included
-            cOrder.setPriortyRule("5"); //hard code to Medium
-            if (cOrder.getAmazonSalesChannel().equals("Non-Amazon")) {
-                cOrder.setWarehouseId(configure.getSelfWarehouseId()); //fba 1byone
-            } else {
-                cOrder.setWarehouseId(configure.getWarehouseId()); //fba
-            }
 
-            //set invoicing
-            cOrder.setInvoiceRule("D"); //hard code to after delivery
 
-            if (configure.getSalesrepId() > 0) {
-                cOrder.setSalesrepId(configure.getSalesrepId());
-            } else {
-                cOrder.setSalesrepId(1000002);
-            }
-            //1byone erp system client
-            cOrder.setPaymentTermId(1000000); //immediate
 
-            //status
-            cOrder.setTotalLines(new BigDecimal(0));
-            cOrder.setGrandTotal(new BigDecimal(0));
-            cOrder.setDocStatus("DR"); //always set the document to Draft status as new
-            cOrder.setcDoctpyeId(configure.getDoctypeId()); //standard order
+
 
             //project
             int c_project_id = configure.getProjectId();
@@ -694,7 +668,6 @@ public class ImportAmOrderServiceImpl implements ImportAmOrderService {
                 /*MProject mProject = new Query(Env.getCtx(), I_C_Project.Table_Name, "value like 'CA%' and platformclassification = 'Amazon'", null).setClient_ID().setOnlyActiveRecords(true).first();
                 c_project_id = mProject.getC_Project_ID();*/
             }
-            cOrder.setProjectId(c_project_id); //美国fba
         }
         if (newOrder) {
             cOrderMapper.insert(cOrder);
@@ -724,26 +697,26 @@ public class ImportAmOrderServiceImpl implements ImportAmOrderService {
             amazonOrder.setOrgId(configure.getOrgId());
             amazonOrder.setAmazonOrderId(amazonOrderId);
             Node node = xmlOrder.getElementsByTagName("PurchaseDate").item(0);
-            amazonOrder.setAmazonPurchaseDate(node == null ? null : AmazonUtil.UTCStr2Timestamp(node.getTextContent()));
+            //amazonOrder.setAmazonPurchaseDate(node == null ? null : AmazonUtil.UTCStr2Timestamp(node.getTextContent()));
             node = xmlOrder.getElementsByTagName("LastUpdatedDate").item(0);
-            amazonOrder.setAmazonLastupdatedDate(node == null ? null : AmazonUtil.UTCStr2Timestamp(node.getTextContent()));
+            //amazonOrder.setAmazonLastupdatedDate(node == null ? null : AmazonUtil.UTCStr2Timestamp(node.getTextContent()));
             node = xmlOrder.getElementsByTagName("OrderStatus").item(0);
-            amazonOrder.setAmazonOrderStatus(node == null ? null : node.getTextContent());
+            //amazonOrder.setAmazonOrderStatus(node == null ? null : node.getTextContent());
             node = xmlOrder.getElementsByTagName("SalesChannel").item(0);
-            amazonOrder.setAmazonSalesChannel(node == null ? null : node.getTextContent());
+            //amazonOrder.setAmazonSalesChannel(node == null ? null : node.getTextContent());
 
             if (xmlOrder.getElementsByTagName("FulfillmentData") != null && xmlOrder.getElementsByTagName("FulfillmentData").getLength() > 0) {
                 Element fulfillment = (Element) xmlOrder.getElementsByTagName("FulfillmentData").item(0);
                 if (fulfillment != null) {
                     Element address = (Element) fulfillment.getElementsByTagName("Address").item(0);
                     Node stateNode = address.getElementsByTagName("State").item(0);
-                    amazonOrder.setAmazonOrderStatus(stateNode == null ? null : stateNode.getTextContent());
+                    //amazonOrder.setAmazonOrderStatus(stateNode == null ? null : stateNode.getTextContent());
                 }
             }
-            amazonOrder.setContentText(orderContentText);
+            //amazonOrder.setContentText(orderContentText);
             amazonOrder.setName(amazonOrder.getAmazonOrderId());
             amazonOrder.setAmazonImportOrderLogId(History_Record_ID);
-            amazonOrderMapper.insert(amazonOrder);
+            //amazonOrderMapper.insert(amazonOrder);
         } catch (Exception e) {
             amazonOrder = null;
             e.printStackTrace();
@@ -761,7 +734,7 @@ public class ImportAmOrderServiceImpl implements ImportAmOrderService {
 
         AmazonOrderExample example = new AmazonOrderExample();
         AmazonOrderExample.Criteria criteria = example.createCriteria();
-        criteria.andAmazonLastupdatedDateGreaterThanOrEqualTo(amazonLastUpdatedDate);
+        //criteria.andAmazonLastupdatedDateGreaterThanOrEqualTo(amazonLastUpdatedDate);
         criteria.andOrgIdEqualTo(configure.getOrgId());
         criteria.andAmazonOrderIdEqualTo(amazonOrderId);
         List<AmazonOrder> amazonOrderList = amazonOrderMapper.selectByExample(example);

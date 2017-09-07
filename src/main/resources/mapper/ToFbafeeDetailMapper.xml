@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="mapper.ToMsfeeDetailMapper" >
-  <resultMap id="BaseResultMap" type="pojo.ToMsfeeDetail" >
+<mapper namespace="cn.ssm.project.mapper.ToFbafeeDetailMapper" >
+  <resultMap id="BaseResultMap" type="cn.ssm.project.pojo.ToFbafeeDetail" >
     <id column="ID" property="id" jdbcType="INTEGER" />
     <result column="CREATED_AT" property="createdAt" jdbcType="INTEGER" />
     <result column="CREATED_ID" property="createdId" jdbcType="INTEGER" />
@@ -11,17 +11,20 @@
     <result column="STATE" property="state" jdbcType="CHAR" />
     <result column="RULE_ID" property="ruleId" jdbcType="INTEGER" />
     <result column="LINE" property="line" jdbcType="INTEGER" />
+    <result column="PACKAGE_TYPE" property="packageType" jdbcType="VARCHAR" />
+    <result column="PACKAGE_WEIGHT" property="packageWeight" jdbcType="DECIMAL" />
     <result column="LENGTH_MAX" property="lengthMax" jdbcType="DECIMAL" />
     <result column="WIDTH_MAX" property="widthMax" jdbcType="DECIMAL" />
     <result column="HEIGHT_MAX" property="heightMax" jdbcType="DECIMAL" />
     <result column="LENGTH_ADDWMAX" property="lengthAddwmax" jdbcType="DECIMAL" />
     <result column="WEIGHT_MAX" property="weightMax" jdbcType="DECIMAL" />
     <result column="DIAGONAL_MAX" property="diagonalMax" jdbcType="DECIMAL" />
-    <result column="MINVENTORY_FEE9" property="minventoryFee9" jdbcType="DECIMAL" />
-    <result column="MINVENTORY_FEE10" property="minventoryFee10" jdbcType="DECIMAL" />
-    <result column="LONGTIME_FEE6" property="longtimeFee6" jdbcType="DECIMAL" />
-    <result column="LONGTIME_FEE12" property="longtimeFee12" jdbcType="DECIMAL" />
-    <result column="PACKAGE_WEIGHT" property="packageWeight" jdbcType="DECIMAL" />
+    <result column="YKG" property="ykg" jdbcType="DECIMAL" />
+    <result column="YKG_PRICE9" property="ykgPrice9" jdbcType="DECIMAL" />
+    <result column="YKG_PRICE10" property="ykgPrice10" jdbcType="DECIMAL" />
+    <result column="OVERWEIGHT_NUM" property="overweightNum" jdbcType="DECIMAL" />
+    <result column="OVERWEIGHT_PRICE9" property="overweightPrice9" jdbcType="DECIMAL" />
+    <result column="OVERWEIGHT_PRICE10" property="overweightPrice10" jdbcType="DECIMAL" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -83,16 +86,17 @@
   </sql>
   <sql id="Base_Column_List" >
     ID, CREATED_AT, CREATED_ID, UPDATED_AT, UPDATED_ID, ISACTIVE, STATE, RULE_ID, LINE, 
-    LENGTH_MAX, WIDTH_MAX, HEIGHT_MAX, LENGTH_ADDWMAX, WEIGHT_MAX, DIAGONAL_MAX, MINVENTORY_FEE9, 
-    MINVENTORY_FEE10, LONGTIME_FEE6, LONGTIME_FEE12, PACKAGE_WEIGHT
+    PACKAGE_TYPE, PACKAGE_WEIGHT, LENGTH_MAX, WIDTH_MAX, HEIGHT_MAX, LENGTH_ADDWMAX, 
+    WEIGHT_MAX, DIAGONAL_MAX, YKG, YKG_PRICE9, YKG_PRICE10, OVERWEIGHT_NUM, OVERWEIGHT_PRICE9, 
+    OVERWEIGHT_PRICE10
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pojo.ToMsfeeDetailExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.ssm.project.pojo.ToFbafeeDetailExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from to_msfee_detail
+    from to_fbafee_detail
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -103,37 +107,39 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from to_msfee_detail
+    from to_fbafee_detail
     where ID = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from to_msfee_detail
+    delete from to_fbafee_detail
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="pojo.ToMsfeeDetailExample" >
-    delete from to_msfee_detail
+  <delete id="deleteByExample" parameterType="cn.ssm.project.pojo.ToFbafeeDetailExample" >
+    delete from to_fbafee_detail
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="pojo.ToMsfeeDetail" >
-    insert into to_msfee_detail (ID, CREATED_AT, CREATED_ID, 
+  <insert id="insert" parameterType="cn.ssm.project.pojo.ToFbafeeDetail" >
+    insert into to_fbafee_detail (ID, CREATED_AT, CREATED_ID, 
       UPDATED_AT, UPDATED_ID, ISACTIVE, 
-      STATE, RULE_ID, LINE, LENGTH_MAX, 
-      WIDTH_MAX, HEIGHT_MAX, LENGTH_ADDWMAX, 
-      WEIGHT_MAX, DIAGONAL_MAX, MINVENTORY_FEE9, 
-      MINVENTORY_FEE10, LONGTIME_FEE6, LONGTIME_FEE12, 
-      PACKAGE_WEIGHT)
+      STATE, RULE_ID, LINE, PACKAGE_TYPE, 
+      PACKAGE_WEIGHT, LENGTH_MAX, WIDTH_MAX, 
+      HEIGHT_MAX, LENGTH_ADDWMAX, WEIGHT_MAX, 
+      DIAGONAL_MAX, YKG, YKG_PRICE9, 
+      YKG_PRICE10, OVERWEIGHT_NUM, OVERWEIGHT_PRICE9, 
+      OVERWEIGHT_PRICE10)
     values (#{id,jdbcType=INTEGER}, #{createdAt,jdbcType=INTEGER}, #{createdId,jdbcType=INTEGER}, 
       #{updatedAt,jdbcType=INTEGER}, #{updatedId,jdbcType=INTEGER}, #{isactive,jdbcType=CHAR}, 
-      #{state,jdbcType=CHAR}, #{ruleId,jdbcType=INTEGER}, #{line,jdbcType=INTEGER}, #{lengthMax,jdbcType=DECIMAL}, 
-      #{widthMax,jdbcType=DECIMAL}, #{heightMax,jdbcType=DECIMAL}, #{lengthAddwmax,jdbcType=DECIMAL}, 
-      #{weightMax,jdbcType=DECIMAL}, #{diagonalMax,jdbcType=DECIMAL}, #{minventoryFee9,jdbcType=DECIMAL}, 
-      #{minventoryFee10,jdbcType=DECIMAL}, #{longtimeFee6,jdbcType=DECIMAL}, #{longtimeFee12,jdbcType=DECIMAL}, 
-      #{packageWeight,jdbcType=DECIMAL})
+      #{state,jdbcType=CHAR}, #{ruleId,jdbcType=INTEGER}, #{line,jdbcType=INTEGER}, #{packageType,jdbcType=VARCHAR}, 
+      #{packageWeight,jdbcType=DECIMAL}, #{lengthMax,jdbcType=DECIMAL}, #{widthMax,jdbcType=DECIMAL}, 
+      #{heightMax,jdbcType=DECIMAL}, #{lengthAddwmax,jdbcType=DECIMAL}, #{weightMax,jdbcType=DECIMAL}, 
+      #{diagonalMax,jdbcType=DECIMAL}, #{ykg,jdbcType=DECIMAL}, #{ykgPrice9,jdbcType=DECIMAL}, 
+      #{ykgPrice10,jdbcType=DECIMAL}, #{overweightNum,jdbcType=DECIMAL}, #{overweightPrice9,jdbcType=DECIMAL}, 
+      #{overweightPrice10,jdbcType=DECIMAL})
   </insert>
-  <insert id="insertSelective" parameterType="pojo.ToMsfeeDetail" >
-    insert into to_msfee_detail
+  <insert id="insertSelective" parameterType="cn.ssm.project.pojo.ToFbafeeDetail" >
+    insert into to_fbafee_detail
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         ID,
@@ -162,6 +168,12 @@
       <if test="line != null" >
         LINE,
       </if>
+      <if test="packageType != null" >
+        PACKAGE_TYPE,
+      </if>
+      <if test="packageWeight != null" >
+        PACKAGE_WEIGHT,
+      </if>
       <if test="lengthMax != null" >
         LENGTH_MAX,
       </if>
@@ -180,20 +192,23 @@
       <if test="diagonalMax != null" >
         DIAGONAL_MAX,
       </if>
-      <if test="minventoryFee9 != null" >
-        MINVENTORY_FEE9,
+      <if test="ykg != null" >
+        YKG,
       </if>
-      <if test="minventoryFee10 != null" >
-        MINVENTORY_FEE10,
+      <if test="ykgPrice9 != null" >
+        YKG_PRICE9,
       </if>
-      <if test="longtimeFee6 != null" >
-        LONGTIME_FEE6,
+      <if test="ykgPrice10 != null" >
+        YKG_PRICE10,
       </if>
-      <if test="longtimeFee12 != null" >
-        LONGTIME_FEE12,
+      <if test="overweightNum != null" >
+        OVERWEIGHT_NUM,
       </if>
-      <if test="packageWeight != null" >
-        PACKAGE_WEIGHT,
+      <if test="overweightPrice9 != null" >
+        OVERWEIGHT_PRICE9,
+      </if>
+      <if test="overweightPrice10 != null" >
+        OVERWEIGHT_PRICE10,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -224,6 +239,12 @@
       <if test="line != null" >
         #{line,jdbcType=INTEGER},
       </if>
+      <if test="packageType != null" >
+        #{packageType,jdbcType=VARCHAR},
+      </if>
+      <if test="packageWeight != null" >
+        #{packageWeight,jdbcType=DECIMAL},
+      </if>
       <if test="lengthMax != null" >
         #{lengthMax,jdbcType=DECIMAL},
       </if>
@@ -242,31 +263,34 @@
       <if test="diagonalMax != null" >
         #{diagonalMax,jdbcType=DECIMAL},
       </if>
-      <if test="minventoryFee9 != null" >
-        #{minventoryFee9,jdbcType=DECIMAL},
+      <if test="ykg != null" >
+        #{ykg,jdbcType=DECIMAL},
       </if>
-      <if test="minventoryFee10 != null" >
-        #{minventoryFee10,jdbcType=DECIMAL},
+      <if test="ykgPrice9 != null" >
+        #{ykgPrice9,jdbcType=DECIMAL},
       </if>
-      <if test="longtimeFee6 != null" >
-        #{longtimeFee6,jdbcType=DECIMAL},
+      <if test="ykgPrice10 != null" >
+        #{ykgPrice10,jdbcType=DECIMAL},
       </if>
-      <if test="longtimeFee12 != null" >
-        #{longtimeFee12,jdbcType=DECIMAL},
+      <if test="overweightNum != null" >
+        #{overweightNum,jdbcType=DECIMAL},
       </if>
-      <if test="packageWeight != null" >
-        #{packageWeight,jdbcType=DECIMAL},
+      <if test="overweightPrice9 != null" >
+        #{overweightPrice9,jdbcType=DECIMAL},
+      </if>
+      <if test="overweightPrice10 != null" >
+        #{overweightPrice10,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="pojo.ToMsfeeDetailExample" resultType="java.lang.Integer" >
-    select count(*) from to_msfee_detail
+  <select id="countByExample" parameterType="cn.ssm.project.pojo.ToFbafeeDetailExample" resultType="java.lang.Integer" >
+    select count(*) from to_fbafee_detail
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update to_msfee_detail
+    update to_fbafee_detail
     <set >
       <if test="record.id != null" >
         ID = #{record.id,jdbcType=INTEGER},
@@ -295,6 +319,12 @@
       <if test="record.line != null" >
         LINE = #{record.line,jdbcType=INTEGER},
       </if>
+      <if test="record.packageType != null" >
+        PACKAGE_TYPE = #{record.packageType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.packageWeight != null" >
+        PACKAGE_WEIGHT = #{record.packageWeight,jdbcType=DECIMAL},
+      </if>
       <if test="record.lengthMax != null" >
         LENGTH_MAX = #{record.lengthMax,jdbcType=DECIMAL},
       </if>
@@ -313,20 +343,23 @@
       <if test="record.diagonalMax != null" >
         DIAGONAL_MAX = #{record.diagonalMax,jdbcType=DECIMAL},
       </if>
-      <if test="record.minventoryFee9 != null" >
-        MINVENTORY_FEE9 = #{record.minventoryFee9,jdbcType=DECIMAL},
+      <if test="record.ykg != null" >
+        YKG = #{record.ykg,jdbcType=DECIMAL},
       </if>
-      <if test="record.minventoryFee10 != null" >
-        MINVENTORY_FEE10 = #{record.minventoryFee10,jdbcType=DECIMAL},
+      <if test="record.ykgPrice9 != null" >
+        YKG_PRICE9 = #{record.ykgPrice9,jdbcType=DECIMAL},
       </if>
-      <if test="record.longtimeFee6 != null" >
-        LONGTIME_FEE6 = #{record.longtimeFee6,jdbcType=DECIMAL},
+      <if test="record.ykgPrice10 != null" >
+        YKG_PRICE10 = #{record.ykgPrice10,jdbcType=DECIMAL},
       </if>
-      <if test="record.longtimeFee12 != null" >
-        LONGTIME_FEE12 = #{record.longtimeFee12,jdbcType=DECIMAL},
+      <if test="record.overweightNum != null" >
+        OVERWEIGHT_NUM = #{record.overweightNum,jdbcType=DECIMAL},
       </if>
-      <if test="record.packageWeight != null" >
-        PACKAGE_WEIGHT = #{record.packageWeight,jdbcType=DECIMAL},
+      <if test="record.overweightPrice9 != null" >
+        OVERWEIGHT_PRICE9 = #{record.overweightPrice9,jdbcType=DECIMAL},
+      </if>
+      <if test="record.overweightPrice10 != null" >
+        OVERWEIGHT_PRICE10 = #{record.overweightPrice10,jdbcType=DECIMAL},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -334,7 +367,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update to_msfee_detail
+    update to_fbafee_detail
     set ID = #{record.id,jdbcType=INTEGER},
       CREATED_AT = #{record.createdAt,jdbcType=INTEGER},
       CREATED_ID = #{record.createdId,jdbcType=INTEGER},
@@ -344,23 +377,26 @@
       STATE = #{record.state,jdbcType=CHAR},
       RULE_ID = #{record.ruleId,jdbcType=INTEGER},
       LINE = #{record.line,jdbcType=INTEGER},
+      PACKAGE_TYPE = #{record.packageType,jdbcType=VARCHAR},
+      PACKAGE_WEIGHT = #{record.packageWeight,jdbcType=DECIMAL},
       LENGTH_MAX = #{record.lengthMax,jdbcType=DECIMAL},
       WIDTH_MAX = #{record.widthMax,jdbcType=DECIMAL},
       HEIGHT_MAX = #{record.heightMax,jdbcType=DECIMAL},
       LENGTH_ADDWMAX = #{record.lengthAddwmax,jdbcType=DECIMAL},
       WEIGHT_MAX = #{record.weightMax,jdbcType=DECIMAL},
       DIAGONAL_MAX = #{record.diagonalMax,jdbcType=DECIMAL},
-      MINVENTORY_FEE9 = #{record.minventoryFee9,jdbcType=DECIMAL},
-      MINVENTORY_FEE10 = #{record.minventoryFee10,jdbcType=DECIMAL},
-      LONGTIME_FEE6 = #{record.longtimeFee6,jdbcType=DECIMAL},
-      LONGTIME_FEE12 = #{record.longtimeFee12,jdbcType=DECIMAL},
-      PACKAGE_WEIGHT = #{record.packageWeight,jdbcType=DECIMAL}
+      YKG = #{record.ykg,jdbcType=DECIMAL},
+      YKG_PRICE9 = #{record.ykgPrice9,jdbcType=DECIMAL},
+      YKG_PRICE10 = #{record.ykgPrice10,jdbcType=DECIMAL},
+      OVERWEIGHT_NUM = #{record.overweightNum,jdbcType=DECIMAL},
+      OVERWEIGHT_PRICE9 = #{record.overweightPrice9,jdbcType=DECIMAL},
+      OVERWEIGHT_PRICE10 = #{record.overweightPrice10,jdbcType=DECIMAL}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="pojo.ToMsfeeDetail" >
-    update to_msfee_detail
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ssm.project.pojo.ToFbafeeDetail" >
+    update to_fbafee_detail
     <set >
       <if test="createdAt != null" >
         CREATED_AT = #{createdAt,jdbcType=INTEGER},
@@ -386,6 +422,12 @@
       <if test="line != null" >
         LINE = #{line,jdbcType=INTEGER},
       </if>
+      <if test="packageType != null" >
+        PACKAGE_TYPE = #{packageType,jdbcType=VARCHAR},
+      </if>
+      <if test="packageWeight != null" >
+        PACKAGE_WEIGHT = #{packageWeight,jdbcType=DECIMAL},
+      </if>
       <if test="lengthMax != null" >
         LENGTH_MAX = #{lengthMax,jdbcType=DECIMAL},
       </if>
@@ -404,26 +446,29 @@
       <if test="diagonalMax != null" >
         DIAGONAL_MAX = #{diagonalMax,jdbcType=DECIMAL},
       </if>
-      <if test="minventoryFee9 != null" >
-        MINVENTORY_FEE9 = #{minventoryFee9,jdbcType=DECIMAL},
+      <if test="ykg != null" >
+        YKG = #{ykg,jdbcType=DECIMAL},
       </if>
-      <if test="minventoryFee10 != null" >
-        MINVENTORY_FEE10 = #{minventoryFee10,jdbcType=DECIMAL},
+      <if test="ykgPrice9 != null" >
+        YKG_PRICE9 = #{ykgPrice9,jdbcType=DECIMAL},
       </if>
-      <if test="longtimeFee6 != null" >
-        LONGTIME_FEE6 = #{longtimeFee6,jdbcType=DECIMAL},
+      <if test="ykgPrice10 != null" >
+        YKG_PRICE10 = #{ykgPrice10,jdbcType=DECIMAL},
       </if>
-      <if test="longtimeFee12 != null" >
-        LONGTIME_FEE12 = #{longtimeFee12,jdbcType=DECIMAL},
+      <if test="overweightNum != null" >
+        OVERWEIGHT_NUM = #{overweightNum,jdbcType=DECIMAL},
       </if>
-      <if test="packageWeight != null" >
-        PACKAGE_WEIGHT = #{packageWeight,jdbcType=DECIMAL},
+      <if test="overweightPrice9 != null" >
+        OVERWEIGHT_PRICE9 = #{overweightPrice9,jdbcType=DECIMAL},
+      </if>
+      <if test="overweightPrice10 != null" >
+        OVERWEIGHT_PRICE10 = #{overweightPrice10,jdbcType=DECIMAL},
       </if>
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="pojo.ToMsfeeDetail" >
-    update to_msfee_detail
+  <update id="updateByPrimaryKey" parameterType="cn.ssm.project.pojo.ToFbafeeDetail" >
+    update to_fbafee_detail
     set CREATED_AT = #{createdAt,jdbcType=INTEGER},
       CREATED_ID = #{createdId,jdbcType=INTEGER},
       UPDATED_AT = #{updatedAt,jdbcType=INTEGER},
@@ -432,17 +477,20 @@
       STATE = #{state,jdbcType=CHAR},
       RULE_ID = #{ruleId,jdbcType=INTEGER},
       LINE = #{line,jdbcType=INTEGER},
+      PACKAGE_TYPE = #{packageType,jdbcType=VARCHAR},
+      PACKAGE_WEIGHT = #{packageWeight,jdbcType=DECIMAL},
       LENGTH_MAX = #{lengthMax,jdbcType=DECIMAL},
       WIDTH_MAX = #{widthMax,jdbcType=DECIMAL},
       HEIGHT_MAX = #{heightMax,jdbcType=DECIMAL},
       LENGTH_ADDWMAX = #{lengthAddwmax,jdbcType=DECIMAL},
       WEIGHT_MAX = #{weightMax,jdbcType=DECIMAL},
       DIAGONAL_MAX = #{diagonalMax,jdbcType=DECIMAL},
-      MINVENTORY_FEE9 = #{minventoryFee9,jdbcType=DECIMAL},
-      MINVENTORY_FEE10 = #{minventoryFee10,jdbcType=DECIMAL},
-      LONGTIME_FEE6 = #{longtimeFee6,jdbcType=DECIMAL},
-      LONGTIME_FEE12 = #{longtimeFee12,jdbcType=DECIMAL},
-      PACKAGE_WEIGHT = #{packageWeight,jdbcType=DECIMAL}
+      YKG = #{ykg,jdbcType=DECIMAL},
+      YKG_PRICE9 = #{ykgPrice9,jdbcType=DECIMAL},
+      YKG_PRICE10 = #{ykgPrice10,jdbcType=DECIMAL},
+      OVERWEIGHT_NUM = #{overweightNum,jdbcType=DECIMAL},
+      OVERWEIGHT_PRICE9 = #{overweightPrice9,jdbcType=DECIMAL},
+      OVERWEIGHT_PRICE10 = #{overweightPrice10,jdbcType=DECIMAL}
     where ID = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

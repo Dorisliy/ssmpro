@@ -1,10 +1,9 @@
 package cn.ssm.project.mapper;
 
-import org.apache.ibatis.annotations.Param;
 import cn.ssm.project.pojo.AmazonPayment;
 import cn.ssm.project.pojo.AmazonPaymentExample;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface AmazonPaymentMapper {
     int countByExample(AmazonPaymentExample example);

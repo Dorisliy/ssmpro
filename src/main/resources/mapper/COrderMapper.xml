@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ssm.project.mapper.COrderMapper">
+  <resultMap id="BaseResultMap" type="cn.ssm.project.pojo.COrder">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="CREATED_AT" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="CREATED_ID" jdbcType="INTEGER" property="createdId" />
+    <result column="UPDATED_AT" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="UPDATED_ID" jdbcType="INTEGER" property="updatedId" />
+    <result column="STATE" jdbcType="CHAR" property="state" />
+    <result column="ISACTIVE" jdbcType="CHAR" property="isactive" />
+    <result column="CLIENT_ID" jdbcType="INTEGER" property="clientId" />
+    <result column="ORG_ID" jdbcType="INTEGER" property="orgId" />
+    <result column="IS_SOTRX" jdbcType="CHAR" property="isSotrx" />
+    <result column="DOCUMENT_NO" jdbcType="VARCHAR" property="documentNo" />
+    <result column="AMAZON_ORDER_ID" jdbcType="VARCHAR" property="amazonOrderId" />
+    <result column="AMAZON_MERCHANT_ORDER_ID" jdbcType="VARCHAR" property="amazonMerchantOrderId" />
+    <result column="AMAZON_PURCHASE_DATE" jdbcType="TIMESTAMP" property="amazonPurchaseDate" />
+    <result column="AMAZON_LASTUPDATED_DATE" jdbcType="TIMESTAMP" property="amazonLastupdatedDate" />
+    <result column="AMAZON_ORDER_STATUS" jdbcType="VARCHAR" property="amazonOrderStatus" />
+    <result column="AMAZON_SALES_CHANNEL" jdbcType="VARCHAR" property="amazonSalesChannel" />
+    <result column="AMAZON_FULFILLMENT_CHANNEL" jdbcType="VARCHAR" property="amazonFulfillmentChannel" />
+    <result column="AMAZON_SHIP_SERVICE_LEVEL" jdbcType="VARCHAR" property="amazonShipServiceLevel" />
+    <result column="AMAZON_SHIP_STATE" jdbcType="VARCHAR" property="amazonShipState" />
+    <result column="AMAZON_SHIP_POSTAL_CODE" jdbcType="VARCHAR" property="amazonShipPostalCode" />
+    <result column="AMAZON_SHIP_COUNTRY" jdbcType="VARCHAR" property="amazonShipCountry" />
+    <result column="AMAZON_SHIP_CITY" jdbcType="VARCHAR" property="amazonShipCity" />
+    <result column="AMAZON_IS_BUSINESS_ORDER" jdbcType="VARCHAR" property="amazonIsBusinessOrder" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, CREATED_AT, CREATED_ID, UPDATED_AT, UPDATED_ID, STATE, ISACTIVE, CLIENT_ID, ORG_ID, 
+    IS_SOTRX, DOCUMENT_NO, AMAZON_ORDER_ID, AMAZON_MERCHANT_ORDER_ID, AMAZON_PURCHASE_DATE, 
+    AMAZON_LASTUPDATED_DATE, AMAZON_ORDER_STATUS, AMAZON_SALES_CHANNEL, AMAZON_FULFILLMENT_CHANNEL, 
+    AMAZON_SHIP_SERVICE_LEVEL, AMAZON_SHIP_STATE, AMAZON_SHIP_POSTAL_CODE, AMAZON_SHIP_COUNTRY, 
+    AMAZON_SHIP_CITY, AMAZON_IS_BUSINESS_ORDER
+  </sql>
+  <select id="selectByExample" parameterType="cn.ssm.project.pojo.COrderExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from c_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from c_order
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from c_order
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.ssm.project.pojo.COrderExample">
+    delete from c_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.ssm.project.pojo.COrder">
+    insert into c_order (ID, CREATED_AT, CREATED_ID, 
+      UPDATED_AT, UPDATED_ID, STATE, 
+      ISACTIVE, CLIENT_ID, ORG_ID, 
+      IS_SOTRX, DOCUMENT_NO, AMAZON_ORDER_ID, 
+      AMAZON_MERCHANT_ORDER_ID, AMAZON_PURCHASE_DATE, 
+      AMAZON_LASTUPDATED_DATE, AMAZON_ORDER_STATUS, 
+      AMAZON_SALES_CHANNEL, AMAZON_FULFILLMENT_CHANNEL, 
+      AMAZON_SHIP_SERVICE_LEVEL, AMAZON_SHIP_STATE, 
+      AMAZON_SHIP_POSTAL_CODE, AMAZON_SHIP_COUNTRY, 
+      AMAZON_SHIP_CITY, AMAZON_IS_BUSINESS_ORDER)
+    values (#{id,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, #{createdId,jdbcType=INTEGER}, 
+      #{updatedAt,jdbcType=TIMESTAMP}, #{updatedId,jdbcType=INTEGER}, #{state,jdbcType=CHAR}, 
+      #{isactive,jdbcType=CHAR}, #{clientId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, 
+      #{isSotrx,jdbcType=CHAR}, #{documentNo,jdbcType=VARCHAR}, #{amazonOrderId,jdbcType=VARCHAR}, 
+      #{amazonMerchantOrderId,jdbcType=VARCHAR}, #{amazonPurchaseDate,jdbcType=TIMESTAMP}, 
+      #{amazonLastupdatedDate,jdbcType=TIMESTAMP}, #{amazonOrderStatus,jdbcType=VARCHAR}, 
+      #{amazonSalesChannel,jdbcType=VARCHAR}, #{amazonFulfillmentChannel,jdbcType=VARCHAR}, 
+      #{amazonShipServiceLevel,jdbcType=VARCHAR}, #{amazonShipState,jdbcType=VARCHAR}, 
+      #{amazonShipPostalCode,jdbcType=VARCHAR}, #{amazonShipCountry,jdbcType=VARCHAR}, 
+      #{amazonShipCity,jdbcType=VARCHAR}, #{amazonIsBusinessOrder,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.ssm.project.pojo.COrder">
+    insert into c_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="createdAt != null">
+        CREATED_AT,
+      </if>
+      <if test="createdId != null">
+        CREATED_ID,
+      </if>
+      <if test="updatedAt != null">
+        UPDATED_AT,
+      </if>
+      <if test="updatedId != null">
+        UPDATED_ID,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="isactive != null">
+        ISACTIVE,
+      </if>
+      <if test="clientId != null">
+        CLIENT_ID,
+      </if>
+      <if test="orgId != null">
+        ORG_ID,
+      </if>
+      <if test="isSotrx != null">
+        IS_SOTRX,
+      </if>
+      <if test="documentNo != null">
+        DOCUMENT_NO,
+      </if>
+      <if test="amazonOrderId != null">
+        AMAZON_ORDER_ID,
+      </if>
+      <if test="amazonMerchantOrderId != null">
+        AMAZON_MERCHANT_ORDER_ID,
+      </if>
+      <if test="amazonPurchaseDate != null">
+        AMAZON_PURCHASE_DATE,
+      </if>
+      <if test="amazonLastupdatedDate != null">
+        AMAZON_LASTUPDATED_DATE,
+      </if>
+      <if test="amazonOrderStatus != null">
+        AMAZON_ORDER_STATUS,
+      </if>
+      <if test="amazonSalesChannel != null">
+        AMAZON_SALES_CHANNEL,
+      </if>
+      <if test="amazonFulfillmentChannel != null">
+        AMAZON_FULFILLMENT_CHANNEL,
+      </if>
+      <if test="amazonShipServiceLevel != null">
+        AMAZON_SHIP_SERVICE_LEVEL,
+      </if>
+      <if test="amazonShipState != null">
+        AMAZON_SHIP_STATE,
+      </if>
+      <if test="amazonShipPostalCode != null">
+        AMAZON_SHIP_POSTAL_CODE,
+      </if>
+      <if test="amazonShipCountry != null">
+        AMAZON_SHIP_COUNTRY,
+      </if>
+      <if test="amazonShipCity != null">
+        AMAZON_SHIP_CITY,
+      </if>
+      <if test="amazonIsBusinessOrder != null">
+        AMAZON_IS_BUSINESS_ORDER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdId != null">
+        #{createdId,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedId != null">
+        #{updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="isactive != null">
+        #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="clientId != null">
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="isSotrx != null">
+        #{isSotrx,jdbcType=CHAR},
+      </if>
+      <if test="documentNo != null">
+        #{documentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonOrderId != null">
+        #{amazonOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonMerchantOrderId != null">
+        #{amazonMerchantOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonPurchaseDate != null">
+        #{amazonPurchaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amazonLastupdatedDate != null">
+        #{amazonLastupdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amazonOrderStatus != null">
+        #{amazonOrderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonSalesChannel != null">
+        #{amazonSalesChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonFulfillmentChannel != null">
+        #{amazonFulfillmentChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonShipServiceLevel != null">
+        #{amazonShipServiceLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonShipState != null">
+        #{amazonShipState,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonShipPostalCode != null">
+        #{amazonShipPostalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonShipCountry != null">
+        #{amazonShipCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonShipCity != null">
+        #{amazonShipCity,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonIsBusinessOrder != null">
+        #{amazonIsBusinessOrder,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.ssm.project.pojo.COrderExample" resultType="java.lang.Integer">
+    select count(*) from c_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update c_order
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdAt != null">
+        CREATED_AT = #{record.createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdId != null">
+        CREATED_ID = #{record.createdId,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatedAt != null">
+        UPDATED_AT = #{record.updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedId != null">
+        UPDATED_ID = #{record.updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="record.state != null">
+        STATE = #{record.state,jdbcType=CHAR},
+      </if>
+      <if test="record.isactive != null">
+        ISACTIVE = #{record.isactive,jdbcType=CHAR},
+      </if>
+      <if test="record.clientId != null">
+        CLIENT_ID = #{record.clientId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orgId != null">
+        ORG_ID = #{record.orgId,jdbcType=INTEGER},
+      </if>
+      <if test="record.isSotrx != null">
+        IS_SOTRX = #{record.isSotrx,jdbcType=CHAR},
+      </if>
+      <if test="record.documentNo != null">
+        DOCUMENT_NO = #{record.documentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonOrderId != null">
+        AMAZON_ORDER_ID = #{record.amazonOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonMerchantOrderId != null">
+        AMAZON_MERCHANT_ORDER_ID = #{record.amazonMerchantOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonPurchaseDate != null">
+        AMAZON_PURCHASE_DATE = #{record.amazonPurchaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.amazonLastupdatedDate != null">
+        AMAZON_LASTUPDATED_DATE = #{record.amazonLastupdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.amazonOrderStatus != null">
+        AMAZON_ORDER_STATUS = #{record.amazonOrderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonSalesChannel != null">
+        AMAZON_SALES_CHANNEL = #{record.amazonSalesChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonFulfillmentChannel != null">
+        AMAZON_FULFILLMENT_CHANNEL = #{record.amazonFulfillmentChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonShipServiceLevel != null">
+        AMAZON_SHIP_SERVICE_LEVEL = #{record.amazonShipServiceLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonShipState != null">
+        AMAZON_SHIP_STATE = #{record.amazonShipState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonShipPostalCode != null">
+        AMAZON_SHIP_POSTAL_CODE = #{record.amazonShipPostalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonShipCountry != null">
+        AMAZON_SHIP_COUNTRY = #{record.amazonShipCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonShipCity != null">
+        AMAZON_SHIP_CITY = #{record.amazonShipCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonIsBusinessOrder != null">
+        AMAZON_IS_BUSINESS_ORDER = #{record.amazonIsBusinessOrder,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update c_order
+    set ID = #{record.id,jdbcType=INTEGER},
+      CREATED_AT = #{record.createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{record.createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{record.updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{record.updatedId,jdbcType=INTEGER},
+      STATE = #{record.state,jdbcType=CHAR},
+      ISACTIVE = #{record.isactive,jdbcType=CHAR},
+      CLIENT_ID = #{record.clientId,jdbcType=INTEGER},
+      ORG_ID = #{record.orgId,jdbcType=INTEGER},
+      IS_SOTRX = #{record.isSotrx,jdbcType=CHAR},
+      DOCUMENT_NO = #{record.documentNo,jdbcType=VARCHAR},
+      AMAZON_ORDER_ID = #{record.amazonOrderId,jdbcType=VARCHAR},
+      AMAZON_MERCHANT_ORDER_ID = #{record.amazonMerchantOrderId,jdbcType=VARCHAR},
+      AMAZON_PURCHASE_DATE = #{record.amazonPurchaseDate,jdbcType=TIMESTAMP},
+      AMAZON_LASTUPDATED_DATE = #{record.amazonLastupdatedDate,jdbcType=TIMESTAMP},
+      AMAZON_ORDER_STATUS = #{record.amazonOrderStatus,jdbcType=VARCHAR},
+      AMAZON_SALES_CHANNEL = #{record.amazonSalesChannel,jdbcType=VARCHAR},
+      AMAZON_FULFILLMENT_CHANNEL = #{record.amazonFulfillmentChannel,jdbcType=VARCHAR},
+      AMAZON_SHIP_SERVICE_LEVEL = #{record.amazonShipServiceLevel,jdbcType=VARCHAR},
+      AMAZON_SHIP_STATE = #{record.amazonShipState,jdbcType=VARCHAR},
+      AMAZON_SHIP_POSTAL_CODE = #{record.amazonShipPostalCode,jdbcType=VARCHAR},
+      AMAZON_SHIP_COUNTRY = #{record.amazonShipCountry,jdbcType=VARCHAR},
+      AMAZON_SHIP_CITY = #{record.amazonShipCity,jdbcType=VARCHAR},
+      AMAZON_IS_BUSINESS_ORDER = #{record.amazonIsBusinessOrder,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ssm.project.pojo.COrder">
+    update c_order
+    <set>
+      <if test="createdAt != null">
+        CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdId != null">
+        CREATED_ID = #{createdId,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null">
+        UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedId != null">
+        UPDATED_ID = #{updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=CHAR},
+      </if>
+      <if test="isactive != null">
+        ISACTIVE = #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="clientId != null">
+        CLIENT_ID = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null">
+        ORG_ID = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="isSotrx != null">
+        IS_SOTRX = #{isSotrx,jdbcType=CHAR},
+      </if>
+      <if test="documentNo != null">
+        DOCUMENT_NO = #{documentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonOrderId != null">
+        AMAZON_ORDER_ID = #{amazonOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonMerchantOrderId != null">
+        AMAZON_MERCHANT_ORDER_ID = #{amazonMerchantOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonPurchaseDate != null">
+        AMAZON_PURCHASE_DATE = #{amazonPurchaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amazonLastupdatedDate != null">
+        AMAZON_LASTUPDATED_DATE = #{amazonLastupdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amazonOrderStatus != null">
+        AMAZON_ORDER_STATUS = #{amazonOrderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonSalesChannel != null">
+        AMAZON_SALES_CHANNEL = #{amazonSalesChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonFulfillmentChannel != null">
+        AMAZON_FULFILLMENT_CHANNEL = #{amazonFulfillmentChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonShipServiceLevel != null">
+        AMAZON_SHIP_SERVICE_LEVEL = #{amazonShipServiceLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonShipState != null">
+        AMAZON_SHIP_STATE = #{amazonShipState,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonShipPostalCode != null">
+        AMAZON_SHIP_POSTAL_CODE = #{amazonShipPostalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonShipCountry != null">
+        AMAZON_SHIP_COUNTRY = #{amazonShipCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonShipCity != null">
+        AMAZON_SHIP_CITY = #{amazonShipCity,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonIsBusinessOrder != null">
+        AMAZON_IS_BUSINESS_ORDER = #{amazonIsBusinessOrder,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.ssm.project.pojo.COrder">
+    update c_order
+    set CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{updatedId,jdbcType=INTEGER},
+      STATE = #{state,jdbcType=CHAR},
+      ISACTIVE = #{isactive,jdbcType=CHAR},
+      CLIENT_ID = #{clientId,jdbcType=INTEGER},
+      ORG_ID = #{orgId,jdbcType=INTEGER},
+      IS_SOTRX = #{isSotrx,jdbcType=CHAR},
+      DOCUMENT_NO = #{documentNo,jdbcType=VARCHAR},
+      AMAZON_ORDER_ID = #{amazonOrderId,jdbcType=VARCHAR},
+      AMAZON_MERCHANT_ORDER_ID = #{amazonMerchantOrderId,jdbcType=VARCHAR},
+      AMAZON_PURCHASE_DATE = #{amazonPurchaseDate,jdbcType=TIMESTAMP},
+      AMAZON_LASTUPDATED_DATE = #{amazonLastupdatedDate,jdbcType=TIMESTAMP},
+      AMAZON_ORDER_STATUS = #{amazonOrderStatus,jdbcType=VARCHAR},
+      AMAZON_SALES_CHANNEL = #{amazonSalesChannel,jdbcType=VARCHAR},
+      AMAZON_FULFILLMENT_CHANNEL = #{amazonFulfillmentChannel,jdbcType=VARCHAR},
+      AMAZON_SHIP_SERVICE_LEVEL = #{amazonShipServiceLevel,jdbcType=VARCHAR},
+      AMAZON_SHIP_STATE = #{amazonShipState,jdbcType=VARCHAR},
+      AMAZON_SHIP_POSTAL_CODE = #{amazonShipPostalCode,jdbcType=VARCHAR},
+      AMAZON_SHIP_COUNTRY = #{amazonShipCountry,jdbcType=VARCHAR},
+      AMAZON_SHIP_CITY = #{amazonShipCity,jdbcType=VARCHAR},
+      AMAZON_IS_BUSINESS_ORDER = #{amazonIsBusinessOrder,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

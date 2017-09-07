@@ -1,11 +1,10 @@
 package cn.ssm.project.mapper;
 
-import org.apache.ibatis.annotations.Param;
 import cn.ssm.project.pojo.MProduct;
 import cn.ssm.project.pojo.MProductExample;
 import cn.ssm.project.pojo.MProductWithBLOBs;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface MProductMapper {
     int countByExample(MProductExample example);

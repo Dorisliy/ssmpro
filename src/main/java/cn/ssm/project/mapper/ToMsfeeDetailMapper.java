@@ -1,10 +1,9 @@
 package cn.ssm.project.mapper;
 
-import org.apache.ibatis.annotations.Param;
 import cn.ssm.project.pojo.ToMsfeeDetail;
 import cn.ssm.project.pojo.ToMsfeeDetailExample;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface ToMsfeeDetailMapper {
     int countByExample(ToMsfeeDetailExample example);

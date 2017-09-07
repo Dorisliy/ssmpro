@@ -1,5 +1,6 @@
 package cn.ssm.project.utils;
 
+import cn.ssm.project.pojo.AmazonImportConfigure;
 import com.amazonaws.mws.MarketplaceWebServiceException;
 import com.amazonaws.mws.model.GetReportListResponse;
 import com.amazonaws.mws.model.GetReportRequestListResponse;
@@ -10,7 +11,6 @@ import com.amazonaws.mws.samples.GetReportList;
 import com.amazonaws.mws.samples.GetReportRequestList;
 import com.amazonaws.mws.samples.RequestReport;
 import org.joda.time.DateTime;
-import cn.ssm.project.pojo.AmazonImportConfigure;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.io.OutputStream;

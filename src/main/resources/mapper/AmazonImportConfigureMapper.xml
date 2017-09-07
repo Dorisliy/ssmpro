@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="mapper.AmazonImportConfigureMapper" >
-  <resultMap id="BaseResultMap" type="pojo.AmazonImportConfigure" >
+<mapper namespace="cn.ssm.project.mapper.AmazonImportConfigureMapper" >
+  <resultMap id="BaseResultMap" type="cn.ssm.project.pojo.AmazonImportConfigure" >
     <id column="ID" property="id" jdbcType="INTEGER" />
     <result column="CREATED_AT" property="createdAt" jdbcType="TIMESTAMP" />
     <result column="CREATED_ID" property="createdId" jdbcType="INTEGER" />
@@ -30,7 +30,7 @@
     <result column="TYPE" property="type" jdbcType="VARCHAR" />
     <result column="STORENAME_EB" property="storenameEb" jdbcType="VARCHAR" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="pojo.AmazonImportConfigure" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="cn.ssm.project.pojo.AmazonImportConfigure" extends="BaseResultMap" >
     <result column="TOKEN_EB" property="tokenEb" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -101,7 +101,7 @@
   <sql id="Blob_Column_List" >
     TOKEN_EB
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="pojo.AmazonImportConfigureExample" >
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="cn.ssm.project.pojo.AmazonImportConfigureExample" >
     select
     <if test="distinct" >
       distinct
@@ -117,7 +117,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="pojo.AmazonImportConfigureExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.ssm.project.pojo.AmazonImportConfigureExample" >
     select
     <if test="distinct" >
       distinct
@@ -143,13 +143,13 @@
     delete from amazon_import_configure
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="pojo.AmazonImportConfigureExample" >
+  <delete id="deleteByExample" parameterType="cn.ssm.project.pojo.AmazonImportConfigureExample" >
     delete from amazon_import_configure
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="pojo.AmazonImportConfigure" >
+  <insert id="insert" parameterType="cn.ssm.project.pojo.AmazonImportConfigure" >
     insert into amazon_import_configure (ID, CREATED_AT, CREATED_ID, 
       UPDATED_AT, UPDATED_ID, ISACTIVE, 
       STATE, CLIENT_ID, ORG_ID, 
@@ -171,7 +171,7 @@
       #{isNonamazonIncluded,jdbcType=CHAR}, #{type,jdbcType=VARCHAR}, #{storenameEb,jdbcType=VARCHAR}, 
       #{tokenEb,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="pojo.AmazonImportConfigure" >
+  <insert id="insertSelective" parameterType="cn.ssm.project.pojo.AmazonImportConfigure" >
     insert into amazon_import_configure
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -346,7 +346,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="pojo.AmazonImportConfigureExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="cn.ssm.project.pojo.AmazonImportConfigureExample" resultType="java.lang.Integer" >
     select count(*) from amazon_import_configure
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -511,7 +511,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="pojo.AmazonImportConfigure" >
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ssm.project.pojo.AmazonImportConfigure" >
     update amazon_import_configure
     <set >
       <if test="createdAt != null" >
@@ -598,7 +598,7 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="pojo.AmazonImportConfigure" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.ssm.project.pojo.AmazonImportConfigure" >
     update amazon_import_configure
     set CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
       CREATED_ID = #{createdId,jdbcType=INTEGER},
@@ -629,7 +629,7 @@
       TOKEN_EB = #{tokenEb,jdbcType=LONGVARCHAR}
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="pojo.AmazonImportConfigure" >
+  <update id="updateByPrimaryKey" parameterType="cn.ssm.project.pojo.AmazonImportConfigure" >
     update amazon_import_configure
     set CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
       CREATED_ID = #{createdId,jdbcType=INTEGER},

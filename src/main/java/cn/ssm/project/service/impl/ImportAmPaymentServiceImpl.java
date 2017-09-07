@@ -1179,7 +1179,7 @@ public class ImportAmPaymentServiceImpl implements ImportAmPaymentService {
         list = amazonOrderMapper.selectByExample(example);
 
         if (list != null && list.size() > 0) {
-            strAmazonState = list.get(0).getAmazonOrderStatus();
+            //strAmazonState = list.get(0).getOrderStatus();
         }
         return strAmazonState;
     }

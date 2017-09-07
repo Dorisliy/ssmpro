@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ssm.project.mapper.AmazonOrderMapper" >
+  <resultMap id="BaseResultMap" type="cn.ssm.project.pojo.AmazonOrder" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="CREATED_AT" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="CREATED_ID" property="createdId" jdbcType="INTEGER" />
+    <result column="UPDATED_AT" property="updatedAt" jdbcType="TIMESTAMP" />
+    <result column="UPDATED_ID" property="updatedId" jdbcType="INTEGER" />
+    <result column="STATE" property="state" jdbcType="CHAR" />
+    <result column="ISACTIVE" property="isactive" jdbcType="CHAR" />
+    <result column="CLINET_ID" property="clinetId" jdbcType="INTEGER" />
+    <result column="ORG_ID" property="orgId" jdbcType="INTEGER" />
+    <result column="C_ORDER_ID" property="cOrderId" jdbcType="INTEGER" />
+    <result column="AMAZON_IMPORT_ORDER_LOG_ID" property="amazonImportOrderLogId" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="AMAZON_ORDER_ID" property="amazonOrderId" jdbcType="VARCHAR" />
+    <result column="MERCHANT_ORDER_ID" property="merchantOrderId" jdbcType="VARCHAR" />
+    <result column="PURCHASE_DATE" property="purchaseDate" jdbcType="TIMESTAMP" />
+    <result column="LASTUPDATED_DATE" property="lastupdatedDate" jdbcType="TIMESTAMP" />
+    <result column="ORDER_STATUS" property="orderStatus" jdbcType="VARCHAR" />
+    <result column="SALES_CHANNEL" property="salesChannel" jdbcType="VARCHAR" />
+    <result column="FULFILL_FULFILLMENT_CHANNEL" property="fulfillFulfillmentChannel" jdbcType="VARCHAR" />
+    <result column="FULFILL_SHIP_SERVICE_LEVEL" property="fulfillShipServiceLevel" jdbcType="VARCHAR" />
+    <result column="FULFILL_ADDRESS_CITY" property="fulfillAddressCity" jdbcType="VARCHAR" />
+    <result column="FULFILL_ADDRESS_STATE" property="fulfillAddressState" jdbcType="VARCHAR" />
+    <result column="FULFILL_ADDRESS_POSTAL_CODE" property="fulfillAddressPostalCode" jdbcType="VARCHAR" />
+    <result column="FULFILL_ADDRESS_COUNTRY" property="fulfillAddressCountry" jdbcType="VARCHAR" />
+    <result column="IS_BUSINESS_ORDER" property="isBusinessOrder" jdbcType="VARCHAR" />
+    <result column="ORDER_ITEM_ASIN" property="orderItemAsin" jdbcType="VARCHAR" />
+    <result column="ORDER_ITEM_SKU" property="orderItemSku" jdbcType="VARCHAR" />
+    <result column="ORDER_ITEM_ITEM_STATUS" property="orderItemItemStatus" jdbcType="VARCHAR" />
+    <result column="ORDER_ITEM_PRODUCT_NAME" property="orderItemProductName" jdbcType="VARCHAR" />
+    <result column="ORDER_ITEM_QUANTITY" property="orderItemQuantity" jdbcType="DECIMAL" />
+    <result column="IS_IMPORTED" property="isImported" jdbcType="VARCHAR" />
+    <result column="IMPORT_FAILORDER_PROCESS" property="importFailorderProcess" jdbcType="CHAR" />
+    <result column="IMPORT_STATUS" property="importStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.ssm.project.pojo.AmazonOrderWithBLOBs" extends="BaseResultMap" >
+    <result column="CONTENT_TEXT" property="contentText" jdbcType="LONGVARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, CREATED_AT, CREATED_ID, UPDATED_AT, UPDATED_ID, STATE, ISACTIVE, CLINET_ID, ORG_ID, 
+    C_ORDER_ID, AMAZON_IMPORT_ORDER_LOG_ID, NAME, AMAZON_ORDER_ID, MERCHANT_ORDER_ID, 
+    PURCHASE_DATE, LASTUPDATED_DATE, ORDER_STATUS, SALES_CHANNEL, FULFILL_FULFILLMENT_CHANNEL, 
+    FULFILL_SHIP_SERVICE_LEVEL, FULFILL_ADDRESS_CITY, FULFILL_ADDRESS_STATE, FULFILL_ADDRESS_POSTAL_CODE, 
+    FULFILL_ADDRESS_COUNTRY, IS_BUSINESS_ORDER, ORDER_ITEM_ASIN, ORDER_ITEM_SKU, ORDER_ITEM_ITEM_STATUS, 
+    ORDER_ITEM_PRODUCT_NAME, ORDER_ITEM_QUANTITY, IS_IMPORTED, IMPORT_FAILORDER_PROCESS, 
+    IMPORT_STATUS
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT_TEXT, DESCRIPTION
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="cn.ssm.project.pojo.AmazonOrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from amazon_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.ssm.project.pojo.AmazonOrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from amazon_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from amazon_order
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from amazon_order
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.ssm.project.pojo.AmazonOrderExample" >
+    delete from amazon_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.ssm.project.pojo.AmazonOrderWithBLOBs" >
+    insert into amazon_order (ID, CREATED_AT, CREATED_ID, 
+      UPDATED_AT, UPDATED_ID, STATE, 
+      ISACTIVE, CLINET_ID, ORG_ID, 
+      C_ORDER_ID, AMAZON_IMPORT_ORDER_LOG_ID, NAME, 
+      AMAZON_ORDER_ID, MERCHANT_ORDER_ID, PURCHASE_DATE, 
+      LASTUPDATED_DATE, ORDER_STATUS, SALES_CHANNEL, 
+      FULFILL_FULFILLMENT_CHANNEL, FULFILL_SHIP_SERVICE_LEVEL, 
+      FULFILL_ADDRESS_CITY, FULFILL_ADDRESS_STATE, 
+      FULFILL_ADDRESS_POSTAL_CODE, FULFILL_ADDRESS_COUNTRY, 
+      IS_BUSINESS_ORDER, ORDER_ITEM_ASIN, ORDER_ITEM_SKU, 
+      ORDER_ITEM_ITEM_STATUS, ORDER_ITEM_PRODUCT_NAME, 
+      ORDER_ITEM_QUANTITY, IS_IMPORTED, IMPORT_FAILORDER_PROCESS, 
+      IMPORT_STATUS, CONTENT_TEXT, DESCRIPTION
+      )
+    values (#{id,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, #{createdId,jdbcType=INTEGER}, 
+      #{updatedAt,jdbcType=TIMESTAMP}, #{updatedId,jdbcType=INTEGER}, #{state,jdbcType=CHAR}, 
+      #{isactive,jdbcType=CHAR}, #{clinetId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, 
+      #{cOrderId,jdbcType=INTEGER}, #{amazonImportOrderLogId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{amazonOrderId,jdbcType=VARCHAR}, #{merchantOrderId,jdbcType=VARCHAR}, #{purchaseDate,jdbcType=TIMESTAMP}, 
+      #{lastupdatedDate,jdbcType=TIMESTAMP}, #{orderStatus,jdbcType=VARCHAR}, #{salesChannel,jdbcType=VARCHAR}, 
+      #{fulfillFulfillmentChannel,jdbcType=VARCHAR}, #{fulfillShipServiceLevel,jdbcType=VARCHAR}, 
+      #{fulfillAddressCity,jdbcType=VARCHAR}, #{fulfillAddressState,jdbcType=VARCHAR}, 
+      #{fulfillAddressPostalCode,jdbcType=VARCHAR}, #{fulfillAddressCountry,jdbcType=VARCHAR}, 
+      #{isBusinessOrder,jdbcType=VARCHAR}, #{orderItemAsin,jdbcType=VARCHAR}, #{orderItemSku,jdbcType=VARCHAR}, 
+      #{orderItemItemStatus,jdbcType=VARCHAR}, #{orderItemProductName,jdbcType=VARCHAR}, 
+      #{orderItemQuantity,jdbcType=DECIMAL}, #{isImported,jdbcType=VARCHAR}, #{importFailorderProcess,jdbcType=CHAR}, 
+      #{importStatus,jdbcType=VARCHAR}, #{contentText,jdbcType=LONGVARCHAR}, #{description,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.ssm.project.pojo.AmazonOrderWithBLOBs" >
+    insert into amazon_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="createdAt != null" >
+        CREATED_AT,
+      </if>
+      <if test="createdId != null" >
+        CREATED_ID,
+      </if>
+      <if test="updatedAt != null" >
+        UPDATED_AT,
+      </if>
+      <if test="updatedId != null" >
+        UPDATED_ID,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="isactive != null" >
+        ISACTIVE,
+      </if>
+      <if test="clinetId != null" >
+        CLINET_ID,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="cOrderId != null" >
+        C_ORDER_ID,
+      </if>
+      <if test="amazonImportOrderLogId != null" >
+        AMAZON_IMPORT_ORDER_LOG_ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="amazonOrderId != null" >
+        AMAZON_ORDER_ID,
+      </if>
+      <if test="merchantOrderId != null" >
+        MERCHANT_ORDER_ID,
+      </if>
+      <if test="purchaseDate != null" >
+        PURCHASE_DATE,
+      </if>
+      <if test="lastupdatedDate != null" >
+        LASTUPDATED_DATE,
+      </if>
+      <if test="orderStatus != null" >
+        ORDER_STATUS,
+      </if>
+      <if test="salesChannel != null" >
+        SALES_CHANNEL,
+      </if>
+      <if test="fulfillFulfillmentChannel != null" >
+        FULFILL_FULFILLMENT_CHANNEL,
+      </if>
+      <if test="fulfillShipServiceLevel != null" >
+        FULFILL_SHIP_SERVICE_LEVEL,
+      </if>
+      <if test="fulfillAddressCity != null" >
+        FULFILL_ADDRESS_CITY,
+      </if>
+      <if test="fulfillAddressState != null" >
+        FULFILL_ADDRESS_STATE,
+      </if>
+      <if test="fulfillAddressPostalCode != null" >
+        FULFILL_ADDRESS_POSTAL_CODE,
+      </if>
+      <if test="fulfillAddressCountry != null" >
+        FULFILL_ADDRESS_COUNTRY,
+      </if>
+      <if test="isBusinessOrder != null" >
+        IS_BUSINESS_ORDER,
+      </if>
+      <if test="orderItemAsin != null" >
+        ORDER_ITEM_ASIN,
+      </if>
+      <if test="orderItemSku != null" >
+        ORDER_ITEM_SKU,
+      </if>
+      <if test="orderItemItemStatus != null" >
+        ORDER_ITEM_ITEM_STATUS,
+      </if>
+      <if test="orderItemProductName != null" >
+        ORDER_ITEM_PRODUCT_NAME,
+      </if>
+      <if test="orderItemQuantity != null" >
+        ORDER_ITEM_QUANTITY,
+      </if>
+      <if test="isImported != null" >
+        IS_IMPORTED,
+      </if>
+      <if test="importFailorderProcess != null" >
+        IMPORT_FAILORDER_PROCESS,
+      </if>
+      <if test="importStatus != null" >
+        IMPORT_STATUS,
+      </if>
+      <if test="contentText != null" >
+        CONTENT_TEXT,
+      </if>
+      <if test="description != null" >
+        DESCRIPTION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdId != null" >
+        #{createdId,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedId != null" >
+        #{updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="isactive != null" >
+        #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="clinetId != null" >
+        #{clinetId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="cOrderId != null" >
+        #{cOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="amazonImportOrderLogId != null" >
+        #{amazonImportOrderLogId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonOrderId != null" >
+        #{amazonOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantOrderId != null" >
+        #{merchantOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseDate != null" >
+        #{purchaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastupdatedDate != null" >
+        #{lastupdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="salesChannel != null" >
+        #{salesChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="fulfillFulfillmentChannel != null" >
+        #{fulfillFulfillmentChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="fulfillShipServiceLevel != null" >
+        #{fulfillShipServiceLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="fulfillAddressCity != null" >
+        #{fulfillAddressCity,jdbcType=VARCHAR},
+      </if>
+      <if test="fulfillAddressState != null" >
+        #{fulfillAddressState,jdbcType=VARCHAR},
+      </if>
+      <if test="fulfillAddressPostalCode != null" >
+        #{fulfillAddressPostalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fulfillAddressCountry != null" >
+        #{fulfillAddressCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="isBusinessOrder != null" >
+        #{isBusinessOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="orderItemAsin != null" >
+        #{orderItemAsin,jdbcType=VARCHAR},
+      </if>
+      <if test="orderItemSku != null" >
+        #{orderItemSku,jdbcType=VARCHAR},
+      </if>
+      <if test="orderItemItemStatus != null" >
+        #{orderItemItemStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderItemProductName != null" >
+        #{orderItemProductName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderItemQuantity != null" >
+        #{orderItemQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="isImported != null" >
+        #{isImported,jdbcType=VARCHAR},
+      </if>
+      <if test="importFailorderProcess != null" >
+        #{importFailorderProcess,jdbcType=CHAR},
+      </if>
+      <if test="importStatus != null" >
+        #{importStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="contentText != null" >
+        #{contentText,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.ssm.project.pojo.AmazonOrderExample" resultType="java.lang.Integer" >
+    select count(*) from amazon_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update amazon_order
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdAt != null" >
+        CREATED_AT = #{record.createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdId != null" >
+        CREATED_ID = #{record.createdId,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatedAt != null" >
+        UPDATED_AT = #{record.updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedId != null" >
+        UPDATED_ID = #{record.updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="record.state != null" >
+        STATE = #{record.state,jdbcType=CHAR},
+      </if>
+      <if test="record.isactive != null" >
+        ISACTIVE = #{record.isactive,jdbcType=CHAR},
+      </if>
+      <if test="record.clinetId != null" >
+        CLINET_ID = #{record.clinetId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orgId != null" >
+        ORG_ID = #{record.orgId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cOrderId != null" >
+        C_ORDER_ID = #{record.cOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.amazonImportOrderLogId != null" >
+        AMAZON_IMPORT_ORDER_LOG_ID = #{record.amazonImportOrderLogId,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonOrderId != null" >
+        AMAZON_ORDER_ID = #{record.amazonOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.merchantOrderId != null" >
+        MERCHANT_ORDER_ID = #{record.merchantOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.purchaseDate != null" >
+        PURCHASE_DATE = #{record.purchaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastupdatedDate != null" >
+        LASTUPDATED_DATE = #{record.lastupdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orderStatus != null" >
+        ORDER_STATUS = #{record.orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salesChannel != null" >
+        SALES_CHANNEL = #{record.salesChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fulfillFulfillmentChannel != null" >
+        FULFILL_FULFILLMENT_CHANNEL = #{record.fulfillFulfillmentChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fulfillShipServiceLevel != null" >
+        FULFILL_SHIP_SERVICE_LEVEL = #{record.fulfillShipServiceLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fulfillAddressCity != null" >
+        FULFILL_ADDRESS_CITY = #{record.fulfillAddressCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fulfillAddressState != null" >
+        FULFILL_ADDRESS_STATE = #{record.fulfillAddressState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fulfillAddressPostalCode != null" >
+        FULFILL_ADDRESS_POSTAL_CODE = #{record.fulfillAddressPostalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fulfillAddressCountry != null" >
+        FULFILL_ADDRESS_COUNTRY = #{record.fulfillAddressCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isBusinessOrder != null" >
+        IS_BUSINESS_ORDER = #{record.isBusinessOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderItemAsin != null" >
+        ORDER_ITEM_ASIN = #{record.orderItemAsin,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderItemSku != null" >
+        ORDER_ITEM_SKU = #{record.orderItemSku,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderItemItemStatus != null" >
+        ORDER_ITEM_ITEM_STATUS = #{record.orderItemItemStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderItemProductName != null" >
+        ORDER_ITEM_PRODUCT_NAME = #{record.orderItemProductName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderItemQuantity != null" >
+        ORDER_ITEM_QUANTITY = #{record.orderItemQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isImported != null" >
+        IS_IMPORTED = #{record.isImported,jdbcType=VARCHAR},
+      </if>
+      <if test="record.importFailorderProcess != null" >
+        IMPORT_FAILORDER_PROCESS = #{record.importFailorderProcess,jdbcType=CHAR},
+      </if>
+      <if test="record.importStatus != null" >
+        IMPORT_STATUS = #{record.importStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contentText != null" >
+        CONTENT_TEXT = #{record.contentText,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.description != null" >
+        DESCRIPTION = #{record.description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update amazon_order
+    set ID = #{record.id,jdbcType=INTEGER},
+      CREATED_AT = #{record.createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{record.createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{record.updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{record.updatedId,jdbcType=INTEGER},
+      STATE = #{record.state,jdbcType=CHAR},
+      ISACTIVE = #{record.isactive,jdbcType=CHAR},
+      CLINET_ID = #{record.clinetId,jdbcType=INTEGER},
+      ORG_ID = #{record.orgId,jdbcType=INTEGER},
+      C_ORDER_ID = #{record.cOrderId,jdbcType=INTEGER},
+      AMAZON_IMPORT_ORDER_LOG_ID = #{record.amazonImportOrderLogId,jdbcType=INTEGER},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      AMAZON_ORDER_ID = #{record.amazonOrderId,jdbcType=VARCHAR},
+      MERCHANT_ORDER_ID = #{record.merchantOrderId,jdbcType=VARCHAR},
+      PURCHASE_DATE = #{record.purchaseDate,jdbcType=TIMESTAMP},
+      LASTUPDATED_DATE = #{record.lastupdatedDate,jdbcType=TIMESTAMP},
+      ORDER_STATUS = #{record.orderStatus,jdbcType=VARCHAR},
+      SALES_CHANNEL = #{record.salesChannel,jdbcType=VARCHAR},
+      FULFILL_FULFILLMENT_CHANNEL = #{record.fulfillFulfillmentChannel,jdbcType=VARCHAR},
+      FULFILL_SHIP_SERVICE_LEVEL = #{record.fulfillShipServiceLevel,jdbcType=VARCHAR},
+      FULFILL_ADDRESS_CITY = #{record.fulfillAddressCity,jdbcType=VARCHAR},
+      FULFILL_ADDRESS_STATE = #{record.fulfillAddressState,jdbcType=VARCHAR},
+      FULFILL_ADDRESS_POSTAL_CODE = #{record.fulfillAddressPostalCode,jdbcType=VARCHAR},
+      FULFILL_ADDRESS_COUNTRY = #{record.fulfillAddressCountry,jdbcType=VARCHAR},
+      IS_BUSINESS_ORDER = #{record.isBusinessOrder,jdbcType=VARCHAR},
+      ORDER_ITEM_ASIN = #{record.orderItemAsin,jdbcType=VARCHAR},
+      ORDER_ITEM_SKU = #{record.orderItemSku,jdbcType=VARCHAR},
+      ORDER_ITEM_ITEM_STATUS = #{record.orderItemItemStatus,jdbcType=VARCHAR},
+      ORDER_ITEM_PRODUCT_NAME = #{record.orderItemProductName,jdbcType=VARCHAR},
+      ORDER_ITEM_QUANTITY = #{record.orderItemQuantity,jdbcType=DECIMAL},
+      IS_IMPORTED = #{record.isImported,jdbcType=VARCHAR},
+      IMPORT_FAILORDER_PROCESS = #{record.importFailorderProcess,jdbcType=CHAR},
+      IMPORT_STATUS = #{record.importStatus,jdbcType=VARCHAR},
+      CONTENT_TEXT = #{record.contentText,jdbcType=LONGVARCHAR},
+      DESCRIPTION = #{record.description,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update amazon_order
+    set ID = #{record.id,jdbcType=INTEGER},
+      CREATED_AT = #{record.createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{record.createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{record.updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{record.updatedId,jdbcType=INTEGER},
+      STATE = #{record.state,jdbcType=CHAR},
+      ISACTIVE = #{record.isactive,jdbcType=CHAR},
+      CLINET_ID = #{record.clinetId,jdbcType=INTEGER},
+      ORG_ID = #{record.orgId,jdbcType=INTEGER},
+      C_ORDER_ID = #{record.cOrderId,jdbcType=INTEGER},
+      AMAZON_IMPORT_ORDER_LOG_ID = #{record.amazonImportOrderLogId,jdbcType=INTEGER},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      AMAZON_ORDER_ID = #{record.amazonOrderId,jdbcType=VARCHAR},
+      MERCHANT_ORDER_ID = #{record.merchantOrderId,jdbcType=VARCHAR},
+      PURCHASE_DATE = #{record.purchaseDate,jdbcType=TIMESTAMP},
+      LASTUPDATED_DATE = #{record.lastupdatedDate,jdbcType=TIMESTAMP},
+      ORDER_STATUS = #{record.orderStatus,jdbcType=VARCHAR},
+      SALES_CHANNEL = #{record.salesChannel,jdbcType=VARCHAR},
+      FULFILL_FULFILLMENT_CHANNEL = #{record.fulfillFulfillmentChannel,jdbcType=VARCHAR},
+      FULFILL_SHIP_SERVICE_LEVEL = #{record.fulfillShipServiceLevel,jdbcType=VARCHAR},
+      FULFILL_ADDRESS_CITY = #{record.fulfillAddressCity,jdbcType=VARCHAR},
+      FULFILL_ADDRESS_STATE = #{record.fulfillAddressState,jdbcType=VARCHAR},
+      FULFILL_ADDRESS_POSTAL_CODE = #{record.fulfillAddressPostalCode,jdbcType=VARCHAR},
+      FULFILL_ADDRESS_COUNTRY = #{record.fulfillAddressCountry,jdbcType=VARCHAR},
+      IS_BUSINESS_ORDER = #{record.isBusinessOrder,jdbcType=VARCHAR},
+      ORDER_ITEM_ASIN = #{record.orderItemAsin,jdbcType=VARCHAR},
+      ORDER_ITEM_SKU = #{record.orderItemSku,jdbcType=VARCHAR},
+      ORDER_ITEM_ITEM_STATUS = #{record.orderItemItemStatus,jdbcType=VARCHAR},
+      ORDER_ITEM_PRODUCT_NAME = #{record.orderItemProductName,jdbcType=VARCHAR},
+      ORDER_ITEM_QUANTITY = #{record.orderItemQuantity,jdbcType=DECIMAL},
+      IS_IMPORTED = #{record.isImported,jdbcType=VARCHAR},
+      IMPORT_FAILORDER_PROCESS = #{record.importFailorderProcess,jdbcType=CHAR},
+      IMPORT_STATUS = #{record.importStatus,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ssm.project.pojo.AmazonOrderWithBLOBs" >
+    update amazon_order
+    <set >
+      <if test="createdAt != null" >
+        CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdId != null" >
+        CREATED_ID = #{createdId,jdbcType=INTEGER},
+      </if>
+      <if test="updatedAt != null" >
+        UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedId != null" >
+        UPDATED_ID = #{updatedId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=CHAR},
+      </if>
+      <if test="isactive != null" >
+        ISACTIVE = #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="clinetId != null" >
+        CLINET_ID = #{clinetId,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="cOrderId != null" >
+        C_ORDER_ID = #{cOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="amazonImportOrderLogId != null" >
+        AMAZON_IMPORT_ORDER_LOG_ID = #{amazonImportOrderLogId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonOrderId != null" >
+        AMAZON_ORDER_ID = #{amazonOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantOrderId != null" >
+        MERCHANT_ORDER_ID = #{merchantOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseDate != null" >
+        PURCHASE_DATE = #{purchaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastupdatedDate != null" >
+        LASTUPDATED_DATE = #{lastupdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStatus != null" >
+        ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="salesChannel != null" >
+        SALES_CHANNEL = #{salesChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="fulfillFulfillmentChannel != null" >
+        FULFILL_FULFILLMENT_CHANNEL = #{fulfillFulfillmentChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="fulfillShipServiceLevel != null" >
+        FULFILL_SHIP_SERVICE_LEVEL = #{fulfillShipServiceLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="fulfillAddressCity != null" >
+        FULFILL_ADDRESS_CITY = #{fulfillAddressCity,jdbcType=VARCHAR},
+      </if>
+      <if test="fulfillAddressState != null" >
+        FULFILL_ADDRESS_STATE = #{fulfillAddressState,jdbcType=VARCHAR},
+      </if>
+      <if test="fulfillAddressPostalCode != null" >
+        FULFILL_ADDRESS_POSTAL_CODE = #{fulfillAddressPostalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fulfillAddressCountry != null" >
+        FULFILL_ADDRESS_COUNTRY = #{fulfillAddressCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="isBusinessOrder != null" >
+        IS_BUSINESS_ORDER = #{isBusinessOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="orderItemAsin != null" >
+        ORDER_ITEM_ASIN = #{orderItemAsin,jdbcType=VARCHAR},
+      </if>
+      <if test="orderItemSku != null" >
+        ORDER_ITEM_SKU = #{orderItemSku,jdbcType=VARCHAR},
+      </if>
+      <if test="orderItemItemStatus != null" >
+        ORDER_ITEM_ITEM_STATUS = #{orderItemItemStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderItemProductName != null" >
+        ORDER_ITEM_PRODUCT_NAME = #{orderItemProductName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderItemQuantity != null" >
+        ORDER_ITEM_QUANTITY = #{orderItemQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="isImported != null" >
+        IS_IMPORTED = #{isImported,jdbcType=VARCHAR},
+      </if>
+      <if test="importFailorderProcess != null" >
+        IMPORT_FAILORDER_PROCESS = #{importFailorderProcess,jdbcType=CHAR},
+      </if>
+      <if test="importStatus != null" >
+        IMPORT_STATUS = #{importStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="contentText != null" >
+        CONTENT_TEXT = #{contentText,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.ssm.project.pojo.AmazonOrderWithBLOBs" >
+    update amazon_order
+    set CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{updatedId,jdbcType=INTEGER},
+      STATE = #{state,jdbcType=CHAR},
+      ISACTIVE = #{isactive,jdbcType=CHAR},
+      CLINET_ID = #{clinetId,jdbcType=INTEGER},
+      ORG_ID = #{orgId,jdbcType=INTEGER},
+      C_ORDER_ID = #{cOrderId,jdbcType=INTEGER},
+      AMAZON_IMPORT_ORDER_LOG_ID = #{amazonImportOrderLogId,jdbcType=INTEGER},
+      NAME = #{name,jdbcType=VARCHAR},
+      AMAZON_ORDER_ID = #{amazonOrderId,jdbcType=VARCHAR},
+      MERCHANT_ORDER_ID = #{merchantOrderId,jdbcType=VARCHAR},
+      PURCHASE_DATE = #{purchaseDate,jdbcType=TIMESTAMP},
+      LASTUPDATED_DATE = #{lastupdatedDate,jdbcType=TIMESTAMP},
+      ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR},
+      SALES_CHANNEL = #{salesChannel,jdbcType=VARCHAR},
+      FULFILL_FULFILLMENT_CHANNEL = #{fulfillFulfillmentChannel,jdbcType=VARCHAR},
+      FULFILL_SHIP_SERVICE_LEVEL = #{fulfillShipServiceLevel,jdbcType=VARCHAR},
+      FULFILL_ADDRESS_CITY = #{fulfillAddressCity,jdbcType=VARCHAR},
+      FULFILL_ADDRESS_STATE = #{fulfillAddressState,jdbcType=VARCHAR},
+      FULFILL_ADDRESS_POSTAL_CODE = #{fulfillAddressPostalCode,jdbcType=VARCHAR},
+      FULFILL_ADDRESS_COUNTRY = #{fulfillAddressCountry,jdbcType=VARCHAR},
+      IS_BUSINESS_ORDER = #{isBusinessOrder,jdbcType=VARCHAR},
+      ORDER_ITEM_ASIN = #{orderItemAsin,jdbcType=VARCHAR},
+      ORDER_ITEM_SKU = #{orderItemSku,jdbcType=VARCHAR},
+      ORDER_ITEM_ITEM_STATUS = #{orderItemItemStatus,jdbcType=VARCHAR},
+      ORDER_ITEM_PRODUCT_NAME = #{orderItemProductName,jdbcType=VARCHAR},
+      ORDER_ITEM_QUANTITY = #{orderItemQuantity,jdbcType=DECIMAL},
+      IS_IMPORTED = #{isImported,jdbcType=VARCHAR},
+      IMPORT_FAILORDER_PROCESS = #{importFailorderProcess,jdbcType=CHAR},
+      IMPORT_STATUS = #{importStatus,jdbcType=VARCHAR},
+      CONTENT_TEXT = #{contentText,jdbcType=LONGVARCHAR},
+      DESCRIPTION = #{description,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.ssm.project.pojo.AmazonOrder" >
+    update amazon_order
+    set CREATED_AT = #{createdAt,jdbcType=TIMESTAMP},
+      CREATED_ID = #{createdId,jdbcType=INTEGER},
+      UPDATED_AT = #{updatedAt,jdbcType=TIMESTAMP},
+      UPDATED_ID = #{updatedId,jdbcType=INTEGER},
+      STATE = #{state,jdbcType=CHAR},
+      ISACTIVE = #{isactive,jdbcType=CHAR},
+      CLINET_ID = #{clinetId,jdbcType=INTEGER},
+      ORG_ID = #{orgId,jdbcType=INTEGER},
+      C_ORDER_ID = #{cOrderId,jdbcType=INTEGER},
+      AMAZON_IMPORT_ORDER_LOG_ID = #{amazonImportOrderLogId,jdbcType=INTEGER},
+      NAME = #{name,jdbcType=VARCHAR},
+      AMAZON_ORDER_ID = #{amazonOrderId,jdbcType=VARCHAR},
+      MERCHANT_ORDER_ID = #{merchantOrderId,jdbcType=VARCHAR},
+      PURCHASE_DATE = #{purchaseDate,jdbcType=TIMESTAMP},
+      LASTUPDATED_DATE = #{lastupdatedDate,jdbcType=TIMESTAMP},
+      ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR},
+      SALES_CHANNEL = #{salesChannel,jdbcType=VARCHAR},
+      FULFILL_FULFILLMENT_CHANNEL = #{fulfillFulfillmentChannel,jdbcType=VARCHAR},
+      FULFILL_SHIP_SERVICE_LEVEL = #{fulfillShipServiceLevel,jdbcType=VARCHAR},
+      FULFILL_ADDRESS_CITY = #{fulfillAddressCity,jdbcType=VARCHAR},
+      FULFILL_ADDRESS_STATE = #{fulfillAddressState,jdbcType=VARCHAR},
+      FULFILL_ADDRESS_POSTAL_CODE = #{fulfillAddressPostalCode,jdbcType=VARCHAR},
+      FULFILL_ADDRESS_COUNTRY = #{fulfillAddressCountry,jdbcType=VARCHAR},
+      IS_BUSINESS_ORDER = #{isBusinessOrder,jdbcType=VARCHAR},
+      ORDER_ITEM_ASIN = #{orderItemAsin,jdbcType=VARCHAR},
+      ORDER_ITEM_SKU = #{orderItemSku,jdbcType=VARCHAR},
+      ORDER_ITEM_ITEM_STATUS = #{orderItemItemStatus,jdbcType=VARCHAR},
+      ORDER_ITEM_PRODUCT_NAME = #{orderItemProductName,jdbcType=VARCHAR},
+      ORDER_ITEM_QUANTITY = #{orderItemQuantity,jdbcType=DECIMAL},
+      IS_IMPORTED = #{isImported,jdbcType=VARCHAR},
+      IMPORT_FAILORDER_PROCESS = #{importFailorderProcess,jdbcType=CHAR},
+      IMPORT_STATUS = #{importStatus,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,10 +1,9 @@
 package cn.ssm.project.mapper;
 
-import org.apache.ibatis.annotations.Param;
 import cn.ssm.project.pojo.BaAccount;
 import cn.ssm.project.pojo.BaAccountExample;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface BaAccountMapper {
     int countByExample(BaAccountExample example);

@@ -1,10 +1,9 @@
 package cn.ssm.project.mapper;
 
-import org.apache.ibatis.annotations.Param;
 import cn.ssm.project.pojo.BaArea;
 import cn.ssm.project.pojo.BaAreaExample;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface BaAreaMapper {
     int countByExample(BaAreaExample example);

@@ -1,5 +1,6 @@
 package cn.ssm.project.pojo;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class AmazonOrder {
@@ -23,31 +24,51 @@ public class AmazonOrder {
 
     private Integer cOrderId;
 
+    private Integer amazonImportOrderLogId;
+
     private String name;
 
     private String amazonOrderId;
 
-    private Date amazonPurchaseDate;
+    private String merchantOrderId;
 
-    private Date amazonLastupdatedDate;
+    private Date purchaseDate;
 
-    private String amazonOrderStatus;
+    private Date lastupdatedDate;
 
-    private String amazonSalesChannel;
+    private String orderStatus;
+
+    private String salesChannel;
+
+    private String fulfillFulfillmentChannel;
+
+    private String fulfillShipServiceLevel;
+
+    private String fulfillAddressCity;
+
+    private String fulfillAddressState;
+
+    private String fulfillAddressPostalCode;
+
+    private String fulfillAddressCountry;
+
+    private String isBusinessOrder;
+
+    private String orderItemAsin;
+
+    private String orderItemSku;
+
+    private String orderItemItemStatus;
+
+    private String orderItemProductName;
+
+    private BigDecimal orderItemQuantity;
 
     private String isImported;
-
-    private Integer amazonImportOrderLogId;
-
-    private String description;
 
     private String importFailorderProcess;
 
     private String importStatus;
-
-    private String amazonMerchantOrderId;
-
-    private String contentText;
 
     public Integer getId() {
         return id;
@@ -129,6 +150,14 @@ public class AmazonOrder {
         this.cOrderId = cOrderId;
     }
 
+    public Integer getAmazonImportOrderLogId() {
+        return amazonImportOrderLogId;
+    }
+
+    public void setAmazonImportOrderLogId(Integer amazonImportOrderLogId) {
+        this.amazonImportOrderLogId = amazonImportOrderLogId;
+    }
+
     public String getName() {
         return name;
     }
@@ -145,36 +174,140 @@ public class AmazonOrder {
         this.amazonOrderId = amazonOrderId == null ? null : amazonOrderId.trim();
     }
 
-    public Date getAmazonPurchaseDate() {
-        return amazonPurchaseDate;
+    public String getMerchantOrderId() {
+        return merchantOrderId;
     }
 
-    public void setAmazonPurchaseDate(Date amazonPurchaseDate) {
-        this.amazonPurchaseDate = amazonPurchaseDate;
+    public void setMerchantOrderId(String merchantOrderId) {
+        this.merchantOrderId = merchantOrderId == null ? null : merchantOrderId.trim();
     }
 
-    public Date getAmazonLastupdatedDate() {
-        return amazonLastupdatedDate;
+    public Date getPurchaseDate() {
+        return purchaseDate;
     }
 
-    public void setAmazonLastupdatedDate(Date amazonLastupdatedDate) {
-        this.amazonLastupdatedDate = amazonLastupdatedDate;
+    public void setPurchaseDate(Date purchaseDate) {
+        this.purchaseDate = purchaseDate;
     }
 
-    public String getAmazonOrderStatus() {
-        return amazonOrderStatus;
+    public Date getLastupdatedDate() {
+        return lastupdatedDate;
     }
 
-    public void setAmazonOrderStatus(String amazonOrderStatus) {
-        this.amazonOrderStatus = amazonOrderStatus == null ? null : amazonOrderStatus.trim();
+    public void setLastupdatedDate(Date lastupdatedDate) {
+        this.lastupdatedDate = lastupdatedDate;
     }
 
-    public String getAmazonSalesChannel() {
-        return amazonSalesChannel;
+    public String getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setAmazonSalesChannel(String amazonSalesChannel) {
-        this.amazonSalesChannel = amazonSalesChannel == null ? null : amazonSalesChannel.trim();
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus == null ? null : orderStatus.trim();
+    }
+
+    public String getSalesChannel() {
+        return salesChannel;
+    }
+
+    public void setSalesChannel(String salesChannel) {
+        this.salesChannel = salesChannel == null ? null : salesChannel.trim();
+    }
+
+    public String getFulfillFulfillmentChannel() {
+        return fulfillFulfillmentChannel;
+    }
+
+    public void setFulfillFulfillmentChannel(String fulfillFulfillmentChannel) {
+        this.fulfillFulfillmentChannel = fulfillFulfillmentChannel == null ? null : fulfillFulfillmentChannel.trim();
+    }
+
+    public String getFulfillShipServiceLevel() {
+        return fulfillShipServiceLevel;
+    }
+
+    public void setFulfillShipServiceLevel(String fulfillShipServiceLevel) {
+        this.fulfillShipServiceLevel = fulfillShipServiceLevel == null ? null : fulfillShipServiceLevel.trim();
+    }
+
+    public String getFulfillAddressCity() {
+        return fulfillAddressCity;
+    }
+
+    public void setFulfillAddressCity(String fulfillAddressCity) {
+        this.fulfillAddressCity = fulfillAddressCity == null ? null : fulfillAddressCity.trim();
+    }
+
+    public String getFulfillAddressState() {
+        return fulfillAddressState;
+    }
+
+    public void setFulfillAddressState(String fulfillAddressState) {
+        this.fulfillAddressState = fulfillAddressState == null ? null : fulfillAddressState.trim();
+    }
+
+    public String getFulfillAddressPostalCode() {
+        return fulfillAddressPostalCode;
+    }
+
+    public void setFulfillAddressPostalCode(String fulfillAddressPostalCode) {
+        this.fulfillAddressPostalCode = fulfillAddressPostalCode == null ? null : fulfillAddressPostalCode.trim();
+    }
+
+    public String getFulfillAddressCountry() {
+        return fulfillAddressCountry;
+    }
+
+    public void setFulfillAddressCountry(String fulfillAddressCountry) {
+        this.fulfillAddressCountry = fulfillAddressCountry == null ? null : fulfillAddressCountry.trim();
+    }
+
+    public String getIsBusinessOrder() {
+        return isBusinessOrder;
+    }
+
+    public void setIsBusinessOrder(String isBusinessOrder) {
+        this.isBusinessOrder = isBusinessOrder == null ? null : isBusinessOrder.trim();
+    }
+
+    public String getOrderItemAsin() {
+        return orderItemAsin;
+    }
+
+    public void setOrderItemAsin(String orderItemAsin) {
+        this.orderItemAsin = orderItemAsin == null ? null : orderItemAsin.trim();
+    }
+
+    public String getOrderItemSku() {
+        return orderItemSku;
+    }
+
+    public void setOrderItemSku(String orderItemSku) {
+        this.orderItemSku = orderItemSku == null ? null : orderItemSku.trim();
+    }
+
+    public String getOrderItemItemStatus() {
+        return orderItemItemStatus;
+    }
+
+    public void setOrderItemItemStatus(String orderItemItemStatus) {
+        this.orderItemItemStatus = orderItemItemStatus == null ? null : orderItemItemStatus.trim();
+    }
+
+    public String getOrderItemProductName() {
+        return orderItemProductName;
+    }
+
+    public void setOrderItemProductName(String orderItemProductName) {
+        this.orderItemProductName = orderItemProductName == null ? null : orderItemProductName.trim();
+    }
+
+    public BigDecimal getOrderItemQuantity() {
+        return orderItemQuantity;
+    }
+
+    public void setOrderItemQuantity(BigDecimal orderItemQuantity) {
+        this.orderItemQuantity = orderItemQuantity;
     }
 
     public String getIsImported() {
@@ -183,22 +316,6 @@ public class AmazonOrder {
 
     public void setIsImported(String isImported) {
         this.isImported = isImported == null ? null : isImported.trim();
-    }
-
-    public Integer getAmazonImportOrderLogId() {
-        return amazonImportOrderLogId;
-    }
-
-    public void setAmazonImportOrderLogId(Integer amazonImportOrderLogId) {
-        this.amazonImportOrderLogId = amazonImportOrderLogId;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
     }
 
     public String getImportFailorderProcess() {
@@ -215,21 +332,5 @@ public class AmazonOrder {
 
     public void setImportStatus(String importStatus) {
         this.importStatus = importStatus == null ? null : importStatus.trim();
-    }
-
-    public String getAmazonMerchantOrderId() {
-        return amazonMerchantOrderId;
-    }
-
-    public void setAmazonMerchantOrderId(String amazonMerchantOrderId) {
-        this.amazonMerchantOrderId = amazonMerchantOrderId == null ? null : amazonMerchantOrderId.trim();
-    }
-
-    public String getContentText() {
-        return contentText;
-    }
-
-    public void setContentText(String contentText) {
-        this.contentText = contentText == null ? null : contentText.trim();
     }
 }

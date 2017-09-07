@@ -21,8 +21,10 @@
                         password="root">
         </jdbcConnection>
 
-        <javaTypeResolver >
-            <property name="forceBigDecimals" value="false" />
+        <!-- 类型转换 -->
+        <javaTypeResolver>
+            <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+            <property name="forceBigDecimals" value="true"/>
         </javaTypeResolver>
 
         <!-- 数据表对应的model层  -->
@@ -31,17 +33,36 @@
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
-        <!-- sql mapper 映射配置文件 -->
-        <sqlMapGenerator targetPackage="cn.ssm.project.mapper" targetProject="src/main/java">
+        <!-- sql mapper 映射配置文件.xml -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
-        <!-- mybatis3中的mapper接口 -->
+        <!-- mybatis3中的mapper接口.java -->
         <javaClientGenerator type="XMLMAPPER" targetPackage="cn.ssm.project.mapper"  targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
         <!-- 数据表进行生成操作 schema:相当于库名; tableName:表名; domainObjectName:对应的DO -->
+        <table schema="" tableName="amazon_import_configure"></table>
+        <table schema="" tableName="amazon_import_order_detail"></table>
+        <table schema="" tableName="amazon_import_order_log"></table>
+        <table schema="" tableName="amazon_import_payment_log"></table>
+        <table schema="" tableName="amazon_payment"></table>
+        <table schema="" tableName="amazon_order"></table>
+        <table schema="" tableName="c_order"></table>
+        <table schema="" tableName="c_order_line"></table>
+        <table schema="" tableName="m_product"></table>
+        <table schema="" tableName="c_order"></table>
+        <table schema="" tableName="am_order"></table>
+        <table schema="" tableName="am_grablogs"></table>
+        <table schema="" tableName="am_orders"></table>
+        <table schema="" tableName="ba_account"></table>
+        <table schema="" tableName="ba_area"></table>
+        <table schema="" tableName="to_fbafee_rule"></table>
+        <table schema="" tableName="to_fbafee_detail"></table>
+        <table schema="" tableName="to_mcffee_detail"></table>
+        <table schema="" tableName="to_msfee_detail"></table>
         <table schema="" tableName="c_project"></table>
     </context>
 </generatorConfiguration>

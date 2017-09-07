@@ -1,6 +1,7 @@
 package cn.ssm.project.controller;
 
 import cn.ssm.project.bean.BaseJsonResult;
+import cn.ssm.project.pojo.ToFbafeeRule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +40,13 @@ public class TestController {
         String s = null;
 //        s = testService.test();
         s = importAmPaymentService.downloadAmazonFinancialEventsByOrg(null,null,0);
+        return BaseJsonResult.ok(s);
+    }
+
+    @RequestMapping("/testto")
+    @ResponseBody
+    public BaseJsonResult testto() {
+        ToFbafeeRule s = testService.testto();
         return BaseJsonResult.ok(s);
     }
 }

@@ -1,11 +1,10 @@
 package cn.ssm.project.mapper;
 
-import org.apache.ibatis.annotations.Param;
-import cn.ssm.project.pojo.AmazonImportOrderLog;
 import cn.ssm.project.pojo.AmazonOrder;
 import cn.ssm.project.pojo.AmazonOrderExample;
-
+import cn.ssm.project.pojo.AmazonOrderWithBLOBs;
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface AmazonOrderMapper {
     int countByExample(AmazonOrderExample example);
@@ -14,27 +13,25 @@ public interface AmazonOrderMapper {
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(AmazonOrder record);
+    int insert(AmazonOrderWithBLOBs record);
 
-    int insertSelective(AmazonOrder record);
+    int insertSelective(AmazonOrderWithBLOBs record);
 
-    List<AmazonOrder> selectByExampleWithBLOBs(AmazonOrderExample example);
+    List<AmazonOrderWithBLOBs> selectByExampleWithBLOBs(AmazonOrderExample example);
 
     List<AmazonOrder> selectByExample(AmazonOrderExample example);
 
-    AmazonOrder selectByPrimaryKey(Integer id);
+    AmazonOrderWithBLOBs selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") AmazonOrder record, @Param("example") AmazonOrderExample example);
+    int updateByExampleSelective(@Param("record") AmazonOrderWithBLOBs record, @Param("example") AmazonOrderExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") AmazonOrder record, @Param("example") AmazonOrderExample example);
+    int updateByExampleWithBLOBs(@Param("record") AmazonOrderWithBLOBs record, @Param("example") AmazonOrderExample example);
 
     int updateByExample(@Param("record") AmazonOrder record, @Param("example") AmazonOrderExample example);
 
-    int updateByPrimaryKeySelective(AmazonOrder record);
+    int updateByPrimaryKeySelective(AmazonOrderWithBLOBs record);
 
-    int updateByPrimaryKeyWithBLOBs(AmazonOrder record);
+    int updateByPrimaryKeyWithBLOBs(AmazonOrderWithBLOBs record);
 
     int updateByPrimaryKey(AmazonOrder record);
-
-    int updateCOrderIdByAmzonOrderId(AmazonImportOrderLog record);
 }
