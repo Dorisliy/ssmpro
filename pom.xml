@@ -195,6 +195,66 @@
         </dependencies>
     <build>
         <finalName>ssmpro</finalName>
+        <!--<plugins>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.4.5.v20170502</version>
+                <configuration>
+                    <scanIntervalSeconds>6</scanIntervalSeconds>
+                    &lt;!&ndash;<connectors>
+                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                            <port>8899</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                        </connector>
+                    </connectors>&ndash;&gt;
+                    <stopPort>8191</stopPort>
+                    <stopKey>exit</stopKey>
+                    <webAppConfig>
+                        <contextPath>/${project.artifactId}</contextPath>
+                        &lt;!&ndash;<contextPath>/</contextPath>&ndash;&gt;
+                    </webAppConfig>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.4.2</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            &lt;!&ndash; 元配置文件的目录，相对于pom.xml文件的路径 &ndash;&gt;
+                            <directory>src/main/webapp/WEB-INF</directory>
+                            &lt;!&ndash; 是否过滤文件，也就是是否启动auto-config的功能 &ndash;&gt;
+                            <filtering>true</filtering>
+                            &lt;!&ndash; 目标路径 &ndash;&gt;
+                            <targetPath>WEB-INF</targetPath>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>-->
+
         <!--<resources>
             <resource>
                 <directory>src/main/java</directory>
@@ -205,8 +265,8 @@
             </resource>
         </resources>-->
         <plugins>
-            <!--jetty热部署-->
-            <plugin>
+          <!--  jetty热部署-->
+            <!--<plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>8.1.16.v20140903</version>
@@ -234,7 +294,7 @@
                     <overwrite>true</overwrite>
                 </configuration>
             </plugin>
-            <!--<plugin>
+            <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>2.6</version>
                 <executions>
@@ -258,7 +318,7 @@
                     </execution>
                 </executions>
             </plugin>-->
-            <!--<plugin>
+            <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>9.3.7.RC0</version>
@@ -272,7 +332,7 @@
                         <contextPath>/webproject</contextPath>
                     </webApp>
                 </configuration>
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
 </project>
